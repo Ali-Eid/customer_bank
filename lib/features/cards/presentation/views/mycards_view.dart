@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,10 +21,12 @@ import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dar
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../core/app/depndency_injection.dart';
+import '../../../../core/cache/app_preferences.dart';
 import '../../../../core/themes/color_manager.dart';
 import '../../domain/models/Inputs/request_increase_withdrawal_value/request_increase_withdrawal_value_model.dart';
 import '../blocs/request_card_bloc/request_card_bloc.dart';
 import '../widgets/drop_down_card_widget.dart';
+import '../widgets/new_card_widget.dart';
 
 class MyCardsView extends StatefulWidget {
   const MyCardsView({super.key});
@@ -56,185 +57,196 @@ class _MyCardsViewState extends State<MyCardsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "My cards",
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium!
-              .copyWith(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: AppSizeH.s16),
-            BlocBuilder(
-              bloc: context.read<CardsBloc>(),
-              builder: (context, CardsState state) {
-                return state.map(
-                  loading: (value) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: AppSizeW.s16),
-                      child: ShimmerWidget(
-                          child: Container(
-                        height: AppSizeH.s200,
-                        padding: EdgeInsets.all(AppSizeW.s16),
-                        decoration: BoxDecoration(
-                          color: ColorManager.white,
-                          borderRadius: BorderRadius.circular(AppSizeR.s8),
-                        ),
-                      )),
-                    );
-                  },
-                  loaded: (value) {
-                    return Column(
-                      children: [
-                        SizedBox(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: AppSizeH.s16),
+          Text(
+            "My cards",
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: AppSizeH.s16),
+          BlocBuilder(
+            bloc: context.read<CardsBloc>(),
+            builder: (context, CardsState state) {
+              return state.map(
+                loading: (value) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppSizeW.s16),
+                    child: ShimmerWidget(
+                        child: Container(
+                      height: AppSizeH.s200,
+                      padding: EdgeInsets.all(AppSizeW.s16),
+                      decoration: BoxDecoration(
+                        color: ColorManager.white,
+                        borderRadius: BorderRadius.circular(AppSizeR.s8),
+                      ),
+                    )),
+                  );
+                },
+                loaded: (value) {
+                  return context.read<CardsBloc>().cards.isEmpty
+                      ? SizedBox(
                           height: AppSizeH.s200,
-                          child: PageView.builder(
-                            controller: controller,
-                            itemCount: context.read<CardsBloc>().cards.length,
-                            scrollDirection: Axis.horizontal,
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: AppSizeW.s16),
-                                child: CardItemWidget(
-                                    model:
-                                        context.read<CardsBloc>().cards[index]),
-                              );
-                            },
+                          child: Center(
+                            child: Text(
+                              "Don't have any cards",
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: AppSizeH.s24),
-                        SmoothPageIndicator(
-                          controller: controller,
-                          count: context.read<CardsBloc>().cards.length,
-                          effect: JumpingDotEffect(
-                            dotHeight: AppSizeW.s8,
-                            dotWidth: AppSizeW.s8,
-                          ),
-                        ),
-                      ],
-                    );
-                    // const CardItemWidget();
-                  },
-                  error: (value) {
-                    return CustomErrorWidget(
-                      message: value.message,
-                      onPressed: () {
-                        context
-                            .read<CardsBloc>()
-                            .add(const CardsEvent.getMyCards());
-                      },
-                    );
-                  },
-                );
-              },
-            ),
-            SizedBox(height: AppSizeH.s16),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppSizeW.s16),
-              child: SizedBox(
-                height: ScreenUtil.defaultSize.height * 0.5,
-                child: Container(
-                  padding: EdgeInsets.all(AppSizeW.s16),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                        width: AppSizeW.s1, color: ColorManager.nonOpaque),
-                    borderRadius: BorderRadius.circular(AppSizeR.s8),
-                  ),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Row(
+                        )
+                      : Column(
                           children: [
-                            Expanded(
-                                child: CardRequestWidget(
-                                    onTap: () {
-                                      showMyBottomSheet(
-                                        context,
-                                        const BaseBottomSheetWidget(
+                            SizedBox(
+                              height: AppSizeH.s200,
+                              child: ListView.builder(
+                                itemCount:
+                                    context.read<CardsBloc>().cards.length,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: AppSizeW.s16),
+                                    child: CardItemWidget(
+                                        model: context
+                                            .read<CardsBloc>()
+                                            .cards[index]),
+                                  );
+                                },
+                              ),
+                            ),
+                            SizedBox(height: AppSizeH.s24),
+                            // SmoothPageIndicator(
+                            //   controller: controller,
+                            //   count: context.read<CardsBloc>().cards.length,
+                            //   effect: JumpingDotEffect(
+                            //     dotHeight: AppSizeW.s8,
+                            //     dotWidth: AppSizeW.s8,
+                            //   ),
+                            // ),
+                          ],
+                        );
+                  // const CardItemWidget();
+                },
+                error: (value) {
+                  return CustomErrorWidget(
+                    message: value.message,
+                    onPressed: () {
+                      context
+                          .read<CardsBloc>()
+                          .add(const CardsEvent.getMyCards());
+                    },
+                  );
+                },
+              );
+            },
+          ),
+          SizedBox(height: AppSizeH.s16),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppSizeW.s16),
+            child: SizedBox(
+              height: ScreenUtil.defaultSize.height * 0.5,
+              child: Container(
+                padding: EdgeInsets.all(AppSizeW.s16),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      width: AppSizeW.s1, color: ColorManager.nonOpaque),
+                  borderRadius: BorderRadius.circular(AppSizeR.s8),
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: CardRequestWidget(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => const AlertDialog(
+                                        content: BaseBottomSheetWidget(
                                           title: "New supplementary card",
                                           child: NewCardWidget(),
                                         ),
+                                      ),
+                                    );
+                                  },
+                                  icon: Icons.add,
+                                  // imagePath: IconAssets.add_card_icon,
+                                  title: "New supplementary card")),
+                          SizedBox(width: AppSizeW.s16),
+                          Expanded(
+                              child: CardRequestWidget(
+                                  onTap: () {
+                                    if (context.read<CardsBloc>().cards.any(
+                                          (element) =>
+                                              element.status.toLowerCase() ==
+                                              "ready",
+                                        )) {
+                                      showMyBottomSheet(
+                                        context,
+                                        const BaseBottomSheetWidget(
+                                          title: "Deactivate card",
+                                          child: InActiveCardWidget(),
+                                        ),
                                       );
-                                    },
-                                    imagePath: IconAssets.add_card_icon,
-                                    title: "New supplementary card")),
-                            SizedBox(width: AppSizeW.s16),
-                            Expanded(
-                                child: CardRequestWidget(
-                                    onTap: () {
-                                      if (context.read<CardsBloc>().cards.any(
-                                            (element) =>
-                                                element.status.toLowerCase() ==
-                                                "active",
-                                          )) {
-                                        showMyBottomSheet(
-                                          context,
-                                          const BaseBottomSheetWidget(
-                                            title: "Deactivate card",
-                                            child: InActiveCardWidget(),
-                                          ),
-                                        );
-                                      } else {
-                                        showToast(
-                                            context: context,
-                                            message: "No card active",
-                                            color: ColorManager.persimmon);
-                                      }
-                                    },
-                                    imagePath: IconAssets.in_active_cards_icon,
-                                    title: "Deactivate\ncard")),
-                          ],
-                        ),
+                                    } else {
+                                      showToast(
+                                          context: context,
+                                          message: "No card active",
+                                          color: ColorManager.persimmon);
+                                    }
+                                  },
+                                  icon: Icons.close,
+                                  // imagePath: IconAssets.in_active_cards_icon,
+                                  title: "Deactivate\ncard")),
+                        ],
                       ),
-                      SizedBox(height: AppSizeH.s16),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Expanded(
-                                child: CardRequestWidget(
-                                    moreSpacing: true,
-                                    onTap: () {
-                                      if (context.read<CardsBloc>().cards.any(
-                                            (element) =>
-                                                element.status.toLowerCase() ==
-                                                "active",
-                                          )) {
-                                        showMyBottomSheet(
-                                          context,
-                                          const BaseBottomSheetWidget(
-                                            title: "Edit card limit",
-                                            child: EditWithdrawalWidget(),
-                                          ),
-                                        );
-                                      } else {
-                                        showToast(
-                                            context: context,
-                                            message: "No card active",
-                                            color: ColorManager.persimmon);
-                                      }
-                                    },
-                                    imagePath: IconAssets.edit_withdraw_icon,
-                                    title: "Edit\ncard limit")),
-                            const Expanded(child: SizedBox())
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: AppSizeH.s16),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: CardRequestWidget(
+                                  moreSpacing: true,
+                                  onTap: () {
+                                    if (context.read<CardsBloc>().cards.any(
+                                          (element) =>
+                                              element.status.toLowerCase() ==
+                                              "ready",
+                                        )) {
+                                      showMyBottomSheet(
+                                        context,
+                                        const BaseBottomSheetWidget(
+                                          title: "Edit card limit",
+                                          child: EditWithdrawalWidget(),
+                                        ),
+                                      );
+                                    } else {
+                                      showToast(
+                                          context: context,
+                                          message: "No card active",
+                                          color: ColorManager.persimmon);
+                                    }
+                                  },
+                                  icon: Icons.edit,
+                                  // imagePath: IconAssets.edit_withdraw_icon,
+                                  title: "Edit\ncard limit")),
+                          const Expanded(child: SizedBox())
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
-            SizedBox(height: AppSizeH.s24),
-          ],
-        ),
+          ),
+          SizedBox(height: AppSizeH.s24),
+        ],
       ),
     );
   }
@@ -296,7 +308,10 @@ class _EditWithdrawalWidgetState extends State<EditWithdrawalWidget> {
               bloc: context.read<CardsBloc>(),
               builder: (context, CardsState state) {
                 return DropDownCardWidget(
-                  items: context.read<CardsBloc>().cards,
+                  items: context.read<CardsBloc>().cards
+                    ..where(
+                      (element) => element.status.toLowerCase() == "ready",
+                    ).toList(),
                   label: "Card",
                   onChanged: (card) {
                     cardId = card?.id;
@@ -442,7 +457,7 @@ class _InActiveCardWidgetState extends State<InActiveCardWidget> {
                       .read<CardsBloc>()
                       .cards
                       .where(
-                        (element) => element.status.toLowerCase() == "active",
+                        (element) => element.status.toLowerCase() == "ready",
                       )
                       .toList(),
                   label: "Card",
@@ -526,148 +541,6 @@ class _InActiveCardWidgetState extends State<InActiveCardWidget> {
   }
 }
 
-class NewCardWidget extends StatefulWidget {
-  const NewCardWidget({
-    super.key,
-  });
-
-  @override
-  State<NewCardWidget> createState() => _NewCardWidgetState();
-}
-
-class _NewCardWidgetState extends State<NewCardWidget> {
-  final nameController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-  late RequestCardBloc requestCardBloc;
-  int? accountId;
-  @override
-  void initState() {
-    requestCardBloc = instance<RequestCardBloc>();
-    context.read<MyAccountsBloc>().add(MyAccountsEvent.getMyAccounts(
-        customerId: context.read<AppBloc>().user?.customerId ?? 0,
-        isLoading: false));
-    context
-        .read<WithdrawalBloc>()
-        .add(const WithdrawalEvent.getWithDrawalValues(isLoading: false));
-
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: BlocListener(
-        bloc: requestCardBloc,
-        listener: (context, RequestCardState state) {
-          state.mapOrNull(
-            success: (value) {
-              context.read<CardsBloc>().add(const CardsEvent.getMyCards());
-              context.pop();
-              showToast(context: context, message: value.message);
-            },
-            error: (value) {
-              showToast(
-                  context: context,
-                  message: value.message,
-                  color: ColorManager.persimmon);
-            },
-          );
-        },
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            BlocBuilder(
-              bloc: context.read<MyAccountsBloc>(),
-              builder: (context, MyAccountsState state) {
-                return DropDownAccountWidget(
-                  items: context.read<MyAccountsBloc>().accounts,
-                  label: "account",
-                  onChanged: (account) {
-                    accountId = account?.id;
-                  },
-                  validator: (value) {
-                    if (value == null) {
-                      return "please select an account";
-                    }
-                    return null;
-                  },
-                );
-              },
-            ),
-            SizedBox(height: AppSizeH.s16),
-            TextFormField(
-              controller: nameController,
-              style: Theme.of(context).textTheme.headlineLarge,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter beneficiary name';
-                }
-                return null;
-              },
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              decoration: const InputDecoration(hintText: "Beneficiary name"),
-            ),
-            SizedBox(height: AppSizeH.s32),
-            Row(
-              children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all(ColorManager.white),
-                      shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppSizeR.s8),
-                          side: BorderSide(color: ColorManager.persimmon)))),
-                  onPressed: () {
-                    context.pop();
-                  },
-                  child: Text(
-                    "Back",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium!
-                        .copyWith(color: ColorManager.persimmon),
-                  ),
-                ),
-                SizedBox(width: AppSizeW.s8),
-                Expanded(
-                    child: BlocBuilder(
-                  bloc: requestCardBloc,
-                  builder: (context, RequestCardState state) {
-                    return state.maybeMap(
-                      loading: (value) {
-                        return const LinearProgressIndicator();
-                      },
-                      orElse: () {
-                        return ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                requestCardBloc.add(RequestCardEvent.newCard(
-                                    request: RequestCardModel(
-                                        accountId: accountId ?? 0,
-                                        beneficiaryName: nameController.text,
-                                        type: CardType.debit.name,
-                                        withdrawalValueId: context
-                                            .read<WithdrawalBloc>()
-                                            .valuesWithDrawal
-                                            .first
-                                            .id)));
-                              }
-                            },
-                            child: const Text("Confirm"));
-                      },
-                    );
-                  },
-                )),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class BaseBottomSheetWidget extends StatelessWidget {
   final String title;
   final Widget child;
@@ -706,16 +579,18 @@ class BaseBottomSheetWidget extends StatelessWidget {
 }
 
 class CardRequestWidget extends StatelessWidget {
-  final String imagePath;
+  // final String imagePath;
+  final IconData? icon;
   final String title;
   final bool? moreSpacing;
   final void Function()? onTap;
   const CardRequestWidget({
     super.key,
-    required this.imagePath,
+    // required this.imagePath,
     required this.title,
     this.onTap,
     this.moreSpacing,
+    this.icon,
   });
 
   @override
@@ -734,15 +609,30 @@ class CardRequestWidget extends StatelessWidget {
                   ? SizedBox(height: AppSizeH.s10)
                   : const SizedBox(),
               Expanded(
-                child: Image(
-                  image: AssetImage(imagePath),
+                  child: Container(
+                padding: EdgeInsets.all(AppSizeW.s8),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: ColorManager.primary, width: AppSizeW.s2)),
+                child: Icon(
+                  icon,
+                  size: AppSizeSp.s30,
+                  color: ColorManager.primary,
                 ),
-              ),
+              )
+                  // Image(
+                  //   image: AssetImage(imagePath),
+                  // ),
+                  ),
               SizedBox(height: AppSizeH.s6),
               Expanded(
                 child: Text(
                   title,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(color: ColorManager.secondary),
                   textAlign: TextAlign.center,
                 ),
               )
@@ -763,13 +653,11 @@ class CardItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: AppSizeH.s200,
+      width: AppSizeH.s490,
       padding: EdgeInsets.all(AppSizeW.s16),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(model.type == CardType.credit.name
-              ? ImageAssets.cardFullCredit
-              : ImageAssets.cardFullDebate),
-        ),
+            image: AssetImage(ImageAssets.card), fit: BoxFit.cover),
         borderRadius: BorderRadius.circular(AppSizeR.s8),
       ),
       child: Column(
@@ -793,7 +681,7 @@ class CardItemWidget extends StatelessWidget {
                             .headlineLarge!
                             .copyWith(
                                 fontWeight: FontWeight.bold,
-                                color: ColorManager.white),
+                                color: ColorManager.secondary),
                       ),
                       Text(
                         model.amount.toString(),
@@ -806,7 +694,8 @@ class CardItemWidget extends StatelessWidget {
                   Text(
                     model.type,
                     style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                        fontWeight: FontWeight.bold, color: ColorManager.white),
+                        fontWeight: FontWeight.bold,
+                        color: ColorManager.secondary),
                   ),
                 ],
               ),
@@ -829,7 +718,7 @@ class CardItemWidget extends StatelessWidget {
                       "Card Holder",
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: ColorManager.white),
+                          color: ColorManager.secondary),
                     ),
                     Text(
                       model.beneficiaryName,
@@ -852,7 +741,7 @@ class CardItemWidget extends StatelessWidget {
                       "Expired Date",
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: ColorManager.white),
+                          color: ColorManager.secondary),
                     ),
                     Text(
                       model.expiry_At,
@@ -874,7 +763,8 @@ class CardItemWidget extends StatelessWidget {
                   Text(
                     "Status",
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontWeight: FontWeight.bold, color: ColorManager.white),
+                        fontWeight: FontWeight.bold,
+                        color: ColorManager.secondary),
                   ),
                   Text(
                     model.status,

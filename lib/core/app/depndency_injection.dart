@@ -23,6 +23,7 @@ import 'package:get_it/get_it.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/accounts/presentation/blocs/types_bloc/types_bloc.dart';
 import '../../features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
 import '../../features/cards/domain/usecases/card_usecases.dart';
 import '../../features/cards/presentation/blocs/request_card_bloc/request_card_bloc.dart';
@@ -92,6 +93,14 @@ Future<void> initCard() async {
     instance.registerLazySingleton(() => RequestIncreaseWithdrawalUsecase(
         repository: instance<CardRepository>()));
   }
+  if (!GetIt.I.isRegistered<GetBeneficiaryTypesUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetBeneficiaryTypesUsecase(repository: instance<CardRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetCardTypesUsecase>()) {
+    instance.registerLazySingleton(
+        () => GetCardTypesUsecase(repository: instance<CardRepository>()));
+  }
 
   //Blocs
   if (!GetIt.I.isRegistered<CardsBloc>()) {
@@ -103,6 +112,13 @@ Future<void> initCard() async {
     instance.registerFactory(
       () =>
           WithdrawalBloc(getWithDrawelValues: instance<GetWithDrawelValues>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<TypesBloc>()) {
+    instance.registerFactory(
+      () => TypesBloc(
+          getBeneficiaryTypes: instance<GetBeneficiaryTypesUsecase>(),
+          getCardTypesUsecase: instance<GetCardTypesUsecase>()),
     );
   }
   if (!GetIt.I.isRegistered<RequestCardBloc>()) {

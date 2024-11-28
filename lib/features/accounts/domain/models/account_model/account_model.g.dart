@@ -14,7 +14,9 @@ _$AccountModelImpl _$$AccountModelImplFromJson(Map<String, dynamic> json) =>
       balance: (json['balance'] as num?)?.toInt() ?? 0,
       status: json['status'] as String? ?? "",
       isDefault: json['is_default'] as bool? ?? false,
-      accountType: json['account_type'] as String? ?? "",
+      accountType: json['account_type'] == null
+          ? const StaticModel()
+          : StaticModel.fromJson(json['account_type'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$AccountModelImplToJson(_$AccountModelImpl instance) =>

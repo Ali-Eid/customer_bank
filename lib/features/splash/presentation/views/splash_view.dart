@@ -1,8 +1,12 @@
 import 'dart:async';
 
+import 'package:animate_do/animate_do.dart';
+// import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fs_bank/core/constants/assets_manager.dart';
 import 'package:fs_bank/core/constants/values_manager.dart';
 import 'package:fs_bank/core/routers/routes_manager.dart';
@@ -20,8 +24,12 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
+    // AssetsAudioPlayer.newPlayer().open(
+    //   Audio(SongAssets.song_splash),
+    //   autoStart: true,
+    // );
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 7),
       () {
         context.read<AppBloc>().add(const AppEvent.checkApp());
       },
@@ -48,44 +56,52 @@ class _SplashViewState extends State<SplashView> {
           );
         },
         child: Stack(
-          alignment: Alignment.center,
           children: [
-            SvgPicture.asset(
-              ImageAssets.splash,
-              fit: BoxFit.fill,
+            Container(
+              height: double.infinity,
               width: double.infinity,
+              decoration: BoxDecoration(color: ColorManager.white),
             ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  height: AppSizeH.s80,
-                  width: AppSizeW.s80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppSizeR.s24),
-                    image: DecorationImage(
-                        image: AssetImage(ImageAssets.bankLogo)),
-                  ),
-                ),
-                SizedBox(height: AppSizeH.s32),
-                Text(
-                  "Bis-Bank",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                SizedBox(height: AppSizeH.s16),
-                Row(
+            Center(
+              child: FadeInDown(
+                duration: const Duration(milliseconds: 3000),
+                //  child:Text('Agent')
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Text(
-                        "Find the best company stock for your investment",
-                        style: Theme.of(context).textTheme.displaySmall,
-                        textAlign: TextAlign.center,
+                    Image.asset(
+                      ImageAssets.logo,
+                      width: ScreenUtil.defaultSize.width * 0.6,
+                      // color: ColorManager.black,
+                    ),
+                    SizedBox(
+                      height: AppSizeH.s10,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(AppSizeW.s8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Welcome',
+                              style: Theme.of(context).textTheme.labelMedium),
+                          SizedBox(
+                            width: AppSizeH.s4,
+                          ),
+                          Text('Customer app',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .copyWith(
+                                      color: ColorManager.primary,
+                                      fontSize: AppSizeSp.s16))
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ],
-            )
+              ),
+            ),
           ],
         ),
       ),

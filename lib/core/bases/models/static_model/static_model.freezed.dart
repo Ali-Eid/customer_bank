@@ -168,3 +168,159 @@ abstract class _StaticModel implements StaticModel {
   _$$StaticModelImplCopyWith<_$StaticModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+StaticTextModel _$StaticTextModelFromJson(Map<String, dynamic> json) {
+  return _StaticTextModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$StaticTextModel {
+  int get id => throw _privateConstructorUsedError;
+  String get text => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $StaticTextModelCopyWith<StaticTextModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $StaticTextModelCopyWith<$Res> {
+  factory $StaticTextModelCopyWith(
+          StaticTextModel value, $Res Function(StaticTextModel) then) =
+      _$StaticTextModelCopyWithImpl<$Res, StaticTextModel>;
+  @useResult
+  $Res call({int id, String text});
+}
+
+/// @nodoc
+class _$StaticTextModelCopyWithImpl<$Res, $Val extends StaticTextModel>
+    implements $StaticTextModelCopyWith<$Res> {
+  _$StaticTextModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? text = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$StaticTextModelImplCopyWith<$Res>
+    implements $StaticTextModelCopyWith<$Res> {
+  factory _$$StaticTextModelImplCopyWith(_$StaticTextModelImpl value,
+          $Res Function(_$StaticTextModelImpl) then) =
+      __$$StaticTextModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, String text});
+}
+
+/// @nodoc
+class __$$StaticTextModelImplCopyWithImpl<$Res>
+    extends _$StaticTextModelCopyWithImpl<$Res, _$StaticTextModelImpl>
+    implements _$$StaticTextModelImplCopyWith<$Res> {
+  __$$StaticTextModelImplCopyWithImpl(
+      _$StaticTextModelImpl _value, $Res Function(_$StaticTextModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? text = null,
+  }) {
+    return _then(_$StaticTextModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$StaticTextModelImpl implements _StaticTextModel {
+  const _$StaticTextModelImpl({this.id = 0, this.text = ""});
+
+  factory _$StaticTextModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StaticTextModelImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final int id;
+  @override
+  @JsonKey()
+  final String text;
+
+  @override
+  String toString() {
+    return 'StaticTextModel(id: $id, text: $text)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StaticTextModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, text);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StaticTextModelImplCopyWith<_$StaticTextModelImpl> get copyWith =>
+      __$$StaticTextModelImplCopyWithImpl<_$StaticTextModelImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$StaticTextModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _StaticTextModel implements StaticTextModel {
+  const factory _StaticTextModel({final int id, final String text}) =
+      _$StaticTextModelImpl;
+
+  factory _StaticTextModel.fromJson(Map<String, dynamic> json) =
+      _$StaticTextModelImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get text;
+  @override
+  @JsonKey(ignore: true)
+  _$$StaticTextModelImplCopyWith<_$StaticTextModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

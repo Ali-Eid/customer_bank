@@ -81,7 +81,7 @@ class _CardServiceClient implements CardServiceClient {
     )
         .compose(
           _dio.options,
-          '/dashboard/withdrawal_values',
+          '/withdrawal_values',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -99,6 +99,96 @@ class _CardServiceClient implements CardServiceClient {
             ? json
                 .map<WithDrawelValuesModel>((i) =>
                     WithDrawelValuesModel.fromJson(i as Map<String, dynamic>))
+                .toList()
+            : List.empty(),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ResponseModel<List<StaticTextModel>>>>
+      getCardType() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options =
+        _setStreamType<HttpResponse<ResponseModel<List<StaticTextModel>>>>(
+            Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+                .compose(
+                  _dio.options,
+                  '/card_types',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ResponseModel<List<StaticTextModel>> _value;
+    try {
+      _value = ResponseModel<List<StaticTextModel>>.fromJson(
+        _result.data!,
+        (json) => json is List<dynamic>
+            ? json
+                .map<StaticTextModel>(
+                    (i) => StaticTextModel.fromJson(i as Map<String, dynamic>))
+                .toList()
+            : List.empty(),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ResponseModel<List<StaticTextModel>>>>
+      getBeneficiaryType() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options =
+        _setStreamType<HttpResponse<ResponseModel<List<StaticTextModel>>>>(
+            Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+                .compose(
+                  _dio.options,
+                  '/beneficiary_types',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ResponseModel<List<StaticTextModel>> _value;
+    try {
+      _value = ResponseModel<List<StaticTextModel>>.fromJson(
+        _result.data!,
+        (json) => json is List<dynamic>
+            ? json
+                .map<StaticTextModel>(
+                    (i) => StaticTextModel.fromJson(i as Map<String, dynamic>))
                 .toList()
             : List.empty(),
       );

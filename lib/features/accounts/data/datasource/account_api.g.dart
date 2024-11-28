@@ -14,7 +14,7 @@ class _AccountServiceClient implements AccountServiceClient {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= '/customer-account/api';
+    baseUrl ??= '/customer-accounts/api';
   }
 
   final Dio _dio;

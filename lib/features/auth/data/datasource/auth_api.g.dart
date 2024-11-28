@@ -63,12 +63,17 @@ class _AuthServiceClient implements AuthServiceClient {
   }
 
   @override
-  Future<HttpResponse<ResponseModel<dynamic>>> sendOtp(
-      {required String phoneNumber}) async {
+  Future<HttpResponse<ResponseModel<dynamic>>> sendOtp({
+    required String type,
+    required String phoneNumber,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {'phone_number': phoneNumber};
+    final _data = {
+      'type': type,
+      'phone_number': phoneNumber,
+    };
     final _options =
         _setStreamType<HttpResponse<ResponseModel<dynamic>>>(Options(
       method: 'POST',

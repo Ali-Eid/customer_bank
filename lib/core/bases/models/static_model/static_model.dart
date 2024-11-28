@@ -12,3 +12,13 @@ abstract class StaticModel with _$StaticModel {
   factory StaticModel.fromJson(Map<String, dynamic> json) =>
       _$StaticModelFromJson(json);
 }
+
+@freezed
+abstract class StaticTextModel with _$StaticTextModel {
+  const factory StaticTextModel({
+    @Default(0) int id,
+    @Default("") String text,
+  }) = _StaticTextModel;
+  factory StaticTextModel.fromJson(Map<String, dynamic> json) =>
+      _$StaticTextModelFromJson(json);
+}

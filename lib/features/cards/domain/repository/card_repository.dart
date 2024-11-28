@@ -1,3 +1,4 @@
+import 'package:fs_bank/core/bases/models/static_model/static_model.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_card_model/request_card_model.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_inactive_card/request_inactive_card_model.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_increase_withdrawal_value/request_increase_withdrawal_value_model.dart';
@@ -11,6 +12,10 @@ abstract class CardRepository {
   Future<Result<ResponseModel<List<CardModel>>, FailureModel>> getMyCards();
   Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
       getWithDrawelValues();
+  Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>
+      getCardType();
+  Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>
+      getBeneficiaryType();
   Future<Result<ResponseModel, FailureModel>> requestNewCard(
       {required RequestCardModel request});
   Future<Result<ResponseModel, FailureModel>> requestInActiveCard(

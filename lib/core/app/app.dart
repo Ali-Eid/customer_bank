@@ -44,21 +44,24 @@ class _MyAppState extends State<MyApp> {
           create: (context) => instance<WithdrawalBloc>(),
         ),
       ],
-      child: ScreenUtilInit(
-        designSize: const Size(375, 812),
-        builder: (context, child) => ThemeProvider(
-          initTheme: instance<AppPreferences>().getTheme(),
-          builder: (p0, theme) => MaterialApp.router(
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            title: 'FS Bank',
-            themeMode: theme.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
-            theme: theme,
-            routerConfig: AppRouter.router,
+      child: LayoutBuilder(builder: (context, constraints) {
+        return ScreenUtilInit(
+          designSize: Size(constraints.maxWidth, constraints.minHeight),
+          builder: (context, child) => ThemeProvider(
+            initTheme: instance<AppPreferences>().getTheme(),
+            builder: (p0, theme) => MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              title: 'FS Bank',
+              themeMode: theme.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
+              theme: theme,
+              routerConfig: AppRouter.router,
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }

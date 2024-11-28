@@ -7,6 +7,7 @@ import 'package:fs_bank/features/accounts/presentation/blocs/my_accounts_bloc/my
 import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dart';
 
 import '../../../../core/app/depndency_injection.dart';
+import '../../../../core/cache/app_preferences.dart';
 import '../../../../core/widgets/custom_error_widget.dart';
 
 class AccountView extends StatefulWidget {
@@ -20,7 +21,8 @@ class _AccountViewState extends State<AccountView> {
   @override
   void initState() {
     context.read<MyAccountsBloc>().add(MyAccountsEvent.getMyAccounts(
-        customerId: context.read<AppBloc>().user?.customerId ?? 0));
+        customerId:
+            (instance<AppPreferences>().getUserInfo()?.customerId ?? 0)));
     super.initState();
   }
 
@@ -130,7 +132,7 @@ class AccountItemWidget extends StatelessWidget {
             children: [
               Text("Type:", style: Theme.of(context).textTheme.headlineSmall),
               SizedBox(width: AppSizeW.s4),
-              Text(model.accountType,
+              Text(model.accountType.name,
                   style: Theme.of(context).textTheme.displayMedium)
             ],
           ),

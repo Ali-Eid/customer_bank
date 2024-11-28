@@ -40,8 +40,8 @@ class AuthRepositoryImpl implements AuthRepository {
       {required String phoneNumber}) async {
     if (await networkInfo.isConnected) {
       try {
-        final response =
-            await authServiceClient.sendOtp(phoneNumber: phoneNumber);
+        final response = await authServiceClient.sendOtp(
+            phoneNumber: phoneNumber, type: "customer");
         if (response.response.statusCode == 200) {
           return Success(response.data);
         } else {

@@ -19,7 +19,8 @@ abstract class AuthServiceClient {
       {@Body() required InputLoginModel input});
   @POST(Endpoints.SEND_OTP)
   Future<HttpResponse<ResponseModel>> sendOtp(
-      {@Field("phone_number") required String phoneNumber});
+      {@Field("type") required String type,
+      @Field("phone_number") required String phoneNumber});
   @POST(Endpoints.LOGOUT)
   Future<HttpResponse<ResponseModel>> logout();
 }

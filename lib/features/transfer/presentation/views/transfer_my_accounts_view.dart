@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,11 +10,11 @@ import 'package:fs_bank/features/auth/presentation/blocs/auth_bloc/auth_bloc.dar
 import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dart';
 import 'package:fs_bank/features/transfer/domain/models/inputs_models/input_transfer_model.dart';
 import 'package:go_router/go_router.dart';
-import 'package:otp_pin_field/otp_pin_field.dart';
 
 import '../../../../core/app/depndency_injection.dart';
 import '../../../../core/constants/values_manager.dart';
 import '../../../../core/themes/color_manager.dart';
+// import '../../../../core/widgets/otp_field_widget/otp_pin_field.dart';
 import '../../../accounts/presentation/blocs/my_accounts_bloc/my_accounts_bloc.dart';
 import '../../../accounts/presentation/widgets/drop_down_account_widget.dart';
 import '../../../auth/presentation/blocs/input_otp_cubit/input_otp_cubit.dart';
@@ -34,7 +36,7 @@ class _TransferMyAccountsViewState extends State<TransferMyAccountsView> {
   final PageController _pageController = PageController();
   final amountController = TextEditingController();
   // final OtpFieldController otpController = OtpFieldController();
-  final _otpPinFieldController = GlobalKey<OtpPinFieldState>();
+  // final _otpPinFieldController = GlobalKey<OtpPinFieldState>();
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -58,24 +60,28 @@ class _TransferMyAccountsViewState extends State<TransferMyAccountsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Transfer between my accounts",
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium!
-              .copyWith(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(AppSizeW.s16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(height: AppSizeH.s16),
-            Expanded(
+    return Padding(
+      padding: EdgeInsets.all(AppSizeW.s16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: AppSizeH.s16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Transfer between my accounts",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          SizedBox(height: AppSizeH.s16),
+          SizedBox(
+            height: ScreenUtil.defaultSize.height * 0.6,
+            child: Expanded(
               child: PageView(
                 controller: _pageController,
                 children: [
@@ -247,8 +253,21 @@ class _TransferMyAccountsViewState extends State<TransferMyAccountsView> {
                     listener: (context, TransferState state) {
                       state.mapOrNull(
                         success: (value) {
-                          context.pop();
-                          showToast(context: context, message: value.message);
+                          Timer(
+                            const Duration(seconds: 4),
+                            () {
+                              context.read<MyAccountsBloc>().add(
+                                  MyAccountsEvent.getMyAccounts(
+                                      customerId: context
+                                              .read<AppBloc>()
+                                              .user
+                                              ?.customerId ??
+                                          0));
+                              context.pop();
+                              showToast(
+                                  context: context, message: value.message);
+                            },
+                          );
                         },
                         error: (value) {
                           context.pop();
@@ -274,47 +293,48 @@ class _TransferMyAccountsViewState extends State<TransferMyAccountsView> {
                                 textAlign: TextAlign.center,
                               ),
                               SizedBox(height: AppSizeH.s30),
-                              OtpPinField(
-                                  maxLength: 6,
-                                  key: _otpPinFieldController,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  fieldWidth: AppSizeW.s48,
-                                  autoFillEnable: false,
-                                  textInputAction: TextInputAction.done,
-                                  onSubmit: (text) {
-                                    transferBloc.add(
-                                        TransferEvent.transferMyAccounts(
-                                            otp: inputOtpCubit.otpCode,
-                                            input: InputTransferModel(
-                                                fromAccount:
-                                                    inputTransferCubit
-                                                            .fromAccount
-                                                            ?.accountNumber ??
-                                                        "",
-                                                toAccount: inputTransferCubit
-                                                        .toAccount
-                                                        ?.accountNumber ??
-                                                    "",
-                                                transferDate: DateTime.now()
-                                                    .toFormattedStringTransfer(),
-                                                amount: num.parse(
-                                                    amountController.text),
-                                                description: "from mobile")));
-                                  },
-                                  onChange: (text) {
-                                    inputOtpCubit.setOtpCode(text);
-                                  },
-                                  otpPinFieldDecoration: OtpPinFieldDecoration
-                                      .defaultPinBoxDecoration,
-                                  otpPinFieldStyle: OtpPinFieldStyle(
-                                      activeFieldBackgroundColor:
-                                          ColorManager.white,
-                                      activeFieldBorderColor:
-                                          ColorManager.primary,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .headlineSmall!))
+                              // OtpPinField(
+                              //     maxLength: 6,
+                              //     key: _otpPinFieldController,
+                              //     mainAxisAlignment:
+                              //         MainAxisAlignment.spaceBetween,
+                              //     fieldWidth: AppSizeW.s48,
+                              //     autoFillEnable: false,
+                              //     textInputAction: TextInputAction.done,
+                              //     onSubmit: (text) {
+                              //       transferBloc.add(
+                              //           TransferEvent.transferMyAccounts(
+                              //               otp: inputOtpCubit.otpCode,
+                              //               input: InputTransferModel(
+                              //                   fromAccount:
+                              //                       inputTransferCubit
+                              //                               .fromAccount
+                              //                               ?.accountNumber ??
+                              //                           "",
+                              //                   toAccount: inputTransferCubit
+                              //                           .toAccount
+                              //                           ?.accountNumber ??
+                              //                       "",
+                              //                   transferDate: DateTime.now()
+                              //                       .toFormattedStringTransfer(),
+                              //                   amount: num.parse(
+                              //                       amountController.text),
+                              //                   description: "from mobile")));
+                              //     },
+                              //     onChange: (text) {
+                              //       inputOtpCubit.setOtpCode(text);
+                              //     },
+                              //     otpPinFieldDecoration: OtpPinFieldDecoration
+                              //         .defaultPinBoxDecoration,
+                              //     otpPinFieldStyle: OtpPinFieldStyle(
+                              //         activeFieldBackgroundColor:
+                              //             ColorManager.white,
+                              //         activeFieldBorderColor:
+                              //             ColorManager.primary,
+                              //         textStyle: Theme.of(context)
+                              //             .textTheme
+                              //             .headlineSmall!))
+
                               // OTPTextField(
                               //   controller: otpController,
                               //   length: 6,
@@ -422,8 +442,8 @@ class _TransferMyAccountsViewState extends State<TransferMyAccountsView> {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

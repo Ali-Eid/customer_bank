@@ -6,7 +6,10 @@ class ColorManager {
   static Color black = Hex16Color.fromHex("#000000");
 
   //System
-  static Color primary = Hex16Color.fromHex("#665BEC");
+  // static Color primary = Hex16Color.fromHex("#665BEC");
+  static Color primary = Hex16Color.fromHex("#EE7B5D");
+  static Color secondary = Hex16Color.fromHex("#1B1F1F");
+
   static Color persimmon = Hex16Color.fromHex("#FF5656");
   static Color emerald = Hex16Color.fromHex("#4DCA52");
   static Color azure = Hex16Color.fromHex("#008FF6");

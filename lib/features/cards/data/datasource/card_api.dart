@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fs_bank/core/bases/models/static_model/static_model.dart';
 import 'package:fs_bank/core/constants/endpoints.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_card_model/request_card_model.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_inactive_card/request_inactive_card_model.dart';
@@ -20,6 +21,11 @@ abstract class CardServiceClient {
   @GET(Endpoints.WITHDRAWAL_VALUES)
   Future<HttpResponse<ResponseModel<List<WithDrawelValuesModel>>>>
       getWithdrawalValues();
+  @GET(Endpoints.CARD_TYPES)
+  Future<HttpResponse<ResponseModel<List<StaticTextModel>>>> getCardType();
+  @GET(Endpoints.BENEFICIARY_TYPES)
+  Future<HttpResponse<ResponseModel<List<StaticTextModel>>>>
+      getBeneficiaryType();
 
   @POST(Endpoints.NEW_CARD)
   Future<HttpResponse<ResponseModel>> requestNewCard(

@@ -1,5 +1,6 @@
 import 'package:fs_bank/core/bases/models/failure_model/failure_model.dart';
 import 'package:fs_bank/core/bases/models/response_model/response_model.dart';
+import 'package:fs_bank/core/bases/models/static_model/static_model.dart';
 import 'package:fs_bank/core/bases/usecases/base_usecase.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_card_model/request_card_model.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_inactive_card/request_inactive_card_model.dart';
@@ -30,6 +31,30 @@ class GetWithDrawelValues
   Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
       execute() async {
     return await repository.getWithDrawelValues();
+  }
+}
+
+class GetCardTypesUsecase
+    implements BaseUseCaseEmptyInput<ResponseModel<List<StaticTextModel>>> {
+  final CardRepository repository;
+
+  GetCardTypesUsecase({required this.repository});
+  @override
+  Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>
+      execute() async {
+    return await repository.getCardType();
+  }
+}
+
+class GetBeneficiaryTypesUsecase
+    implements BaseUseCaseEmptyInput<ResponseModel<List<StaticTextModel>>> {
+  final CardRepository repository;
+
+  GetBeneficiaryTypesUsecase({required this.repository});
+  @override
+  Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>
+      execute() async {
+    return await repository.getBeneficiaryType();
   }
 }
 

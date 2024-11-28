@@ -29,7 +29,7 @@ mixin _$AccountModel {
   @JsonKey(name: "is_default")
   bool get isDefault => throw _privateConstructorUsedError;
   @JsonKey(name: "account_type")
-  String get accountType => throw _privateConstructorUsedError;
+  StaticModel get accountType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +50,9 @@ abstract class $AccountModelCopyWith<$Res> {
       int balance,
       String status,
       @JsonKey(name: "is_default") bool isDefault,
-      @JsonKey(name: "account_type") String accountType});
+      @JsonKey(name: "account_type") StaticModel accountType});
+
+  $StaticModelCopyWith<$Res> get accountType;
 }
 
 /// @nodoc
@@ -102,8 +104,16 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
       accountType: null == accountType
           ? _value.accountType
           : accountType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as StaticModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StaticModelCopyWith<$Res> get accountType {
+    return $StaticModelCopyWith<$Res>(_value.accountType, (value) {
+      return _then(_value.copyWith(accountType: value) as $Val);
+    });
   }
 }
 
@@ -122,7 +132,10 @@ abstract class _$$AccountModelImplCopyWith<$Res>
       int balance,
       String status,
       @JsonKey(name: "is_default") bool isDefault,
-      @JsonKey(name: "account_type") String accountType});
+      @JsonKey(name: "account_type") StaticModel accountType});
+
+  @override
+  $StaticModelCopyWith<$Res> get accountType;
 }
 
 /// @nodoc
@@ -172,7 +185,7 @@ class __$$AccountModelImplCopyWithImpl<$Res>
       accountType: null == accountType
           ? _value.accountType
           : accountType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as StaticModel,
     ));
   }
 }
@@ -187,7 +200,7 @@ class _$AccountModelImpl implements _AccountModel {
       this.balance = 0,
       this.status = "",
       @JsonKey(name: "is_default") this.isDefault = false,
-      @JsonKey(name: "account_type") this.accountType = ""});
+      @JsonKey(name: "account_type") this.accountType = const StaticModel()});
 
   factory _$AccountModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountModelImplFromJson(json);
@@ -212,7 +225,7 @@ class _$AccountModelImpl implements _AccountModel {
   final bool isDefault;
   @override
   @JsonKey(name: "account_type")
-  final String accountType;
+  final StaticModel accountType;
 
   @override
   String toString() {
@@ -263,7 +276,7 @@ abstract class _AccountModel implements AccountModel {
           final int balance,
           final String status,
           @JsonKey(name: "is_default") final bool isDefault,
-          @JsonKey(name: "account_type") final String accountType}) =
+          @JsonKey(name: "account_type") final StaticModel accountType}) =
       _$AccountModelImpl;
 
   factory _AccountModel.fromJson(Map<String, dynamic> json) =
@@ -285,7 +298,7 @@ abstract class _AccountModel implements AccountModel {
   bool get isDefault;
   @override
   @JsonKey(name: "account_type")
-  String get accountType;
+  StaticModel get accountType;
   @override
   @JsonKey(ignore: true)
   _$$AccountModelImplCopyWith<_$AccountModelImpl> get copyWith =>

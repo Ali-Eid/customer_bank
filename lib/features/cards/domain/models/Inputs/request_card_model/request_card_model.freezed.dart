@@ -24,8 +24,10 @@ mixin _$RequestCardModel {
   int get accountId => throw _privateConstructorUsedError;
   @JsonKey(name: "beneficiary_name")
   String get beneficiaryName => throw _privateConstructorUsedError;
-  @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "type_id")
+  int get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "beneficiary_type_id")
+  int get beneficiaryType => throw _privateConstructorUsedError;
   @JsonKey(name: "withdrawal_value_id")
   int get withdrawalValueId => throw _privateConstructorUsedError;
 
@@ -44,7 +46,8 @@ abstract class $RequestCardModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "account_id") int accountId,
       @JsonKey(name: "beneficiary_name") String beneficiaryName,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type_id") int type,
+      @JsonKey(name: "beneficiary_type_id") int beneficiaryType,
       @JsonKey(name: "withdrawal_value_id") int withdrawalValueId});
 }
 
@@ -64,6 +67,7 @@ class _$RequestCardModelCopyWithImpl<$Res, $Val extends RequestCardModel>
     Object? accountId = null,
     Object? beneficiaryName = null,
     Object? type = null,
+    Object? beneficiaryType = null,
     Object? withdrawalValueId = null,
   }) {
     return _then(_value.copyWith(
@@ -78,7 +82,11 @@ class _$RequestCardModelCopyWithImpl<$Res, $Val extends RequestCardModel>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
+      beneficiaryType: null == beneficiaryType
+          ? _value.beneficiaryType
+          : beneficiaryType // ignore: cast_nullable_to_non_nullable
+              as int,
       withdrawalValueId: null == withdrawalValueId
           ? _value.withdrawalValueId
           : withdrawalValueId // ignore: cast_nullable_to_non_nullable
@@ -98,7 +106,8 @@ abstract class _$$RequestCardModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "account_id") int accountId,
       @JsonKey(name: "beneficiary_name") String beneficiaryName,
-      @JsonKey(name: "type") String type,
+      @JsonKey(name: "type_id") int type,
+      @JsonKey(name: "beneficiary_type_id") int beneficiaryType,
       @JsonKey(name: "withdrawal_value_id") int withdrawalValueId});
 }
 
@@ -116,6 +125,7 @@ class __$$RequestCardModelImplCopyWithImpl<$Res>
     Object? accountId = null,
     Object? beneficiaryName = null,
     Object? type = null,
+    Object? beneficiaryType = null,
     Object? withdrawalValueId = null,
   }) {
     return _then(_$RequestCardModelImpl(
@@ -130,7 +140,11 @@ class __$$RequestCardModelImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
+      beneficiaryType: null == beneficiaryType
+          ? _value.beneficiaryType
+          : beneficiaryType // ignore: cast_nullable_to_non_nullable
+              as int,
       withdrawalValueId: null == withdrawalValueId
           ? _value.withdrawalValueId
           : withdrawalValueId // ignore: cast_nullable_to_non_nullable
@@ -145,7 +159,8 @@ class _$RequestCardModelImpl implements _RequestCardModel {
   _$RequestCardModelImpl(
       {@JsonKey(name: "account_id") required this.accountId,
       @JsonKey(name: "beneficiary_name") required this.beneficiaryName,
-      @JsonKey(name: "type") required this.type,
+      @JsonKey(name: "type_id") required this.type,
+      @JsonKey(name: "beneficiary_type_id") required this.beneficiaryType,
       @JsonKey(name: "withdrawal_value_id") required this.withdrawalValueId});
 
   factory _$RequestCardModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -158,15 +173,18 @@ class _$RequestCardModelImpl implements _RequestCardModel {
   @JsonKey(name: "beneficiary_name")
   final String beneficiaryName;
   @override
-  @JsonKey(name: "type")
-  final String type;
+  @JsonKey(name: "type_id")
+  final int type;
+  @override
+  @JsonKey(name: "beneficiary_type_id")
+  final int beneficiaryType;
   @override
   @JsonKey(name: "withdrawal_value_id")
   final int withdrawalValueId;
 
   @override
   String toString() {
-    return 'RequestCardModel(accountId: $accountId, beneficiaryName: $beneficiaryName, type: $type, withdrawalValueId: $withdrawalValueId)';
+    return 'RequestCardModel(accountId: $accountId, beneficiaryName: $beneficiaryName, type: $type, beneficiaryType: $beneficiaryType, withdrawalValueId: $withdrawalValueId)';
   }
 
   @override
@@ -179,14 +197,16 @@ class _$RequestCardModelImpl implements _RequestCardModel {
             (identical(other.beneficiaryName, beneficiaryName) ||
                 other.beneficiaryName == beneficiaryName) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.beneficiaryType, beneficiaryType) ||
+                other.beneficiaryType == beneficiaryType) &&
             (identical(other.withdrawalValueId, withdrawalValueId) ||
                 other.withdrawalValueId == withdrawalValueId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, accountId, beneficiaryName, type, withdrawalValueId);
+  int get hashCode => Object.hash(runtimeType, accountId, beneficiaryName, type,
+      beneficiaryType, withdrawalValueId);
 
   @JsonKey(ignore: true)
   @override
@@ -207,7 +227,8 @@ abstract class _RequestCardModel implements RequestCardModel {
   factory _RequestCardModel(
       {@JsonKey(name: "account_id") required final int accountId,
       @JsonKey(name: "beneficiary_name") required final String beneficiaryName,
-      @JsonKey(name: "type") required final String type,
+      @JsonKey(name: "type_id") required final int type,
+      @JsonKey(name: "beneficiary_type_id") required final int beneficiaryType,
       @JsonKey(name: "withdrawal_value_id")
       required final int withdrawalValueId}) = _$RequestCardModelImpl;
 
@@ -221,8 +242,11 @@ abstract class _RequestCardModel implements RequestCardModel {
   @JsonKey(name: "beneficiary_name")
   String get beneficiaryName;
   @override
-  @JsonKey(name: "type")
-  String get type;
+  @JsonKey(name: "type_id")
+  int get type;
+  @override
+  @JsonKey(name: "beneficiary_type_id")
+  int get beneficiaryType;
   @override
   @JsonKey(name: "withdrawal_value_id")
   int get withdrawalValueId;

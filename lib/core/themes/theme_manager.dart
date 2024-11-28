@@ -13,6 +13,7 @@ ThemeData lightTheme() {
     brightness: Brightness.light,
     colorSchemeSeed: ColorManager.primary,
     useMaterial3: true,
+    appBarTheme: const AppBarTheme(scrolledUnderElevation: 0, elevation: 0),
     // fontFamily: FontConstants.fontFamilyPTSans,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
