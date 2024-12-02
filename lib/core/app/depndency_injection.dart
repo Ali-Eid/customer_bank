@@ -13,7 +13,6 @@ import 'package:fs_bank/features/cards/data/datasource/card_api.dart';
 import 'package:fs_bank/features/cards/data/repository/card_repository_impl.dart';
 import 'package:fs_bank/features/cards/domain/repository/card_repository.dart';
 import 'package:fs_bank/features/cards/presentation/blocs/cards_bloc/cards_bloc.dart';
-import 'package:fs_bank/features/on_boarding/presentation/blocs/on_boarding_bloc/on_boarding_bloc.dart';
 import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dart';
 import 'package:fs_bank/features/transfer/data/repository/transfer_repository_impl.dart';
 import 'package:fs_bank/features/transfer/domain/usecases/transfer_usecases.dart';
@@ -62,7 +61,6 @@ Future<void> initAppModule() async {
         appPreferences: instance<AppPreferences>(),
         logoutUsecase: instance<LogoutUsecase>()),
   );
-  instance.registerFactory(() => OnBoardingBloc);
 }
 
 Future<void> initCard() async {

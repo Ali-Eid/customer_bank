@@ -5,7 +5,6 @@ import 'package:fs_bank/features/auth/presentation/blocs/auth_bloc/auth_bloc.dar
 import 'package:fs_bank/features/auth/presentation/views/login_view.dart';
 import 'package:fs_bank/features/cards/presentation/views/mycards_view.dart';
 import 'package:fs_bank/features/home/presentation/views/home_view.dart';
-import 'package:fs_bank/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:fs_bank/features/transfer/presentation/views/transfer_my_accounts_view.dart';
 
 import 'package:go_router/go_router.dart';
@@ -16,7 +15,6 @@ import '../../features/splash/presentation/views/splash_view.dart';
 
 class RoutesNames {
   static const String splashRoute = '/';
-  static const String onBoardingRoute = '/on-boarding';
   static const String loginRoute = '/login';
   static const String otpVerficationRoute = 'otp-verfication';
   static const String homeRoute = '/home';
@@ -27,7 +25,6 @@ class RoutesNames {
 
 class RoutesPaths {
   static const String splashRoute = '/';
-  static const String onBoardingRoute = '/on-boarding';
   static const String loginRoute = '/login';
   static const String otpVerficationRoute = 'otp-verfication/:phone';
   static const String homeRoute = '/home';
@@ -51,10 +48,10 @@ class AppRouter {
             name: RoutesNames.splashRoute,
             path: RoutesPaths.splashRoute,
             builder: (context, state) => const SplashView()),
-        GoRoute(
-            name: RoutesNames.onBoardingRoute,
-            path: RoutesPaths.onBoardingRoute,
-            builder: (context, state) => const OnBoardingView()),
+        // GoRoute(
+        //     name: RoutesNames.onBoardingRoute,
+        //     path: RoutesPaths.onBoardingRoute,
+        //     builder: (context, state) => const OnBoardingView()),
         GoRoute(
             name: RoutesNames.loginRoute,
             path: RoutesPaths.loginRoute,

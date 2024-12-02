@@ -78,13 +78,13 @@ class AppPreferences {
 //--------------------------------------------------
 
 //-------------OnBoarding----------------------
-  Future<void> setShowOnBoarding(bool show) async {
-    await _sharedPreferences.setBool(PREFS_KEY_ON_BOARDING, show);
-  }
+  // Future<void> setShowOnBoarding(bool show) async {
+  //   await _sharedPreferences.setBool(PREFS_KEY_ON_BOARDING, show);
+  // }
 
-  bool isShowOnBoarding() {
-    return _sharedPreferences.getBool(PREFS_KEY_ON_BOARDING) ?? false;
-  }
+  // bool isShowOnBoarding() {
+  //   return _sharedPreferences.getBool(PREFS_KEY_ON_BOARDING) ?? false;
+  // }
 
 //---------------------------------------------
 //-------------User info----------------------

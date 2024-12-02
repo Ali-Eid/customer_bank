@@ -50,9 +50,6 @@ class _SplashViewState extends State<SplashView> {
             home: (value) {
               context.goNamed(RoutesNames.homeRoute);
             },
-            onBoarding: (value) {
-              context.goNamed(RoutesNames.onBoardingRoute);
-            },
           );
         },
         child: Stack(

@@ -285,7 +285,6 @@ mixin _$AppState {
     required TResult Function() loading,
     required TResult Function() auth,
     required TResult Function() home,
-    required TResult Function() onBoarding,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -294,7 +293,6 @@ mixin _$AppState {
     TResult? Function()? loading,
     TResult? Function()? auth,
     TResult? Function()? home,
-    TResult? Function()? onBoarding,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -303,7 +301,6 @@ mixin _$AppState {
     TResult Function()? loading,
     TResult Function()? auth,
     TResult Function()? home,
-    TResult Function()? onBoarding,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -313,7 +310,6 @@ mixin _$AppState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Auth value) auth,
     required TResult Function(_Home value) home,
-    required TResult Function(_onBoarding value) onBoarding,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -322,7 +318,6 @@ mixin _$AppState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Auth value)? auth,
     TResult? Function(_Home value)? home,
-    TResult? Function(_onBoarding value)? onBoarding,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -331,7 +326,6 @@ mixin _$AppState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Auth value)? auth,
     TResult Function(_Home value)? home,
-    TResult Function(_onBoarding value)? onBoarding,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -396,7 +390,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function() auth,
     required TResult Function() home,
-    required TResult Function() onBoarding,
   }) {
     return initial();
   }
@@ -408,7 +401,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function()? auth,
     TResult? Function()? home,
-    TResult? Function()? onBoarding,
   }) {
     return initial?.call();
   }
@@ -420,7 +412,6 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function()? auth,
     TResult Function()? home,
-    TResult Function()? onBoarding,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -436,7 +427,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Auth value) auth,
     required TResult Function(_Home value) home,
-    required TResult Function(_onBoarding value) onBoarding,
   }) {
     return initial(this);
   }
@@ -448,7 +438,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Auth value)? auth,
     TResult? Function(_Home value)? home,
-    TResult? Function(_onBoarding value)? onBoarding,
   }) {
     return initial?.call(this);
   }
@@ -460,7 +449,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Auth value)? auth,
     TResult Function(_Home value)? home,
-    TResult Function(_onBoarding value)? onBoarding,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -516,7 +504,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function() auth,
     required TResult Function() home,
-    required TResult Function() onBoarding,
   }) {
     return loading();
   }
@@ -528,7 +515,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function()? auth,
     TResult? Function()? home,
-    TResult? Function()? onBoarding,
   }) {
     return loading?.call();
   }
@@ -540,7 +526,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function()? auth,
     TResult Function()? home,
-    TResult Function()? onBoarding,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -556,7 +541,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Auth value) auth,
     required TResult Function(_Home value) home,
-    required TResult Function(_onBoarding value) onBoarding,
   }) {
     return loading(this);
   }
@@ -568,7 +552,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Auth value)? auth,
     TResult? Function(_Home value)? home,
-    TResult? Function(_onBoarding value)? onBoarding,
   }) {
     return loading?.call(this);
   }
@@ -580,7 +563,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Auth value)? auth,
     TResult Function(_Home value)? home,
-    TResult Function(_onBoarding value)? onBoarding,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -635,7 +617,6 @@ class _$AuthImpl implements _Auth {
     required TResult Function() loading,
     required TResult Function() auth,
     required TResult Function() home,
-    required TResult Function() onBoarding,
   }) {
     return auth();
   }
@@ -647,7 +628,6 @@ class _$AuthImpl implements _Auth {
     TResult? Function()? loading,
     TResult? Function()? auth,
     TResult? Function()? home,
-    TResult? Function()? onBoarding,
   }) {
     return auth?.call();
   }
@@ -659,7 +639,6 @@ class _$AuthImpl implements _Auth {
     TResult Function()? loading,
     TResult Function()? auth,
     TResult Function()? home,
-    TResult Function()? onBoarding,
     required TResult orElse(),
   }) {
     if (auth != null) {
@@ -675,7 +654,6 @@ class _$AuthImpl implements _Auth {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Auth value) auth,
     required TResult Function(_Home value) home,
-    required TResult Function(_onBoarding value) onBoarding,
   }) {
     return auth(this);
   }
@@ -687,7 +665,6 @@ class _$AuthImpl implements _Auth {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Auth value)? auth,
     TResult? Function(_Home value)? home,
-    TResult? Function(_onBoarding value)? onBoarding,
   }) {
     return auth?.call(this);
   }
@@ -699,7 +676,6 @@ class _$AuthImpl implements _Auth {
     TResult Function(_Loading value)? loading,
     TResult Function(_Auth value)? auth,
     TResult Function(_Home value)? home,
-    TResult Function(_onBoarding value)? onBoarding,
     required TResult orElse(),
   }) {
     if (auth != null) {
@@ -754,7 +730,6 @@ class _$HomeImpl implements _Home {
     required TResult Function() loading,
     required TResult Function() auth,
     required TResult Function() home,
-    required TResult Function() onBoarding,
   }) {
     return home();
   }
@@ -766,7 +741,6 @@ class _$HomeImpl implements _Home {
     TResult? Function()? loading,
     TResult? Function()? auth,
     TResult? Function()? home,
-    TResult? Function()? onBoarding,
   }) {
     return home?.call();
   }
@@ -778,7 +752,6 @@ class _$HomeImpl implements _Home {
     TResult Function()? loading,
     TResult Function()? auth,
     TResult Function()? home,
-    TResult Function()? onBoarding,
     required TResult orElse(),
   }) {
     if (home != null) {
@@ -794,7 +767,6 @@ class _$HomeImpl implements _Home {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Auth value) auth,
     required TResult Function(_Home value) home,
-    required TResult Function(_onBoarding value) onBoarding,
   }) {
     return home(this);
   }
@@ -806,7 +778,6 @@ class _$HomeImpl implements _Home {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Auth value)? auth,
     TResult? Function(_Home value)? home,
-    TResult? Function(_onBoarding value)? onBoarding,
   }) {
     return home?.call(this);
   }
@@ -818,7 +789,6 @@ class _$HomeImpl implements _Home {
     TResult Function(_Loading value)? loading,
     TResult Function(_Auth value)? auth,
     TResult Function(_Home value)? home,
-    TResult Function(_onBoarding value)? onBoarding,
     required TResult orElse(),
   }) {
     if (home != null) {
@@ -830,124 +800,4 @@ class _$HomeImpl implements _Home {
 
 abstract class _Home implements AppState {
   const factory _Home() = _$HomeImpl;
-}
-
-/// @nodoc
-abstract class _$$onBoardingImplCopyWith<$Res> {
-  factory _$$onBoardingImplCopyWith(
-          _$onBoardingImpl value, $Res Function(_$onBoardingImpl) then) =
-      __$$onBoardingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$onBoardingImplCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$onBoardingImpl>
-    implements _$$onBoardingImplCopyWith<$Res> {
-  __$$onBoardingImplCopyWithImpl(
-      _$onBoardingImpl _value, $Res Function(_$onBoardingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$onBoardingImpl implements _onBoarding {
-  const _$onBoardingImpl();
-
-  @override
-  String toString() {
-    return 'AppState.onBoarding()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$onBoardingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() auth,
-    required TResult Function() home,
-    required TResult Function() onBoarding,
-  }) {
-    return onBoarding();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? auth,
-    TResult? Function()? home,
-    TResult? Function()? onBoarding,
-  }) {
-    return onBoarding?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? auth,
-    TResult Function()? home,
-    TResult Function()? onBoarding,
-    required TResult orElse(),
-  }) {
-    if (onBoarding != null) {
-      return onBoarding();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Auth value) auth,
-    required TResult Function(_Home value) home,
-    required TResult Function(_onBoarding value) onBoarding,
-  }) {
-    return onBoarding(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Auth value)? auth,
-    TResult? Function(_Home value)? home,
-    TResult? Function(_onBoarding value)? onBoarding,
-  }) {
-    return onBoarding?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Auth value)? auth,
-    TResult Function(_Home value)? home,
-    TResult Function(_onBoarding value)? onBoarding,
-    required TResult orElse(),
-  }) {
-    if (onBoarding != null) {
-      return onBoarding(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _onBoarding implements AppState {
-  const factory _onBoarding() = _$onBoardingImpl;
 }
