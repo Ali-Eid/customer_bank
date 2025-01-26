@@ -1,4 +1,36 @@
 {
-    "test": "Test"
+    "apiFailureMessage": "Sorry, something went wrong!",
+    "no_internet_connection.": "No internet connection",
+    "login_title": "Login To Customer app",
+    "username_label": "Username",
+    "username_placeholder": "Please enter your username",
+    "password_label": "password",
+    "confirm_password_label": "Confirm password",
+    "password_placeholder": "Please enter your password",
+    "confirm_password_placeholder": "Please enter your confirm password",
+    "password_not_match": "Password do not match",
+
+    "login_button": "Login",
+    "or":"OR",
+    "biometric_login": "Login using biometric",
+    "biometric_auth_prompt": "Please authenticate to login",
+    "new_customer_prompt": "New customer? ",
+    "digital_account_invite": "Open your digital account now",
+    "existing_account_question": "Already have an account with us but not registered on the app? ",
+    "signup_invitation": "Sign up here",
+    "forgot_password_title": "Forgot Password?",
+    "forgot_password": "Forgot Password",
+    "phone_label": "Phone number",
+    "phone_placeholder": "Please enter your phone number",
+    "enter_otp": "Enter your OTP to proceed",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "change_your_password": "Change your password"
+
+
+
+
+
+
 
 }

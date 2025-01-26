@@ -21,7 +21,10 @@ LoginModel _$LoginModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LoginModel {
   UserModel get user => throw _privateConstructorUsedError;
-  String get token => throw _privateConstructorUsedError;
+  @JsonKey(name: "access_token")
+  String get accessToken => throw _privateConstructorUsedError;
+  @JsonKey(name: "refresh_token")
+  String get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +38,10 @@ abstract class $LoginModelCopyWith<$Res> {
           LoginModel value, $Res Function(LoginModel) then) =
       _$LoginModelCopyWithImpl<$Res, LoginModel>;
   @useResult
-  $Res call({UserModel user, String token});
+  $Res call(
+      {UserModel user,
+      @JsonKey(name: "access_token") String accessToken,
+      @JsonKey(name: "refresh_token") String refreshToken});
 
   $UserModelCopyWith<$Res> get user;
 }
@@ -54,16 +60,21 @@ class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
   @override
   $Res call({
     Object? user = null,
-    Object? token = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -85,7 +96,10 @@ abstract class _$$LoginModelImplCopyWith<$Res>
       __$$LoginModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserModel user, String token});
+  $Res call(
+      {UserModel user,
+      @JsonKey(name: "access_token") String accessToken,
+      @JsonKey(name: "refresh_token") String refreshToken});
 
   @override
   $UserModelCopyWith<$Res> get user;
@@ -103,16 +117,21 @@ class __$$LoginModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
-    Object? token = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_$LoginModelImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -121,7 +140,10 @@ class __$$LoginModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoginModelImpl implements _LoginModel {
-  _$LoginModelImpl({this.user = const UserModel(), this.token = ""});
+  _$LoginModelImpl(
+      {this.user = const UserModel(),
+      @JsonKey(name: "access_token") this.accessToken = "",
+      @JsonKey(name: "refresh_token") this.refreshToken = ""});
 
   factory _$LoginModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginModelImplFromJson(json);
@@ -130,12 +152,15 @@ class _$LoginModelImpl implements _LoginModel {
   @JsonKey()
   final UserModel user;
   @override
-  @JsonKey()
-  final String token;
+  @JsonKey(name: "access_token")
+  final String accessToken;
+  @override
+  @JsonKey(name: "refresh_token")
+  final String refreshToken;
 
   @override
   String toString() {
-    return 'LoginModel(user: $user, token: $token)';
+    return 'LoginModel(user: $user, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -144,12 +169,15 @@ class _$LoginModelImpl implements _LoginModel {
         (other.runtimeType == runtimeType &&
             other is _$LoginModelImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user, token);
+  int get hashCode => Object.hash(runtimeType, user, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -166,7 +194,10 @@ class _$LoginModelImpl implements _LoginModel {
 }
 
 abstract class _LoginModel implements LoginModel {
-  factory _LoginModel({final UserModel user, final String token}) =
+  factory _LoginModel(
+          {final UserModel user,
+          @JsonKey(name: "access_token") final String accessToken,
+          @JsonKey(name: "refresh_token") final String refreshToken}) =
       _$LoginModelImpl;
 
   factory _LoginModel.fromJson(Map<String, dynamic> json) =
@@ -175,7 +206,11 @@ abstract class _LoginModel implements LoginModel {
   @override
   UserModel get user;
   @override
-  String get token;
+  @JsonKey(name: "access_token")
+  String get accessToken;
+  @override
+  @JsonKey(name: "refresh_token")
+  String get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$LoginModelImplCopyWith<_$LoginModelImpl> get copyWith =>

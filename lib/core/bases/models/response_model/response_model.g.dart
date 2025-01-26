@@ -12,7 +12,6 @@ _$ResponseModelImpl<T> _$$ResponseModelImplFromJson<T>(
 ) =>
     _$ResponseModelImpl<T>(
       message: json['message'] as String? ?? '',
-      success: json['success'] as bool? ?? false,
       data: fromJsonT(json['data']),
     );
 
@@ -22,7 +21,6 @@ Map<String, dynamic> _$$ResponseModelImplToJson<T>(
 ) =>
     <String, dynamic>{
       'message': instance.message,
-      'success': instance.success,
       'data': toJsonT(instance.data),
     };
 

@@ -9,7 +9,6 @@ part 'response_model.g.dart';
 class ResponseModel<T> with _$ResponseModel<T> {
   const factory ResponseModel({
     @Default('') String message,
-    @Default(false) bool success,
     required T data,
   }) = _ResponseModel;
 

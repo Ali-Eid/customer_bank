@@ -324,3 +324,158 @@ abstract class _StaticTextModel implements StaticTextModel {
   _$$StaticTextModelImplCopyWith<_$StaticTextModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+KeyValueModel _$KeyValueModelFromJson(Map<String, dynamic> json) {
+  return _KeyValueModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$KeyValueModel {
+  String get key => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $KeyValueModelCopyWith<KeyValueModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $KeyValueModelCopyWith<$Res> {
+  factory $KeyValueModelCopyWith(
+          KeyValueModel value, $Res Function(KeyValueModel) then) =
+      _$KeyValueModelCopyWithImpl<$Res, KeyValueModel>;
+  @useResult
+  $Res call({String key, String name});
+}
+
+/// @nodoc
+class _$KeyValueModelCopyWithImpl<$Res, $Val extends KeyValueModel>
+    implements $KeyValueModelCopyWith<$Res> {
+  _$KeyValueModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = null,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$KeyValueModelImplCopyWith<$Res>
+    implements $KeyValueModelCopyWith<$Res> {
+  factory _$$KeyValueModelImplCopyWith(
+          _$KeyValueModelImpl value, $Res Function(_$KeyValueModelImpl) then) =
+      __$$KeyValueModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String key, String name});
+}
+
+/// @nodoc
+class __$$KeyValueModelImplCopyWithImpl<$Res>
+    extends _$KeyValueModelCopyWithImpl<$Res, _$KeyValueModelImpl>
+    implements _$$KeyValueModelImplCopyWith<$Res> {
+  __$$KeyValueModelImplCopyWithImpl(
+      _$KeyValueModelImpl _value, $Res Function(_$KeyValueModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = null,
+    Object? name = null,
+  }) {
+    return _then(_$KeyValueModelImpl(
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$KeyValueModelImpl implements _KeyValueModel {
+  const _$KeyValueModelImpl({this.key = "", this.name = ""});
+
+  factory _$KeyValueModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KeyValueModelImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final String key;
+  @override
+  @JsonKey()
+  final String name;
+
+  @override
+  String toString() {
+    return 'KeyValueModel(key: $key, name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$KeyValueModelImpl &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, key, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$KeyValueModelImplCopyWith<_$KeyValueModelImpl> get copyWith =>
+      __$$KeyValueModelImplCopyWithImpl<_$KeyValueModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$KeyValueModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _KeyValueModel implements KeyValueModel {
+  const factory _KeyValueModel({final String key, final String name}) =
+      _$KeyValueModelImpl;
+
+  factory _KeyValueModel.fromJson(Map<String, dynamic> json) =
+      _$KeyValueModelImpl.fromJson;
+
+  @override
+  String get key;
+  @override
+  String get name;
+  @override
+  @JsonKey(ignore: true)
+  _$$KeyValueModelImplCopyWith<_$KeyValueModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

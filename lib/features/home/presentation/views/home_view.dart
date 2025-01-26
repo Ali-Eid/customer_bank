@@ -40,6 +40,13 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorManager.primary,
+        iconTheme: IconThemeData(color: ColorManager.white),
+        title: Text("Home",
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                fontWeight: FontWeight.bold, color: ColorManager.white)),
+      ),
       // drawer: const DrawerWidget(),
       body: Column(
         children: [
@@ -67,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
                       ),
                       SizedBox(width: AppSizeW.s4),
                       Text(
-                        "${instance<AppPreferences>().getUserInfo()?.name}",
+                        "${instance<AppPreferences>().getUserInfo()?.username}",
                         style: Theme.of(context)
                             .textTheme
                             .displayMedium!
@@ -251,6 +258,8 @@ class _HomeViewState extends State<HomeView> {
                         borderRadius: BorderRadius.circular(AppSizeR.s15),
                         onTap: () {
                           context.goNamed(RoutesNames.transferRoute);
+                          // showMyBottomSheet(
+                          //     context, const TransferMyAccountsView());
                         },
                         child: ButtonHomeWidget(
                             color: ColorManager.secondary,

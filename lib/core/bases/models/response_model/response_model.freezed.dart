@@ -22,7 +22,6 @@ ResponseModel<T> _$ResponseModelFromJson<T>(
 /// @nodoc
 mixin _$ResponseModel<T> {
   String get message => throw _privateConstructorUsedError;
-  bool get success => throw _privateConstructorUsedError;
   T get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
@@ -38,7 +37,7 @@ abstract class $ResponseModelCopyWith<T, $Res> {
           ResponseModel<T> value, $Res Function(ResponseModel<T>) then) =
       _$ResponseModelCopyWithImpl<T, $Res, ResponseModel<T>>;
   @useResult
-  $Res call({String message, bool success, T data});
+  $Res call({String message, T data});
 }
 
 /// @nodoc
@@ -55,7 +54,6 @@ class _$ResponseModelCopyWithImpl<T, $Res, $Val extends ResponseModel<T>>
   @override
   $Res call({
     Object? message = null,
-    Object? success = null,
     Object? data = freezed,
   }) {
     return _then(_value.copyWith(
@@ -63,10 +61,6 @@ class _$ResponseModelCopyWithImpl<T, $Res, $Val extends ResponseModel<T>>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -83,7 +77,7 @@ abstract class _$$ResponseModelImplCopyWith<T, $Res>
       __$$ResponseModelImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String message, bool success, T data});
+  $Res call({String message, T data});
 }
 
 /// @nodoc
@@ -98,7 +92,6 @@ class __$$ResponseModelImplCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? message = null,
-    Object? success = null,
     Object? data = freezed,
   }) {
     return _then(_$ResponseModelImpl<T>(
@@ -106,10 +99,6 @@ class __$$ResponseModelImplCopyWithImpl<T, $Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -121,8 +110,7 @@ class __$$ResponseModelImplCopyWithImpl<T, $Res>
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
 class _$ResponseModelImpl<T> implements _ResponseModel<T> {
-  const _$ResponseModelImpl(
-      {this.message = '', this.success = false, required this.data});
+  const _$ResponseModelImpl({this.message = '', required this.data});
 
   factory _$ResponseModelImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
@@ -132,14 +120,11 @@ class _$ResponseModelImpl<T> implements _ResponseModel<T> {
   @JsonKey()
   final String message;
   @override
-  @JsonKey()
-  final bool success;
-  @override
   final T data;
 
   @override
   String toString() {
-    return 'ResponseModel<$T>(message: $message, success: $success, data: $data)';
+    return 'ResponseModel<$T>(message: $message, data: $data)';
   }
 
   @override
@@ -148,14 +133,13 @@ class _$ResponseModelImpl<T> implements _ResponseModel<T> {
         (other.runtimeType == runtimeType &&
             other is _$ResponseModelImpl<T> &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.success, success) || other.success == success) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, message, success, const DeepCollectionEquality().hash(data));
+      runtimeType, message, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -171,10 +155,8 @@ class _$ResponseModelImpl<T> implements _ResponseModel<T> {
 }
 
 abstract class _ResponseModel<T> implements ResponseModel<T> {
-  const factory _ResponseModel(
-      {final String message,
-      final bool success,
-      required final T data}) = _$ResponseModelImpl<T>;
+  const factory _ResponseModel({final String message, required final T data}) =
+      _$ResponseModelImpl<T>;
 
   factory _ResponseModel.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
@@ -182,8 +164,6 @@ abstract class _ResponseModel<T> implements ResponseModel<T> {
 
   @override
   String get message;
-  @override
-  bool get success;
   @override
   T get data;
   @override

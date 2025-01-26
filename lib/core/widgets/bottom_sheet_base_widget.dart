@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:fs_bank/core/constants/values_manager.dart';
 import 'package:fs_bank/core/themes/color_manager.dart';
 
-void showMyBottomSheet(BuildContext context, Widget child) {
+void showMyBottomSheet(BuildContext context, Widget child,
+    {bool isDismissible = true, bool enableDrag = true, bool? showDragHandle}) {
   showModalBottomSheet(
     context: context,
+    isDismissible: isDismissible,
+    enableDrag: enableDrag,
+    showDragHandle: showDragHandle,
     backgroundColor: ColorManager.white,
     useSafeArea: true,
     isScrollControlled: true,

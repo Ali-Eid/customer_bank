@@ -1,23 +1,27 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fs_bank/features/auth/domain/models/user_model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../bases/models/static_model/static_model.dart';
 import '../localization/language_manager.dart';
 import '../themes/theme_manager.dart';
 
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
+  final FlutterSecureStorage flutterSecureStorage;
 
-  AppPreferences(this._sharedPreferences);
+  AppPreferences(this._sharedPreferences, this.flutterSecureStorage);
 
   String PREFS_KEY_LANG = 'PREFS_KEY_LANG';
   String PREFS_KEY_TOKEN = 'PREFS_KEY_TOKEN';
   String PREFS_KEY_THEME = 'PREFS_KEY_THEME';
   String PREFS_KEY_ON_BOARDING = 'PREFS_KEY_ON_BOARDING';
   String PREFS_KEY_USER_INFO = 'PREFS_KEY_USER_INFO';
+
+  //Secure Key
+  String PREFS_KEY_EMAIL = 'PREFS_KEY_EMAIL';
+  String PREFS_KEY_PASSWORD = 'PREFS_KEY_PASSWORD';
 
   Future<String> getAppLanguage() async {
     String? language = _sharedPreferences.getString(PREFS_KEY_LANG);
@@ -75,18 +79,6 @@ class AppPreferences {
     _sharedPreferences.setString(PREFS_KEY_THEME, themeData.getValue());
   }
 
-//--------------------------------------------------
-
-//-------------OnBoarding----------------------
-  // Future<void> setShowOnBoarding(bool show) async {
-  //   await _sharedPreferences.setBool(PREFS_KEY_ON_BOARDING, show);
-  // }
-
-  // bool isShowOnBoarding() {
-  //   return _sharedPreferences.getBool(PREFS_KEY_ON_BOARDING) ?? false;
-  // }
-
-//---------------------------------------------
 //-------------User info----------------------
   Future<void> setUserInfo(UserModel user) async {
     await _sharedPreferences.setString(
@@ -106,5 +98,23 @@ class AppPreferences {
     }
   }
 
-//---------------------------------------------
+//--------------------------------------------------Secure Storage-----------------------------------------------------
+
+  Future<void> setEmailSecure(String email) async {
+    flutterSecureStorage.write(key: PREFS_KEY_EMAIL, value: email);
+  }
+
+  Future<String> getEmailSecure() async {
+    return await flutterSecureStorage.read(key: PREFS_KEY_EMAIL) ?? "";
+  }
+
+  Future<void> setPasswordSecure(String password) async {
+    flutterSecureStorage.write(key: PREFS_KEY_PASSWORD, value: password);
+  }
+
+  Future<String> getPasswordSecure() async {
+    return await flutterSecureStorage.read(key: PREFS_KEY_PASSWORD) ?? "";
+  }
+
+//---------------------------------------------------------------------------------------------------------------------
 }

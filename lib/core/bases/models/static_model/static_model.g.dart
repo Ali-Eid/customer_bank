@@ -31,3 +31,15 @@ Map<String, dynamic> _$$StaticTextModelImplToJson(
       'id': instance.id,
       'text': instance.text,
     };
+
+_$KeyValueModelImpl _$$KeyValueModelImplFromJson(Map<String, dynamic> json) =>
+    _$KeyValueModelImpl(
+      key: json['key'] as String? ?? "",
+      name: json['name'] as String? ?? "",
+    );
+
+Map<String, dynamic> _$$KeyValueModelImplToJson(_$KeyValueModelImpl instance) =>
+    <String, dynamic>{
+      'key': instance.key,
+      'name': instance.name,
+    };

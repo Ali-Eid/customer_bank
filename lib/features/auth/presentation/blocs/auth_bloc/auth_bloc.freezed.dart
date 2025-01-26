@@ -19,38 +19,61 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(InputLoginModel input) login,
-    required TResult Function(String phoneNumber) sendOtp,
+    required TResult Function(InputChangePasswordModel input) changePassword,
+    required TResult Function(InputSendOtpChangePasswordModel input)
+        confirmOtpChangePassword,
+    required TResult Function(InputSetNewPasswordModel input) setNewPassword,
+    required TResult Function() biometricAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InputLoginModel input)? login,
-    TResult? Function(String phoneNumber)? sendOtp,
+    TResult? Function(InputChangePasswordModel input)? changePassword,
+    TResult? Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult? Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult? Function()? biometricAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InputLoginModel input)? login,
-    TResult Function(String phoneNumber)? sendOtp,
+    TResult Function(InputChangePasswordModel input)? changePassword,
+    TResult Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult Function()? biometricAuth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
-    required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_ConfirmOtpChangePassword value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPassword value) setNewPassword,
+    required TResult Function(_BiometricAuth value) biometricAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
-    TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePassword value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPassword value)? setNewPassword,
+    TResult? Function(_BiometricAuth value)? biometricAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
-    TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_ConfirmOtpChangePassword value)? confirmOtpChangePassword,
+    TResult Function(_SetNewPassword value)? setNewPassword,
+    TResult Function(_BiometricAuth value)? biometricAuth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,7 +171,11 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(InputLoginModel input) login,
-    required TResult Function(String phoneNumber) sendOtp,
+    required TResult Function(InputChangePasswordModel input) changePassword,
+    required TResult Function(InputSendOtpChangePasswordModel input)
+        confirmOtpChangePassword,
+    required TResult Function(InputSetNewPasswordModel input) setNewPassword,
+    required TResult Function() biometricAuth,
   }) {
     return login(input);
   }
@@ -157,7 +184,11 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InputLoginModel input)? login,
-    TResult? Function(String phoneNumber)? sendOtp,
+    TResult? Function(InputChangePasswordModel input)? changePassword,
+    TResult? Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult? Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult? Function()? biometricAuth,
   }) {
     return login?.call(input);
   }
@@ -166,7 +197,11 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InputLoginModel input)? login,
-    TResult Function(String phoneNumber)? sendOtp,
+    TResult Function(InputChangePasswordModel input)? changePassword,
+    TResult Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult Function()? biometricAuth,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -179,7 +214,11 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
-    required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_ConfirmOtpChangePassword value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPassword value) setNewPassword,
+    required TResult Function(_BiometricAuth value) biometricAuth,
   }) {
     return login(this);
   }
@@ -188,7 +227,11 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
-    TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePassword value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPassword value)? setNewPassword,
+    TResult? Function(_BiometricAuth value)? biometricAuth,
   }) {
     return login?.call(this);
   }
@@ -197,7 +240,10 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
-    TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_ConfirmOtpChangePassword value)? confirmOtpChangePassword,
+    TResult Function(_SetNewPassword value)? setNewPassword,
+    TResult Function(_BiometricAuth value)? biometricAuth,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -217,94 +263,116 @@ abstract class _Login implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$$SendOtpImplCopyWith<$Res> {
-  factory _$$SendOtpImplCopyWith(
-          _$SendOtpImpl value, $Res Function(_$SendOtpImpl) then) =
-      __$$SendOtpImplCopyWithImpl<$Res>;
+abstract class _$$ChangePasswordImplCopyWith<$Res> {
+  factory _$$ChangePasswordImplCopyWith(_$ChangePasswordImpl value,
+          $Res Function(_$ChangePasswordImpl) then) =
+      __$$ChangePasswordImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String phoneNumber});
+  $Res call({InputChangePasswordModel input});
+
+  $InputChangePasswordModelCopyWith<$Res> get input;
 }
 
 /// @nodoc
-class __$$SendOtpImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$SendOtpImpl>
-    implements _$$SendOtpImplCopyWith<$Res> {
-  __$$SendOtpImplCopyWithImpl(
-      _$SendOtpImpl _value, $Res Function(_$SendOtpImpl) _then)
+class __$$ChangePasswordImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ChangePasswordImpl>
+    implements _$$ChangePasswordImplCopyWith<$Res> {
+  __$$ChangePasswordImplCopyWithImpl(
+      _$ChangePasswordImpl _value, $Res Function(_$ChangePasswordImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phoneNumber = null,
+    Object? input = null,
   }) {
-    return _then(_$SendOtpImpl(
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$ChangePasswordImpl(
+      input: null == input
+          ? _value.input
+          : input // ignore: cast_nullable_to_non_nullable
+              as InputChangePasswordModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InputChangePasswordModelCopyWith<$Res> get input {
+    return $InputChangePasswordModelCopyWith<$Res>(_value.input, (value) {
+      return _then(_value.copyWith(input: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$SendOtpImpl implements _SendOtp {
-  const _$SendOtpImpl({required this.phoneNumber});
+class _$ChangePasswordImpl implements _ChangePassword {
+  const _$ChangePasswordImpl({required this.input});
 
   @override
-  final String phoneNumber;
+  final InputChangePasswordModel input;
 
   @override
   String toString() {
-    return 'AuthEvent.sendOtp(phoneNumber: $phoneNumber)';
+    return 'AuthEvent.changePassword(input: $input)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SendOtpImpl &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            other is _$ChangePasswordImpl &&
+            (identical(other.input, input) || other.input == input));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phoneNumber);
+  int get hashCode => Object.hash(runtimeType, input);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SendOtpImplCopyWith<_$SendOtpImpl> get copyWith =>
-      __$$SendOtpImplCopyWithImpl<_$SendOtpImpl>(this, _$identity);
+  _$$ChangePasswordImplCopyWith<_$ChangePasswordImpl> get copyWith =>
+      __$$ChangePasswordImplCopyWithImpl<_$ChangePasswordImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(InputLoginModel input) login,
-    required TResult Function(String phoneNumber) sendOtp,
+    required TResult Function(InputChangePasswordModel input) changePassword,
+    required TResult Function(InputSendOtpChangePasswordModel input)
+        confirmOtpChangePassword,
+    required TResult Function(InputSetNewPasswordModel input) setNewPassword,
+    required TResult Function() biometricAuth,
   }) {
-    return sendOtp(phoneNumber);
+    return changePassword(input);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(InputLoginModel input)? login,
-    TResult? Function(String phoneNumber)? sendOtp,
+    TResult? Function(InputChangePasswordModel input)? changePassword,
+    TResult? Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult? Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult? Function()? biometricAuth,
   }) {
-    return sendOtp?.call(phoneNumber);
+    return changePassword?.call(input);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(InputLoginModel input)? login,
-    TResult Function(String phoneNumber)? sendOtp,
+    TResult Function(InputChangePasswordModel input)? changePassword,
+    TResult Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult Function()? biometricAuth,
     required TResult orElse(),
   }) {
-    if (sendOtp != null) {
-      return sendOtp(phoneNumber);
+    if (changePassword != null) {
+      return changePassword(input);
     }
     return orElse();
   }
@@ -313,41 +381,518 @@ class _$SendOtpImpl implements _SendOtp {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
-    required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_ConfirmOtpChangePassword value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPassword value) setNewPassword,
+    required TResult Function(_BiometricAuth value) biometricAuth,
   }) {
-    return sendOtp(this);
+    return changePassword(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
-    TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePassword value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPassword value)? setNewPassword,
+    TResult? Function(_BiometricAuth value)? biometricAuth,
   }) {
-    return sendOtp?.call(this);
+    return changePassword?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
-    TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_ConfirmOtpChangePassword value)? confirmOtpChangePassword,
+    TResult Function(_SetNewPassword value)? setNewPassword,
+    TResult Function(_BiometricAuth value)? biometricAuth,
     required TResult orElse(),
   }) {
-    if (sendOtp != null) {
-      return sendOtp(this);
+    if (changePassword != null) {
+      return changePassword(this);
     }
     return orElse();
   }
 }
 
-abstract class _SendOtp implements AuthEvent {
-  const factory _SendOtp({required final String phoneNumber}) = _$SendOtpImpl;
+abstract class _ChangePassword implements AuthEvent {
+  const factory _ChangePassword(
+      {required final InputChangePasswordModel input}) = _$ChangePasswordImpl;
 
-  String get phoneNumber;
+  InputChangePasswordModel get input;
   @JsonKey(ignore: true)
-  _$$SendOtpImplCopyWith<_$SendOtpImpl> get copyWith =>
+  _$$ChangePasswordImplCopyWith<_$ChangePasswordImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ConfirmOtpChangePasswordImplCopyWith<$Res> {
+  factory _$$ConfirmOtpChangePasswordImplCopyWith(
+          _$ConfirmOtpChangePasswordImpl value,
+          $Res Function(_$ConfirmOtpChangePasswordImpl) then) =
+      __$$ConfirmOtpChangePasswordImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({InputSendOtpChangePasswordModel input});
+
+  $InputSendOtpChangePasswordModelCopyWith<$Res> get input;
+}
+
+/// @nodoc
+class __$$ConfirmOtpChangePasswordImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ConfirmOtpChangePasswordImpl>
+    implements _$$ConfirmOtpChangePasswordImplCopyWith<$Res> {
+  __$$ConfirmOtpChangePasswordImplCopyWithImpl(
+      _$ConfirmOtpChangePasswordImpl _value,
+      $Res Function(_$ConfirmOtpChangePasswordImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? input = null,
+  }) {
+    return _then(_$ConfirmOtpChangePasswordImpl(
+      input: null == input
+          ? _value.input
+          : input // ignore: cast_nullable_to_non_nullable
+              as InputSendOtpChangePasswordModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InputSendOtpChangePasswordModelCopyWith<$Res> get input {
+    return $InputSendOtpChangePasswordModelCopyWith<$Res>(_value.input,
+        (value) {
+      return _then(_value.copyWith(input: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ConfirmOtpChangePasswordImpl implements _ConfirmOtpChangePassword {
+  const _$ConfirmOtpChangePasswordImpl({required this.input});
+
+  @override
+  final InputSendOtpChangePasswordModel input;
+
+  @override
+  String toString() {
+    return 'AuthEvent.confirmOtpChangePassword(input: $input)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConfirmOtpChangePasswordImpl &&
+            (identical(other.input, input) || other.input == input));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, input);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConfirmOtpChangePasswordImplCopyWith<_$ConfirmOtpChangePasswordImpl>
+      get copyWith => __$$ConfirmOtpChangePasswordImplCopyWithImpl<
+          _$ConfirmOtpChangePasswordImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InputLoginModel input) login,
+    required TResult Function(InputChangePasswordModel input) changePassword,
+    required TResult Function(InputSendOtpChangePasswordModel input)
+        confirmOtpChangePassword,
+    required TResult Function(InputSetNewPasswordModel input) setNewPassword,
+    required TResult Function() biometricAuth,
+  }) {
+    return confirmOtpChangePassword(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InputLoginModel input)? login,
+    TResult? Function(InputChangePasswordModel input)? changePassword,
+    TResult? Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult? Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult? Function()? biometricAuth,
+  }) {
+    return confirmOtpChangePassword?.call(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InputLoginModel input)? login,
+    TResult Function(InputChangePasswordModel input)? changePassword,
+    TResult Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult Function()? biometricAuth,
+    required TResult orElse(),
+  }) {
+    if (confirmOtpChangePassword != null) {
+      return confirmOtpChangePassword(input);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_ConfirmOtpChangePassword value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPassword value) setNewPassword,
+    required TResult Function(_BiometricAuth value) biometricAuth,
+  }) {
+    return confirmOtpChangePassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Login value)? login,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePassword value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPassword value)? setNewPassword,
+    TResult? Function(_BiometricAuth value)? biometricAuth,
+  }) {
+    return confirmOtpChangePassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_ConfirmOtpChangePassword value)? confirmOtpChangePassword,
+    TResult Function(_SetNewPassword value)? setNewPassword,
+    TResult Function(_BiometricAuth value)? biometricAuth,
+    required TResult orElse(),
+  }) {
+    if (confirmOtpChangePassword != null) {
+      return confirmOtpChangePassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ConfirmOtpChangePassword implements AuthEvent {
+  const factory _ConfirmOtpChangePassword(
+          {required final InputSendOtpChangePasswordModel input}) =
+      _$ConfirmOtpChangePasswordImpl;
+
+  InputSendOtpChangePasswordModel get input;
+  @JsonKey(ignore: true)
+  _$$ConfirmOtpChangePasswordImplCopyWith<_$ConfirmOtpChangePasswordImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetNewPasswordImplCopyWith<$Res> {
+  factory _$$SetNewPasswordImplCopyWith(_$SetNewPasswordImpl value,
+          $Res Function(_$SetNewPasswordImpl) then) =
+      __$$SetNewPasswordImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({InputSetNewPasswordModel input});
+
+  $InputSetNewPasswordModelCopyWith<$Res> get input;
+}
+
+/// @nodoc
+class __$$SetNewPasswordImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SetNewPasswordImpl>
+    implements _$$SetNewPasswordImplCopyWith<$Res> {
+  __$$SetNewPasswordImplCopyWithImpl(
+      _$SetNewPasswordImpl _value, $Res Function(_$SetNewPasswordImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? input = null,
+  }) {
+    return _then(_$SetNewPasswordImpl(
+      input: null == input
+          ? _value.input
+          : input // ignore: cast_nullable_to_non_nullable
+              as InputSetNewPasswordModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InputSetNewPasswordModelCopyWith<$Res> get input {
+    return $InputSetNewPasswordModelCopyWith<$Res>(_value.input, (value) {
+      return _then(_value.copyWith(input: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SetNewPasswordImpl implements _SetNewPassword {
+  const _$SetNewPasswordImpl({required this.input});
+
+  @override
+  final InputSetNewPasswordModel input;
+
+  @override
+  String toString() {
+    return 'AuthEvent.setNewPassword(input: $input)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetNewPasswordImpl &&
+            (identical(other.input, input) || other.input == input));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, input);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetNewPasswordImplCopyWith<_$SetNewPasswordImpl> get copyWith =>
+      __$$SetNewPasswordImplCopyWithImpl<_$SetNewPasswordImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InputLoginModel input) login,
+    required TResult Function(InputChangePasswordModel input) changePassword,
+    required TResult Function(InputSendOtpChangePasswordModel input)
+        confirmOtpChangePassword,
+    required TResult Function(InputSetNewPasswordModel input) setNewPassword,
+    required TResult Function() biometricAuth,
+  }) {
+    return setNewPassword(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InputLoginModel input)? login,
+    TResult? Function(InputChangePasswordModel input)? changePassword,
+    TResult? Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult? Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult? Function()? biometricAuth,
+  }) {
+    return setNewPassword?.call(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InputLoginModel input)? login,
+    TResult Function(InputChangePasswordModel input)? changePassword,
+    TResult Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult Function()? biometricAuth,
+    required TResult orElse(),
+  }) {
+    if (setNewPassword != null) {
+      return setNewPassword(input);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_ConfirmOtpChangePassword value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPassword value) setNewPassword,
+    required TResult Function(_BiometricAuth value) biometricAuth,
+  }) {
+    return setNewPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Login value)? login,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePassword value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPassword value)? setNewPassword,
+    TResult? Function(_BiometricAuth value)? biometricAuth,
+  }) {
+    return setNewPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_ConfirmOtpChangePassword value)? confirmOtpChangePassword,
+    TResult Function(_SetNewPassword value)? setNewPassword,
+    TResult Function(_BiometricAuth value)? biometricAuth,
+    required TResult orElse(),
+  }) {
+    if (setNewPassword != null) {
+      return setNewPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetNewPassword implements AuthEvent {
+  const factory _SetNewPassword(
+      {required final InputSetNewPasswordModel input}) = _$SetNewPasswordImpl;
+
+  InputSetNewPasswordModel get input;
+  @JsonKey(ignore: true)
+  _$$SetNewPasswordImplCopyWith<_$SetNewPasswordImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BiometricAuthImplCopyWith<$Res> {
+  factory _$$BiometricAuthImplCopyWith(
+          _$BiometricAuthImpl value, $Res Function(_$BiometricAuthImpl) then) =
+      __$$BiometricAuthImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BiometricAuthImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$BiometricAuthImpl>
+    implements _$$BiometricAuthImplCopyWith<$Res> {
+  __$$BiometricAuthImplCopyWithImpl(
+      _$BiometricAuthImpl _value, $Res Function(_$BiometricAuthImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BiometricAuthImpl implements _BiometricAuth {
+  const _$BiometricAuthImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.biometricAuth()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BiometricAuthImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InputLoginModel input) login,
+    required TResult Function(InputChangePasswordModel input) changePassword,
+    required TResult Function(InputSendOtpChangePasswordModel input)
+        confirmOtpChangePassword,
+    required TResult Function(InputSetNewPasswordModel input) setNewPassword,
+    required TResult Function() biometricAuth,
+  }) {
+    return biometricAuth();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InputLoginModel input)? login,
+    TResult? Function(InputChangePasswordModel input)? changePassword,
+    TResult? Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult? Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult? Function()? biometricAuth,
+  }) {
+    return biometricAuth?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InputLoginModel input)? login,
+    TResult Function(InputChangePasswordModel input)? changePassword,
+    TResult Function(InputSendOtpChangePasswordModel input)?
+        confirmOtpChangePassword,
+    TResult Function(InputSetNewPasswordModel input)? setNewPassword,
+    TResult Function()? biometricAuth,
+    required TResult orElse(),
+  }) {
+    if (biometricAuth != null) {
+      return biometricAuth();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_ChangePassword value) changePassword,
+    required TResult Function(_ConfirmOtpChangePassword value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPassword value) setNewPassword,
+    required TResult Function(_BiometricAuth value) biometricAuth,
+  }) {
+    return biometricAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Login value)? login,
+    TResult? Function(_ChangePassword value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePassword value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPassword value)? setNewPassword,
+    TResult? Function(_BiometricAuth value)? biometricAuth,
+  }) {
+    return biometricAuth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_ChangePassword value)? changePassword,
+    TResult Function(_ConfirmOtpChangePassword value)? confirmOtpChangePassword,
+    TResult Function(_SetNewPassword value)? setNewPassword,
+    TResult Function(_BiometricAuth value)? biometricAuth,
+    required TResult orElse(),
+  }) {
+    if (biometricAuth != null) {
+      return biometricAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BiometricAuth implements AuthEvent {
+  const factory _BiometricAuth() = _$BiometricAuthImpl;
 }
 
 /// @nodoc
@@ -356,8 +901,13 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) successSendOtp,
+    required TResult Function() loadingChangePassword,
     required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -365,8 +915,12 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? successSendOtp,
+    TResult? Function()? loadingChangePassword,
     TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -374,8 +928,12 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? successSendOtp,
+    TResult Function()? loadingChangePassword,
     TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -384,8 +942,13 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessSendOtp value) successSendOtp,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
     required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -393,8 +956,12 @@ mixin _$AuthState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessSendOtp value)? successSendOtp,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -402,8 +969,12 @@ mixin _$AuthState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessSendOtp value)? successSendOtp,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -467,8 +1038,13 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) successSendOtp,
+    required TResult Function() loadingChangePassword,
     required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -479,8 +1055,12 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? successSendOtp,
+    TResult? Function()? loadingChangePassword,
     TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -491,8 +1071,12 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? successSendOtp,
+    TResult Function()? loadingChangePassword,
     TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -507,8 +1091,13 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessSendOtp value) successSendOtp,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
     required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -519,8 +1108,12 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessSendOtp value)? successSendOtp,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -531,8 +1124,12 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessSendOtp value)? successSendOtp,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -587,8 +1184,13 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) successSendOtp,
+    required TResult Function() loadingChangePassword,
     required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -599,8 +1201,12 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? successSendOtp,
+    TResult? Function()? loadingChangePassword,
     TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -611,8 +1217,12 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? successSendOtp,
+    TResult Function()? loadingChangePassword,
     TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -627,8 +1237,13 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessSendOtp value) successSendOtp,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
     required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -639,8 +1254,12 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessSendOtp value)? successSendOtp,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -651,8 +1270,12 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessSendOtp value)? successSendOtp,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -668,77 +1291,57 @@ abstract class _Loading implements AuthState {
 }
 
 /// @nodoc
-abstract class _$$SuccessSendOtpImplCopyWith<$Res> {
-  factory _$$SuccessSendOtpImplCopyWith(_$SuccessSendOtpImpl value,
-          $Res Function(_$SuccessSendOtpImpl) then) =
-      __$$SuccessSendOtpImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
+abstract class _$$LoadingChangePasswordImplCopyWith<$Res> {
+  factory _$$LoadingChangePasswordImplCopyWith(
+          _$LoadingChangePasswordImpl value,
+          $Res Function(_$LoadingChangePasswordImpl) then) =
+      __$$LoadingChangePasswordImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SuccessSendOtpImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$SuccessSendOtpImpl>
-    implements _$$SuccessSendOtpImplCopyWith<$Res> {
-  __$$SuccessSendOtpImplCopyWithImpl(
-      _$SuccessSendOtpImpl _value, $Res Function(_$SuccessSendOtpImpl) _then)
+class __$$LoadingChangePasswordImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoadingChangePasswordImpl>
+    implements _$$LoadingChangePasswordImplCopyWith<$Res> {
+  __$$LoadingChangePasswordImplCopyWithImpl(_$LoadingChangePasswordImpl _value,
+      $Res Function(_$LoadingChangePasswordImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$SuccessSendOtpImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$SuccessSendOtpImpl implements _SuccessSendOtp {
-  const _$SuccessSendOtpImpl({required this.message});
-
-  @override
-  final String message;
+class _$LoadingChangePasswordImpl implements _LoadingChangePassword {
+  const _$LoadingChangePasswordImpl();
 
   @override
   String toString() {
-    return 'AuthState.successSendOtp(message: $message)';
+    return 'AuthState.loadingChangePassword()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessSendOtpImpl &&
-            (identical(other.message, message) || other.message == message));
+            other is _$LoadingChangePasswordImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessSendOtpImplCopyWith<_$SuccessSendOtpImpl> get copyWith =>
-      __$$SuccessSendOtpImplCopyWithImpl<_$SuccessSendOtpImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) successSendOtp,
+    required TResult Function() loadingChangePassword,
     required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
     required TResult Function(String message) error,
   }) {
-    return successSendOtp(message);
+    return loadingChangePassword();
   }
 
   @override
@@ -746,11 +1349,15 @@ class _$SuccessSendOtpImpl implements _SuccessSendOtp {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? successSendOtp,
+    TResult? Function()? loadingChangePassword,
     TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult? Function(String message)? error,
   }) {
-    return successSendOtp?.call(message);
+    return loadingChangePassword?.call();
   }
 
   @override
@@ -758,13 +1365,17 @@ class _$SuccessSendOtpImpl implements _SuccessSendOtp {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? successSendOtp,
+    TResult Function()? loadingChangePassword,
     TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (successSendOtp != null) {
-      return successSendOtp(message);
+    if (loadingChangePassword != null) {
+      return loadingChangePassword();
     }
     return orElse();
   }
@@ -774,11 +1385,16 @@ class _$SuccessSendOtpImpl implements _SuccessSendOtp {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessSendOtp value) successSendOtp,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
     required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
     required TResult Function(_Error value) error,
   }) {
-    return successSendOtp(this);
+    return loadingChangePassword(this);
   }
 
   @override
@@ -786,11 +1402,15 @@ class _$SuccessSendOtpImpl implements _SuccessSendOtp {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessSendOtp value)? successSendOtp,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
     TResult? Function(_Error value)? error,
   }) {
-    return successSendOtp?.call(this);
+    return loadingChangePassword?.call(this);
   }
 
   @override
@@ -798,26 +1418,24 @@ class _$SuccessSendOtpImpl implements _SuccessSendOtp {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessSendOtp value)? successSendOtp,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (successSendOtp != null) {
-      return successSendOtp(this);
+    if (loadingChangePassword != null) {
+      return loadingChangePassword(this);
     }
     return orElse();
   }
 }
 
-abstract class _SuccessSendOtp implements AuthState {
-  const factory _SuccessSendOtp({required final String message}) =
-      _$SuccessSendOtpImpl;
-
-  String get message;
-  @JsonKey(ignore: true)
-  _$$SuccessSendOtpImplCopyWith<_$SuccessSendOtpImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _LoadingChangePassword implements AuthState {
+  const factory _LoadingChangePassword() = _$LoadingChangePasswordImpl;
 }
 
 /// @nodoc
@@ -896,8 +1514,13 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) successSendOtp,
+    required TResult Function() loadingChangePassword,
     required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
     required TResult Function(String message) error,
   }) {
     return success(this.success);
@@ -908,8 +1531,12 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? successSendOtp,
+    TResult? Function()? loadingChangePassword,
     TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult? Function(String message)? error,
   }) {
     return success?.call(this.success);
@@ -920,8 +1547,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? successSendOtp,
+    TResult Function()? loadingChangePassword,
     TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -936,8 +1567,13 @@ class _$SuccessImpl implements _Success {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessSendOtp value) successSendOtp,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
     required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
     required TResult Function(_Error value) error,
   }) {
     return success(this);
@@ -948,8 +1584,12 @@ class _$SuccessImpl implements _Success {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessSendOtp value)? successSendOtp,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
     TResult? Function(_Error value)? error,
   }) {
     return success?.call(this);
@@ -960,8 +1600,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessSendOtp value)? successSendOtp,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -979,6 +1623,582 @@ abstract class _Success implements AuthState {
   ResponseModel<LoginModel> get success;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangePasswordStateImplCopyWith<$Res> {
+  factory _$$ChangePasswordStateImplCopyWith(_$ChangePasswordStateImpl value,
+          $Res Function(_$ChangePasswordStateImpl) then) =
+      __$$ChangePasswordStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResponseModel<dynamic> success});
+
+  $ResponseModelCopyWith<dynamic, $Res> get success;
+}
+
+/// @nodoc
+class __$$ChangePasswordStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$ChangePasswordStateImpl>
+    implements _$$ChangePasswordStateImplCopyWith<$Res> {
+  __$$ChangePasswordStateImplCopyWithImpl(_$ChangePasswordStateImpl _value,
+      $Res Function(_$ChangePasswordStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? success = null,
+  }) {
+    return _then(_$ChangePasswordStateImpl(
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as ResponseModel<dynamic>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResponseModelCopyWith<dynamic, $Res> get success {
+    return $ResponseModelCopyWith<dynamic, $Res>(_value.success, (value) {
+      return _then(_value.copyWith(success: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ChangePasswordStateImpl implements _ChangePasswordState {
+  const _$ChangePasswordStateImpl({required this.success});
+
+  @override
+  final ResponseModel<dynamic> success;
+
+  @override
+  String toString() {
+    return 'AuthState.changePassword(success: $success)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangePasswordStateImpl &&
+            (identical(other.success, success) || other.success == success));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, success);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangePasswordStateImplCopyWith<_$ChangePasswordStateImpl> get copyWith =>
+      __$$ChangePasswordStateImplCopyWithImpl<_$ChangePasswordStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() loadingChangePassword,
+    required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
+    required TResult Function(String message) error,
+  }) {
+    return changePassword(this.success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loadingChangePassword,
+    TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
+    TResult? Function(String message)? error,
+  }) {
+    return changePassword?.call(this.success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? loadingChangePassword,
+    TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (changePassword != null) {
+      return changePassword(this.success);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
+    required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
+    required TResult Function(_Error value) error,
+  }) {
+    return changePassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
+    TResult? Function(_Error value)? error,
+  }) {
+    return changePassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
+    TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (changePassword != null) {
+      return changePassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangePasswordState implements AuthState {
+  const factory _ChangePasswordState(
+          {required final ResponseModel<dynamic> success}) =
+      _$ChangePasswordStateImpl;
+
+  ResponseModel<dynamic> get success;
+  @JsonKey(ignore: true)
+  _$$ChangePasswordStateImplCopyWith<_$ChangePasswordStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ConfirmOtpChangePasswordStateImplCopyWith<$Res> {
+  factory _$$ConfirmOtpChangePasswordStateImplCopyWith(
+          _$ConfirmOtpChangePasswordStateImpl value,
+          $Res Function(_$ConfirmOtpChangePasswordStateImpl) then) =
+      __$$ConfirmOtpChangePasswordStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResponseModel<ConfirmOtpChangePasswordModel> success});
+
+  $ResponseModelCopyWith<ConfirmOtpChangePasswordModel, $Res> get success;
+}
+
+/// @nodoc
+class __$$ConfirmOtpChangePasswordStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$ConfirmOtpChangePasswordStateImpl>
+    implements _$$ConfirmOtpChangePasswordStateImplCopyWith<$Res> {
+  __$$ConfirmOtpChangePasswordStateImplCopyWithImpl(
+      _$ConfirmOtpChangePasswordStateImpl _value,
+      $Res Function(_$ConfirmOtpChangePasswordStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? success = null,
+  }) {
+    return _then(_$ConfirmOtpChangePasswordStateImpl(
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as ResponseModel<ConfirmOtpChangePasswordModel>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResponseModelCopyWith<ConfirmOtpChangePasswordModel, $Res> get success {
+    return $ResponseModelCopyWith<ConfirmOtpChangePasswordModel, $Res>(
+        _value.success, (value) {
+      return _then(_value.copyWith(success: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ConfirmOtpChangePasswordStateImpl
+    implements _ConfirmOtpChangePasswordState {
+  const _$ConfirmOtpChangePasswordStateImpl({required this.success});
+
+  @override
+  final ResponseModel<ConfirmOtpChangePasswordModel> success;
+
+  @override
+  String toString() {
+    return 'AuthState.confirmOtpChangePassword(success: $success)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConfirmOtpChangePasswordStateImpl &&
+            (identical(other.success, success) || other.success == success));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, success);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConfirmOtpChangePasswordStateImplCopyWith<
+          _$ConfirmOtpChangePasswordStateImpl>
+      get copyWith => __$$ConfirmOtpChangePasswordStateImplCopyWithImpl<
+          _$ConfirmOtpChangePasswordStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() loadingChangePassword,
+    required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
+    required TResult Function(String message) error,
+  }) {
+    return confirmOtpChangePassword(this.success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loadingChangePassword,
+    TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
+    TResult? Function(String message)? error,
+  }) {
+    return confirmOtpChangePassword?.call(this.success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? loadingChangePassword,
+    TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (confirmOtpChangePassword != null) {
+      return confirmOtpChangePassword(this.success);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
+    required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
+    required TResult Function(_Error value) error,
+  }) {
+    return confirmOtpChangePassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
+    TResult? Function(_Error value)? error,
+  }) {
+    return confirmOtpChangePassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
+    TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (confirmOtpChangePassword != null) {
+      return confirmOtpChangePassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ConfirmOtpChangePasswordState implements AuthState {
+  const factory _ConfirmOtpChangePasswordState(
+      {required final ResponseModel<ConfirmOtpChangePasswordModel>
+          success}) = _$ConfirmOtpChangePasswordStateImpl;
+
+  ResponseModel<ConfirmOtpChangePasswordModel> get success;
+  @JsonKey(ignore: true)
+  _$$ConfirmOtpChangePasswordStateImplCopyWith<
+          _$ConfirmOtpChangePasswordStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetNewPasswordStateImplCopyWith<$Res> {
+  factory _$$SetNewPasswordStateImplCopyWith(_$SetNewPasswordStateImpl value,
+          $Res Function(_$SetNewPasswordStateImpl) then) =
+      __$$SetNewPasswordStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResponseModel<dynamic> success});
+
+  $ResponseModelCopyWith<dynamic, $Res> get success;
+}
+
+/// @nodoc
+class __$$SetNewPasswordStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$SetNewPasswordStateImpl>
+    implements _$$SetNewPasswordStateImplCopyWith<$Res> {
+  __$$SetNewPasswordStateImplCopyWithImpl(_$SetNewPasswordStateImpl _value,
+      $Res Function(_$SetNewPasswordStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? success = null,
+  }) {
+    return _then(_$SetNewPasswordStateImpl(
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as ResponseModel<dynamic>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResponseModelCopyWith<dynamic, $Res> get success {
+    return $ResponseModelCopyWith<dynamic, $Res>(_value.success, (value) {
+      return _then(_value.copyWith(success: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SetNewPasswordStateImpl implements _SetNewPasswordState {
+  const _$SetNewPasswordStateImpl({required this.success});
+
+  @override
+  final ResponseModel<dynamic> success;
+
+  @override
+  String toString() {
+    return 'AuthState.setNewPassword(success: $success)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetNewPasswordStateImpl &&
+            (identical(other.success, success) || other.success == success));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, success);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetNewPasswordStateImplCopyWith<_$SetNewPasswordStateImpl> get copyWith =>
+      __$$SetNewPasswordStateImplCopyWithImpl<_$SetNewPasswordStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() loadingChangePassword,
+    required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
+    required TResult Function(String message) error,
+  }) {
+    return setNewPassword(this.success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? loadingChangePassword,
+    TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
+    TResult? Function(String message)? error,
+  }) {
+    return setNewPassword?.call(this.success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? loadingChangePassword,
+    TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (setNewPassword != null) {
+      return setNewPassword(this.success);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
+    required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
+    required TResult Function(_Error value) error,
+  }) {
+    return setNewPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
+    TResult? Function(_Error value)? error,
+  }) {
+    return setNewPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
+    TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (setNewPassword != null) {
+      return setNewPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetNewPasswordState implements AuthState {
+  const factory _SetNewPasswordState(
+          {required final ResponseModel<dynamic> success}) =
+      _$SetNewPasswordStateImpl;
+
+  ResponseModel<dynamic> get success;
+  @JsonKey(ignore: true)
+  _$$SetNewPasswordStateImplCopyWith<_$SetNewPasswordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1048,8 +2268,13 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) successSendOtp,
+    required TResult Function() loadingChangePassword,
     required TResult Function(ResponseModel<LoginModel> success) success,
+    required TResult Function(ResponseModel<dynamic> success) changePassword,
+    required TResult Function(
+            ResponseModel<ConfirmOtpChangePasswordModel> success)
+        confirmOtpChangePassword,
+    required TResult Function(ResponseModel<dynamic> success) setNewPassword,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1060,8 +2285,12 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? successSendOtp,
+    TResult? Function()? loadingChangePassword,
     TResult? Function(ResponseModel<LoginModel> success)? success,
+    TResult? Function(ResponseModel<dynamic> success)? changePassword,
+    TResult? Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult? Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1072,8 +2301,12 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? successSendOtp,
+    TResult Function()? loadingChangePassword,
     TResult Function(ResponseModel<LoginModel> success)? success,
+    TResult Function(ResponseModel<dynamic> success)? changePassword,
+    TResult Function(ResponseModel<ConfirmOtpChangePasswordModel> success)?
+        confirmOtpChangePassword,
+    TResult Function(ResponseModel<dynamic> success)? setNewPassword,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1088,8 +2321,13 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_SuccessSendOtp value) successSendOtp,
+    required TResult Function(_LoadingChangePassword value)
+        loadingChangePassword,
     required TResult Function(_Success value) success,
+    required TResult Function(_ChangePasswordState value) changePassword,
+    required TResult Function(_ConfirmOtpChangePasswordState value)
+        confirmOtpChangePassword,
+    required TResult Function(_SetNewPasswordState value) setNewPassword,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1100,8 +2338,12 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_SuccessSendOtp value)? successSendOtp,
+    TResult? Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult? Function(_Success value)? success,
+    TResult? Function(_ChangePasswordState value)? changePassword,
+    TResult? Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult? Function(_SetNewPasswordState value)? setNewPassword,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1112,8 +2354,12 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_SuccessSendOtp value)? successSendOtp,
+    TResult Function(_LoadingChangePassword value)? loadingChangePassword,
     TResult Function(_Success value)? success,
+    TResult Function(_ChangePasswordState value)? changePassword,
+    TResult Function(_ConfirmOtpChangePasswordState value)?
+        confirmOtpChangePassword,
+    TResult Function(_SetNewPasswordState value)? setNewPassword,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

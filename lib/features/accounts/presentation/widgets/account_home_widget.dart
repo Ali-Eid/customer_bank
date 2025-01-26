@@ -81,10 +81,13 @@ class AccountHomeWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
-                model.status,
-                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    fontWeight: FontWeight.bold, color: ColorManager.white),
+              Expanded(
+                child: Text(
+                  model.status,
+                  maxLines: 2,
+                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      fontWeight: FontWeight.bold, color: ColorManager.white),
+                ),
               ),
             ],
           ),

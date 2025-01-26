@@ -14,7 +14,7 @@ class _TransferServiceClient implements TransferServiceClient {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= '/bank-connecter/api';
+    baseUrl ??= '/transfer/api';
   }
 
   final Dio _dio;
@@ -24,21 +24,21 @@ class _TransferServiceClient implements TransferServiceClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<ResponseModel<dynamic>>> transfareMyAccounts(
+  Future<HttpResponse<ResponseModel<StoreTransferModel>>> storeLocalTransfer(
       {required InputTransferModel input}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = input;
     final _options =
-        _setStreamType<HttpResponse<ResponseModel<dynamic>>>(Options(
+        _setStreamType<HttpResponse<ResponseModel<StoreTransferModel>>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/accounts/newtransfer',
+              '/local_transfer',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -48,11 +48,131 @@ class _TransferServiceClient implements TransferServiceClient {
               baseUrl,
             )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ResponseModel<dynamic> _value;
+    late ResponseModel<StoreTransferModel> _value;
     try {
-      _value = ResponseModel<dynamic>.fromJson(
+      _value = ResponseModel<StoreTransferModel>.fromJson(
         _result.data!,
-        (json) => json as dynamic,
+        (json) => StoreTransferModel.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ResponseModel<ConfirmTransferModel>>>
+      confirmLocalTransfer({required InputConfirmTransferModel input}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = input;
+    final _options =
+        _setStreamType<HttpResponse<ResponseModel<ConfirmTransferModel>>>(
+            Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+                .compose(
+                  _dio.options,
+                  '/local_transfer/confirm',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ResponseModel<ConfirmTransferModel> _value;
+    try {
+      _value = ResponseModel<ConfirmTransferModel>.fromJson(
+        _result.data!,
+        (json) => ConfirmTransferModel.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ResponseModel<StoreTransferModel>>> storeInternalTransfer(
+      {required InputTransferModel input}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = input;
+    final _options =
+        _setStreamType<HttpResponse<ResponseModel<StoreTransferModel>>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/internal_transfer',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ResponseModel<StoreTransferModel> _value;
+    try {
+      _value = ResponseModel<StoreTransferModel>.fromJson(
+        _result.data!,
+        (json) => StoreTransferModel.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ResponseModel<ConfirmTransferModel>>>
+      confirmInternalTransfer(
+          {required InputConfirmTransferModel input}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = input;
+    final _options =
+        _setStreamType<HttpResponse<ResponseModel<ConfirmTransferModel>>>(
+            Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+                .compose(
+                  _dio.options,
+                  '/internal_transfer/confirm',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ResponseModel<ConfirmTransferModel> _value;
+    try {
+      _value = ResponseModel<ConfirmTransferModel>.fromJson(
+        _result.data!,
+        (json) => ConfirmTransferModel.fromJson(json as Map<String, dynamic>),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

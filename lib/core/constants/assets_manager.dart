@@ -17,6 +17,7 @@ class ImageAssets {
   static String cards = '${IMAGE_PATH}cards.png';
   static String transaction = '${IMAGE_PATH}transaction.png';
   static String card = '${IMAGE_PATH}Card.png';
+  static String bank = '${IMAGE_PATH}bank.png';
 }
 
 class IconAssets {
@@ -26,6 +27,7 @@ class IconAssets {
   static String add_card_icon = '${ICONS_PATH}add_card.png';
   static String edit_withdraw_icon = '${ICONS_PATH}edit_withdraw.png';
   static String in_active_cards_icon = '${ICONS_PATH}inactive_card.png';
+  static String fingerAuthIcon = '${ICONS_PATH}finger.png';
 }
 
 class SongAssets {
@@ -35,4 +37,5 @@ class SongAssets {
 class JsonAssets {
   static String loading_json = '${JSONS_PATH}loading.json';
   static String login_json = '${JSONS_PATH}login.json';
+  static String lcoalTransfer = '${JSONS_PATH}local_transfer.json';
 }

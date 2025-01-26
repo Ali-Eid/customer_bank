@@ -1,5 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fs_bank/features/accounts/data/datasource/account_api.dart';
 import 'package:fs_bank/features/accounts/data/repository/account_repository_impl.dart';
 import 'package:fs_bank/features/accounts/domain/repository/account_repository.dart';
@@ -17,13 +17,12 @@ import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dar
 import 'package:fs_bank/features/transfer/data/repository/transfer_repository_impl.dart';
 import 'package:fs_bank/features/transfer/domain/usecases/transfer_usecases.dart';
 import 'package:fs_bank/features/transfer/presentation/blocs/transfer_bloc/transfer_bloc.dart';
-
 import 'package:get_it/get_it.dart';
-
+import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../features/accounts/presentation/blocs/types_bloc/types_bloc.dart';
 import '../../features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
+import '../../features/auth/presentation/blocs/input_forgot_password_cubit/input_forgot_password_cubit.dart';
 import '../../features/cards/domain/usecases/card_usecases.dart';
 import '../../features/cards/presentation/blocs/request_card_bloc/request_card_bloc.dart';
 import '../../features/cards/presentation/blocs/withdrawal_bloc/withdrawal_bloc.dart';
@@ -38,8 +37,14 @@ final instance = GetIt.instance;
 
 Future<void> initAppModule() async {
   final sharedPreferences = await SharedPreferences.getInstance();
+  const storage = FlutterSecureStorage(
+      aOptions: AndroidOptions(
+    encryptedSharedPreferences: true,
+  ));
   instance.registerFactory<SharedPreferences>(() => sharedPreferences);
-  instance.registerFactory<AppPreferences>(() => AppPreferences(instance()));
+  instance.registerFactory<FlutterSecureStorage>(() => storage);
+  instance.registerFactory<AppPreferences>(() => AppPreferences(
+      instance<SharedPreferences>(), instance<FlutterSecureStorage>()));
   instance.registerLazySingleton<DioFactory>(() => DioFactory(instance()));
   instance.registerFactory<GeneralInterceptor>(() => GeneralInterceptor(
         instance(),
@@ -152,10 +157,14 @@ Future<void> initAccounts() async {
 
 Future<void> initLogin() async {
   final dio = await instance<DioFactory>().getDioAuth();
-
   if (!GetIt.I.isRegistered<AuthServiceClient>()) {
     instance.registerLazySingleton(
       () => AuthServiceClient(dio),
+    );
+  }
+  if (!GetIt.I.isRegistered<LocalAuthentication>()) {
+    instance.registerLazySingleton(
+      () => LocalAuthentication(),
     );
   }
   if (!GetIt.I.isRegistered<AuthRepository>()) {
@@ -178,13 +187,30 @@ Future<void> initLogin() async {
     instance.registerLazySingleton(
         () => LogoutUsecase(repository: instance<AuthRepository>()));
   }
+  if (!GetIt.I.isRegistered<ForgotPasswordUsecase>()) {
+    instance.registerLazySingleton(
+        () => ForgotPasswordUsecase(repository: instance<AuthRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ConfirmOtpChangePasswordUsecase>()) {
+    instance.registerLazySingleton(() => ConfirmOtpChangePasswordUsecase(
+        repository: instance<AuthRepository>()));
+  }
+  if (!GetIt.I.isRegistered<SetNewPasswordUsecase>()) {
+    instance.registerLazySingleton(
+        () => SetNewPasswordUsecase(repository: instance<AuthRepository>()));
+  }
 
   //Bloc
   if (!GetIt.I.isRegistered<AuthBloc>()) {
     instance.registerFactory(() => AuthBloc(
+        localAuthentication: instance<LocalAuthentication>(),
         appPreferences: instance<AppPreferences>(),
         loginUsecase: instance<LoginUsecase>(),
-        sendOtpUsecase: instance<SendOtpUsecase>()));
+        // sendOtpUsecase: instance<SendOtpUsecase>(),
+        confirmOtpChangePasswordUsecase:
+            instance<ConfirmOtpChangePasswordUsecase>(),
+        forgotPasswordUsecase: instance<ForgotPasswordUsecase>(),
+        setNewPasswordUsecase: instance<SetNewPasswordUsecase>()));
   }
 }
 
@@ -197,16 +223,35 @@ Future<void> initTransfer() async {
     );
   }
 
-  if (!GetIt.I.isRegistered<TransferMyAccountUsecase>()) {
+  if (!GetIt.I.isRegistered<StoreLocalTransferMyAccountUsecase>()) {
+    instance.registerLazySingleton(() => StoreLocalTransferMyAccountUsecase(
+        repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ConfirmLocalTransferMyAccountUsecase>()) {
+    instance.registerLazySingleton(() => ConfirmLocalTransferMyAccountUsecase(
+        repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<StoreInternalTransferMyAccountUsecase>()) {
+    instance.registerLazySingleton(() => StoreInternalTransferMyAccountUsecase(
+        repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ConfirmInternalTransferMyAccountUsecase>()) {
     instance.registerLazySingleton(() =>
-        TransferMyAccountUsecase(repository: instance<TransferRepository>()));
+        ConfirmInternalTransferMyAccountUsecase(
+            repository: instance<TransferRepository>()));
   }
 
   //Bloc
   if (!GetIt.I.isRegistered<TransferBloc>()) {
     instance.registerFactory(() => TransferBloc(
         appPreferences: instance<AppPreferences>(),
-        loginUsecase: instance<LoginUsecase>(),
-        transferMyAccountUsecase: instance<TransferMyAccountUsecase>()));
+        storeLocalTransferMyAccountUsecase:
+            instance<StoreLocalTransferMyAccountUsecase>(),
+        storeInternalTransferMyAccountUsecase:
+            instance<StoreInternalTransferMyAccountUsecase>(),
+        confirmInternalTransferMyAccountUsecase:
+            instance<ConfirmInternalTransferMyAccountUsecase>(),
+        confirmLocalTransferMyAccountUsecase:
+            instance<ConfirmLocalTransferMyAccountUsecase>()));
   }
 }

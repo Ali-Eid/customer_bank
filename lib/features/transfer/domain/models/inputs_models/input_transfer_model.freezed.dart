@@ -24,12 +24,12 @@ mixin _$InputTransferModel {
   String get fromAccount => throw _privateConstructorUsedError;
   @JsonKey(name: "toAccountNo")
   String get toAccount => throw _privateConstructorUsedError;
-  @JsonKey(name: "transferDate")
-  String get transferDate => throw _privateConstructorUsedError;
-  @JsonKey(name: "transferAmount")
+  @JsonKey(name: "amount")
   num get amount => throw _privateConstructorUsedError;
-  @JsonKey(name: "transferDescription")
-  String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: "currency_code")
+  String get currencyCode => throw _privateConstructorUsedError;
+  @JsonKey(name: "note")
+  String? get note => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,9 +46,9 @@ abstract class $InputTransferModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "fromAccountNo") String fromAccount,
       @JsonKey(name: "toAccountNo") String toAccount,
-      @JsonKey(name: "transferDate") String transferDate,
-      @JsonKey(name: "transferAmount") num amount,
-      @JsonKey(name: "transferDescription") String description});
+      @JsonKey(name: "amount") num amount,
+      @JsonKey(name: "currency_code") String currencyCode,
+      @JsonKey(name: "note") String? note});
 }
 
 /// @nodoc
@@ -66,9 +66,9 @@ class _$InputTransferModelCopyWithImpl<$Res, $Val extends InputTransferModel>
   $Res call({
     Object? fromAccount = null,
     Object? toAccount = null,
-    Object? transferDate = null,
     Object? amount = null,
-    Object? description = null,
+    Object? currencyCode = null,
+    Object? note = freezed,
   }) {
     return _then(_value.copyWith(
       fromAccount: null == fromAccount
@@ -79,18 +79,18 @@ class _$InputTransferModelCopyWithImpl<$Res, $Val extends InputTransferModel>
           ? _value.toAccount
           : toAccount // ignore: cast_nullable_to_non_nullable
               as String,
-      transferDate: null == transferDate
-          ? _value.transferDate
-          : transferDate // ignore: cast_nullable_to_non_nullable
-              as String,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as num,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      currencyCode: null == currencyCode
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -106,9 +106,9 @@ abstract class _$$InputTransferModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "fromAccountNo") String fromAccount,
       @JsonKey(name: "toAccountNo") String toAccount,
-      @JsonKey(name: "transferDate") String transferDate,
-      @JsonKey(name: "transferAmount") num amount,
-      @JsonKey(name: "transferDescription") String description});
+      @JsonKey(name: "amount") num amount,
+      @JsonKey(name: "currency_code") String currencyCode,
+      @JsonKey(name: "note") String? note});
 }
 
 /// @nodoc
@@ -124,9 +124,9 @@ class __$$InputTransferModelImplCopyWithImpl<$Res>
   $Res call({
     Object? fromAccount = null,
     Object? toAccount = null,
-    Object? transferDate = null,
     Object? amount = null,
-    Object? description = null,
+    Object? currencyCode = null,
+    Object? note = freezed,
   }) {
     return _then(_$InputTransferModelImpl(
       fromAccount: null == fromAccount
@@ -137,18 +137,18 @@ class __$$InputTransferModelImplCopyWithImpl<$Res>
           ? _value.toAccount
           : toAccount // ignore: cast_nullable_to_non_nullable
               as String,
-      transferDate: null == transferDate
-          ? _value.transferDate
-          : transferDate // ignore: cast_nullable_to_non_nullable
-              as String,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as num,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      currencyCode: null == currencyCode
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -159,9 +159,9 @@ class _$InputTransferModelImpl implements _InputTransferModel {
   _$InputTransferModelImpl(
       {@JsonKey(name: "fromAccountNo") required this.fromAccount,
       @JsonKey(name: "toAccountNo") required this.toAccount,
-      @JsonKey(name: "transferDate") required this.transferDate,
-      @JsonKey(name: "transferAmount") required this.amount,
-      @JsonKey(name: "transferDescription") required this.description});
+      @JsonKey(name: "amount") required this.amount,
+      @JsonKey(name: "currency_code") required this.currencyCode,
+      @JsonKey(name: "note") this.note});
 
   factory _$InputTransferModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$InputTransferModelImplFromJson(json);
@@ -173,18 +173,18 @@ class _$InputTransferModelImpl implements _InputTransferModel {
   @JsonKey(name: "toAccountNo")
   final String toAccount;
   @override
-  @JsonKey(name: "transferDate")
-  final String transferDate;
-  @override
-  @JsonKey(name: "transferAmount")
+  @JsonKey(name: "amount")
   final num amount;
   @override
-  @JsonKey(name: "transferDescription")
-  final String description;
+  @JsonKey(name: "currency_code")
+  final String currencyCode;
+  @override
+  @JsonKey(name: "note")
+  final String? note;
 
   @override
   String toString() {
-    return 'InputTransferModel(fromAccount: $fromAccount, toAccount: $toAccount, transferDate: $transferDate, amount: $amount, description: $description)';
+    return 'InputTransferModel(fromAccount: $fromAccount, toAccount: $toAccount, amount: $amount, currencyCode: $currencyCode, note: $note)';
   }
 
   @override
@@ -196,17 +196,16 @@ class _$InputTransferModelImpl implements _InputTransferModel {
                 other.fromAccount == fromAccount) &&
             (identical(other.toAccount, toAccount) ||
                 other.toAccount == toAccount) &&
-            (identical(other.transferDate, transferDate) ||
-                other.transferDate == transferDate) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode) &&
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, fromAccount, toAccount, transferDate, amount, description);
+      runtimeType, fromAccount, toAccount, amount, currencyCode, note);
 
   @JsonKey(ignore: true)
   @override
@@ -227,10 +226,9 @@ abstract class _InputTransferModel implements InputTransferModel {
   factory _InputTransferModel(
       {@JsonKey(name: "fromAccountNo") required final String fromAccount,
       @JsonKey(name: "toAccountNo") required final String toAccount,
-      @JsonKey(name: "transferDate") required final String transferDate,
-      @JsonKey(name: "transferAmount") required final num amount,
-      @JsonKey(name: "transferDescription")
-      required final String description}) = _$InputTransferModelImpl;
+      @JsonKey(name: "amount") required final num amount,
+      @JsonKey(name: "currency_code") required final String currencyCode,
+      @JsonKey(name: "note") final String? note}) = _$InputTransferModelImpl;
 
   factory _InputTransferModel.fromJson(Map<String, dynamic> json) =
       _$InputTransferModelImpl.fromJson;
@@ -242,14 +240,14 @@ abstract class _InputTransferModel implements InputTransferModel {
   @JsonKey(name: "toAccountNo")
   String get toAccount;
   @override
-  @JsonKey(name: "transferDate")
-  String get transferDate;
-  @override
-  @JsonKey(name: "transferAmount")
+  @JsonKey(name: "amount")
   num get amount;
   @override
-  @JsonKey(name: "transferDescription")
-  String get description;
+  @JsonKey(name: "currency_code")
+  String get currencyCode;
+  @override
+  @JsonKey(name: "note")
+  String? get note;
   @override
   @JsonKey(ignore: true)
   _$$InputTransferModelImplCopyWith<_$InputTransferModelImpl> get copyWith =>

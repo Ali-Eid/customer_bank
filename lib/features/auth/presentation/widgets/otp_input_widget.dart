@@ -3,14 +3,15 @@ import 'package:fs_bank/core/constants/values_manager.dart';
 import 'package:fs_bank/core/themes/color_manager.dart';
 import 'package:pinput/pinput.dart';
 
-class OtpInputWidget extends StatelessWidget {
-  final String phoneNumber;
-  final Function(String) onSubmit;
+import '../blocs/input_otp_cubit/input_otp_cubit.dart';
 
+class OtpInputWidget extends StatelessWidget {
+  final Function(String) onSubmit;
+  final InputOtpCubit inputOtpCubit;
   const OtpInputWidget({
     super.key,
-    required this.phoneNumber,
     required this.onSubmit,
+    required this.inputOtpCubit,
   });
 
   @override
@@ -61,6 +62,9 @@ class OtpInputWidget extends StatelessWidget {
       textInputAction: TextInputAction.done,
       autofillHints: const [AutofillHints.oneTimeCode],
       onCompleted: (text) => onSubmit(text),
+      onChanged: (value) {
+        inputOtpCubit.setOtpCode(value);
+      },
     );
   }
 }

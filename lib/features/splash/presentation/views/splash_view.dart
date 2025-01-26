@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:animate_do/animate_do.dart';
+// import 'package:assets_audio_player/assets_audio_player.dart';
 // import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:fs_bank/core/constants/assets_manager.dart';
 import 'package:fs_bank/core/constants/values_manager.dart';
 import 'package:fs_bank/core/routers/routes_manager.dart';

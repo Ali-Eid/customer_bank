@@ -1,4 +1,31 @@
 {
-    "test": "اختبار"
+    "apiFailureMessage": "عذراً، حدث خطأ ما",
+    "no_internet_connection.": "لا يوجد اتصال انترنت",
+    "login_title": "تسجيل الدخول إلى التطبيق ",
+    "username_label": "اسم المستخدم",
+    "username_placeholder": "يرجى إدخال اسم المستخدم",
+    "password_label": "كلمة المرور",
+    "confirm_password_label": "تأكيد كلمة المرور",
+    "password_placeholder": "يرجى إدخال كلمة المرور",
+    "confirm_password_placeholder": "يرجى تأكيد كلمة المرور",
+    "password_not_match": "كلمة المرور غير متطابقة",
+
+    "login_button": "تسجيل الدخول",
+    "or":"أو",
+    "biometric_login": "تسجيل الدخول باستخدام البصمة",
+    "biometric_auth_prompt": "يرجى التحقق لتسجيل الدخول",
+    "new_customer_prompt": "عميل جديد؟ ",
+    "digital_account_invite": "افتح حسابك الرقمي الآن",
+    "existing_account_question": "هل لديك حساب معنا ولكنك غير مسجل في التطبيق؟ ",
+    "signup_invitation": "سجل هنا",
+    "forgot_password_title": "هل نسيت كلمة المرور؟",
+    "forgot_password": "نسيت كلمة المرور؟",
+    "phone_label": "رقم الهاتف",
+    "phone_placeholder": "الرجاءإدخال رقم الهاتف",
+    "enter_otp": "أدخل رمز OTP للمتابعة",
+    "confirm": "تأكيد",
+    "cancel": "إلغاء",
+    "change_your_password": "تغيير كلمة المرور"
+
 
 }
