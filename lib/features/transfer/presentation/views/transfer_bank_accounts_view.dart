@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../core/app/depndency_injection.dart';
 import '../../../../core/bases/enums/type_transfer.dart';
 import '../../../../core/cache/app_preferences.dart';
+import '../../../../core/constants/assets_manager.dart';
 import '../../../../core/constants/values_manager.dart';
 import '../../../../core/routers/routes_manager.dart';
 import '../../../../core/themes/color_manager.dart';
@@ -13,6 +15,9 @@ import '../../../../core/widgets/toast_widget.dart';
 import '../../../accounts/presentation/blocs/my_accounts_bloc/my_accounts_bloc.dart';
 import '../../../accounts/presentation/widgets/drop_down_account_widget.dart';
 import '../../../auth/presentation/blocs/auth_bloc/auth_bloc.dart';
+import '../../../beneficiary/presentation/blocs/bloc/beneficiary_bloc.dart';
+import '../../../beneficiary/presentation/views/beneficiary_view.dart';
+import '../../../beneficiary/presentation/widgets/select_beneficiary_widget.dart';
 import '../../../splash/presentation/blocs/app_bloc/app_bloc.dart';
 import '../../domain/models/inputs_models/input_transfer_model.dart';
 import '../blocs/input_transfer_cubit/input_transfer_cubit.dart';
@@ -31,7 +36,6 @@ class _TransferBankAccountsViewState extends State<TransferBankAccountsView> {
   late TransferBloc transferBloc;
   late InputTransferCubit inputTransferCubit;
 
-  final toAccountNoController = TextEditingController();
   final amountController = TextEditingController();
   final noteController = TextEditingController();
 
@@ -149,23 +153,59 @@ class _TransferBankAccountsViewState extends State<TransferBankAccountsView> {
                                               },
                                             ),
                                             SizedBox(height: AppSizeH.s24),
-                                            // DropDownAccountWidget(
-                                            //   items:
-                                            //       inputTransferCubit.toAccounts,
-                                            //   label: "Recipient account",
-                                            //   onChanged: (account) {
-                                            //     inputTransferCubit
-                                            //         .setToAccount(account);
-                                            //   },
-                                            //   validator: (value) {
-                                            //     if (value == null) {
-                                            //       return "Please select the recipient account";
-                                            //     }
-                                            //     return null;
-                                            //   },
-                                            // ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                SizedBox(
+                                                  height: AppSizeH.s25,
+                                                  child: ElevatedButton(
+                                                    onPressed: () {
+                                                      showMyBottomSheet(
+                                                        context,
+                                                        MultiBlocProvider(
+                                                          providers: [
+                                                            BlocProvider(
+                                                              create: (context) => instance<
+                                                                  BeneficiaryBloc>()
+                                                                ..add(const BeneficiaryEvent
+                                                                    .getBeneficiaries()),
+                                                            ),
+                                                            BlocProvider.value(
+                                                                value:
+                                                                    inputTransferCubit)
+                                                          ],
+                                                          child: SizedBox(
+                                                              height: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .height *
+                                                                  0.7,
+                                                              child:
+                                                                  const SelectBeneficiaryWidget()),
+                                                        ),
+                                                      );
+                                                      // context.pushNamed(
+                                                      //     RoutesNames
+                                                      //         .beneficiaryRoute);
+                                                    },
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        Icon(Icons.star,
+                                                            size: AppSizeW.s16),
+                                                        const Text("Favorite")
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(height: AppSizeH.s6),
                                             TextFormField(
-                                              controller: toAccountNoController,
+                                              controller: inputTransferCubit
+                                                  .toAccountNoController,
                                               keyboardType:
                                                   TextInputType.number,
                                               style: Theme.of(context)
@@ -184,7 +224,6 @@ class _TransferBankAccountsViewState extends State<TransferBankAccountsView> {
                                                   hintText:
                                                       "Recipient account"),
                                             ),
-
                                             SizedBox(height: AppSizeH.s24),
                                             TextFormField(
                                               controller: amountController,
@@ -251,13 +290,13 @@ class _TransferBankAccountsViewState extends State<TransferBankAccountsView> {
                                                             TransferEvent
                                                                 .storeInternalTransferMyAccounts(
                                                               input: InputTransferModel(
-                                                                  fromAccount:
-                                                                      inputTransferCubit
-                                                                              .fromAccount
-                                                                              ?.accountNumber ??
-                                                                          "",
+                                                                  fromAccount: inputTransferCubit
+                                                                          .fromAccount
+                                                                          ?.accountNumber ??
+                                                                      "",
                                                                   toAccount:
-                                                                      toAccountNoController
+                                                                      inputTransferCubit
+                                                                          .toAccountNoController
                                                                           .text,
                                                                   amount: int.parse(
                                                                       amountController

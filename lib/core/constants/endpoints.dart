@@ -1,6 +1,7 @@
 class Endpoints {
   static const API = '/api';
   static const TRANSFER_API = '/transfer/api';
+  static const BENEFICIARY_API = '/beneficiary_contacts/api';
 
   //Auth
   static const LOGIN = '/login';
@@ -29,7 +30,14 @@ class Endpoints {
   static const CONFIRM_LOCAL_TRANSFER = '/local_transfer/confirm';
   static const STORE_INTERNAL_TRANSFER = '/internal_transfer';
   static const CONFIRM_INTERNAL_TRANSFER = '/internal_transfer/confirm';
-  static const STORE_SYGS_TRANSFER = '/sygs_transfer';
+  static const SYGS_TRANSFER = '/sygs_transfer';
+  static const GET_BANKS = '/banks';
+  static const REASONS = '/reasons';
+
+  //Beneficiary
+  static const BENEFICIARY = '/contacts';
+  static const BENEFICIARY_BY_ID = '/contacts/{id}';
+  static const RELATIONSHIPS = '/relationships';
 }
 
 class AuthEndpoints {

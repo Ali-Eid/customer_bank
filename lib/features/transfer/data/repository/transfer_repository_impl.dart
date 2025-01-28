@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:fs_bank/core/bases/models/failure_model/failure_model.dart';
 import 'package:fs_bank/core/bases/models/response_model/response_model.dart';
+import 'package:fs_bank/core/bases/models/static_model/static_model.dart';
 import 'package:fs_bank/features/transfer/data/datasource/transfer_api.dart';
 import 'package:fs_bank/features/transfer/domain/models/inputs_models/input_transfer_model.dart';
+import 'package:fs_bank/features/transfer/domain/models/transfer_sygs_model/input_transfer_sygs_model.dart';
 import 'package:fs_bank/features/transfer/domain/models/transfere_model/transfere_model.dart';
 import 'package:fs_bank/features/transfer/domain/repository/transfer_repository.dart';
 import 'package:multiple_result/src/result.dart';
@@ -88,6 +90,63 @@ class TransferRepositoryImpl implements TransferRepository {
       try {
         final response =
             await transferServiceClient.storeLocalTransfer(input: input);
+        if (response.response.statusCode == 200) {
+          return Success(response.data);
+        } else {
+          return Error(FailureModel.fromJson(response.response.data));
+        }
+      } on DioException catch (e) {
+        return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
+      }
+    } else {
+      return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
+    }
+  }
+
+  @override
+  Future<Result<ResponseModel, FailureModel>> transferSYGS(
+      {required InputTransferSygsModel input}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await transferServiceClient.transferSYGS(input: input);
+        if (response.response.statusCode == 200) {
+          return Success(response.data);
+        } else {
+          return Error(FailureModel.fromJson(response.response.data));
+        }
+      } on DioException catch (e) {
+        return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
+      }
+    } else {
+      return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
+    }
+  }
+
+  @override
+  Future<Result<ResponseModel<List<StaticModel>>, FailureModel>>
+      getBanks() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await transferServiceClient.getBanks();
+        if (response.response.statusCode == 200) {
+          return Success(response.data);
+        } else {
+          return Error(FailureModel.fromJson(response.response.data));
+        }
+      } on DioException catch (e) {
+        return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
+      }
+    } else {
+      return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
+    }
+  }
+
+  @override
+  Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>
+      getTransferSYGSReason() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await transferServiceClient.getTransferSYGSReason();
         if (response.response.statusCode == 200) {
           return Success(response.data);
         } else {

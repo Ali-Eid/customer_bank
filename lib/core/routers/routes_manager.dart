@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fs_bank/features/accounts/presentation/views/account_view.dart';
 import 'package:fs_bank/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:fs_bank/features/auth/presentation/views/login_view.dart';
+import 'package:fs_bank/features/beneficiary/presentation/blocs/bloc/beneficiary_bloc.dart';
+import 'package:fs_bank/features/beneficiary/presentation/views/beneficiary_view.dart';
 import 'package:fs_bank/features/cards/presentation/views/mycards_view.dart';
 import 'package:fs_bank/features/home/presentation/views/home_view.dart';
 import 'package:fs_bank/features/transfer/presentation/views/transfer_bank_accounts_view.dart';
 import 'package:fs_bank/features/transfer/presentation/views/transfer_my_accounts_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/views/new_password_view.dart';
+import '../../features/beneficiary/presentation/views/create_beneficiary_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
+import '../../features/transfer/presentation/views/transfer_sygs_view.dart';
 import '../../features/transfer/presentation/views/transfer_view.dart';
+import '../app/depndency_injection.dart';
 
 class RoutesNames {
   static const String splashRoute = '/';
@@ -22,6 +28,9 @@ class RoutesNames {
   static const String myCardsRoute = 'my-cards';
   static const String transferMyAccountsRoute = 'transfer-my-accounts';
   static const String transferInternalRoute = 'transfer-internal';
+  static const String transferSygsRoute = 'transfer-sygs';
+  static const String beneficiaryRoute = 'beneficiary';
+  static const String createBeneficiaryRoute = 'create-beneficiary';
   static const String transferRoute = 'transfer';
 }
 
@@ -37,6 +46,10 @@ class RoutesPaths {
   static const String myCardsRoute = 'my-cards';
   static const String transferMyAccountsRoute = 'transfer-my-accounts';
   static const String transferInternalRoute = 'transfer-internal';
+  static const String transferSygsRoute = 'transfer-sygs';
+
+  static const String beneficiaryRoute = 'beneficiary';
+  static const String createBeneficiaryRoute = 'create-beneficiary';
 
   static const String transferRoute = 'transfer';
 }
@@ -119,8 +132,29 @@ class AppRouter {
                       path: RoutesPaths.transferInternalRoute,
                       builder: (context, state) =>
                           const TransferBankAccountsView(),
+                    ),
+                    GoRoute(
+                      name: RoutesNames.transferSygsRoute,
+                      path: RoutesPaths.transferSygsRoute,
+                      builder: (context, state) => const TransferSygsView(),
                     )
-                  ])
+                  ]),
+              GoRoute(
+                  name: RoutesNames.beneficiaryRoute,
+                  path: RoutesPaths.beneficiaryRoute,
+                  builder: (context, state) => BlocProvider(
+                        create: (context) => instance<BeneficiaryBloc>()
+                          ..add(const BeneficiaryEvent.getBeneficiaries()),
+                        child: const BeneficiaryView(),
+                      ),
+                  routes: [
+                    GoRoute(
+                      name: RoutesNames.createBeneficiaryRoute,
+                      path: RoutesPaths.createBeneficiaryRoute,
+                      builder: (context, state) =>
+                          const CreateBeneficiaryView(),
+                    ),
+                  ]),
             ]),
         // ShellRoute(
         //   navigatorKey: NavigationKeys.shellNavigatorKey,

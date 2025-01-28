@@ -45,7 +45,9 @@ class _TransferViewState extends State<TransferView> {
             title: "Transfer to Another Bank (SYGS )",
             subTitle: "Transfer Money to an Account in Another Bank",
             image: ImageAssets.bank,
-            onTap: () {},
+            onTap: () {
+              context.goNamed(RoutesNames.transferSygsRoute);
+            },
           ),
         ],
       ),

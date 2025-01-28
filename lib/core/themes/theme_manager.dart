@@ -14,6 +14,9 @@ ThemeData lightTheme() {
     colorSchemeSeed: ColorManager.primary,
     scaffoldBackgroundColor: ColorManager.background,
     useMaterial3: true,
+    cardTheme: CardThemeData(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSizeR.s6))),
     appBarTheme: AppBarTheme(
         scrolledUnderElevation: 0,
         elevation: 0,
