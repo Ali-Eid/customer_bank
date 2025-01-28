@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -37,7 +38,18 @@ class DioFactory {
       receiveTimeout: timeOut,
       headers: headers,
     );
+    final options = CacheOptions(
+      store: MemCacheStore(),
+      policy: CachePolicy.request,
+      hitCacheOnErrorExcept: const [401, 403],
+      maxStale: const Duration(days: 7),
+      priority: CachePriority.high,
+      cipher: null,
+      keyBuilder: CacheOptions.defaultCacheKeyBuilder,
+      allowPostMethod: false,
+    );
     dio.interceptors.add(instance<GeneralInterceptor>());
+    dio.interceptors.add(DioCacheInterceptor(options: options));
     if (kReleaseMode) {
       if (kDebugMode) {
         print('release mode no logs');
