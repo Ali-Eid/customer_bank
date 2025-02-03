@@ -72,6 +72,9 @@ class _$TypesEventCopyWithImpl<$Res, $Val extends TypesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TypesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -88,6 +91,9 @@ class __$$GetCardTypesImplCopyWithImpl<$Res>
   __$$GetCardTypesImplCopyWithImpl(
       _$GetCardTypesImpl _value, $Res Function(_$GetCardTypesImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TypesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -190,6 +196,9 @@ class __$$GetBeneficiaryTypeImplCopyWithImpl<$Res>
   __$$GetBeneficiaryTypeImplCopyWithImpl(_$GetBeneficiaryTypeImpl _value,
       $Res Function(_$GetBeneficiaryTypeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TypesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -280,49 +289,79 @@ abstract class _GetBeneficiaryType implements TypesEvent {
 
 /// @nodoc
 mixin _$TypesState {
+  bool get isLoadingCardTypes => throw _privateConstructorUsedError;
+  bool get isLoadingBeneficiaryType => throw _privateConstructorUsedError;
+  bool get hasErrorCardTypes => throw _privateConstructorUsedError;
+  bool get hasErrorBeneficiaryType => throw _privateConstructorUsedError;
+  String get messageErrorCardTypes => throw _privateConstructorUsedError;
+  String get messageErrorBeneficiaryType => throw _privateConstructorUsedError;
+  List<StaticTextModel> get cardTypes => throw _privateConstructorUsedError;
+  List<StaticTextModel> get beneficiaryType =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<StaticTextModel> types) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            bool isLoadingCardTypes,
+            bool isLoadingBeneficiaryType,
+            bool hasErrorCardTypes,
+            bool hasErrorBeneficiaryType,
+            String messageErrorCardTypes,
+            String messageErrorBeneficiaryType,
+            List<StaticTextModel> cardTypes,
+            List<StaticTextModel> beneficiaryType)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<StaticTextModel> types)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(
+            bool isLoadingCardTypes,
+            bool isLoadingBeneficiaryType,
+            bool hasErrorCardTypes,
+            bool hasErrorBeneficiaryType,
+            String messageErrorCardTypes,
+            String messageErrorBeneficiaryType,
+            List<StaticTextModel> cardTypes,
+            List<StaticTextModel> beneficiaryType)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<StaticTextModel> types)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(
+            bool isLoadingCardTypes,
+            bool isLoadingBeneficiaryType,
+            bool hasErrorCardTypes,
+            bool hasErrorBeneficiaryType,
+            String messageErrorCardTypes,
+            String messageErrorBeneficiaryType,
+            List<StaticTextModel> cardTypes,
+            List<StaticTextModel> beneficiaryType)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
-    required TResult Function(_loaded value) loaded,
-    required TResult Function(_error value) error,
+    required TResult Function(_Initial value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_loaded value)? loaded,
-    TResult? Function(_error value)? error,
+    TResult? Function(_Initial value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_loaded value)? loaded,
-    TResult Function(_error value)? error,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  /// Create a copy of TypesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TypesStateCopyWith<TypesState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -331,6 +370,16 @@ abstract class $TypesStateCopyWith<$Res> {
   factory $TypesStateCopyWith(
           TypesState value, $Res Function(TypesState) then) =
       _$TypesStateCopyWithImpl<$Res, TypesState>;
+  @useResult
+  $Res call(
+      {bool isLoadingCardTypes,
+      bool isLoadingBeneficiaryType,
+      bool hasErrorCardTypes,
+      bool hasErrorBeneficiaryType,
+      String messageErrorCardTypes,
+      String messageErrorBeneficiaryType,
+      List<StaticTextModel> cardTypes,
+      List<StaticTextModel> beneficiaryType});
 }
 
 /// @nodoc
@@ -342,142 +391,131 @@ class _$TypesStateCopyWithImpl<$Res, $Val extends TypesState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
 
-/// @nodoc
-abstract class _$$loadingImplCopyWith<$Res> {
-  factory _$$loadingImplCopyWith(
-          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
-      __$$loadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$loadingImplCopyWithImpl<$Res>
-    extends _$TypesStateCopyWithImpl<$Res, _$loadingImpl>
-    implements _$$loadingImplCopyWith<$Res> {
-  __$$loadingImplCopyWithImpl(
-      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$loadingImpl implements _loading {
-  const _$loadingImpl();
-
-  @override
-  String toString() {
-    return 'TypesState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$loadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<StaticTextModel> types) loaded,
-    required TResult Function(String message) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<StaticTextModel> types)? loaded,
-    TResult? Function(String message)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<StaticTextModel> types)? loaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
-    required TResult Function(_loaded value) loaded,
-    required TResult Function(_error value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_loaded value)? loaded,
-    TResult? Function(_error value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_loaded value)? loaded,
-    TResult Function(_error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _loading implements TypesState {
-  const factory _loading() = _$loadingImpl;
-}
-
-/// @nodoc
-abstract class _$$loadedImplCopyWith<$Res> {
-  factory _$$loadedImplCopyWith(
-          _$loadedImpl value, $Res Function(_$loadedImpl) then) =
-      __$$loadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<StaticTextModel> types});
-}
-
-/// @nodoc
-class __$$loadedImplCopyWithImpl<$Res>
-    extends _$TypesStateCopyWithImpl<$Res, _$loadedImpl>
-    implements _$$loadedImplCopyWith<$Res> {
-  __$$loadedImplCopyWithImpl(
-      _$loadedImpl _value, $Res Function(_$loadedImpl) _then)
-      : super(_value, _then);
-
+  /// Create a copy of TypesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? types = null,
+    Object? isLoadingCardTypes = null,
+    Object? isLoadingBeneficiaryType = null,
+    Object? hasErrorCardTypes = null,
+    Object? hasErrorBeneficiaryType = null,
+    Object? messageErrorCardTypes = null,
+    Object? messageErrorBeneficiaryType = null,
+    Object? cardTypes = null,
+    Object? beneficiaryType = null,
   }) {
-    return _then(_$loadedImpl(
-      types: null == types
-          ? _value._types
-          : types // ignore: cast_nullable_to_non_nullable
+    return _then(_value.copyWith(
+      isLoadingCardTypes: null == isLoadingCardTypes
+          ? _value.isLoadingCardTypes
+          : isLoadingCardTypes // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingBeneficiaryType: null == isLoadingBeneficiaryType
+          ? _value.isLoadingBeneficiaryType
+          : isLoadingBeneficiaryType // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasErrorCardTypes: null == hasErrorCardTypes
+          ? _value.hasErrorCardTypes
+          : hasErrorCardTypes // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasErrorBeneficiaryType: null == hasErrorBeneficiaryType
+          ? _value.hasErrorBeneficiaryType
+          : hasErrorBeneficiaryType // ignore: cast_nullable_to_non_nullable
+              as bool,
+      messageErrorCardTypes: null == messageErrorCardTypes
+          ? _value.messageErrorCardTypes
+          : messageErrorCardTypes // ignore: cast_nullable_to_non_nullable
+              as String,
+      messageErrorBeneficiaryType: null == messageErrorBeneficiaryType
+          ? _value.messageErrorBeneficiaryType
+          : messageErrorBeneficiaryType // ignore: cast_nullable_to_non_nullable
+              as String,
+      cardTypes: null == cardTypes
+          ? _value.cardTypes
+          : cardTypes // ignore: cast_nullable_to_non_nullable
+              as List<StaticTextModel>,
+      beneficiaryType: null == beneficiaryType
+          ? _value.beneficiaryType
+          : beneficiaryType // ignore: cast_nullable_to_non_nullable
+              as List<StaticTextModel>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $TypesStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isLoadingCardTypes,
+      bool isLoadingBeneficiaryType,
+      bool hasErrorCardTypes,
+      bool hasErrorBeneficiaryType,
+      String messageErrorCardTypes,
+      String messageErrorBeneficiaryType,
+      List<StaticTextModel> cardTypes,
+      List<StaticTextModel> beneficiaryType});
+}
+
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$TypesStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TypesState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoadingCardTypes = null,
+    Object? isLoadingBeneficiaryType = null,
+    Object? hasErrorCardTypes = null,
+    Object? hasErrorBeneficiaryType = null,
+    Object? messageErrorCardTypes = null,
+    Object? messageErrorBeneficiaryType = null,
+    Object? cardTypes = null,
+    Object? beneficiaryType = null,
+  }) {
+    return _then(_$InitialImpl(
+      isLoadingCardTypes: null == isLoadingCardTypes
+          ? _value.isLoadingCardTypes
+          : isLoadingCardTypes // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingBeneficiaryType: null == isLoadingBeneficiaryType
+          ? _value.isLoadingBeneficiaryType
+          : isLoadingBeneficiaryType // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasErrorCardTypes: null == hasErrorCardTypes
+          ? _value.hasErrorCardTypes
+          : hasErrorCardTypes // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasErrorBeneficiaryType: null == hasErrorBeneficiaryType
+          ? _value.hasErrorBeneficiaryType
+          : hasErrorBeneficiaryType // ignore: cast_nullable_to_non_nullable
+              as bool,
+      messageErrorCardTypes: null == messageErrorCardTypes
+          ? _value.messageErrorCardTypes
+          : messageErrorCardTypes // ignore: cast_nullable_to_non_nullable
+              as String,
+      messageErrorBeneficiaryType: null == messageErrorBeneficiaryType
+          ? _value.messageErrorBeneficiaryType
+          : messageErrorBeneficiaryType // ignore: cast_nullable_to_non_nullable
+              as String,
+      cardTypes: null == cardTypes
+          ? _value._cardTypes
+          : cardTypes // ignore: cast_nullable_to_non_nullable
+              as List<StaticTextModel>,
+      beneficiaryType: null == beneficiaryType
+          ? _value._beneficiaryType
+          : beneficiaryType // ignore: cast_nullable_to_non_nullable
               as List<StaticTextModel>,
     ));
   }
@@ -485,71 +523,182 @@ class __$$loadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$loadedImpl implements _loaded {
-  const _$loadedImpl({required final List<StaticTextModel> types})
-      : _types = types;
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(
+      {this.isLoadingCardTypes = false,
+      this.isLoadingBeneficiaryType = false,
+      this.hasErrorCardTypes = false,
+      this.hasErrorBeneficiaryType = false,
+      this.messageErrorCardTypes = "",
+      this.messageErrorBeneficiaryType = "",
+      final List<StaticTextModel> cardTypes = const [],
+      final List<StaticTextModel> beneficiaryType = const []})
+      : _cardTypes = cardTypes,
+        _beneficiaryType = beneficiaryType;
 
-  final List<StaticTextModel> _types;
   @override
-  List<StaticTextModel> get types {
-    if (_types is EqualUnmodifiableListView) return _types;
+  @JsonKey()
+  final bool isLoadingCardTypes;
+  @override
+  @JsonKey()
+  final bool isLoadingBeneficiaryType;
+  @override
+  @JsonKey()
+  final bool hasErrorCardTypes;
+  @override
+  @JsonKey()
+  final bool hasErrorBeneficiaryType;
+  @override
+  @JsonKey()
+  final String messageErrorCardTypes;
+  @override
+  @JsonKey()
+  final String messageErrorBeneficiaryType;
+  final List<StaticTextModel> _cardTypes;
+  @override
+  @JsonKey()
+  List<StaticTextModel> get cardTypes {
+    if (_cardTypes is EqualUnmodifiableListView) return _cardTypes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_types);
+    return EqualUnmodifiableListView(_cardTypes);
+  }
+
+  final List<StaticTextModel> _beneficiaryType;
+  @override
+  @JsonKey()
+  List<StaticTextModel> get beneficiaryType {
+    if (_beneficiaryType is EqualUnmodifiableListView) return _beneficiaryType;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_beneficiaryType);
   }
 
   @override
   String toString() {
-    return 'TypesState.loaded(types: $types)';
+    return 'TypesState.initial(isLoadingCardTypes: $isLoadingCardTypes, isLoadingBeneficiaryType: $isLoadingBeneficiaryType, hasErrorCardTypes: $hasErrorCardTypes, hasErrorBeneficiaryType: $hasErrorBeneficiaryType, messageErrorCardTypes: $messageErrorCardTypes, messageErrorBeneficiaryType: $messageErrorBeneficiaryType, cardTypes: $cardTypes, beneficiaryType: $beneficiaryType)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$loadedImpl &&
-            const DeepCollectionEquality().equals(other._types, _types));
+            other is _$InitialImpl &&
+            (identical(other.isLoadingCardTypes, isLoadingCardTypes) ||
+                other.isLoadingCardTypes == isLoadingCardTypes) &&
+            (identical(
+                    other.isLoadingBeneficiaryType, isLoadingBeneficiaryType) ||
+                other.isLoadingBeneficiaryType == isLoadingBeneficiaryType) &&
+            (identical(other.hasErrorCardTypes, hasErrorCardTypes) ||
+                other.hasErrorCardTypes == hasErrorCardTypes) &&
+            (identical(
+                    other.hasErrorBeneficiaryType, hasErrorBeneficiaryType) ||
+                other.hasErrorBeneficiaryType == hasErrorBeneficiaryType) &&
+            (identical(other.messageErrorCardTypes, messageErrorCardTypes) ||
+                other.messageErrorCardTypes == messageErrorCardTypes) &&
+            (identical(other.messageErrorBeneficiaryType,
+                    messageErrorBeneficiaryType) ||
+                other.messageErrorBeneficiaryType ==
+                    messageErrorBeneficiaryType) &&
+            const DeepCollectionEquality()
+                .equals(other._cardTypes, _cardTypes) &&
+            const DeepCollectionEquality()
+                .equals(other._beneficiaryType, _beneficiaryType));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_types));
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoadingCardTypes,
+      isLoadingBeneficiaryType,
+      hasErrorCardTypes,
+      hasErrorBeneficiaryType,
+      messageErrorCardTypes,
+      messageErrorBeneficiaryType,
+      const DeepCollectionEquality().hash(_cardTypes),
+      const DeepCollectionEquality().hash(_beneficiaryType));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TypesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$loadedImplCopyWith<_$loadedImpl> get copyWith =>
-      __$$loadedImplCopyWithImpl<_$loadedImpl>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<StaticTextModel> types) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            bool isLoadingCardTypes,
+            bool isLoadingBeneficiaryType,
+            bool hasErrorCardTypes,
+            bool hasErrorBeneficiaryType,
+            String messageErrorCardTypes,
+            String messageErrorBeneficiaryType,
+            List<StaticTextModel> cardTypes,
+            List<StaticTextModel> beneficiaryType)
+        initial,
   }) {
-    return loaded(types);
+    return initial(
+        isLoadingCardTypes,
+        isLoadingBeneficiaryType,
+        hasErrorCardTypes,
+        hasErrorBeneficiaryType,
+        messageErrorCardTypes,
+        messageErrorBeneficiaryType,
+        cardTypes,
+        beneficiaryType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<StaticTextModel> types)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(
+            bool isLoadingCardTypes,
+            bool isLoadingBeneficiaryType,
+            bool hasErrorCardTypes,
+            bool hasErrorBeneficiaryType,
+            String messageErrorCardTypes,
+            String messageErrorBeneficiaryType,
+            List<StaticTextModel> cardTypes,
+            List<StaticTextModel> beneficiaryType)?
+        initial,
   }) {
-    return loaded?.call(types);
+    return initial?.call(
+        isLoadingCardTypes,
+        isLoadingBeneficiaryType,
+        hasErrorCardTypes,
+        hasErrorBeneficiaryType,
+        messageErrorCardTypes,
+        messageErrorBeneficiaryType,
+        cardTypes,
+        beneficiaryType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<StaticTextModel> types)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(
+            bool isLoadingCardTypes,
+            bool isLoadingBeneficiaryType,
+            bool hasErrorCardTypes,
+            bool hasErrorBeneficiaryType,
+            String messageErrorCardTypes,
+            String messageErrorBeneficiaryType,
+            List<StaticTextModel> cardTypes,
+            List<StaticTextModel> beneficiaryType)?
+        initial,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(types);
+    if (initial != null) {
+      return initial(
+          isLoadingCardTypes,
+          isLoadingBeneficiaryType,
+          hasErrorCardTypes,
+          hasErrorBeneficiaryType,
+          messageErrorCardTypes,
+          messageErrorBeneficiaryType,
+          cardTypes,
+          beneficiaryType);
     }
     return orElse();
   }
@@ -557,183 +706,64 @@ class _$loadedImpl implements _loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
-    required TResult Function(_loaded value) loaded,
-    required TResult Function(_error value) error,
+    required TResult Function(_Initial value) initial,
   }) {
-    return loaded(this);
+    return initial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_loaded value)? loaded,
-    TResult? Function(_error value)? error,
+    TResult? Function(_Initial value)? initial,
   }) {
-    return loaded?.call(this);
+    return initial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_loaded value)? loaded,
-    TResult Function(_error value)? error,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(this);
+    if (initial != null) {
+      return initial(this);
     }
     return orElse();
   }
 }
 
-abstract class _loaded implements TypesState {
-  const factory _loaded({required final List<StaticTextModel> types}) =
-      _$loadedImpl;
-
-  List<StaticTextModel> get types;
-  @JsonKey(ignore: true)
-  _$$loadedImplCopyWith<_$loadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$errorImplCopyWith<$Res> {
-  factory _$$errorImplCopyWith(
-          _$errorImpl value, $Res Function(_$errorImpl) then) =
-      __$$errorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$errorImplCopyWithImpl<$Res>
-    extends _$TypesStateCopyWithImpl<$Res, _$errorImpl>
-    implements _$$errorImplCopyWith<$Res> {
-  __$$errorImplCopyWithImpl(
-      _$errorImpl _value, $Res Function(_$errorImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$errorImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$errorImpl implements _error {
-  const _$errorImpl({required this.message});
+abstract class _Initial implements TypesState {
+  const factory _Initial(
+      {final bool isLoadingCardTypes,
+      final bool isLoadingBeneficiaryType,
+      final bool hasErrorCardTypes,
+      final bool hasErrorBeneficiaryType,
+      final String messageErrorCardTypes,
+      final String messageErrorBeneficiaryType,
+      final List<StaticTextModel> cardTypes,
+      final List<StaticTextModel> beneficiaryType}) = _$InitialImpl;
 
   @override
-  final String message;
-
+  bool get isLoadingCardTypes;
   @override
-  String toString() {
-    return 'TypesState.error(message: $message)';
-  }
-
+  bool get isLoadingBeneficiaryType;
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$errorImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
+  bool get hasErrorCardTypes;
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @JsonKey(ignore: true)
+  bool get hasErrorBeneficiaryType;
   @override
-  @pragma('vm:prefer-inline')
-  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
-      __$$errorImplCopyWithImpl<_$errorImpl>(this, _$identity);
-
+  String get messageErrorCardTypes;
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<StaticTextModel> types) loaded,
-    required TResult Function(String message) error,
-  }) {
-    return error(message);
-  }
-
+  String get messageErrorBeneficiaryType;
   @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<StaticTextModel> types)? loaded,
-    TResult? Function(String message)? error,
-  }) {
-    return error?.call(message);
-  }
-
+  List<StaticTextModel> get cardTypes;
   @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<StaticTextModel> types)? loaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message);
-    }
-    return orElse();
-  }
+  List<StaticTextModel> get beneficiaryType;
 
+  /// Create a copy of TypesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
-    required TResult Function(_loaded value) loaded,
-    required TResult Function(_error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
-    TResult? Function(_loaded value)? loaded,
-    TResult? Function(_error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_loaded value)? loaded,
-    TResult Function(_error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _error implements TypesState {
-  const factory _error({required final String message}) = _$errorImpl;
-
-  String get message;
-  @JsonKey(ignore: true)
-  _$$errorImplCopyWith<_$errorImpl> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

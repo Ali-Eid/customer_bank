@@ -23,8 +23,12 @@ mixin _$StaticModel {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
+  /// Serializes this StaticModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StaticModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StaticModelCopyWith<StaticModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$StaticModelCopyWithImpl<$Res, $Val extends StaticModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StaticModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$StaticModelImplCopyWithImpl<$Res>
       _$StaticModelImpl _value, $Res Function(_$StaticModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StaticModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,11 +142,13 @@ class _$StaticModelImpl implements _StaticModel {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StaticModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StaticModelImplCopyWith<_$StaticModelImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _StaticModel implements StaticModel {
   int get id;
   @override
   String get name;
+
+  /// Create a copy of StaticModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StaticModelImplCopyWith<_$StaticModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -178,8 +191,12 @@ mixin _$StaticTextModel {
   int get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
 
+  /// Serializes this StaticTextModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StaticTextModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StaticTextModelCopyWith<StaticTextModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -203,6 +220,8 @@ class _$StaticTextModelCopyWithImpl<$Res, $Val extends StaticTextModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StaticTextModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -241,6 +260,8 @@ class __$$StaticTextModelImplCopyWithImpl<$Res>
       _$StaticTextModelImpl _value, $Res Function(_$StaticTextModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StaticTextModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -289,11 +310,13 @@ class _$StaticTextModelImpl implements _StaticTextModel {
             (identical(other.text, text) || other.text == text));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, text);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StaticTextModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StaticTextModelImplCopyWith<_$StaticTextModelImpl> get copyWith =>
@@ -319,8 +342,11 @@ abstract class _StaticTextModel implements StaticTextModel {
   int get id;
   @override
   String get text;
+
+  /// Create a copy of StaticTextModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StaticTextModelImplCopyWith<_$StaticTextModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -334,8 +360,12 @@ mixin _$KeyValueModel {
   String get key => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
+  /// Serializes this KeyValueModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KeyValueModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KeyValueModelCopyWith<KeyValueModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -359,6 +389,8 @@ class _$KeyValueModelCopyWithImpl<$Res, $Val extends KeyValueModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KeyValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -397,6 +429,8 @@ class __$$KeyValueModelImplCopyWithImpl<$Res>
       _$KeyValueModelImpl _value, $Res Function(_$KeyValueModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KeyValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -445,11 +479,13 @@ class _$KeyValueModelImpl implements _KeyValueModel {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, key, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KeyValueModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KeyValueModelImplCopyWith<_$KeyValueModelImpl> get copyWith =>
@@ -474,8 +510,11 @@ abstract class _KeyValueModel implements KeyValueModel {
   String get key;
   @override
   String get name;
+
+  /// Create a copy of KeyValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KeyValueModelImplCopyWith<_$KeyValueModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

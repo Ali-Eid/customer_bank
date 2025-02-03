@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fs_bank/features/accounts/presentation/blocs/types_bloc/types_bloc.dart';
+import 'package:fs_bank/features/cards/domain/models/card_model/card_model.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../core/app/depndency_injection.dart';
+import '../../../../core/bases/models/static_model/static_model.dart';
 import '../../../../core/cache/app_preferences.dart';
+import '../../../../core/cache/keys_preferences.dart';
+import '../../../../core/constants/string_manager.dart';
 import '../../../../core/constants/values_manager.dart';
 import '../../../../core/themes/color_manager.dart';
+import '../../../../core/widgets/generic_drop_down_widget.dart';
+import '../../../../core/widgets/loading_widget.dart';
 import '../../../../core/widgets/toast_widget.dart';
-import '../../../accounts/presentation/blocs/my_accounts_bloc/my_accounts_bloc.dart';
-import '../../../accounts/presentation/widgets/drop_down_account_widget.dart';
+import '../../../accounts/domain/models/account_model/account_model.dart';
 import '../../../accounts/presentation/widgets/drop_down_static_text_model_widget.dart';
 import '../../domain/models/Inputs/request_card_model/request_card_model.dart';
 import '../blocs/cards_bloc/cards_bloc.dart';
 import '../blocs/request_card_bloc/request_card_bloc.dart';
-import '../blocs/withdrawal_bloc/withdrawal_bloc.dart';
 
 class NewCardWidget extends StatefulWidget {
+  final CardsBloc cardsBloc;
   const NewCardWidget({
     super.key,
+    required this.cardsBloc,
   });
 
   @override
@@ -29,22 +34,15 @@ class _NewCardWidgetState extends State<NewCardWidget> {
   final nameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   late RequestCardBloc requestCardBloc;
-  late TypesBloc cardsTypeBloc;
-  late TypesBloc beneficiaryTypeBloc;
+  late TypesBloc typeBloc;
   int? accountId;
   int? cardTypeId;
   int? beneficiaryTypeId;
   @override
   void initState() {
     requestCardBloc = instance<RequestCardBloc>();
-    context.read<MyAccountsBloc>().add(MyAccountsEvent.getMyAccounts(
-        customerId: instance<AppPreferences>().getUserInfo()?.customerId ?? 0,
-        isLoading: false));
-    context
-        .read<WithdrawalBloc>()
-        .add(const WithdrawalEvent.getWithDrawalValues(isLoading: false));
-    cardsTypeBloc = instance<TypesBloc>()..add(const TypesEvent.getCardTypes());
-    beneficiaryTypeBloc = instance<TypesBloc>()
+    typeBloc = instance<TypesBloc>()
+      ..add(const TypesEvent.getCardTypes())
       ..add(const TypesEvent.getBeneficiaryType());
 
     super.initState();
@@ -53,8 +51,7 @@ class _NewCardWidgetState extends State<NewCardWidget> {
   @override
   void dispose() {
     requestCardBloc.close();
-    cardsTypeBloc.close();
-    beneficiaryTypeBloc.close();
+    typeBloc.close();
     super.dispose();
   }
 
@@ -65,40 +62,35 @@ class _NewCardWidgetState extends State<NewCardWidget> {
       child: BlocListener(
         bloc: requestCardBloc,
         listener: (context, RequestCardState state) {
-          state.mapOrNull(
-            success: (value) {
-              context.read<CardsBloc>().add(const CardsEvent.getMyCards());
-              context.pop();
-              showToast(context: context, message: value.message);
-            },
-            error: (value) {
-              showToast(
-                  context: context,
-                  message: value.message,
-                  color: ColorManager.persimmon);
-            },
-          );
+          if (state.success) {
+            widget.cardsBloc.add(const CardsEvent.getMyCards());
+            context.pop();
+            showToast(context: context, message: state.successMessage);
+          }
+          if (state.hasError) {
+            showToast(
+                context: context,
+                message: state.errorMessage,
+                color: ColorManager.persimmon);
+          }
         },
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            BlocBuilder(
-              bloc: context.read<MyAccountsBloc>(),
-              builder: (context, MyAccountsState state) {
-                return DropDownAccountWidget(
-                  items: context.read<MyAccountsBloc>().accounts,
-                  label: "account",
-                  onChanged: (account) {
-                    accountId = account?.id;
-                  },
-                  validator: (value) {
-                    if (value == null) {
-                      return "please select an account";
-                    }
-                    return null;
-                  },
-                );
+            GenericDropdownField<AccountModel>(
+              items: instance<AppPreferences>().getList<AccountModel>(
+                  KeysPreferences.PREFS_KEY_ACCOUNTS, AccountModel.fromJson),
+              itemToString: (value) => value.accountNumber,
+              onChanged: (account) {
+                accountId = account?.id;
               },
+              validator: (value) {
+                if (value == null) {
+                  return AppStrings().pleaseSelectSenderAccount;
+                }
+                return null;
+              },
+              hintText: AppStrings().senderAccount,
             ),
             SizedBox(height: AppSizeH.s16),
             TextFormField(
@@ -106,26 +98,33 @@ class _NewCardWidgetState extends State<NewCardWidget> {
               style: Theme.of(context).textTheme.headlineLarge,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter beneficiary name';
+                  return AppStrings().pleaseEnterBeneficiaryName;
                 }
                 return null;
               },
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              decoration: const InputDecoration(hintText: "Beneficiary name"),
+              decoration:
+                  InputDecoration(hintText: AppStrings().beneficiaryName),
             ),
             SizedBox(height: AppSizeH.s16),
             BlocBuilder(
-              bloc: cardsTypeBloc,
+              bloc: typeBloc,
               builder: (context, TypesState state) {
-                return DropDownStaticTextModelWidget(
-                  items: cardsTypeBloc.cardsTypes,
-                  label: "Card type",
-                  onChanged: (type) {
-                    cardTypeId = type?.id;
+                return GenericDropdownField<StaticTextModel>(
+                  itemToString: (value) => value.text,
+                  items: (state.isLoadingBeneficiaryType &&
+                          state.cardTypes.isEmpty)
+                      ? []
+                      : state.cardTypes,
+                  isLoading:
+                      state.isLoadingCardTypes && state.cardTypes.isEmpty,
+                  onChanged: (value) {
+                    cardTypeId = value?.id;
                   },
+                  hintText: AppStrings().cardType,
                   validator: (value) {
                     if (value == null) {
-                      return "please select a card type";
+                      return AppStrings().pleaseSelectCardType;
                     }
                     return null;
                   },
@@ -134,17 +133,23 @@ class _NewCardWidgetState extends State<NewCardWidget> {
             ),
             SizedBox(height: AppSizeH.s16),
             BlocBuilder(
-              bloc: beneficiaryTypeBloc,
+              bloc: typeBloc,
               builder: (context, TypesState state) {
-                return DropDownStaticTextModelWidget(
-                  items: beneficiaryTypeBloc.beneficiaryTypes,
-                  label: "Beneficiary type",
-                  onChanged: (type) {
-                    beneficiaryTypeId = type?.id;
+                return GenericDropdownField<StaticTextModel>(
+                  items: (state.isLoadingBeneficiaryType &&
+                          state.beneficiaryType.isEmpty)
+                      ? []
+                      : state.beneficiaryType,
+                  isLoading: state.isLoadingBeneficiaryType &&
+                      state.beneficiaryType.isEmpty,
+                  itemToString: (value) => value.text,
+                  onChanged: (value) {
+                    beneficiaryTypeId = value?.id;
                   },
+                  hintText: AppStrings().beneficiaryType,
                   validator: (value) {
                     if (value == null) {
-                      return "please select a beneficiary type";
+                      return AppStrings().pleaseSelectbeneficiaryType;
                     }
                     return null;
                   },
@@ -152,37 +157,36 @@ class _NewCardWidgetState extends State<NewCardWidget> {
               },
             ),
             SizedBox(height: AppSizeH.s32),
-            Row(
-              children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all(ColorManager.white),
-                      shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppSizeR.s8),
-                          side: BorderSide(color: ColorManager.persimmon)))),
-                  onPressed: () {
-                    context.pop();
-                  },
-                  child: Text(
-                    "Back",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium!
-                        .copyWith(color: ColorManager.persimmon),
-                  ),
-                ),
-                SizedBox(width: AppSizeW.s8),
-                Expanded(
-                    child: BlocBuilder(
-                  bloc: requestCardBloc,
-                  builder: (context, RequestCardState state) {
-                    return state.maybeMap(
-                      loading: (value) {
-                        return const LinearProgressIndicator();
+            BlocBuilder(
+              bloc: requestCardBloc,
+              builder: (context, RequestCardState state) {
+                if (state.isLoading) {
+                  return const LoadingWidget();
+                }
+                return Row(
+                  children: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              WidgetStateProperty.all(ColorManager.white),
+                          shape: WidgetStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(AppSizeR.s8),
+                              side:
+                                  BorderSide(color: ColorManager.persimmon)))),
+                      onPressed: () {
+                        context.pop();
                       },
-                      orElse: () {
-                        return ElevatedButton(
+                      child: Text(
+                        AppStrings().back,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(color: ColorManager.persimmon),
+                      ),
+                    ),
+                    SizedBox(width: AppSizeW.s8),
+                    Expanded(
+                        child: ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 requestCardBloc.add(RequestCardEvent.newCard(
@@ -191,19 +195,14 @@ class _NewCardWidgetState extends State<NewCardWidget> {
                                         beneficiaryName: nameController.text,
                                         type: cardTypeId ?? 0,
                                         beneficiaryType: beneficiaryTypeId ?? 0,
-                                        withdrawalValueId: context
-                                            .read<WithdrawalBloc>()
-                                            .valuesWithDrawal
-                                            .first
-                                            .id)));
+                                        withdrawalValueId: widget.cardsBloc
+                                            .state.withDrawelValues.first.id)));
                               }
                             },
-                            child: const Text("Confirm"));
-                      },
-                    );
-                  },
-                )),
-              ],
+                            child: Text(AppStrings().confirm))),
+                  ],
+                );
+              },
             )
           ],
         ),

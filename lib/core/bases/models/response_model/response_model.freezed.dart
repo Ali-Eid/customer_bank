@@ -24,9 +24,13 @@ mixin _$ResponseModel<T> {
   String get message => throw _privateConstructorUsedError;
   T get data => throw _privateConstructorUsedError;
 
+  /// Serializes this ResponseModel to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ResponseModelCopyWith<T, ResponseModel<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$ResponseModelCopyWithImpl<T, $Res, $Val extends ResponseModel<T>>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +94,8 @@ class __$$ResponseModelImplCopyWithImpl<T, $Res>
       $Res Function(_$ResponseModelImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,12 +144,14 @@ class _$ResponseModelImpl<T> implements _ResponseModel<T> {
             const DeepCollectionEquality().equals(other.data, data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, message, const DeepCollectionEquality().hash(data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResponseModelImplCopyWith<T, _$ResponseModelImpl<T>> get copyWith =>
@@ -166,8 +176,11 @@ abstract class _ResponseModel<T> implements ResponseModel<T> {
   String get message;
   @override
   T get data;
+
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResponseModelImplCopyWith<T, _$ResponseModelImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -184,9 +197,13 @@ mixin _$ResponsePaginationModel<T> {
   T get data => throw _privateConstructorUsedError;
   PaginationModel get meta => throw _privateConstructorUsedError;
 
+  /// Serializes this ResponsePaginationModel to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ResponsePaginationModelCopyWith<T, ResponsePaginationModel<T>>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -214,6 +231,8 @@ class _$ResponsePaginationModelCopyWithImpl<T, $Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -242,6 +261,8 @@ class _$ResponsePaginationModelCopyWithImpl<T, $Res,
     ) as $Val);
   }
 
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaginationModelCopyWith<$Res> get meta {
@@ -276,6 +297,8 @@ class __$$ResponsePaginationModelImplCopyWithImpl<T, $Res>
       $Res Function(_$ResponsePaginationModelImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -346,12 +369,14 @@ class _$ResponsePaginationModelImpl<T> implements _ResponsePaginationModel<T> {
             (identical(other.meta, meta) || other.meta == meta));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, message, code,
       const DeepCollectionEquality().hash(data), meta);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResponsePaginationModelImplCopyWith<T, _$ResponsePaginationModelImpl<T>>
@@ -384,8 +409,11 @@ abstract class _ResponsePaginationModel<T>
   T get data;
   @override
   PaginationModel get meta;
+
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResponsePaginationModelImplCopyWith<T, _$ResponsePaginationModelImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

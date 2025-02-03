@@ -1,11 +1,10 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:fs_bank/features/accounts/data/datasource/account_api.dart';
+import 'package:fs_bank/features/accounts/data/datasource/accounts/account_api.dart';
 import 'package:fs_bank/features/accounts/data/repository/account_repository_impl.dart';
 import 'package:fs_bank/features/accounts/domain/repository/account_repository.dart';
 import 'package:fs_bank/features/accounts/domain/usecases/account_usecases.dart';
-import 'package:fs_bank/features/accounts/presentation/blocs/my_accounts_bloc/my_accounts_bloc.dart';
 import 'package:fs_bank/features/auth/data/datasource/auth_api.dart';
 import 'package:fs_bank/features/auth/data/repository/auth_repository_impl.dart';
 import 'package:fs_bank/features/auth/domain/repository/auth_repository.dart';
@@ -24,6 +23,8 @@ import 'package:fs_bank/features/transfer/presentation/blocs/transfer_bloc/trans
 import 'package:get_it/get_it.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../features/accounts/data/datasource/customer_account_api.dart';
+import '../../features/accounts/presentation/blocs/account_bloc/account_bloc.dart';
 import '../../features/accounts/presentation/blocs/types_bloc/types_bloc.dart';
 import '../../features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
 import '../../features/auth/presentation/blocs/input_forgot_password_cubit/input_forgot_password_cubit.dart';
@@ -111,18 +112,17 @@ Future<void> initCard() async {
   //Blocs
   if (!GetIt.I.isRegistered<CardsBloc>()) {
     instance.registerFactory(
-      () => CardsBloc(getCardUsecase: instance<GetCardUsecase>()),
+      () => CardsBloc(
+          getCardUsecase: instance<GetCardUsecase>(),
+          appPreferences: instance<AppPreferences>(),
+          getWithDrawelValues: instance<GetWithDrawelValues>()),
     );
   }
-  if (!GetIt.I.isRegistered<WithdrawalBloc>()) {
-    instance.registerFactory(
-      () =>
-          WithdrawalBloc(getWithDrawelValues: instance<GetWithDrawelValues>()),
-    );
-  }
+
   if (!GetIt.I.isRegistered<TypesBloc>()) {
     instance.registerFactory(
       () => TypesBloc(
+          appPreferences: instance<AppPreferences>(),
           getBeneficiaryTypes: instance<GetBeneficiaryTypesUsecase>(),
           getCardTypesUsecase: instance<GetCardTypesUsecase>()),
     );
@@ -139,6 +139,10 @@ Future<void> initCard() async {
 }
 
 Future<void> initAccounts() async {
+  if (!GetIt.I.isRegistered<CustomerAccountServiceClient>()) {
+    instance.registerLazySingleton(
+        () => CustomerAccountServiceClient(instance<Dio>()));
+  }
   if (!GetIt.I.isRegistered<AccountServiceClient>()) {
     instance.registerLazySingleton(() => AccountServiceClient(instance<Dio>()));
   }
@@ -146,6 +150,8 @@ Future<void> initAccounts() async {
     instance.registerLazySingleton<AccountRepository>(
       () => AccountRepositoryImpl(
           accountServiceClient: instance<AccountServiceClient>(),
+          customerAccountServiceClient:
+              instance<CustomerAccountServiceClient>(),
           networkInfo: instance<NetworkInfo>()),
     );
   }
@@ -153,11 +159,22 @@ Future<void> initAccounts() async {
     instance.registerLazySingleton(
         () => GetMyAccountsUsecase(repository: instance<AccountRepository>()));
   }
+  if (!GetIt.I.isRegistered<GetAccountStatementsSettingsUsecase>()) {
+    instance.registerLazySingleton(() => GetAccountStatementsSettingsUsecase(
+        repository: instance<AccountRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetAccountStatementsUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetAccountStatementsUsecase(repository: instance<AccountRepository>()));
+  }
 
-  //Bloc
-  if (!GetIt.I.isRegistered<MyAccountsBloc>()) {
-    instance.registerFactory(() =>
-        MyAccountsBloc(getMyAccountsUsecase: instance<GetMyAccountsUsecase>()));
+  if (!GetIt.I.isRegistered<AccountBloc>()) {
+    instance.registerFactory(() => AccountBloc(
+        getAccountStatementsSettingsUsecase:
+            instance<GetAccountStatementsSettingsUsecase>(),
+        getAccountStatementsUsecase: instance<GetAccountStatementsUsecase>(),
+        getMyAccountsUsecase: instance<GetMyAccountsUsecase>(),
+        appPreferences: instance<AppPreferences>()));
   }
 }
 

@@ -31,8 +31,12 @@ mixin _$InputTransferModel {
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
 
+  /// Serializes this InputTransferModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputTransferModelCopyWith<InputTransferModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$InputTransferModelCopyWithImpl<$Res, $Val extends InputTransferModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,6 +125,8 @@ class __$$InputTransferModelImplCopyWithImpl<$Res>
       $Res Function(_$InputTransferModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,12 +210,14 @@ class _$InputTransferModelImpl implements _InputTransferModel {
             (identical(other.note, note) || other.note == note));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, fromAccount, toAccount, amount, currencyCode, note);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputTransferModelImplCopyWith<_$InputTransferModelImpl> get copyWith =>
@@ -248,8 +258,11 @@ abstract class _InputTransferModel implements InputTransferModel {
   @override
   @JsonKey(name: "note")
   String? get note;
+
+  /// Create a copy of InputTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputTransferModelImplCopyWith<_$InputTransferModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

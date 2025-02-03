@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fs_bank/core/widgets/loading_widget.dart';
 import 'package:lottie/lottie.dart';
 
 import '../constants/assets_manager.dart';
@@ -14,6 +15,7 @@ class GenericDropdownField<T> extends StatelessWidget {
   final ValueChanged<T?>? onChanged;
   final String? Function(T)? itemToString;
   final bool isLoading;
+  final double? menuMaxHeight;
 
   const GenericDropdownField({
     super.key,
@@ -26,6 +28,7 @@ class GenericDropdownField<T> extends StatelessWidget {
     this.onChanged,
     required this.itemToString,
     this.isLoading = false,
+    this.menuMaxHeight,
   });
 
   @override
@@ -50,9 +53,7 @@ class GenericDropdownField<T> extends StatelessWidget {
       // ),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       icon: isLoading
-          ? LottieBuilder.asset(
-              JsonAssets.loading_json,
-            )
+          ? const LoadingWidget()
           : Icon(
               Icons.arrow_drop_down,
               color: Theme.of(context).iconTheme.color,
@@ -70,7 +71,7 @@ class GenericDropdownField<T> extends StatelessWidget {
       onChanged: onChanged,
       value: selectedValue,
       validator: validator,
-      alignment: AlignmentDirectional.centerStart,
+      alignment: AlignmentDirectional.centerStart, menuMaxHeight: menuMaxHeight,
     );
   }
 }

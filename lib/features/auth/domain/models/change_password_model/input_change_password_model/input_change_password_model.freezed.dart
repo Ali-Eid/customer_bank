@@ -26,8 +26,12 @@ mixin _$InputChangePasswordModel {
   @JsonKey(name: "phone_number")
   String get phoneNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this InputChangePasswordModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputChangePasswordModelCopyWith<InputChangePasswordModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$InputChangePasswordModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$InputChangePasswordModelImplCopyWithImpl<$Res>
       $Res Function(_$InputChangePasswordModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,11 +157,13 @@ class _$InputChangePasswordModelImpl implements _InputChangePasswordModel {
                 other.phoneNumber == phoneNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, internationalCode, phoneNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputChangePasswordModelImplCopyWith<_$InputChangePasswordModelImpl>
@@ -184,8 +194,11 @@ abstract class _InputChangePasswordModel implements InputChangePasswordModel {
   @override
   @JsonKey(name: "phone_number")
   String get phoneNumber;
+
+  /// Create a copy of InputChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputChangePasswordModelImplCopyWith<_$InputChangePasswordModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -28,8 +28,12 @@ mixin _$InputSetNewPasswordModel {
   @JsonKey(name: "reference_id")
   String get referenceId => throw _privateConstructorUsedError;
 
+  /// Serializes this InputSetNewPasswordModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputSetNewPasswordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputSetNewPasswordModelCopyWith<InputSetNewPasswordModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$InputSetNewPasswordModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputSetNewPasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$InputSetNewPasswordModelImplCopyWithImpl<$Res>
       $Res Function(_$InputSetNewPasswordModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputSetNewPasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,12 +177,14 @@ class _$InputSetNewPasswordModelImpl implements _InputSetNewPasswordModel {
                 other.referenceId == referenceId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, password, confirmPassword, referenceId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputSetNewPasswordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputSetNewPasswordModelImplCopyWith<_$InputSetNewPasswordModelImpl>
@@ -208,8 +218,11 @@ abstract class _InputSetNewPasswordModel implements InputSetNewPasswordModel {
   @override
   @JsonKey(name: "reference_id")
   String get referenceId;
+
+  /// Create a copy of InputSetNewPasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputSetNewPasswordModelImplCopyWith<_$InputSetNewPasswordModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -228,8 +241,12 @@ mixin _$InputSendOtpChangePasswordModel {
   @JsonKey(name: "otp")
   String get otp => throw _privateConstructorUsedError;
 
+  /// Serializes this InputSendOtpChangePasswordModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputSendOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputSendOtpChangePasswordModelCopyWith<InputSendOtpChangePasswordModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -259,6 +276,8 @@ class _$InputSendOtpChangePasswordModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputSendOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -308,6 +327,8 @@ class __$$InputSendOtpChangePasswordModelImplCopyWithImpl<$Res>
       $Res Function(_$InputSendOtpChangePasswordModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputSendOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -372,12 +393,14 @@ class _$InputSendOtpChangePasswordModelImpl
             (identical(other.otp, otp) || other.otp == otp));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, internationalCode, phoneNumber, otp);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputSendOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputSendOtpChangePasswordModelImplCopyWith<
@@ -414,8 +437,11 @@ abstract class _InputSendOtpChangePasswordModel
   @override
   @JsonKey(name: "otp")
   String get otp;
+
+  /// Create a copy of InputSendOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputSendOtpChangePasswordModelImplCopyWith<
           _$InputSendOtpChangePasswordModelImpl>
       get copyWith => throw _privateConstructorUsedError;

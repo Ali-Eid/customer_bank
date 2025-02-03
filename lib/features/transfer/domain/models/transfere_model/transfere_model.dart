@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:fs_bank/features/accounts/domain/models/account_model/account_model.dart';
 
 part 'transfere_model.freezed.dart';
 part 'transfere_model.g.dart';
@@ -10,8 +11,12 @@ abstract class StoreTransferModel with _$StoreTransferModel {
   factory StoreTransferModel({
     @Default(0) int id,
     @Default(0) @JsonKey(name: "customer_id") int customerId,
-    @Default("") @JsonKey(name: "fromAccountNo") String fromAccountNo,
-    @Default("") @JsonKey(name: "toAccountNo") String toAccountNo,
+    @Default(AccountModel())
+    @JsonKey(name: "fromAccount")
+    AccountModel fromAccountNo,
+    @Default(AccountModel())
+    @JsonKey(name: "toAccount")
+    AccountModel toAccountNo,
     @Default(0) @JsonKey(name: "amount") int amount,
     @Default("") @JsonKey(name: "currency_code") String currencyCode,
     @Default("") @JsonKey(name: "note") String note,

@@ -23,9 +23,66 @@
     "phone_label": "Phone number",
     "phone_placeholder": "Please enter your phone number",
     "enter_otp": "Enter your OTP to proceed",
-    "confirm": "Confirm",
     "cancel": "Cancel",
-    "change_your_password": "Change your password"
+    "change_your_password": "Change your password",
+    "sender_account": "Sender Account",
+    "please_select_sender_account": "Please select the sender account",
+     "recipient_account": "Recipient Account",
+  "please_select_recipient_account": "Please select the recipient account",
+  "please_enter_recipient_account": "Please enter the recipient account",
+  "amount": "Amount",
+  "please_enter_amount": "Please enter amount",
+  "currency": "Currency",
+  "note": "Note",
+  "confirm": "Confirm",
+  "from_account_no": "From Account No:",
+  "to_account_no": "To Account No:",
+  "back": "Back",
+  "my_transfers": "My Transfers",
+  "confirm_local": "Confirm Local",
+  "favorite": "Favorite",
+  "select_a_bank": "Select a bank",
+  "please_select_a_bank": "Please select a bank",
+  "select_a_reason": "Select a reason",
+  "please_select_a_reason": "Please select a reason",
+    "transfer_sygs": "Transfer SYGS",
+  "internal_transfer": "Internal Transfer",
+  "my_accounts": "My accounts",
+  "your_balance": "Your Balance",
+  "dont_have_any_cards": "Don't have any cards",
+  "card_holder": "Card Holder",
+  "expired_date": "Expired Date",
+  "status": "Status",
+    "please_select_a_card": "Please select a card",
+  "card": "Card",
+  "edit_card_limit": "Edit card limit",
+  "no_card_active": "No card active",
+  "edit_card_limit_newline": "Edit\ncard limit",
+  "deactivate_card_newline": "Deactivate\ncard",
+  "deactivate_card": "Deactivate card",
+  "new_supplementary_card": "New supplementary card",
+  "my_cards": "My cards",
+  "withdrawal": "Withdrawal",
+  "please_select_a_withdrawal": "please select a withdrawal",
+  "beneficiary_type": "Beneficiary type",
+  "please_select_a_beneficiary_type": "Please select a beneficiary type",
+    "card_type": "Card type",
+  "please_select_a_card_type": "Please select a card type",
+  "beneficiary_name": "Beneficiary name",
+  "please_enter_beneficiary_name": "Please enter beneficiary name",
+  "no_account": "Do not have any accounts",
+  "transactions":"Transactions",
+  "statement_period":"Select Statement Period",
+  "home":"Home",
+  "welcome":"Welcome"
+
+
+
+
+
+
+
+
 
 
 

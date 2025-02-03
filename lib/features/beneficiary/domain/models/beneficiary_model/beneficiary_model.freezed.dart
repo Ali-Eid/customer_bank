@@ -30,8 +30,12 @@ mixin _$BeneficiaryModel {
   @JsonKey(name: "relationship_other")
   String? get relationshipOther => throw _privateConstructorUsedError;
 
+  /// Serializes this BeneficiaryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BeneficiaryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BeneficiaryModelCopyWith<BeneficiaryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$BeneficiaryModelCopyWithImpl<$Res, $Val extends BeneficiaryModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BeneficiaryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class _$BeneficiaryModelCopyWithImpl<$Res, $Val extends BeneficiaryModel>
     ) as $Val);
   }
 
+  /// Create a copy of BeneficiaryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StaticTextModelCopyWith<$Res> get relationship {
@@ -138,6 +146,8 @@ class __$$BeneficiaryModelImplCopyWithImpl<$Res>
       $Res Function(_$BeneficiaryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BeneficiaryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,12 +242,14 @@ class _$BeneficiaryModelImpl implements _BeneficiaryModel {
                 other.relationshipOther == relationshipOther));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, fullName,
       accountNumber, relationship, relationshipOther);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BeneficiaryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BeneficiaryModelImplCopyWith<_$BeneficiaryModelImpl> get copyWith =>
@@ -280,8 +292,11 @@ abstract class _BeneficiaryModel implements BeneficiaryModel {
   @override
   @JsonKey(name: "relationship_other")
   String? get relationshipOther;
+
+  /// Create a copy of BeneficiaryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BeneficiaryModelImplCopyWith<_$BeneficiaryModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

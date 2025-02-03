@@ -11,8 +11,12 @@ _$StoreTransferModelImpl _$$StoreTransferModelImplFromJson(
     _$StoreTransferModelImpl(
       id: (json['id'] as num?)?.toInt() ?? 0,
       customerId: (json['customer_id'] as num?)?.toInt() ?? 0,
-      fromAccountNo: json['fromAccountNo'] as String? ?? "",
-      toAccountNo: json['toAccountNo'] as String? ?? "",
+      fromAccountNo: json['fromAccount'] == null
+          ? const AccountModel()
+          : AccountModel.fromJson(json['fromAccount'] as Map<String, dynamic>),
+      toAccountNo: json['toAccount'] == null
+          ? const AccountModel()
+          : AccountModel.fromJson(json['toAccount'] as Map<String, dynamic>),
       amount: (json['amount'] as num?)?.toInt() ?? 0,
       currencyCode: json['currency_code'] as String? ?? "",
       note: json['note'] as String? ?? "",
@@ -29,8 +33,8 @@ Map<String, dynamic> _$$StoreTransferModelImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'customer_id': instance.customerId,
-      'fromAccountNo': instance.fromAccountNo,
-      'toAccountNo': instance.toAccountNo,
+      'fromAccount': instance.fromAccountNo,
+      'toAccount': instance.toAccountNo,
       'amount': instance.amount,
       'currency_code': instance.currencyCode,
       'note': instance.note,

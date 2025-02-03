@@ -15,6 +15,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../core/app/depndency_injection.dart';
+import '../../../../core/widgets/loading_widget.dart';
 import '../../domain/models/login_model/input_login/input_login_model.dart';
 
 class LoginView extends StatefulWidget {
@@ -178,10 +179,7 @@ class _LoginViewState extends State<LoginView> {
                                         builder: (context, AuthState state) {
                                           return state.maybeMap(
                                             loading: (value) {
-                                              return LottieBuilder.asset(
-                                                JsonAssets.loading_json,
-                                                height: AppSizeH.s100,
-                                              );
+                                              return const LoadingWidget();
                                             },
                                             orElse: () {
                                               return SizedBox(

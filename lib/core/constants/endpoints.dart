@@ -1,6 +1,7 @@
 class Endpoints {
   static const API = '/api';
   static const TRANSFER_API = '/transfer/api';
+  static const ACCOUNTS_API = '/accounts/api';
   static const BENEFICIARY_API = '/beneficiary_contacts/api';
 
   //Auth
@@ -12,6 +13,10 @@ class Endpoints {
   static const forgetPasswordSetNew = '/forget-password-set-new';
 
   //Accounts
+  static const ACCOUNT_STATEMENTS = '/account-statement/{account_id}';
+  static const ACCOUNT_STATEMENTS_SETTINGS = '/account-statement/settings';
+
+  //Customer Accounts
   static const CUSTOMER_ACCOUNT = '/customer-accounts/api';
   static const MY_ACCOUNTS = '/getAccountsForCustomer/{customer_id}';
 

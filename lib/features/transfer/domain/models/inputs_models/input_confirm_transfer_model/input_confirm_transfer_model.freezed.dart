@@ -26,8 +26,12 @@ mixin _$InputConfirmTransferModel {
   @JsonKey(name: "ref_id")
   String get refId => throw _privateConstructorUsedError;
 
+  /// Serializes this InputConfirmTransferModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputConfirmTransferModelCopyWith<InputConfirmTransferModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$InputConfirmTransferModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$InputConfirmTransferModelImplCopyWithImpl<$Res>
       $Res Function(_$InputConfirmTransferModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,11 +155,13 @@ class _$InputConfirmTransferModelImpl implements _InputConfirmTransferModel {
             (identical(other.refId, refId) || other.refId == refId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, otp, refId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputConfirmTransferModelImplCopyWith<_$InputConfirmTransferModelImpl>
@@ -181,8 +191,11 @@ abstract class _InputConfirmTransferModel implements InputConfirmTransferModel {
   @override
   @JsonKey(name: "ref_id")
   String get refId;
+
+  /// Create a copy of InputConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputConfirmTransferModelImplCopyWith<_$InputConfirmTransferModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -25,8 +25,12 @@ mixin _$ConfirmOtpChangePasswordModel {
   @JsonKey(name: "reference_id")
   String get referenceId => throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmOtpChangePasswordModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmOtpChangePasswordModelCopyWith<ConfirmOtpChangePasswordModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$ConfirmOtpChangePasswordModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +95,8 @@ class __$$ConfirmOtpChangePasswordModelImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmOtpChangePasswordModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,11 +141,13 @@ class _$ConfirmOtpChangePasswordModelImpl
                 other.referenceId == referenceId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, referenceId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmOtpChangePasswordModelImplCopyWith<
@@ -162,11 +172,15 @@ abstract class _ConfirmOtpChangePasswordModel
   factory _ConfirmOtpChangePasswordModel.fromJson(Map<String, dynamic> json) =
       _$ConfirmOtpChangePasswordModelImpl.fromJson;
 
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: "reference_id")
   String get referenceId;
+
+  /// Create a copy of ConfirmOtpChangePasswordModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmOtpChangePasswordModelImplCopyWith<
           _$ConfirmOtpChangePasswordModelImpl>
       get copyWith => throw _privateConstructorUsedError;

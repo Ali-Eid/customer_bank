@@ -17,6 +17,7 @@ import '../../../../core/constants/values_manager.dart';
 import '../../../../core/themes/color_manager.dart';
 import '../../../../core/themes/theme_manager.dart';
 import '../../../../core/widgets/bottom_sheet_base_widget.dart';
+import '../../../../core/widgets/loading_widget.dart';
 import '../../../cards/presentation/views/mycards_view.dart';
 import '../blocs/input_forgot_password_cubit/input_forgot_password_cubit.dart';
 import '../blocs/input_otp_cubit/input_otp_cubit.dart';
@@ -272,10 +273,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                                 (context, AuthState state) {
                                               return state.maybeMap(
                                                 loading: (value) {
-                                                  return LottieBuilder.asset(
-                                                    JsonAssets.loading_json,
-                                                    height: AppSizeH.s100,
-                                                  );
+                                                  return const LoadingWidget();
                                                 },
                                                 orElse: () {
                                                   return ElevatedButton(

@@ -94,6 +94,9 @@ class _$BeneficiaryEventCopyWithImpl<$Res, $Val extends BeneficiaryEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -110,6 +113,9 @@ class __$$GetBeneficiariesImplCopyWithImpl<$Res>
   __$$GetBeneficiariesImplCopyWithImpl(_$GetBeneficiariesImpl _value,
       $Res Function(_$GetBeneficiariesImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -239,6 +245,8 @@ class __$$CreateBeneficiaryImplCopyWithImpl<$Res>
       $Res Function(_$CreateBeneficiaryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -252,6 +260,8 @@ class __$$CreateBeneficiaryImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InputBeneficiaryModelCopyWith<$Res> get beneficiary {
@@ -286,7 +296,9 @@ class _$CreateBeneficiaryImpl implements _CreateBeneficiary {
   @override
   int get hashCode => Object.hash(runtimeType, beneficiary);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateBeneficiaryImplCopyWith<_$CreateBeneficiaryImpl> get copyWith =>
@@ -384,7 +396,10 @@ abstract class _CreateBeneficiary implements BeneficiaryEvent {
       _$CreateBeneficiaryImpl;
 
   InputBeneficiaryModel get beneficiary;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateBeneficiaryImplCopyWith<_$CreateBeneficiaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -403,6 +418,9 @@ class __$$GetRelationshipsImplCopyWithImpl<$Res>
   __$$GetRelationshipsImplCopyWithImpl(_$GetRelationshipsImpl _value,
       $Res Function(_$GetRelationshipsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -532,6 +550,8 @@ class __$$UpdateBeneficiaryImplCopyWithImpl<$Res>
       $Res Function(_$UpdateBeneficiaryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -550,6 +570,8 @@ class __$$UpdateBeneficiaryImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InputBeneficiaryModelCopyWith<$Res> get beneficiary {
@@ -587,7 +609,9 @@ class _$UpdateBeneficiaryImpl implements _UpdateBeneficiary {
   @override
   int get hashCode => Object.hash(runtimeType, id, beneficiary);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateBeneficiaryImplCopyWith<_$UpdateBeneficiaryImpl> get copyWith =>
@@ -687,7 +711,10 @@ abstract class _UpdateBeneficiary implements BeneficiaryEvent {
 
   int get id;
   InputBeneficiaryModel get beneficiary;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateBeneficiaryImplCopyWith<_$UpdateBeneficiaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -709,6 +736,8 @@ class __$$DeleteBeneficiaryImplCopyWithImpl<$Res>
       $Res Function(_$DeleteBeneficiaryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -747,7 +776,9 @@ class _$DeleteBeneficiaryImpl implements _DeleteBeneficiary {
   @override
   int get hashCode => Object.hash(runtimeType, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteBeneficiaryImplCopyWith<_$DeleteBeneficiaryImpl> get copyWith =>
@@ -844,7 +875,10 @@ abstract class _DeleteBeneficiary implements BeneficiaryEvent {
       _$DeleteBeneficiaryImpl;
 
   int get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BeneficiaryEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteBeneficiaryImplCopyWith<_$DeleteBeneficiaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -928,7 +962,9 @@ mixin _$BeneficiaryState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BeneficiaryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BeneficiaryStateCopyWith<BeneficiaryState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -962,6 +998,8 @@ class _$BeneficiaryStateCopyWithImpl<$Res, $Val extends BeneficiaryState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BeneficiaryState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1050,6 +1088,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BeneficiaryState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1221,7 +1261,9 @@ class _$InitialImpl implements _Initial {
       messageError,
       messageSuccess);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BeneficiaryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -1380,8 +1422,11 @@ abstract class _Initial implements BeneficiaryState {
   String get messageError;
   @override
   String get messageSuccess;
+
+  /// Create a copy of BeneficiaryState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

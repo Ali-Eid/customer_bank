@@ -79,6 +79,9 @@ class _$TransferSygsEventCopyWithImpl<$Res, $Val extends TransferSygsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TransferSygsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,8 @@ class __$$TransferSYGSImplCopyWithImpl<$Res>
       _$TransferSYGSImpl _value, $Res Function(_$TransferSYGSImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferSygsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,6 +118,8 @@ class __$$TransferSYGSImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferSygsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InputTransferSygsModelCopyWith<$Res> get input {
@@ -146,7 +153,9 @@ class _$TransferSYGSImpl implements _TransferSYGS {
   @override
   int get hashCode => Object.hash(runtimeType, input);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferSygsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TransferSYGSImplCopyWith<_$TransferSYGSImpl> get copyWith =>
@@ -227,7 +236,10 @@ abstract class _TransferSYGS implements TransferSygsEvent {
       _$TransferSYGSImpl;
 
   InputTransferSygsModel get input;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferSygsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TransferSYGSImplCopyWith<_$TransferSYGSImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -246,6 +258,9 @@ class __$$GetBanksImplCopyWithImpl<$Res>
   __$$GetBanksImplCopyWithImpl(
       _$GetBanksImpl _value, $Res Function(_$GetBanksImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TransferSygsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -356,6 +371,9 @@ class __$$GetTransferSYGSReasonImplCopyWithImpl<$Res>
   __$$GetTransferSYGSReasonImplCopyWithImpl(_$GetTransferSYGSReasonImpl _value,
       $Res Function(_$GetTransferSYGSReasonImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TransferSygsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -553,7 +571,9 @@ mixin _$TransferSygsState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferSygsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TransferSygsStateCopyWith<TransferSygsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -592,6 +612,8 @@ class _$TransferSygsStateCopyWithImpl<$Res, $Val extends TransferSygsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TransferSygsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -710,6 +732,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferSygsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -942,7 +966,9 @@ class _$InitialImpl implements _Initial {
       messageErrorGetTransferReasons,
       const DeepCollectionEquality().hash(_transferReasons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferSygsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -1125,8 +1151,8 @@ abstract class _Initial implements TransferSygsState {
   @override
   bool get hasErrorSYGSTransfer;
   @override
-  String get messageErrorSYGSTransfer;
-  @override //--------------
+  String get messageErrorSYGSTransfer; //--------------
+  @override
   bool get isLoadingGetBanks;
   @override
   bool get successGetBanks;
@@ -1135,8 +1161,8 @@ abstract class _Initial implements TransferSygsState {
   @override
   String get messageErrorGetBanks;
   @override
-  List<StaticModel> get banks;
-  @override //------
+  List<StaticModel> get banks; //------
+  @override
   bool get isLoadingGetTransferReasons;
   @override
   bool get successGetTransferReasons;
@@ -1146,8 +1172,11 @@ abstract class _Initial implements TransferSygsState {
   String get messageErrorGetTransferReasons;
   @override
   List<StaticTextModel> get transferReasons;
+
+  /// Create a copy of TransferSygsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -106,6 +106,9 @@ class _$TransferEventCopyWithImpl<$Res, $Val extends TransferEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -130,6 +133,8 @@ class __$$StoreLocalTransferMyAccountsImplCopyWithImpl<$Res>
       $Res Function(_$StoreLocalTransferMyAccountsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,6 +148,8 @@ class __$$StoreLocalTransferMyAccountsImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InputTransferModelCopyWith<$Res> get input {
@@ -177,7 +184,9 @@ class _$StoreLocalTransferMyAccountsImpl
   @override
   int get hashCode => Object.hash(runtimeType, input);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreLocalTransferMyAccountsImplCopyWith<
@@ -288,7 +297,10 @@ abstract class _StoreLocalTransferMyAccounts implements TransferEvent {
 
   @override
   InputTransferModel get input;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreLocalTransferMyAccountsImplCopyWith<
           _$StoreLocalTransferMyAccountsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -316,6 +328,8 @@ class __$$StoreInternalTransferMyAccountsImplCopyWithImpl<$Res>
       $Res Function(_$StoreInternalTransferMyAccountsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -329,6 +343,8 @@ class __$$StoreInternalTransferMyAccountsImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InputTransferModelCopyWith<$Res> get input {
@@ -363,7 +379,9 @@ class _$StoreInternalTransferMyAccountsImpl
   @override
   int get hashCode => Object.hash(runtimeType, input);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreInternalTransferMyAccountsImplCopyWith<
@@ -474,7 +492,10 @@ abstract class _StoreInternalTransferMyAccounts implements TransferEvent {
 
   @override
   InputTransferModel get input;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreInternalTransferMyAccountsImplCopyWith<
           _$StoreInternalTransferMyAccountsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -502,6 +523,8 @@ class __$$ConfirmLocalTransferMyAccountsImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmLocalTransferMyAccountsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -515,6 +538,8 @@ class __$$ConfirmLocalTransferMyAccountsImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InputConfirmTransferModelCopyWith<$Res> get input {
@@ -549,7 +574,9 @@ class _$ConfirmLocalTransferMyAccountsImpl
   @override
   int get hashCode => Object.hash(runtimeType, input);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmLocalTransferMyAccountsImplCopyWith<
@@ -660,7 +687,10 @@ abstract class _ConfirmLocalTransferMyAccounts implements TransferEvent {
 
   @override
   InputConfirmTransferModel get input;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmLocalTransferMyAccountsImplCopyWith<
           _$ConfirmLocalTransferMyAccountsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -688,6 +718,8 @@ class __$$ConfirmInternalTransferMyAccountsImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmInternalTransferMyAccountsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -701,6 +733,8 @@ class __$$ConfirmInternalTransferMyAccountsImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $InputConfirmTransferModelCopyWith<$Res> get input {
@@ -735,7 +769,9 @@ class _$ConfirmInternalTransferMyAccountsImpl
   @override
   int get hashCode => Object.hash(runtimeType, input);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmInternalTransferMyAccountsImplCopyWith<
@@ -846,7 +882,10 @@ abstract class _ConfirmInternalTransferMyAccounts implements TransferEvent {
 
   @override
   InputConfirmTransferModel get input;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmInternalTransferMyAccountsImplCopyWith<
           _$ConfirmInternalTransferMyAccountsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -964,6 +1003,9 @@ class _$TransferStateCopyWithImpl<$Res, $Val extends TransferState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -980,6 +1022,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1136,6 +1181,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1299,6 +1347,8 @@ class __$$SuccessStoreLocalTransferImplCopyWithImpl<$Res>
       $Res Function(_$SuccessStoreLocalTransferImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1312,6 +1362,8 @@ class __$$SuccessStoreLocalTransferImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ResponseModelCopyWith<StoreTransferModel, $Res> get store {
@@ -1346,7 +1398,9 @@ class _$SuccessStoreLocalTransferImpl implements _SuccessStoreLocalTransfer {
   @override
   int get hashCode => Object.hash(runtimeType, store);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessStoreLocalTransferImplCopyWith<_$SuccessStoreLocalTransferImpl>
@@ -1476,7 +1530,10 @@ abstract class _SuccessStoreLocalTransfer implements TransferState {
       _$SuccessStoreLocalTransferImpl;
 
   ResponseModel<StoreTransferModel> get store;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessStoreLocalTransferImplCopyWith<_$SuccessStoreLocalTransferImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1503,6 +1560,8 @@ class __$$SuccessStoreInternalTransferImplCopyWithImpl<$Res>
       $Res Function(_$SuccessStoreInternalTransferImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1516,6 +1575,8 @@ class __$$SuccessStoreInternalTransferImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ResponseModelCopyWith<StoreTransferModel, $Res> get store {
@@ -1551,7 +1612,9 @@ class _$SuccessStoreInternalTransferImpl
   @override
   int get hashCode => Object.hash(runtimeType, store);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessStoreInternalTransferImplCopyWith<
@@ -1682,7 +1745,10 @@ abstract class _SuccessStoreInternalTransfer implements TransferState {
       _$SuccessStoreInternalTransferImpl;
 
   ResponseModel<StoreTransferModel> get store;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessStoreInternalTransferImplCopyWith<
           _$SuccessStoreInternalTransferImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1710,6 +1776,8 @@ class __$$SuccessConfirmInternalTransferImplCopyWithImpl<$Res>
       $Res Function(_$SuccessConfirmInternalTransferImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1723,6 +1791,8 @@ class __$$SuccessConfirmInternalTransferImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ResponseModelCopyWith<ConfirmTransferModel, $Res> get confirm {
@@ -1758,7 +1828,9 @@ class _$SuccessConfirmInternalTransferImpl
   @override
   int get hashCode => Object.hash(runtimeType, confirm);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessConfirmInternalTransferImplCopyWith<
@@ -1889,7 +1961,10 @@ abstract class _SuccessConfirmInternalTransfer implements TransferState {
       _$SuccessConfirmInternalTransferImpl;
 
   ResponseModel<ConfirmTransferModel> get confirm;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessConfirmInternalTransferImplCopyWith<
           _$SuccessConfirmInternalTransferImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1916,6 +1991,8 @@ class __$$SuccessConfirmLocalTransferImplCopyWithImpl<$Res>
       $Res Function(_$SuccessConfirmLocalTransferImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1929,6 +2006,8 @@ class __$$SuccessConfirmLocalTransferImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ResponseModelCopyWith<ConfirmTransferModel, $Res> get confirm {
@@ -1964,7 +2043,9 @@ class _$SuccessConfirmLocalTransferImpl
   @override
   int get hashCode => Object.hash(runtimeType, confirm);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessConfirmLocalTransferImplCopyWith<_$SuccessConfirmLocalTransferImpl>
@@ -2094,7 +2175,10 @@ abstract class _SuccessConfirmLocalTransfer implements TransferState {
       _$SuccessConfirmLocalTransferImpl;
 
   ResponseModel<ConfirmTransferModel> get confirm;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessConfirmLocalTransferImplCopyWith<_$SuccessConfirmLocalTransferImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2116,6 +2200,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2154,7 +2240,9 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -2281,7 +2369,10 @@ abstract class _Error implements TransferState {
   const factory _Error({required final String message}) = _$ErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TransferState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

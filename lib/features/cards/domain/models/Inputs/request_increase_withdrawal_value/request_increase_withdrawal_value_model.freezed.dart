@@ -26,8 +26,12 @@ mixin _$RequestIncreaseWithdrawalValueModel {
   @JsonKey(name: "withdrawal_value_id")
   int get withdrawalValueId => throw _privateConstructorUsedError;
 
+  /// Serializes this RequestIncreaseWithdrawalValueModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RequestIncreaseWithdrawalValueModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RequestIncreaseWithdrawalValueModelCopyWith<
           RequestIncreaseWithdrawalValueModel>
       get copyWith => throw _privateConstructorUsedError;
@@ -57,6 +61,8 @@ class _$RequestIncreaseWithdrawalValueModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RequestIncreaseWithdrawalValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$RequestIncreaseWithdrawalValueModelImplCopyWithImpl<$Res>
       $Res Function(_$RequestIncreaseWithdrawalValueModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RequestIncreaseWithdrawalValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,11 +161,13 @@ class _$RequestIncreaseWithdrawalValueModelImpl
                 other.withdrawalValueId == withdrawalValueId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, cardId, withdrawalValueId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RequestIncreaseWithdrawalValueModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RequestIncreaseWithdrawalValueModelImplCopyWith<
@@ -191,8 +201,11 @@ abstract class _RequestIncreaseWithdrawalValueModel
   @override
   @JsonKey(name: "withdrawal_value_id")
   int get withdrawalValueId;
+
+  /// Create a copy of RequestIncreaseWithdrawalValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RequestIncreaseWithdrawalValueModelImplCopyWith<
           _$RequestIncreaseWithdrawalValueModelImpl>
       get copyWith => throw _privateConstructorUsedError;

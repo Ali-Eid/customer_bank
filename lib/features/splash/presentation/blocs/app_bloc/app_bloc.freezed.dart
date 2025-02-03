@@ -71,6 +71,9 @@ class _$AppEventCopyWithImpl<$Res, $Val extends AppEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AppEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -87,6 +90,9 @@ class __$$CheckAppImplCopyWithImpl<$Res>
   __$$CheckAppImplCopyWithImpl(
       _$CheckAppImpl _value, $Res Function(_$CheckAppImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -189,6 +195,9 @@ class __$$LogoutImplCopyWithImpl<$Res>
   __$$LogoutImplCopyWithImpl(
       _$LogoutImpl _value, $Res Function(_$LogoutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -346,6 +355,9 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AppState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -362,6 +374,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -476,6 +491,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -589,6 +607,9 @@ class __$$AuthImplCopyWithImpl<$Res>
     implements _$$AuthImplCopyWith<$Res> {
   __$$AuthImplCopyWithImpl(_$AuthImpl _value, $Res Function(_$AuthImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -702,6 +723,9 @@ class __$$HomeImplCopyWithImpl<$Res>
     implements _$$HomeImplCopyWith<$Res> {
   __$$HomeImplCopyWithImpl(_$HomeImpl _value, $Res Function(_$HomeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

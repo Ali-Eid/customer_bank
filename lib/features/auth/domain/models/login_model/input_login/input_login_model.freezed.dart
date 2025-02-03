@@ -27,8 +27,12 @@ mixin _$InputLoginModel {
   @JsonKey(name: "type")
   String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this InputLoginModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputLoginModelCopyWith<InputLoginModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$InputLoginModelCopyWithImpl<$Res, $Val extends InputLoginModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class __$$InputLoginModelImplCopyWithImpl<$Res>
       _$InputLoginModelImpl _value, $Res Function(_$InputLoginModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,11 +171,13 @@ class _$InputLoginModelImpl implements _InputLoginModel {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, username, password, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputLoginModelImplCopyWith<_$InputLoginModelImpl> get copyWith =>
@@ -201,8 +211,11 @@ abstract class _InputLoginModel implements InputLoginModel {
   @override
   @JsonKey(name: "type")
   String get type;
+
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputLoginModelImplCopyWith<_$InputLoginModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

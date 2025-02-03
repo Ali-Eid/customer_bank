@@ -11,6 +11,7 @@ import '../../../../core/constants/assets_manager.dart';
 import '../../../../core/constants/string_manager.dart';
 import '../../../../core/constants/values_manager.dart';
 import '../../../../core/themes/color_manager.dart';
+import '../../../../core/widgets/loading_widget.dart';
 import '../../../../core/widgets/toast_widget.dart';
 import '../blocs/auth_bloc/auth_bloc.dart';
 import '../blocs/input_forgot_password_cubit/input_forgot_password_cubit.dart';
@@ -184,10 +185,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
                                                 (context, AuthState state) {
                                               return state.maybeMap(
                                                 loadingChangePassword: (value) {
-                                                  return LottieBuilder.asset(
-                                                    JsonAssets.loading_json,
-                                                    height: AppSizeH.s100,
-                                                  );
+                                                  return const LoadingWidget();
                                                 },
                                                 orElse: () {
                                                   return ElevatedButton(

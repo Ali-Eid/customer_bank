@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'account_api.dart';
+part of 'customer_account_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'account_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _AccountServiceClient implements AccountServiceClient {
-  _AccountServiceClient(
+class _CustomerAccountServiceClient implements CustomerAccountServiceClient {
+  _CustomerAccountServiceClient(
     this._dio, {
     this.baseUrl,
     this.errorLogger,

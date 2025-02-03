@@ -106,11 +106,11 @@ class AppRouter {
             path: RoutesPaths.homeRoute,
             builder: (context, state) => const HomeView(),
             routes: [
-              GoRoute(
-                name: RoutesNames.accountsRoute,
-                path: RoutesPaths.accountsRoute,
-                builder: (context, state) => const AccountView(),
-              ),
+              // GoRoute(
+              //   name: RoutesNames.accountsRoute,
+              //   path: RoutesPaths.accountsRoute,
+              //   builder: (context, state) => const AccountView(),
+              // ),
               GoRoute(
                 name: RoutesNames.myCardsRoute,
                 path: RoutesPaths.myCardsRoute,

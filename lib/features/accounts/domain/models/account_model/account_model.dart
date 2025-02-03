@@ -8,7 +8,7 @@ part 'account_model.g.dart';
 
 @freezed
 abstract class AccountModel with _$AccountModel {
-  factory AccountModel({
+  const factory AccountModel({
     @Default(0) int id,
     @Default("") String label,
     @Default("") @JsonKey(name: "account_number") String accountNumber,

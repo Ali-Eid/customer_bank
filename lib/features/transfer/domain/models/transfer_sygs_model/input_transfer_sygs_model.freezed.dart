@@ -35,8 +35,12 @@ mixin _$InputTransferSygsModel {
   @JsonKey(name: "note")
   String? get note => throw _privateConstructorUsedError;
 
+  /// Serializes this InputTransferSygsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputTransferSygsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputTransferSygsModelCopyWith<InputTransferSygsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -67,6 +71,8 @@ class _$InputTransferSygsModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputTransferSygsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,6 +140,8 @@ class __$$InputTransferSygsModelImplCopyWithImpl<$Res>
       $Res Function(_$InputTransferSygsModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputTransferSygsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -228,12 +236,14 @@ class _$InputTransferSygsModelImpl implements _InputTransferSygsModel {
             (identical(other.note, note) || other.note == note));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, bankId, fromAccount, toAccount, amount, reasonId, note);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputTransferSygsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputTransferSygsModelImplCopyWith<_$InputTransferSygsModelImpl>
@@ -272,15 +282,18 @@ abstract class _InputTransferSygsModel implements InputTransferSygsModel {
   String get toAccount;
   @override
   @JsonKey(name: "amount")
-  num get amount;
-  @override // @JsonKey(name: "currency_code") required String currencyCode,
+  num get amount; // @JsonKey(name: "currency_code") required String currencyCode,
+  @override
   @JsonKey(name: "reason_id")
   int get reasonId;
   @override
   @JsonKey(name: "note")
   String? get note;
+
+  /// Create a copy of InputTransferSygsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputTransferSygsModelImplCopyWith<_$InputTransferSygsModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

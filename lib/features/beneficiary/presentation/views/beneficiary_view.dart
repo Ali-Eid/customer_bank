@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fs_bank/core/bases/models/static_model/static_model.dart';
+import 'package:fs_bank/core/constants/string_manager.dart';
 import 'package:fs_bank/core/widgets/generic_drop_down_widget.dart';
 import 'package:fs_bank/features/beneficiary/domain/models/input_beneficiary_model/input_beneficiary_model.dart';
 import 'package:fs_bank/features/transfer/presentation/blocs/input_transfer_cubit/input_transfer_cubit.dart';
@@ -10,6 +11,7 @@ import '../../../../core/constants/assets_manager.dart';
 import '../../../../core/constants/values_manager.dart';
 import '../../../../core/themes/color_manager.dart';
 import '../../../../core/widgets/bottom_sheet_base_widget.dart';
+import '../../../../core/widgets/loading_widget.dart';
 import '../../../../core/widgets/toast_widget.dart';
 import '../../domain/models/beneficiary_model/beneficiary_model.dart';
 import '../blocs/bloc/beneficiary_bloc.dart';
@@ -23,9 +25,7 @@ class BeneficiaryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Beneficiary",
-        ),
+        title: Text(AppStrings().favorite),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -282,11 +282,7 @@ class _CreateBeneficiaryWidgetState extends State<CreateBeneficiaryWidget> {
 
 Widget getBeneficiaryWidgetState({required BeneficiaryState state}) {
   if (state.isLoadingGetBeneficiaries) {
-    return Center(
-        child: LottieBuilder.asset(
-      JsonAssets.loading_json,
-      height: AppSizeH.s100,
-    ));
+    return Center(child: LoadingWidget(height: AppSizeH.s100));
   }
   return state.beneficiaries.isEmpty
       ? const Center(

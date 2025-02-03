@@ -31,8 +31,12 @@ mixin _$AccountModel {
   @JsonKey(name: "account_type")
   StaticModel get accountType => throw _privateConstructorUsedError;
 
+  /// Serializes this AccountModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AccountModelCopyWith<AccountModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,6 +69,8 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AccountModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +114,8 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
     ) as $Val);
   }
 
+  /// Create a copy of AccountModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StaticModelCopyWith<$Res> get accountType {
@@ -146,6 +154,8 @@ class __$$AccountModelImplCopyWithImpl<$Res>
       _$AccountModelImpl _value, $Res Function(_$AccountModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -193,7 +203,7 @@ class __$$AccountModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AccountModelImpl implements _AccountModel {
-  _$AccountModelImpl(
+  const _$AccountModelImpl(
       {this.id = 0,
       this.label = "",
       @JsonKey(name: "account_number") this.accountNumber = "",
@@ -249,12 +259,14 @@ class _$AccountModelImpl implements _AccountModel {
                 other.accountType == accountType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, label, accountNumber,
       balance, status, isDefault, accountType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountModelImplCopyWith<_$AccountModelImpl> get copyWith =>
@@ -269,7 +281,7 @@ class _$AccountModelImpl implements _AccountModel {
 }
 
 abstract class _AccountModel implements AccountModel {
-  factory _AccountModel(
+  const factory _AccountModel(
           {final int id,
           final String label,
           @JsonKey(name: "account_number") final String accountNumber,
@@ -299,8 +311,11 @@ abstract class _AccountModel implements AccountModel {
   @override
   @JsonKey(name: "account_type")
   StaticModel get accountType;
+
+  /// Create a copy of AccountModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountModelImplCopyWith<_$AccountModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

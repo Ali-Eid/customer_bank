@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CardsEvent {
-  bool get isLoading => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading) getMyCards,
+    required TResult Function() getMyCards,
+    required TResult Function() getWithDrawalValues,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading)? getMyCards,
+    TResult? Function()? getMyCards,
+    TResult? Function()? getWithDrawalValues,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading)? getMyCards,
+    TResult Function()? getMyCards,
+    TResult Function()? getWithDrawalValues,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMyCards value) getMyCards,
+    required TResult Function(_GetWithDrawalValues value) getWithDrawalValues,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyCards value)? getMyCards,
+    TResult? Function(_GetWithDrawalValues value)? getWithDrawalValues,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyCards value)? getMyCards,
+    TResult Function(_GetWithDrawalValues value)? getWithDrawalValues,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CardsEventCopyWith<CardsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $CardsEventCopyWith<$Res> {
   factory $CardsEventCopyWith(
           CardsEvent value, $Res Function(CardsEvent) then) =
       _$CardsEventCopyWithImpl<$Res, CardsEvent>;
-  @useResult
-  $Res call({bool isLoading});
 }
 
 /// @nodoc
@@ -74,29 +73,15 @@ class _$CardsEventCopyWithImpl<$Res, $Val extends CardsEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isLoading = null,
-  }) {
-    return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
+  /// Create a copy of CardsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$GetMyCardsImplCopyWith<$Res>
-    implements $CardsEventCopyWith<$Res> {
+abstract class _$$GetMyCardsImplCopyWith<$Res> {
   factory _$$GetMyCardsImplCopyWith(
           _$GetMyCardsImpl value, $Res Function(_$GetMyCardsImpl) then) =
       __$$GetMyCardsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool isLoading});
 }
 
 /// @nodoc
@@ -107,76 +92,56 @@ class __$$GetMyCardsImplCopyWithImpl<$Res>
       _$GetMyCardsImpl _value, $Res Function(_$GetMyCardsImpl) _then)
       : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isLoading = null,
-  }) {
-    return _then(_$GetMyCardsImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
+  /// Create a copy of CardsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
 class _$GetMyCardsImpl implements _GetMyCards {
-  const _$GetMyCardsImpl({this.isLoading = true});
-
-  @override
-  @JsonKey()
-  final bool isLoading;
+  const _$GetMyCardsImpl();
 
   @override
   String toString() {
-    return 'CardsEvent.getMyCards(isLoading: $isLoading)';
+    return 'CardsEvent.getMyCards()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetMyCardsImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+        (other.runtimeType == runtimeType && other is _$GetMyCardsImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetMyCardsImplCopyWith<_$GetMyCardsImpl> get copyWith =>
-      __$$GetMyCardsImplCopyWithImpl<_$GetMyCardsImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isLoading) getMyCards,
+    required TResult Function() getMyCards,
+    required TResult Function() getWithDrawalValues,
   }) {
-    return getMyCards(isLoading);
+    return getMyCards();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isLoading)? getMyCards,
+    TResult? Function()? getMyCards,
+    TResult? Function()? getWithDrawalValues,
   }) {
-    return getMyCards?.call(isLoading);
+    return getMyCards?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isLoading)? getMyCards,
+    TResult Function()? getMyCards,
+    TResult Function()? getWithDrawalValues,
     required TResult orElse(),
   }) {
     if (getMyCards != null) {
-      return getMyCards(isLoading);
+      return getMyCards();
     }
     return orElse();
   }
@@ -185,6 +150,7 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMyCards value) getMyCards,
+    required TResult Function(_GetWithDrawalValues value) getWithDrawalValues,
   }) {
     return getMyCards(this);
   }
@@ -193,6 +159,7 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyCards value)? getMyCards,
+    TResult? Function(_GetWithDrawalValues value)? getWithDrawalValues,
   }) {
     return getMyCards?.call(this);
   }
@@ -201,6 +168,7 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyCards value)? getMyCards,
+    TResult Function(_GetWithDrawalValues value)? getWithDrawalValues,
     required TResult orElse(),
   }) {
     if (getMyCards != null) {
@@ -211,61 +179,190 @@ class _$GetMyCardsImpl implements _GetMyCards {
 }
 
 abstract class _GetMyCards implements CardsEvent {
-  const factory _GetMyCards({final bool isLoading}) = _$GetMyCardsImpl;
+  const factory _GetMyCards() = _$GetMyCardsImpl;
+}
+
+/// @nodoc
+abstract class _$$GetWithDrawalValuesImplCopyWith<$Res> {
+  factory _$$GetWithDrawalValuesImplCopyWith(_$GetWithDrawalValuesImpl value,
+          $Res Function(_$GetWithDrawalValuesImpl) then) =
+      __$$GetWithDrawalValuesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetWithDrawalValuesImplCopyWithImpl<$Res>
+    extends _$CardsEventCopyWithImpl<$Res, _$GetWithDrawalValuesImpl>
+    implements _$$GetWithDrawalValuesImplCopyWith<$Res> {
+  __$$GetWithDrawalValuesImplCopyWithImpl(_$GetWithDrawalValuesImpl _value,
+      $Res Function(_$GetWithDrawalValuesImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CardsEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GetWithDrawalValuesImpl implements _GetWithDrawalValues {
+  const _$GetWithDrawalValuesImpl();
 
   @override
-  bool get isLoading;
+  String toString() {
+    return 'CardsEvent.getWithDrawalValues()';
+  }
+
   @override
-  @JsonKey(ignore: true)
-  _$$GetMyCardsImplCopyWith<_$GetMyCardsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetWithDrawalValuesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getMyCards,
+    required TResult Function() getWithDrawalValues,
+  }) {
+    return getWithDrawalValues();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getMyCards,
+    TResult? Function()? getWithDrawalValues,
+  }) {
+    return getWithDrawalValues?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getMyCards,
+    TResult Function()? getWithDrawalValues,
+    required TResult orElse(),
+  }) {
+    if (getWithDrawalValues != null) {
+      return getWithDrawalValues();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetMyCards value) getMyCards,
+    required TResult Function(_GetWithDrawalValues value) getWithDrawalValues,
+  }) {
+    return getWithDrawalValues(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetMyCards value)? getMyCards,
+    TResult? Function(_GetWithDrawalValues value)? getWithDrawalValues,
+  }) {
+    return getWithDrawalValues?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetMyCards value)? getMyCards,
+    TResult Function(_GetWithDrawalValues value)? getWithDrawalValues,
+    required TResult orElse(),
+  }) {
+    if (getWithDrawalValues != null) {
+      return getWithDrawalValues(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetWithDrawalValues implements CardsEvent {
+  const factory _GetWithDrawalValues() = _$GetWithDrawalValuesImpl;
 }
 
 /// @nodoc
 mixin _$CardsState {
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoadingWithDrawel => throw _privateConstructorUsedError;
+  bool get hasError => throw _privateConstructorUsedError;
+  bool get hasErrorWithDrawel => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
+  String get errorMessageWithDrawel => throw _privateConstructorUsedError;
+  List<CardModel> get cards => throw _privateConstructorUsedError;
+  List<WithDrawelValuesModel> get withDrawelValues =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(ResponseModel<List<CardModel>> cards) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            bool isLoading,
+            bool isLoadingWithDrawel,
+            bool hasError,
+            bool hasErrorWithDrawel,
+            String errorMessage,
+            String errorMessageWithDrawel,
+            List<CardModel> cards,
+            List<WithDrawelValuesModel> withDrawelValues)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(ResponseModel<List<CardModel>> cards)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(
+            bool isLoading,
+            bool isLoadingWithDrawel,
+            bool hasError,
+            bool hasErrorWithDrawel,
+            String errorMessage,
+            String errorMessageWithDrawel,
+            List<CardModel> cards,
+            List<WithDrawelValuesModel> withDrawelValues)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(ResponseModel<List<CardModel>> cards)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(
+            bool isLoading,
+            bool isLoadingWithDrawel,
+            bool hasError,
+            bool hasErrorWithDrawel,
+            String errorMessage,
+            String errorMessageWithDrawel,
+            List<CardModel> cards,
+            List<WithDrawelValuesModel> withDrawelValues)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(_Initial value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  /// Create a copy of CardsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CardsStateCopyWith<CardsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -274,6 +371,16 @@ abstract class $CardsStateCopyWith<$Res> {
   factory $CardsStateCopyWith(
           CardsState value, $Res Function(CardsState) then) =
       _$CardsStateCopyWithImpl<$Res, CardsState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      bool isLoadingWithDrawel,
+      bool hasError,
+      bool hasErrorWithDrawel,
+      String errorMessage,
+      String errorMessageWithDrawel,
+      List<CardModel> cards,
+      List<WithDrawelValuesModel> withDrawelValues});
 }
 
 /// @nodoc
@@ -285,357 +392,303 @@ class _$CardsStateCopyWithImpl<$Res, $Val extends CardsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
 
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$CardsStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'CardsState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(ResponseModel<List<CardModel>> cards) loaded,
-    required TResult Function(String message) error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(ResponseModel<List<CardModel>> cards)? loaded,
-    TResult? Function(String message)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(ResponseModel<List<CardModel>> cards)? loaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements CardsState {
-  const factory _Loading() = _$LoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ResponseModel<List<CardModel>> cards});
-
-  $ResponseModelCopyWith<List<CardModel>, $Res> get cards;
-}
-
-/// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$CardsStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
-
+  /// Create a copy of CardsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
+    Object? isLoadingWithDrawel = null,
+    Object? hasError = null,
+    Object? hasErrorWithDrawel = null,
+    Object? errorMessage = null,
+    Object? errorMessageWithDrawel = null,
     Object? cards = null,
+    Object? withDrawelValues = null,
   }) {
-    return _then(_$LoadedImpl(
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingWithDrawel: null == isLoadingWithDrawel
+          ? _value.isLoadingWithDrawel
+          : isLoadingWithDrawel // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasErrorWithDrawel: null == hasErrorWithDrawel
+          ? _value.hasErrorWithDrawel
+          : hasErrorWithDrawel // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessageWithDrawel: null == errorMessageWithDrawel
+          ? _value.errorMessageWithDrawel
+          : errorMessageWithDrawel // ignore: cast_nullable_to_non_nullable
+              as String,
       cards: null == cards
           ? _value.cards
           : cards // ignore: cast_nullable_to_non_nullable
-              as ResponseModel<List<CardModel>>,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ResponseModelCopyWith<List<CardModel>, $Res> get cards {
-    return $ResponseModelCopyWith<List<CardModel>, $Res>(_value.cards, (value) {
-      return _then(_value.copyWith(cards: value));
-    });
+              as List<CardModel>,
+      withDrawelValues: null == withDrawelValues
+          ? _value.withDrawelValues
+          : withDrawelValues // ignore: cast_nullable_to_non_nullable
+              as List<WithDrawelValuesModel>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.cards});
-
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $CardsStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
-  final ResponseModel<List<CardModel>> cards;
-
-  @override
-  String toString() {
-    return 'CardsState.loaded(cards: $cards)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            (identical(other.cards, cards) || other.cards == cards));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, cards);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(ResponseModel<List<CardModel>> cards) loaded,
-    required TResult Function(String message) error,
-  }) {
-    return loaded(cards);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(ResponseModel<List<CardModel>> cards)? loaded,
-    TResult? Function(String message)? error,
-  }) {
-    return loaded?.call(cards);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(ResponseModel<List<CardModel>> cards)? loaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(cards);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loaded implements CardsState {
-  const factory _Loaded({required final ResponseModel<List<CardModel>> cards}) =
-      _$LoadedImpl;
-
-  ResponseModel<List<CardModel>> get cards;
-  @JsonKey(ignore: true)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call(
+      {bool isLoading,
+      bool isLoadingWithDrawel,
+      bool hasError,
+      bool hasErrorWithDrawel,
+      String errorMessage,
+      String errorMessageWithDrawel,
+      List<CardModel> cards,
+      List<WithDrawelValuesModel> withDrawelValues});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$CardsStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CardsStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? isLoading = null,
+    Object? isLoadingWithDrawel = null,
+    Object? hasError = null,
+    Object? hasErrorWithDrawel = null,
+    Object? errorMessage = null,
+    Object? errorMessageWithDrawel = null,
+    Object? cards = null,
+    Object? withDrawelValues = null,
   }) {
-    return _then(_$ErrorImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+    return _then(_$InitialImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingWithDrawel: null == isLoadingWithDrawel
+          ? _value.isLoadingWithDrawel
+          : isLoadingWithDrawel // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasErrorWithDrawel: null == hasErrorWithDrawel
+          ? _value.hasErrorWithDrawel
+          : hasErrorWithDrawel // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessageWithDrawel: null == errorMessageWithDrawel
+          ? _value.errorMessageWithDrawel
+          : errorMessageWithDrawel // ignore: cast_nullable_to_non_nullable
+              as String,
+      cards: null == cards
+          ? _value._cards
+          : cards // ignore: cast_nullable_to_non_nullable
+              as List<CardModel>,
+      withDrawelValues: null == withDrawelValues
+          ? _value._withDrawelValues
+          : withDrawelValues // ignore: cast_nullable_to_non_nullable
+              as List<WithDrawelValuesModel>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl({required this.message});
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(
+      {this.isLoading = false,
+      this.isLoadingWithDrawel = false,
+      this.hasError = false,
+      this.hasErrorWithDrawel = false,
+      this.errorMessage = "",
+      this.errorMessageWithDrawel = "",
+      final List<CardModel> cards = const [],
+      final List<WithDrawelValuesModel> withDrawelValues = const []})
+      : _cards = cards,
+        _withDrawelValues = withDrawelValues;
 
   @override
-  final String message;
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isLoadingWithDrawel;
+  @override
+  @JsonKey()
+  final bool hasError;
+  @override
+  @JsonKey()
+  final bool hasErrorWithDrawel;
+  @override
+  @JsonKey()
+  final String errorMessage;
+  @override
+  @JsonKey()
+  final String errorMessageWithDrawel;
+  final List<CardModel> _cards;
+  @override
+  @JsonKey()
+  List<CardModel> get cards {
+    if (_cards is EqualUnmodifiableListView) return _cards;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cards);
+  }
+
+  final List<WithDrawelValuesModel> _withDrawelValues;
+  @override
+  @JsonKey()
+  List<WithDrawelValuesModel> get withDrawelValues {
+    if (_withDrawelValues is EqualUnmodifiableListView)
+      return _withDrawelValues;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_withDrawelValues);
+  }
 
   @override
   String toString() {
-    return 'CardsState.error(message: $message)';
+    return 'CardsState.initial(isLoading: $isLoading, isLoadingWithDrawel: $isLoadingWithDrawel, hasError: $hasError, hasErrorWithDrawel: $hasErrorWithDrawel, errorMessage: $errorMessage, errorMessageWithDrawel: $errorMessageWithDrawel, cards: $cards, withDrawelValues: $withDrawelValues)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            other is _$InitialImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isLoadingWithDrawel, isLoadingWithDrawel) ||
+                other.isLoadingWithDrawel == isLoadingWithDrawel) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError) &&
+            (identical(other.hasErrorWithDrawel, hasErrorWithDrawel) ||
+                other.hasErrorWithDrawel == hasErrorWithDrawel) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.errorMessageWithDrawel, errorMessageWithDrawel) ||
+                other.errorMessageWithDrawel == errorMessageWithDrawel) &&
+            const DeepCollectionEquality().equals(other._cards, _cards) &&
+            const DeepCollectionEquality()
+                .equals(other._withDrawelValues, _withDrawelValues));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isLoadingWithDrawel,
+      hasError,
+      hasErrorWithDrawel,
+      errorMessage,
+      errorMessageWithDrawel,
+      const DeepCollectionEquality().hash(_cards),
+      const DeepCollectionEquality().hash(_withDrawelValues));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(ResponseModel<List<CardModel>> cards) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            bool isLoading,
+            bool isLoadingWithDrawel,
+            bool hasError,
+            bool hasErrorWithDrawel,
+            String errorMessage,
+            String errorMessageWithDrawel,
+            List<CardModel> cards,
+            List<WithDrawelValuesModel> withDrawelValues)
+        initial,
   }) {
-    return error(message);
+    return initial(isLoading, isLoadingWithDrawel, hasError, hasErrorWithDrawel,
+        errorMessage, errorMessageWithDrawel, cards, withDrawelValues);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(ResponseModel<List<CardModel>> cards)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(
+            bool isLoading,
+            bool isLoadingWithDrawel,
+            bool hasError,
+            bool hasErrorWithDrawel,
+            String errorMessage,
+            String errorMessageWithDrawel,
+            List<CardModel> cards,
+            List<WithDrawelValuesModel> withDrawelValues)?
+        initial,
   }) {
-    return error?.call(message);
+    return initial?.call(
+        isLoading,
+        isLoadingWithDrawel,
+        hasError,
+        hasErrorWithDrawel,
+        errorMessage,
+        errorMessageWithDrawel,
+        cards,
+        withDrawelValues);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(ResponseModel<List<CardModel>> cards)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(
+            bool isLoading,
+            bool isLoadingWithDrawel,
+            bool hasError,
+            bool hasErrorWithDrawel,
+            String errorMessage,
+            String errorMessageWithDrawel,
+            List<CardModel> cards,
+            List<WithDrawelValuesModel> withDrawelValues)?
+        initial,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(message);
+    if (initial != null) {
+      return initial(
+          isLoading,
+          isLoadingWithDrawel,
+          hasError,
+          hasErrorWithDrawel,
+          errorMessage,
+          errorMessageWithDrawel,
+          cards,
+          withDrawelValues);
     }
     return orElse();
   }
@@ -643,43 +696,64 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(_Initial value) initial,
   }) {
-    return error(this);
+    return initial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_Initial value)? initial,
   }) {
-    return error?.call(this);
+    return initial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (initial != null) {
+      return initial(this);
     }
     return orElse();
   }
 }
 
-abstract class _Error implements CardsState {
-  const factory _Error({required final String message}) = _$ErrorImpl;
+abstract class _Initial implements CardsState {
+  const factory _Initial(
+      {final bool isLoading,
+      final bool isLoadingWithDrawel,
+      final bool hasError,
+      final bool hasErrorWithDrawel,
+      final String errorMessage,
+      final String errorMessageWithDrawel,
+      final List<CardModel> cards,
+      final List<WithDrawelValuesModel> withDrawelValues}) = _$InitialImpl;
 
-  String get message;
-  @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  @override
+  bool get isLoading;
+  @override
+  bool get isLoadingWithDrawel;
+  @override
+  bool get hasError;
+  @override
+  bool get hasErrorWithDrawel;
+  @override
+  String get errorMessage;
+  @override
+  String get errorMessageWithDrawel;
+  @override
+  List<CardModel> get cards;
+  @override
+  List<WithDrawelValuesModel> get withDrawelValues;
+
+  /// Create a copy of CardsState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

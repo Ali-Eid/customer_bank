@@ -2,11 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
 import '../app/depndency_injection.dart';
 import '../cache/app_preferences.dart';
 import '../constants/constants.dart';
-import '../constants/endpoints.dart';
 import 'general_dio_interceptor.dart';
 
 const String APPLICATION_JSON = 'application/json';
@@ -48,8 +46,8 @@ class DioFactory {
       keyBuilder: CacheOptions.defaultCacheKeyBuilder,
       allowPostMethod: false,
     );
-    dio.interceptors.add(instance<GeneralInterceptor>());
     dio.interceptors.add(DioCacheInterceptor(options: options));
+    dio.interceptors.add(instance<GeneralInterceptor>());
     if (kReleaseMode) {
       if (kDebugMode) {
         print('release mode no logs');

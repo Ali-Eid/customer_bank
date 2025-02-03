@@ -31,8 +31,12 @@ mixin _$RequestCardModel {
   @JsonKey(name: "withdrawal_value_id")
   int get withdrawalValueId => throw _privateConstructorUsedError;
 
+  /// Serializes this RequestCardModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RequestCardModelCopyWith<RequestCardModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$RequestCardModelCopyWithImpl<$Res, $Val extends RequestCardModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,6 +125,8 @@ class __$$RequestCardModelImplCopyWithImpl<$Res>
       $Res Function(_$RequestCardModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -203,12 +211,14 @@ class _$RequestCardModelImpl implements _RequestCardModel {
                 other.withdrawalValueId == withdrawalValueId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, accountId, beneficiaryName, type,
       beneficiaryType, withdrawalValueId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RequestCardModelImplCopyWith<_$RequestCardModelImpl> get copyWith =>
@@ -250,8 +260,11 @@ abstract class _RequestCardModel implements RequestCardModel {
   @override
   @JsonKey(name: "withdrawal_value_id")
   int get withdrawalValueId;
+
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RequestCardModelImplCopyWith<_$RequestCardModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

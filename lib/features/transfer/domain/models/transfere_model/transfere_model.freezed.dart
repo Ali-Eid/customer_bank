@@ -23,10 +23,10 @@ mixin _$StoreTransferModel {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "customer_id")
   int get customerId => throw _privateConstructorUsedError;
-  @JsonKey(name: "fromAccountNo")
-  String get fromAccountNo => throw _privateConstructorUsedError;
-  @JsonKey(name: "toAccountNo")
-  String get toAccountNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "fromAccount")
+  AccountModel get fromAccountNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "toAccount")
+  AccountModel get toAccountNo => throw _privateConstructorUsedError;
   @JsonKey(name: "amount")
   int get amount => throw _privateConstructorUsedError;
   @JsonKey(name: "currency_code")
@@ -46,8 +46,12 @@ mixin _$StoreTransferModel {
   @JsonKey(name: "with_otp")
   bool get withOtp => throw _privateConstructorUsedError;
 
+  /// Serializes this StoreTransferModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StoreTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreTransferModelCopyWith<StoreTransferModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,8 +65,8 @@ abstract class $StoreTransferModelCopyWith<$Res> {
   $Res call(
       {int id,
       @JsonKey(name: "customer_id") int customerId,
-      @JsonKey(name: "fromAccountNo") String fromAccountNo,
-      @JsonKey(name: "toAccountNo") String toAccountNo,
+      @JsonKey(name: "fromAccount") AccountModel fromAccountNo,
+      @JsonKey(name: "toAccount") AccountModel toAccountNo,
       @JsonKey(name: "amount") int amount,
       @JsonKey(name: "currency_code") String currencyCode,
       @JsonKey(name: "note") String note,
@@ -72,6 +76,9 @@ abstract class $StoreTransferModelCopyWith<$Res> {
       @JsonKey(name: "created_at") String createdAt,
       @JsonKey(name: "ref_id") String refId,
       @JsonKey(name: "with_otp") bool withOtp});
+
+  $AccountModelCopyWith<$Res> get fromAccountNo;
+  $AccountModelCopyWith<$Res> get toAccountNo;
 }
 
 /// @nodoc
@@ -84,6 +91,8 @@ class _$StoreTransferModelCopyWithImpl<$Res, $Val extends StoreTransferModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,11 +122,11 @@ class _$StoreTransferModelCopyWithImpl<$Res, $Val extends StoreTransferModel>
       fromAccountNo: null == fromAccountNo
           ? _value.fromAccountNo
           : fromAccountNo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AccountModel,
       toAccountNo: null == toAccountNo
           ? _value.toAccountNo
           : toAccountNo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AccountModel,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -156,6 +165,26 @@ class _$StoreTransferModelCopyWithImpl<$Res, $Val extends StoreTransferModel>
               as bool,
     ) as $Val);
   }
+
+  /// Create a copy of StoreTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountModelCopyWith<$Res> get fromAccountNo {
+    return $AccountModelCopyWith<$Res>(_value.fromAccountNo, (value) {
+      return _then(_value.copyWith(fromAccountNo: value) as $Val);
+    });
+  }
+
+  /// Create a copy of StoreTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountModelCopyWith<$Res> get toAccountNo {
+    return $AccountModelCopyWith<$Res>(_value.toAccountNo, (value) {
+      return _then(_value.copyWith(toAccountNo: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -169,8 +198,8 @@ abstract class _$$StoreTransferModelImplCopyWith<$Res>
   $Res call(
       {int id,
       @JsonKey(name: "customer_id") int customerId,
-      @JsonKey(name: "fromAccountNo") String fromAccountNo,
-      @JsonKey(name: "toAccountNo") String toAccountNo,
+      @JsonKey(name: "fromAccount") AccountModel fromAccountNo,
+      @JsonKey(name: "toAccount") AccountModel toAccountNo,
       @JsonKey(name: "amount") int amount,
       @JsonKey(name: "currency_code") String currencyCode,
       @JsonKey(name: "note") String note,
@@ -180,6 +209,11 @@ abstract class _$$StoreTransferModelImplCopyWith<$Res>
       @JsonKey(name: "created_at") String createdAt,
       @JsonKey(name: "ref_id") String refId,
       @JsonKey(name: "with_otp") bool withOtp});
+
+  @override
+  $AccountModelCopyWith<$Res> get fromAccountNo;
+  @override
+  $AccountModelCopyWith<$Res> get toAccountNo;
 }
 
 /// @nodoc
@@ -190,6 +224,8 @@ class __$$StoreTransferModelImplCopyWithImpl<$Res>
       $Res Function(_$StoreTransferModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -219,11 +255,11 @@ class __$$StoreTransferModelImplCopyWithImpl<$Res>
       fromAccountNo: null == fromAccountNo
           ? _value.fromAccountNo
           : fromAccountNo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AccountModel,
       toAccountNo: null == toAccountNo
           ? _value.toAccountNo
           : toAccountNo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AccountModel,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -270,8 +306,8 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
   _$StoreTransferModelImpl(
       {this.id = 0,
       @JsonKey(name: "customer_id") this.customerId = 0,
-      @JsonKey(name: "fromAccountNo") this.fromAccountNo = "",
-      @JsonKey(name: "toAccountNo") this.toAccountNo = "",
+      @JsonKey(name: "fromAccount") this.fromAccountNo = const AccountModel(),
+      @JsonKey(name: "toAccount") this.toAccountNo = const AccountModel(),
       @JsonKey(name: "amount") this.amount = 0,
       @JsonKey(name: "currency_code") this.currencyCode = "",
       @JsonKey(name: "note") this.note = "",
@@ -292,11 +328,11 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
   @JsonKey(name: "customer_id")
   final int customerId;
   @override
-  @JsonKey(name: "fromAccountNo")
-  final String fromAccountNo;
+  @JsonKey(name: "fromAccount")
+  final AccountModel fromAccountNo;
   @override
-  @JsonKey(name: "toAccountNo")
-  final String toAccountNo;
+  @JsonKey(name: "toAccount")
+  final AccountModel toAccountNo;
   @override
   @JsonKey(name: "amount")
   final int amount;
@@ -357,7 +393,7 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
             (identical(other.withOtp, withOtp) || other.withOtp == withOtp));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -375,7 +411,9 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
       refId,
       withOtp);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreTransferModelImplCopyWith<_$StoreTransferModelImpl> get copyWith =>
@@ -394,8 +432,8 @@ abstract class _StoreTransferModel implements StoreTransferModel {
   factory _StoreTransferModel(
           {final int id,
           @JsonKey(name: "customer_id") final int customerId,
-          @JsonKey(name: "fromAccountNo") final String fromAccountNo,
-          @JsonKey(name: "toAccountNo") final String toAccountNo,
+          @JsonKey(name: "fromAccount") final AccountModel fromAccountNo,
+          @JsonKey(name: "toAccount") final AccountModel toAccountNo,
           @JsonKey(name: "amount") final int amount,
           @JsonKey(name: "currency_code") final String currencyCode,
           @JsonKey(name: "note") final String note,
@@ -416,11 +454,11 @@ abstract class _StoreTransferModel implements StoreTransferModel {
   @JsonKey(name: "customer_id")
   int get customerId;
   @override
-  @JsonKey(name: "fromAccountNo")
-  String get fromAccountNo;
+  @JsonKey(name: "fromAccount")
+  AccountModel get fromAccountNo;
   @override
-  @JsonKey(name: "toAccountNo")
-  String get toAccountNo;
+  @JsonKey(name: "toAccount")
+  AccountModel get toAccountNo;
   @override
   @JsonKey(name: "amount")
   int get amount;
@@ -448,8 +486,11 @@ abstract class _StoreTransferModel implements StoreTransferModel {
   @override
   @JsonKey(name: "with_otp")
   bool get withOtp;
+
+  /// Create a copy of StoreTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreTransferModelImplCopyWith<_$StoreTransferModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -482,8 +523,12 @@ mixin _$ConfirmTransferModel {
   @JsonKey(name: "created_at")
   String get createdAt => throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmTransferModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmTransferModelCopyWith<ConfirmTransferModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -519,6 +564,8 @@ class _$ConfirmTransferModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -613,6 +660,8 @@ class __$$ConfirmTransferModelImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmTransferModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -760,7 +809,7 @@ class _$ConfirmTransferModelImpl implements _ConfirmTransferModel {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -776,7 +825,9 @@ class _$ConfirmTransferModelImpl implements _ConfirmTransferModel {
       declinedAt,
       createdAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmTransferModelImplCopyWith<_$ConfirmTransferModelImpl>
@@ -842,8 +893,11 @@ abstract class _ConfirmTransferModel implements ConfirmTransferModel {
   @override
   @JsonKey(name: "created_at")
   String get createdAt;
+
+  /// Create a copy of ConfirmTransferModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmTransferModelImplCopyWith<_$ConfirmTransferModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

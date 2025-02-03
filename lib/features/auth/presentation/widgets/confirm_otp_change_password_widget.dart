@@ -8,6 +8,7 @@ import '../../../../core/constants/assets_manager.dart';
 import '../../../../core/constants/string_manager.dart';
 import '../../../../core/constants/values_manager.dart';
 import '../../../../core/themes/color_manager.dart';
+import '../../../../core/widgets/loading_widget.dart';
 import '../../domain/models/change_password_model/input_set_new_password_model/input_set_new_password_model.dart';
 import '../blocs/auth_bloc/auth_bloc.dart';
 import '../blocs/input_otp_cubit/input_otp_cubit.dart';
@@ -106,10 +107,7 @@ class _ConfirmOtpChangePasswordWidgetState
                           builder: (context, AuthState state) {
                             return state.maybeMap(
                               loadingChangePassword: (value) {
-                                return LottieBuilder.asset(
-                                  JsonAssets.loading_json,
-                                  height: AppSizeH.s100,
-                                );
+                                return LoadingWidget(height: AppSizeH.s100);
                               },
                               orElse: () {
                                 return Column(

@@ -23,9 +23,65 @@
     "phone_label": "رقم الهاتف",
     "phone_placeholder": "الرجاءإدخال رقم الهاتف",
     "enter_otp": "أدخل رمز OTP للمتابعة",
-    "confirm": "تأكيد",
     "cancel": "إلغاء",
-    "change_your_password": "تغيير كلمة المرور"
+    "change_your_password": "تغيير كلمة المرور",
+  "sender_account": "حساب المرسل",
+  
+  "please_select_sender_account": "يرجى اختيار حساب المرسل",
+    "recipient_account": "حساب المستلم",
+  "please_select_recipient_account": "يرجى اختيار حساب المستلم",
+  "please_enter_recipient_account":  "يرجى ادخال حساب المستلم",
+  "amount": "المبلغ",
+  "please_enter_amount": "يرجى إدخال المبلغ",
+  "currency": "العملة",
+  "note": "ملاحظة",
+  "confirm": "تأكيد",
+  "from_account_no": "من رقم الحساب:",
+  "to_account_no": "إلى رقم الحساب:",
+  "back": "رجوع",
+  "my_transfers": "تحويلاتي",
+  "confirm_local": "تأكيد محلي",
+  "favorite": "المفضلة",  
+  "select_a_bank": "يرجى اختيار بنك",
+  "please_select_a_bank": "يرجى اختيار بنك",
+  "select_a_reason": "يرجى اختيار سبب",
+  "please_select_a_reason": "يرجى اختيار سبب",
+    "transfer_sygs": "تحويل SYGS",
+  "internal_transfer": "تحويل داخلي",
+  "my_accounts": "حساباتي",
+  "your_balance": "رصيدك",
+  "dont_have_any_cards": "ليس لديك أي بطاقات",
+  "card_holder": "حامل البطاقة",
+  "expired_date": "تاريخ الانتهاء",
+  "status": "الحالة",
+    "please_select_a_card": "يرجى اختيار بطاقة",
+  "card": "بطاقة",
+  "edit_card_limit": "تعديل حد البطاقة",
+  "no_card_active": "لا توجد بطاقة نشطة",
+  "edit_card_limit_newline": "تعديل\nحد البطاقة",
+  "deactivate_card_newline": "إلغاء تنشيط\nالبطاقة",
+  "deactivate_card": "إلغاء تنشيط البطاقة",
+  "new_supplementary_card": "بطاقة إضافية جديدة",
+  "my_cards": "بطاقاتي",
+  "withdrawal": "سحب",
+  "please_select_a_withdrawal": "يرجى اختيار عملية سحب",
+  "beneficiary_type": "نوع المستفيد",
+  "please_select_a_beneficiary_type": "يرجى اختيار نوع المستفيد",
+    "card_type": "نوع البطاقة",
+  "please_select_a_card_type": "يرجى اختيار نوع البطاقة",
+  "beneficiary_name": "اسم المستفيد",
+  "please_enter_beneficiary_name": "يرجى إدخال اسم المستفيد",
+  "no_account": "لا تملك حسابات",
+  "transactions":"المناقلات",
+  "statement_period":"اختر فترة الكشف",
+  "home":"الرئيسية",
+  "welcome":"مرحباً"
+
+
+
+
+
+
 
 
 }
