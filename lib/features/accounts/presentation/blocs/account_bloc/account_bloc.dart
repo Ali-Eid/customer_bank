@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fs_bank/core/cache/app_preferences.dart';
 import 'package:fs_bank/core/cache/keys_preferences.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../../../domain/models/account_model/account_model.dart';
 import '../../../domain/models/account_statement_model/account_statement_model.dart';
@@ -77,11 +82,13 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             emit(state.copyWith(
                 isLoadingStatements: true,
                 hasErrorStatements: false,
+                successPdf: false,
                 transactions: const AccountStatementModel()));
-            final failureOrAccounts = await getAccountStatementsUsecase
-                .execute((
+            final failureOrAccounts =
+                await getAccountStatementsUsecase.execute((
               accountId: value.accountId,
-              view: value.view,
+              export: false,
+              view: true,
               maxPeriod: value.maxPeriod
             ));
             failureOrAccounts.when(
@@ -93,7 +100,43 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
                 emit(state.copyWith(
                     isLoadingStatements: false,
                     hasErrorStatements: true,
+                    successPdf: false,
                     messageErrorStatements: error.message));
+              },
+            );
+          },
+          exportAccountStatements: (value) async {
+            emit(state.copyWith(
+                isLoadingExport: true,
+                hasErrorExport: false,
+                successPdf: false));
+            final failureOrAccounts =
+                await getAccountStatementsUsecase.execute((
+              accountId: value.accountId,
+              export: true,
+              view: false,
+              maxPeriod: value.maxPeriod
+            ));
+            await failureOrAccounts.when(
+              (success) async {
+                // Decode Base64 string to bytes
+                Uint8List bytes = base64Decode(success.data.pdf);
+                Directory directory = await getApplicationDocumentsDirectory();
+                String filePath = '${directory.path}/transactions.pdf';
+                // Write the file
+                File file = File(filePath);
+                await file.writeAsBytes(bytes);
+                // Get the app's document directory
+
+                emit(state.copyWith(
+                    isLoadingExport: false, pdf: filePath, successPdf: true));
+              },
+              (error) {
+                emit(state.copyWith(
+                    isLoadingExport: false,
+                    successPdf: false,
+                    hasErrorExport: true,
+                    messageErrorExport: error.message));
               },
             );
           },

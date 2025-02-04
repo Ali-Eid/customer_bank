@@ -20,24 +20,26 @@ mixin _$AccountEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getAccounts,
     required TResult Function() getAccountStatementsSettings,
-    required TResult Function(int accountId, bool? view, int? maxPeriod)
+    required TResult Function(int accountId, int? maxPeriod)
         getAccountStatements,
+    required TResult Function(int accountId, int? maxPeriod)
+        exportAccountStatements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAccounts,
     TResult? Function()? getAccountStatementsSettings,
-    TResult? Function(int accountId, bool? view, int? maxPeriod)?
-        getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? exportAccountStatements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAccounts,
     TResult Function()? getAccountStatementsSettings,
-    TResult Function(int accountId, bool? view, int? maxPeriod)?
-        getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? exportAccountStatements,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +49,8 @@ mixin _$AccountEvent {
     required TResult Function(_GetAccountStatementsSettings value)
         getAccountStatementsSettings,
     required TResult Function(_GetAccountStatements value) getAccountStatements,
+    required TResult Function(_ExportAccountStatements value)
+        exportAccountStatements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$AccountEvent {
     TResult? Function(_GetAccountStatementsSettings value)?
         getAccountStatementsSettings,
     TResult? Function(_GetAccountStatements value)? getAccountStatements,
+    TResult? Function(_ExportAccountStatements value)? exportAccountStatements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$AccountEvent {
     TResult Function(_GetAccountStatementsSettings value)?
         getAccountStatementsSettings,
     TResult Function(_GetAccountStatements value)? getAccountStatements,
+    TResult Function(_ExportAccountStatements value)? exportAccountStatements,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -110,12 +116,18 @@ class __$$GetAccountsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetAccountsImpl implements _GetAccounts {
+class _$GetAccountsImpl with DiagnosticableTreeMixin implements _GetAccounts {
   const _$GetAccountsImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AccountEvent.getAccounts()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AccountEvent.getAccounts'));
   }
 
   @override
@@ -132,8 +144,10 @@ class _$GetAccountsImpl implements _GetAccounts {
   TResult when<TResult extends Object?>({
     required TResult Function() getAccounts,
     required TResult Function() getAccountStatementsSettings,
-    required TResult Function(int accountId, bool? view, int? maxPeriod)
+    required TResult Function(int accountId, int? maxPeriod)
         getAccountStatements,
+    required TResult Function(int accountId, int? maxPeriod)
+        exportAccountStatements,
   }) {
     return getAccounts();
   }
@@ -143,8 +157,8 @@ class _$GetAccountsImpl implements _GetAccounts {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAccounts,
     TResult? Function()? getAccountStatementsSettings,
-    TResult? Function(int accountId, bool? view, int? maxPeriod)?
-        getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? exportAccountStatements,
   }) {
     return getAccounts?.call();
   }
@@ -154,8 +168,8 @@ class _$GetAccountsImpl implements _GetAccounts {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAccounts,
     TResult Function()? getAccountStatementsSettings,
-    TResult Function(int accountId, bool? view, int? maxPeriod)?
-        getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? exportAccountStatements,
     required TResult orElse(),
   }) {
     if (getAccounts != null) {
@@ -171,6 +185,8 @@ class _$GetAccountsImpl implements _GetAccounts {
     required TResult Function(_GetAccountStatementsSettings value)
         getAccountStatementsSettings,
     required TResult Function(_GetAccountStatements value) getAccountStatements,
+    required TResult Function(_ExportAccountStatements value)
+        exportAccountStatements,
   }) {
     return getAccounts(this);
   }
@@ -182,6 +198,7 @@ class _$GetAccountsImpl implements _GetAccounts {
     TResult? Function(_GetAccountStatementsSettings value)?
         getAccountStatementsSettings,
     TResult? Function(_GetAccountStatements value)? getAccountStatements,
+    TResult? Function(_ExportAccountStatements value)? exportAccountStatements,
   }) {
     return getAccounts?.call(this);
   }
@@ -193,6 +210,7 @@ class _$GetAccountsImpl implements _GetAccounts {
     TResult Function(_GetAccountStatementsSettings value)?
         getAccountStatementsSettings,
     TResult Function(_GetAccountStatements value)? getAccountStatements,
+    TResult Function(_ExportAccountStatements value)? exportAccountStatements,
     required TResult orElse(),
   }) {
     if (getAccounts != null) {
@@ -230,12 +248,20 @@ class __$$GetAccountStatementsSettingsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetAccountStatementsSettingsImpl
+    with DiagnosticableTreeMixin
     implements _GetAccountStatementsSettings {
   const _$GetAccountStatementsSettingsImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AccountEvent.getAccountStatementsSettings()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty(
+        'type', 'AccountEvent.getAccountStatementsSettings'));
   }
 
   @override
@@ -253,8 +279,10 @@ class _$GetAccountStatementsSettingsImpl
   TResult when<TResult extends Object?>({
     required TResult Function() getAccounts,
     required TResult Function() getAccountStatementsSettings,
-    required TResult Function(int accountId, bool? view, int? maxPeriod)
+    required TResult Function(int accountId, int? maxPeriod)
         getAccountStatements,
+    required TResult Function(int accountId, int? maxPeriod)
+        exportAccountStatements,
   }) {
     return getAccountStatementsSettings();
   }
@@ -264,8 +292,8 @@ class _$GetAccountStatementsSettingsImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAccounts,
     TResult? Function()? getAccountStatementsSettings,
-    TResult? Function(int accountId, bool? view, int? maxPeriod)?
-        getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? exportAccountStatements,
   }) {
     return getAccountStatementsSettings?.call();
   }
@@ -275,8 +303,8 @@ class _$GetAccountStatementsSettingsImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAccounts,
     TResult Function()? getAccountStatementsSettings,
-    TResult Function(int accountId, bool? view, int? maxPeriod)?
-        getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? exportAccountStatements,
     required TResult orElse(),
   }) {
     if (getAccountStatementsSettings != null) {
@@ -292,6 +320,8 @@ class _$GetAccountStatementsSettingsImpl
     required TResult Function(_GetAccountStatementsSettings value)
         getAccountStatementsSettings,
     required TResult Function(_GetAccountStatements value) getAccountStatements,
+    required TResult Function(_ExportAccountStatements value)
+        exportAccountStatements,
   }) {
     return getAccountStatementsSettings(this);
   }
@@ -303,6 +333,7 @@ class _$GetAccountStatementsSettingsImpl
     TResult? Function(_GetAccountStatementsSettings value)?
         getAccountStatementsSettings,
     TResult? Function(_GetAccountStatements value)? getAccountStatements,
+    TResult? Function(_ExportAccountStatements value)? exportAccountStatements,
   }) {
     return getAccountStatementsSettings?.call(this);
   }
@@ -314,6 +345,7 @@ class _$GetAccountStatementsSettingsImpl
     TResult Function(_GetAccountStatementsSettings value)?
         getAccountStatementsSettings,
     TResult Function(_GetAccountStatements value)? getAccountStatements,
+    TResult Function(_ExportAccountStatements value)? exportAccountStatements,
     required TResult orElse(),
   }) {
     if (getAccountStatementsSettings != null) {
@@ -334,7 +366,7 @@ abstract class _$$GetAccountStatementsImplCopyWith<$Res> {
           $Res Function(_$GetAccountStatementsImpl) then) =
       __$$GetAccountStatementsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int accountId, bool? view, int? maxPeriod});
+  $Res call({int accountId, int? maxPeriod});
 }
 
 /// @nodoc
@@ -351,7 +383,6 @@ class __$$GetAccountStatementsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? accountId = null,
-    Object? view = freezed,
     Object? maxPeriod = freezed,
   }) {
     return _then(_$GetAccountStatementsImpl(
@@ -359,10 +390,6 @@ class __$$GetAccountStatementsImplCopyWithImpl<$Res>
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
               as int,
-      view: freezed == view
-          ? _value.view
-          : view // ignore: cast_nullable_to_non_nullable
-              as bool?,
       maxPeriod: freezed == maxPeriod
           ? _value.maxPeriod
           : maxPeriod // ignore: cast_nullable_to_non_nullable
@@ -373,20 +400,28 @@ class __$$GetAccountStatementsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetAccountStatementsImpl implements _GetAccountStatements {
-  const _$GetAccountStatementsImpl(
-      {required this.accountId, this.view, this.maxPeriod});
+class _$GetAccountStatementsImpl
+    with DiagnosticableTreeMixin
+    implements _GetAccountStatements {
+  const _$GetAccountStatementsImpl({required this.accountId, this.maxPeriod});
 
   @override
   final int accountId;
   @override
-  final bool? view;
-  @override
   final int? maxPeriod;
 
   @override
-  String toString() {
-    return 'AccountEvent.getAccountStatements(accountId: $accountId, view: $view, maxPeriod: $maxPeriod)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AccountEvent.getAccountStatements(accountId: $accountId, maxPeriod: $maxPeriod)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AccountEvent.getAccountStatements'))
+      ..add(DiagnosticsProperty('accountId', accountId))
+      ..add(DiagnosticsProperty('maxPeriod', maxPeriod));
   }
 
   @override
@@ -396,13 +431,12 @@ class _$GetAccountStatementsImpl implements _GetAccountStatements {
             other is _$GetAccountStatementsImpl &&
             (identical(other.accountId, accountId) ||
                 other.accountId == accountId) &&
-            (identical(other.view, view) || other.view == view) &&
             (identical(other.maxPeriod, maxPeriod) ||
                 other.maxPeriod == maxPeriod));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, accountId, view, maxPeriod);
+  int get hashCode => Object.hash(runtimeType, accountId, maxPeriod);
 
   /// Create a copy of AccountEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -419,10 +453,12 @@ class _$GetAccountStatementsImpl implements _GetAccountStatements {
   TResult when<TResult extends Object?>({
     required TResult Function() getAccounts,
     required TResult Function() getAccountStatementsSettings,
-    required TResult Function(int accountId, bool? view, int? maxPeriod)
+    required TResult Function(int accountId, int? maxPeriod)
         getAccountStatements,
+    required TResult Function(int accountId, int? maxPeriod)
+        exportAccountStatements,
   }) {
-    return getAccountStatements(accountId, view, maxPeriod);
+    return getAccountStatements(accountId, maxPeriod);
   }
 
   @override
@@ -430,10 +466,10 @@ class _$GetAccountStatementsImpl implements _GetAccountStatements {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAccounts,
     TResult? Function()? getAccountStatementsSettings,
-    TResult? Function(int accountId, bool? view, int? maxPeriod)?
-        getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? exportAccountStatements,
   }) {
-    return getAccountStatements?.call(accountId, view, maxPeriod);
+    return getAccountStatements?.call(accountId, maxPeriod);
   }
 
   @override
@@ -441,12 +477,12 @@ class _$GetAccountStatementsImpl implements _GetAccountStatements {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAccounts,
     TResult Function()? getAccountStatementsSettings,
-    TResult Function(int accountId, bool? view, int? maxPeriod)?
-        getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? exportAccountStatements,
     required TResult orElse(),
   }) {
     if (getAccountStatements != null) {
-      return getAccountStatements(accountId, view, maxPeriod);
+      return getAccountStatements(accountId, maxPeriod);
     }
     return orElse();
   }
@@ -458,6 +494,8 @@ class _$GetAccountStatementsImpl implements _GetAccountStatements {
     required TResult Function(_GetAccountStatementsSettings value)
         getAccountStatementsSettings,
     required TResult Function(_GetAccountStatements value) getAccountStatements,
+    required TResult Function(_ExportAccountStatements value)
+        exportAccountStatements,
   }) {
     return getAccountStatements(this);
   }
@@ -469,6 +507,7 @@ class _$GetAccountStatementsImpl implements _GetAccountStatements {
     TResult? Function(_GetAccountStatementsSettings value)?
         getAccountStatementsSettings,
     TResult? Function(_GetAccountStatements value)? getAccountStatements,
+    TResult? Function(_ExportAccountStatements value)? exportAccountStatements,
   }) {
     return getAccountStatements?.call(this);
   }
@@ -480,6 +519,7 @@ class _$GetAccountStatementsImpl implements _GetAccountStatements {
     TResult Function(_GetAccountStatementsSettings value)?
         getAccountStatementsSettings,
     TResult Function(_GetAccountStatements value)? getAccountStatements,
+    TResult Function(_ExportAccountStatements value)? exportAccountStatements,
     required TResult orElse(),
   }) {
     if (getAccountStatements != null) {
@@ -492,17 +532,201 @@ class _$GetAccountStatementsImpl implements _GetAccountStatements {
 abstract class _GetAccountStatements implements AccountEvent {
   const factory _GetAccountStatements(
       {required final int accountId,
-      final bool? view,
       final int? maxPeriod}) = _$GetAccountStatementsImpl;
 
   int get accountId;
-  bool? get view;
   int? get maxPeriod;
 
   /// Create a copy of AccountEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAccountStatementsImplCopyWith<_$GetAccountStatementsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ExportAccountStatementsImplCopyWith<$Res> {
+  factory _$$ExportAccountStatementsImplCopyWith(
+          _$ExportAccountStatementsImpl value,
+          $Res Function(_$ExportAccountStatementsImpl) then) =
+      __$$ExportAccountStatementsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int accountId, int? maxPeriod});
+}
+
+/// @nodoc
+class __$$ExportAccountStatementsImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$ExportAccountStatementsImpl>
+    implements _$$ExportAccountStatementsImplCopyWith<$Res> {
+  __$$ExportAccountStatementsImplCopyWithImpl(
+      _$ExportAccountStatementsImpl _value,
+      $Res Function(_$ExportAccountStatementsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountId = null,
+    Object? maxPeriod = freezed,
+  }) {
+    return _then(_$ExportAccountStatementsImpl(
+      accountId: null == accountId
+          ? _value.accountId
+          : accountId // ignore: cast_nullable_to_non_nullable
+              as int,
+      maxPeriod: freezed == maxPeriod
+          ? _value.maxPeriod
+          : maxPeriod // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ExportAccountStatementsImpl
+    with DiagnosticableTreeMixin
+    implements _ExportAccountStatements {
+  const _$ExportAccountStatementsImpl(
+      {required this.accountId, this.maxPeriod});
+
+  @override
+  final int accountId;
+  @override
+  final int? maxPeriod;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AccountEvent.exportAccountStatements(accountId: $accountId, maxPeriod: $maxPeriod)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AccountEvent.exportAccountStatements'))
+      ..add(DiagnosticsProperty('accountId', accountId))
+      ..add(DiagnosticsProperty('maxPeriod', maxPeriod));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ExportAccountStatementsImpl &&
+            (identical(other.accountId, accountId) ||
+                other.accountId == accountId) &&
+            (identical(other.maxPeriod, maxPeriod) ||
+                other.maxPeriod == maxPeriod));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, accountId, maxPeriod);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ExportAccountStatementsImplCopyWith<_$ExportAccountStatementsImpl>
+      get copyWith => __$$ExportAccountStatementsImplCopyWithImpl<
+          _$ExportAccountStatementsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAccounts,
+    required TResult Function() getAccountStatementsSettings,
+    required TResult Function(int accountId, int? maxPeriod)
+        getAccountStatements,
+    required TResult Function(int accountId, int? maxPeriod)
+        exportAccountStatements,
+  }) {
+    return exportAccountStatements(accountId, maxPeriod);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAccounts,
+    TResult? Function()? getAccountStatementsSettings,
+    TResult? Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult? Function(int accountId, int? maxPeriod)? exportAccountStatements,
+  }) {
+    return exportAccountStatements?.call(accountId, maxPeriod);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAccounts,
+    TResult Function()? getAccountStatementsSettings,
+    TResult Function(int accountId, int? maxPeriod)? getAccountStatements,
+    TResult Function(int accountId, int? maxPeriod)? exportAccountStatements,
+    required TResult orElse(),
+  }) {
+    if (exportAccountStatements != null) {
+      return exportAccountStatements(accountId, maxPeriod);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAccounts value) getAccounts,
+    required TResult Function(_GetAccountStatementsSettings value)
+        getAccountStatementsSettings,
+    required TResult Function(_GetAccountStatements value) getAccountStatements,
+    required TResult Function(_ExportAccountStatements value)
+        exportAccountStatements,
+  }) {
+    return exportAccountStatements(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetAccounts value)? getAccounts,
+    TResult? Function(_GetAccountStatementsSettings value)?
+        getAccountStatementsSettings,
+    TResult? Function(_GetAccountStatements value)? getAccountStatements,
+    TResult? Function(_ExportAccountStatements value)? exportAccountStatements,
+  }) {
+    return exportAccountStatements?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAccounts value)? getAccounts,
+    TResult Function(_GetAccountStatementsSettings value)?
+        getAccountStatementsSettings,
+    TResult Function(_GetAccountStatements value)? getAccountStatements,
+    TResult Function(_ExportAccountStatements value)? exportAccountStatements,
+    required TResult orElse(),
+  }) {
+    if (exportAccountStatements != null) {
+      return exportAccountStatements(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ExportAccountStatements implements AccountEvent {
+  const factory _ExportAccountStatements(
+      {required final int accountId,
+      final int? maxPeriod}) = _$ExportAccountStatementsImpl;
+
+  int get accountId;
+  int? get maxPeriod;
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ExportAccountStatementsImplCopyWith<_$ExportAccountStatementsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -522,6 +746,11 @@ mixin _$AccountState {
       throw _privateConstructorUsedError;
   AccountStatementSettingsModel get statementsSettings =>
       throw _privateConstructorUsedError;
+  bool get isLoadingExport => throw _privateConstructorUsedError;
+  bool get hasErrorExport => throw _privateConstructorUsedError;
+  String get messageErrorExport => throw _privateConstructorUsedError;
+  String get pdf => throw _privateConstructorUsedError;
+  bool get successPdf => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -536,7 +765,12 @@ mixin _$AccountState {
             bool isLoadingStatementsSettings,
             bool hasErrorStatementsSettings,
             String messageErrorStatementsSettings,
-            AccountStatementSettingsModel statementsSettings)
+            AccountStatementSettingsModel statementsSettings,
+            bool isLoadingExport,
+            bool hasErrorExport,
+            String messageErrorExport,
+            String pdf,
+            bool successPdf)
         initial,
   }) =>
       throw _privateConstructorUsedError;
@@ -554,7 +788,12 @@ mixin _$AccountState {
             bool isLoadingStatementsSettings,
             bool hasErrorStatementsSettings,
             String messageErrorStatementsSettings,
-            AccountStatementSettingsModel statementsSettings)?
+            AccountStatementSettingsModel statementsSettings,
+            bool isLoadingExport,
+            bool hasErrorExport,
+            String messageErrorExport,
+            String pdf,
+            bool successPdf)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
@@ -572,7 +811,12 @@ mixin _$AccountState {
             bool isLoadingStatementsSettings,
             bool hasErrorStatementsSettings,
             String messageErrorStatementsSettings,
-            AccountStatementSettingsModel statementsSettings)?
+            AccountStatementSettingsModel statementsSettings,
+            bool isLoadingExport,
+            bool hasErrorExport,
+            String messageErrorExport,
+            String pdf,
+            bool successPdf)?
         initial,
     required TResult orElse(),
   }) =>
@@ -619,7 +863,12 @@ abstract class $AccountStateCopyWith<$Res> {
       bool isLoadingStatementsSettings,
       bool hasErrorStatementsSettings,
       String messageErrorStatementsSettings,
-      AccountStatementSettingsModel statementsSettings});
+      AccountStatementSettingsModel statementsSettings,
+      bool isLoadingExport,
+      bool hasErrorExport,
+      String messageErrorExport,
+      String pdf,
+      bool successPdf});
 
   $AccountStatementModelCopyWith<$Res> get transactions;
   $AccountStatementSettingsModelCopyWith<$Res> get statementsSettings;
@@ -652,6 +901,11 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
     Object? hasErrorStatementsSettings = null,
     Object? messageErrorStatementsSettings = null,
     Object? statementsSettings = null,
+    Object? isLoadingExport = null,
+    Object? hasErrorExport = null,
+    Object? messageErrorExport = null,
+    Object? pdf = null,
+    Object? successPdf = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -702,6 +956,26 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
           ? _value.statementsSettings
           : statementsSettings // ignore: cast_nullable_to_non_nullable
               as AccountStatementSettingsModel,
+      isLoadingExport: null == isLoadingExport
+          ? _value.isLoadingExport
+          : isLoadingExport // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasErrorExport: null == hasErrorExport
+          ? _value.hasErrorExport
+          : hasErrorExport // ignore: cast_nullable_to_non_nullable
+              as bool,
+      messageErrorExport: null == messageErrorExport
+          ? _value.messageErrorExport
+          : messageErrorExport // ignore: cast_nullable_to_non_nullable
+              as String,
+      pdf: null == pdf
+          ? _value.pdf
+          : pdf // ignore: cast_nullable_to_non_nullable
+              as String,
+      successPdf: null == successPdf
+          ? _value.successPdf
+          : successPdf // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -747,7 +1021,12 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool isLoadingStatementsSettings,
       bool hasErrorStatementsSettings,
       String messageErrorStatementsSettings,
-      AccountStatementSettingsModel statementsSettings});
+      AccountStatementSettingsModel statementsSettings,
+      bool isLoadingExport,
+      bool hasErrorExport,
+      String messageErrorExport,
+      String pdf,
+      bool successPdf});
 
   @override
   $AccountStatementModelCopyWith<$Res> get transactions;
@@ -780,6 +1059,11 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? hasErrorStatementsSettings = null,
     Object? messageErrorStatementsSettings = null,
     Object? statementsSettings = null,
+    Object? isLoadingExport = null,
+    Object? hasErrorExport = null,
+    Object? messageErrorExport = null,
+    Object? pdf = null,
+    Object? successPdf = null,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -830,13 +1114,33 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.statementsSettings
           : statementsSettings // ignore: cast_nullable_to_non_nullable
               as AccountStatementSettingsModel,
+      isLoadingExport: null == isLoadingExport
+          ? _value.isLoadingExport
+          : isLoadingExport // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasErrorExport: null == hasErrorExport
+          ? _value.hasErrorExport
+          : hasErrorExport // ignore: cast_nullable_to_non_nullable
+              as bool,
+      messageErrorExport: null == messageErrorExport
+          ? _value.messageErrorExport
+          : messageErrorExport // ignore: cast_nullable_to_non_nullable
+              as String,
+      pdf: null == pdf
+          ? _value.pdf
+          : pdf // ignore: cast_nullable_to_non_nullable
+              as String,
+      successPdf: null == successPdf
+          ? _value.successPdf
+          : successPdf // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   const _$InitialImpl(
       {this.isLoading = false,
       this.hasError = false,
@@ -849,7 +1153,12 @@ class _$InitialImpl implements _Initial {
       this.isLoadingStatementsSettings = false,
       this.hasErrorStatementsSettings = false,
       this.messageErrorStatementsSettings = "",
-      this.statementsSettings = const AccountStatementSettingsModel()})
+      this.statementsSettings = const AccountStatementSettingsModel(),
+      this.isLoadingExport = false,
+      this.hasErrorExport = false,
+      this.messageErrorExport = "",
+      this.pdf = "",
+      this.successPdf = false})
       : _accounts = accounts;
 
   @override
@@ -894,10 +1203,53 @@ class _$InitialImpl implements _Initial {
   @override
   @JsonKey()
   final AccountStatementSettingsModel statementsSettings;
+  @override
+  @JsonKey()
+  final bool isLoadingExport;
+  @override
+  @JsonKey()
+  final bool hasErrorExport;
+  @override
+  @JsonKey()
+  final String messageErrorExport;
+  @override
+  @JsonKey()
+  final String pdf;
+  @override
+  @JsonKey()
+  final bool successPdf;
 
   @override
-  String toString() {
-    return 'AccountState.initial(isLoading: $isLoading, hasError: $hasError, messageError: $messageError, accounts: $accounts, isLoadingStatements: $isLoadingStatements, hasErrorStatements: $hasErrorStatements, messageErrorStatements: $messageErrorStatements, transactions: $transactions, isLoadingStatementsSettings: $isLoadingStatementsSettings, hasErrorStatementsSettings: $hasErrorStatementsSettings, messageErrorStatementsSettings: $messageErrorStatementsSettings, statementsSettings: $statementsSettings)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AccountState.initial(isLoading: $isLoading, hasError: $hasError, messageError: $messageError, accounts: $accounts, isLoadingStatements: $isLoadingStatements, hasErrorStatements: $hasErrorStatements, messageErrorStatements: $messageErrorStatements, transactions: $transactions, isLoadingStatementsSettings: $isLoadingStatementsSettings, hasErrorStatementsSettings: $hasErrorStatementsSettings, messageErrorStatementsSettings: $messageErrorStatementsSettings, statementsSettings: $statementsSettings, isLoadingExport: $isLoadingExport, hasErrorExport: $hasErrorExport, messageErrorExport: $messageErrorExport, pdf: $pdf, successPdf: $successPdf)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AccountState.initial'))
+      ..add(DiagnosticsProperty('isLoading', isLoading))
+      ..add(DiagnosticsProperty('hasError', hasError))
+      ..add(DiagnosticsProperty('messageError', messageError))
+      ..add(DiagnosticsProperty('accounts', accounts))
+      ..add(DiagnosticsProperty('isLoadingStatements', isLoadingStatements))
+      ..add(DiagnosticsProperty('hasErrorStatements', hasErrorStatements))
+      ..add(
+          DiagnosticsProperty('messageErrorStatements', messageErrorStatements))
+      ..add(DiagnosticsProperty('transactions', transactions))
+      ..add(DiagnosticsProperty(
+          'isLoadingStatementsSettings', isLoadingStatementsSettings))
+      ..add(DiagnosticsProperty(
+          'hasErrorStatementsSettings', hasErrorStatementsSettings))
+      ..add(DiagnosticsProperty(
+          'messageErrorStatementsSettings', messageErrorStatementsSettings))
+      ..add(DiagnosticsProperty('statementsSettings', statementsSettings))
+      ..add(DiagnosticsProperty('isLoadingExport', isLoadingExport))
+      ..add(DiagnosticsProperty('hasErrorExport', hasErrorExport))
+      ..add(DiagnosticsProperty('messageErrorExport', messageErrorExport))
+      ..add(DiagnosticsProperty('pdf', pdf))
+      ..add(DiagnosticsProperty('successPdf', successPdf));
   }
 
   @override
@@ -933,7 +1285,16 @@ class _$InitialImpl implements _Initial {
                 other.messageErrorStatementsSettings ==
                     messageErrorStatementsSettings) &&
             (identical(other.statementsSettings, statementsSettings) ||
-                other.statementsSettings == statementsSettings));
+                other.statementsSettings == statementsSettings) &&
+            (identical(other.isLoadingExport, isLoadingExport) ||
+                other.isLoadingExport == isLoadingExport) &&
+            (identical(other.hasErrorExport, hasErrorExport) ||
+                other.hasErrorExport == hasErrorExport) &&
+            (identical(other.messageErrorExport, messageErrorExport) ||
+                other.messageErrorExport == messageErrorExport) &&
+            (identical(other.pdf, pdf) || other.pdf == pdf) &&
+            (identical(other.successPdf, successPdf) ||
+                other.successPdf == successPdf));
   }
 
   @override
@@ -950,7 +1311,12 @@ class _$InitialImpl implements _Initial {
       isLoadingStatementsSettings,
       hasErrorStatementsSettings,
       messageErrorStatementsSettings,
-      statementsSettings);
+      statementsSettings,
+      isLoadingExport,
+      hasErrorExport,
+      messageErrorExport,
+      pdf,
+      successPdf);
 
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.
@@ -975,7 +1341,12 @@ class _$InitialImpl implements _Initial {
             bool isLoadingStatementsSettings,
             bool hasErrorStatementsSettings,
             String messageErrorStatementsSettings,
-            AccountStatementSettingsModel statementsSettings)
+            AccountStatementSettingsModel statementsSettings,
+            bool isLoadingExport,
+            bool hasErrorExport,
+            String messageErrorExport,
+            String pdf,
+            bool successPdf)
         initial,
   }) {
     return initial(
@@ -990,7 +1361,12 @@ class _$InitialImpl implements _Initial {
         isLoadingStatementsSettings,
         hasErrorStatementsSettings,
         messageErrorStatementsSettings,
-        statementsSettings);
+        statementsSettings,
+        isLoadingExport,
+        hasErrorExport,
+        messageErrorExport,
+        pdf,
+        successPdf);
   }
 
   @override
@@ -1008,7 +1384,12 @@ class _$InitialImpl implements _Initial {
             bool isLoadingStatementsSettings,
             bool hasErrorStatementsSettings,
             String messageErrorStatementsSettings,
-            AccountStatementSettingsModel statementsSettings)?
+            AccountStatementSettingsModel statementsSettings,
+            bool isLoadingExport,
+            bool hasErrorExport,
+            String messageErrorExport,
+            String pdf,
+            bool successPdf)?
         initial,
   }) {
     return initial?.call(
@@ -1023,7 +1404,12 @@ class _$InitialImpl implements _Initial {
         isLoadingStatementsSettings,
         hasErrorStatementsSettings,
         messageErrorStatementsSettings,
-        statementsSettings);
+        statementsSettings,
+        isLoadingExport,
+        hasErrorExport,
+        messageErrorExport,
+        pdf,
+        successPdf);
   }
 
   @override
@@ -1041,7 +1427,12 @@ class _$InitialImpl implements _Initial {
             bool isLoadingStatementsSettings,
             bool hasErrorStatementsSettings,
             String messageErrorStatementsSettings,
-            AccountStatementSettingsModel statementsSettings)?
+            AccountStatementSettingsModel statementsSettings,
+            bool isLoadingExport,
+            bool hasErrorExport,
+            String messageErrorExport,
+            String pdf,
+            bool successPdf)?
         initial,
     required TResult orElse(),
   }) {
@@ -1058,7 +1449,12 @@ class _$InitialImpl implements _Initial {
           isLoadingStatementsSettings,
           hasErrorStatementsSettings,
           messageErrorStatementsSettings,
-          statementsSettings);
+          statementsSettings,
+          isLoadingExport,
+          hasErrorExport,
+          messageErrorExport,
+          pdf,
+          successPdf);
     }
     return orElse();
   }
@@ -1105,7 +1501,12 @@ abstract class _Initial implements AccountState {
       final bool isLoadingStatementsSettings,
       final bool hasErrorStatementsSettings,
       final String messageErrorStatementsSettings,
-      final AccountStatementSettingsModel statementsSettings}) = _$InitialImpl;
+      final AccountStatementSettingsModel statementsSettings,
+      final bool isLoadingExport,
+      final bool hasErrorExport,
+      final String messageErrorExport,
+      final String pdf,
+      final bool successPdf}) = _$InitialImpl;
 
   @override
   bool get isLoading;
@@ -1131,6 +1532,16 @@ abstract class _Initial implements AccountState {
   String get messageErrorStatementsSettings;
   @override
   AccountStatementSettingsModel get statementsSettings;
+  @override
+  bool get isLoadingExport;
+  @override
+  bool get hasErrorExport;
+  @override
+  String get messageErrorExport;
+  @override
+  String get pdf;
+  @override
+  bool get successPdf;
 
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.

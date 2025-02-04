@@ -27,11 +27,13 @@ class _AccountServiceClient implements AccountServiceClient {
   Future<HttpResponse<ResponseModel<AccountStatementModel>>> getMyAccounts({
     required int accountId,
     bool? view,
+    bool? export,
     int? maxPeriod,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'view': view,
+      r'export': export,
       r'max_period': maxPeriod,
     };
     queryParameters.removeWhere((k, v) => v == null);

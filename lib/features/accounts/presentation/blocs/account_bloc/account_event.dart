@@ -7,7 +7,10 @@ class AccountEvent with _$AccountEvent {
       _GetAccountStatementsSettings;
   const factory AccountEvent.getAccountStatements({
     required int accountId,
-    bool? view,
     int? maxPeriod,
   }) = _GetAccountStatements;
+  const factory AccountEvent.exportAccountStatements({
+    required int accountId,
+    int? maxPeriod,
+  }) = _ExportAccountStatements;
 }

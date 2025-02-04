@@ -26,6 +26,7 @@ class GetAccountStatementsUsecase
             ({
               int accountId,
               bool? view,
+              bool? export,
               int? maxPeriod,
             }),
             ResponseModel<AccountStatementModel>> {
@@ -34,10 +35,11 @@ class GetAccountStatementsUsecase
 
   @override
   Future<Result<ResponseModel<AccountStatementModel>, FailureModel>> execute(
-      ({int accountId, int? maxPeriod, bool? view}) input) async {
+      ({int accountId, int? maxPeriod, bool? export, bool? view}) input) async {
     return await repository.getAccountStatements(
         accountId: input.accountId,
         view: input.view,
+        export: input.export,
         maxPeriod: input.maxPeriod);
   }
 }

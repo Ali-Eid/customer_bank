@@ -1,8 +1,7 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:fs_bank/core/widgets/loading_widget.dart';
-import 'package:lottie/lottie.dart';
 
-import '../constants/assets_manager.dart';
 import '../constants/values_manager.dart';
 
 class GenericDropdownField<T> extends StatelessWidget {
@@ -33,7 +32,7 @@ class GenericDropdownField<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField<T>(
+    return DropdownButtonFormField2<T>(
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: Theme.of(context).textTheme.headlineLarge,
@@ -44,20 +43,14 @@ class GenericDropdownField<T> extends StatelessWidget {
       ),
       isExpanded: true,
       isDense: true,
-      // hint: Align(
-      //   alignment: AlignmentDirectional.centerStart,
-      //   child: Text(
-      //     hintText ?? '',
-      //     style: hintStyle ?? Theme.of(context).textTheme.headlineSmall,
-      //   ),
-      // ),
+      hint: Align(
+        alignment: AlignmentDirectional.centerStart,
+        child: Text(
+          hintText ?? '',
+          style: hintStyle ?? Theme.of(context).textTheme.headlineLarge,
+        ),
+      ),
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      icon: isLoading
-          ? const LoadingWidget()
-          : Icon(
-              Icons.arrow_drop_down,
-              color: Theme.of(context).iconTheme.color,
-            ),
       style: Theme.of(context).textTheme.headlineLarge,
       items: items.map((item) {
         return DropdownMenuItem<T>(
@@ -71,7 +64,19 @@ class GenericDropdownField<T> extends StatelessWidget {
       onChanged: onChanged,
       value: selectedValue,
       validator: validator,
-      alignment: AlignmentDirectional.centerStart, menuMaxHeight: menuMaxHeight,
+      iconStyleData: IconStyleData(
+        icon: isLoading
+            ? const LoadingWidget()
+            : Icon(
+                Icons.arrow_drop_down,
+                color: Theme.of(context).iconTheme.color,
+              ),
+      ),
+      alignment: AlignmentDirectional.centerStart,
+      dropdownStyleData: DropdownStyleData(
+        maxHeight: menuMaxHeight,
+        padding: EdgeInsets.zero,
+      ),
     );
   }
 }

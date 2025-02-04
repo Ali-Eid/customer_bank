@@ -16,6 +16,7 @@ abstract class AccountServiceClient {
   Future<HttpResponse<ResponseModel<AccountStatementModel>>> getMyAccounts({
     @Path("account_id") required int accountId,
     @Query("view") bool? view,
+    @Query("export") bool? export,
     @Query("max_period") int? maxPeriod,
   });
   @GET(Endpoints.ACCOUNT_STATEMENTS_SETTINGS)

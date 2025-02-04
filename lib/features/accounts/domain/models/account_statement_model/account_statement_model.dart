@@ -7,10 +7,11 @@ part 'account_statement_model.g.dart';
 
 @freezed
 abstract class AccountStatementModel with _$AccountStatementModel {
- const factory AccountStatementModel({
+  const factory AccountStatementModel({
     @Default([]) List<TransactionModel> transactions,
     @Default("") @JsonKey(name: "start_date") String startDate,
     @Default("") @JsonKey(name: "end_date") String endDate,
+    @Default("") @JsonKey(name: "pdf_data") String pdf,
   }) = _AccountStatementModel;
   factory AccountStatementModel.fromJson(Map<String, dynamic> json) =>
       _$AccountStatementModelFromJson(json);

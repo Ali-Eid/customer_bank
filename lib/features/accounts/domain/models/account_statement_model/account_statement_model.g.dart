@@ -15,6 +15,7 @@ _$AccountStatementModelImpl _$$AccountStatementModelImplFromJson(
           const [],
       startDate: json['start_date'] as String? ?? "",
       endDate: json['end_date'] as String? ?? "",
+      pdf: json['pdf_data'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$AccountStatementModelImplToJson(
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$AccountStatementModelImplToJson(
       'transactions': instance.transactions,
       'start_date': instance.startDate,
       'end_date': instance.endDate,
+      'pdf_data': instance.pdf,
     };
 
 _$TransactionModelImpl _$$TransactionModelImplFromJson(

@@ -13,6 +13,7 @@ abstract class AccountRepository {
       getAccountStatements({
     required int accountId,
     bool? view,
+    bool? export,
     int? maxPeriod,
   });
   Future<Result<ResponseModel<AccountStatementSettingsModel>, FailureModel>>

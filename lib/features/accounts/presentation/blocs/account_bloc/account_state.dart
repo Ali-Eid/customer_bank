@@ -16,5 +16,10 @@ class AccountState with _$AccountState {
     @Default("") String messageErrorStatementsSettings,
     @Default(AccountStatementSettingsModel())
     AccountStatementSettingsModel statementsSettings,
+    @Default(false) bool isLoadingExport,
+    @Default(false) bool hasErrorExport,
+    @Default("") String messageErrorExport,
+    @Default("") String pdf,  
+    @Default(false) bool successPdf,  
   }) = _Initial;
 }

@@ -26,6 +26,8 @@ mixin _$AccountStatementModel {
   String get startDate => throw _privateConstructorUsedError;
   @JsonKey(name: "end_date")
   String get endDate => throw _privateConstructorUsedError;
+  @JsonKey(name: "pdf_data")
+  String get pdf => throw _privateConstructorUsedError;
 
   /// Serializes this AccountStatementModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +48,8 @@ abstract class $AccountStatementModelCopyWith<$Res> {
   $Res call(
       {List<TransactionModel> transactions,
       @JsonKey(name: "start_date") String startDate,
-      @JsonKey(name: "end_date") String endDate});
+      @JsonKey(name: "end_date") String endDate,
+      @JsonKey(name: "pdf_data") String pdf});
 }
 
 /// @nodoc
@@ -68,6 +71,7 @@ class _$AccountStatementModelCopyWithImpl<$Res,
     Object? transactions = null,
     Object? startDate = null,
     Object? endDate = null,
+    Object? pdf = null,
   }) {
     return _then(_value.copyWith(
       transactions: null == transactions
@@ -81,6 +85,10 @@ class _$AccountStatementModelCopyWithImpl<$Res,
       endDate: null == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      pdf: null == pdf
+          ? _value.pdf
+          : pdf // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -98,7 +106,8 @@ abstract class _$$AccountStatementModelImplCopyWith<$Res>
   $Res call(
       {List<TransactionModel> transactions,
       @JsonKey(name: "start_date") String startDate,
-      @JsonKey(name: "end_date") String endDate});
+      @JsonKey(name: "end_date") String endDate,
+      @JsonKey(name: "pdf_data") String pdf});
 }
 
 /// @nodoc
@@ -118,6 +127,7 @@ class __$$AccountStatementModelImplCopyWithImpl<$Res>
     Object? transactions = null,
     Object? startDate = null,
     Object? endDate = null,
+    Object? pdf = null,
   }) {
     return _then(_$AccountStatementModelImpl(
       transactions: null == transactions
@@ -132,6 +142,10 @@ class __$$AccountStatementModelImplCopyWithImpl<$Res>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as String,
+      pdf: null == pdf
+          ? _value.pdf
+          : pdf // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -142,7 +156,8 @@ class _$AccountStatementModelImpl implements _AccountStatementModel {
   const _$AccountStatementModelImpl(
       {final List<TransactionModel> transactions = const [],
       @JsonKey(name: "start_date") this.startDate = "",
-      @JsonKey(name: "end_date") this.endDate = ""})
+      @JsonKey(name: "end_date") this.endDate = "",
+      @JsonKey(name: "pdf_data") this.pdf = ""})
       : _transactions = transactions;
 
   factory _$AccountStatementModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -163,10 +178,13 @@ class _$AccountStatementModelImpl implements _AccountStatementModel {
   @override
   @JsonKey(name: "end_date")
   final String endDate;
+  @override
+  @JsonKey(name: "pdf_data")
+  final String pdf;
 
   @override
   String toString() {
-    return 'AccountStatementModel(transactions: $transactions, startDate: $startDate, endDate: $endDate)';
+    return 'AccountStatementModel(transactions: $transactions, startDate: $startDate, endDate: $endDate, pdf: $pdf)';
   }
 
   @override
@@ -178,13 +196,18 @@ class _$AccountStatementModelImpl implements _AccountStatementModel {
                 .equals(other._transactions, _transactions) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate));
+            (identical(other.endDate, endDate) || other.endDate == endDate) &&
+            (identical(other.pdf, pdf) || other.pdf == pdf));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_transactions), startDate, endDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_transactions),
+      startDate,
+      endDate,
+      pdf);
 
   /// Create a copy of AccountStatementModel
   /// with the given fields replaced by the non-null parameter values.
@@ -207,7 +230,8 @@ abstract class _AccountStatementModel implements AccountStatementModel {
   const factory _AccountStatementModel(
           {final List<TransactionModel> transactions,
           @JsonKey(name: "start_date") final String startDate,
-          @JsonKey(name: "end_date") final String endDate}) =
+          @JsonKey(name: "end_date") final String endDate,
+          @JsonKey(name: "pdf_data") final String pdf}) =
       _$AccountStatementModelImpl;
 
   factory _AccountStatementModel.fromJson(Map<String, dynamic> json) =
@@ -221,6 +245,9 @@ abstract class _AccountStatementModel implements AccountStatementModel {
   @override
   @JsonKey(name: "end_date")
   String get endDate;
+  @override
+  @JsonKey(name: "pdf_data")
+  String get pdf;
 
   /// Create a copy of AccountStatementModel
   /// with the given fields replaced by the non-null parameter values.

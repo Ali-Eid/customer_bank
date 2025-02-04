@@ -44,11 +44,17 @@ class AccountRepositoryImpl implements AccountRepository {
   @override
   Future<Result<ResponseModel<AccountStatementModel>, FailureModel>>
       getAccountStatements(
-          {required int accountId, bool? view, int? maxPeriod}) async {
+          {required int accountId,
+          bool? view,
+          bool? export,
+          int? maxPeriod}) async {
     if (await networkInfo.isConnected) {
       try {
         final response = await accountServiceClient.getMyAccounts(
-            accountId: accountId, view: view, maxPeriod: maxPeriod);
+            accountId: accountId,
+            view: view,
+            export: export,
+            maxPeriod: maxPeriod);
         if (response.response.statusCode == 200) {
           return Success(response.data);
         } else {
