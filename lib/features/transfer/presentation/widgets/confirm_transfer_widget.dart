@@ -83,7 +83,10 @@ class _ConfirmTransferWidgetState extends State<ConfirmTransferWidget> {
                           Divider(height: AppSizeH.s1),
                           BuildInfoRow(
                               label: AppStrings().toAccountNo,
-                              value: widget.model.toAccountNo.accountNumber),
+                              value: widget.model.toAccountNo.accountNumber
+                                      .isNotEmpty
+                                  ? widget.model.toAccountNo.accountNumber
+                                  : widget.model.toAccountNo2),
                           Divider(height: AppSizeH.s1),
                           BuildInfoRow(
                               label: "${AppStrings().amount}:",

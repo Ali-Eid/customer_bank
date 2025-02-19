@@ -24,6 +24,8 @@ mixin _$AccountModel {
   String get label => throw _privateConstructorUsedError;
   @JsonKey(name: "account_number")
   String get accountNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: "currency_code")
+  String get currencyCode => throw _privateConstructorUsedError;
   int get balance => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   @JsonKey(name: "is_default")
@@ -51,6 +53,7 @@ abstract class $AccountModelCopyWith<$Res> {
       {int id,
       String label,
       @JsonKey(name: "account_number") String accountNumber,
+      @JsonKey(name: "currency_code") String currencyCode,
       int balance,
       String status,
       @JsonKey(name: "is_default") bool isDefault,
@@ -77,6 +80,7 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
     Object? id = null,
     Object? label = null,
     Object? accountNumber = null,
+    Object? currencyCode = null,
     Object? balance = null,
     Object? status = null,
     Object? isDefault = null,
@@ -94,6 +98,10 @@ class _$AccountModelCopyWithImpl<$Res, $Val extends AccountModel>
       accountNumber: null == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      currencyCode: null == currencyCode
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
       balance: null == balance
           ? _value.balance
@@ -137,6 +145,7 @@ abstract class _$$AccountModelImplCopyWith<$Res>
       {int id,
       String label,
       @JsonKey(name: "account_number") String accountNumber,
+      @JsonKey(name: "currency_code") String currencyCode,
       int balance,
       String status,
       @JsonKey(name: "is_default") bool isDefault,
@@ -162,6 +171,7 @@ class __$$AccountModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? label = null,
     Object? accountNumber = null,
+    Object? currencyCode = null,
     Object? balance = null,
     Object? status = null,
     Object? isDefault = null,
@@ -179,6 +189,10 @@ class __$$AccountModelImplCopyWithImpl<$Res>
       accountNumber: null == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      currencyCode: null == currencyCode
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
       balance: null == balance
           ? _value.balance
@@ -207,6 +221,7 @@ class _$AccountModelImpl implements _AccountModel {
       {this.id = 0,
       this.label = "",
       @JsonKey(name: "account_number") this.accountNumber = "",
+      @JsonKey(name: "currency_code") this.currencyCode = "",
       this.balance = 0,
       this.status = "",
       @JsonKey(name: "is_default") this.isDefault = false,
@@ -225,6 +240,9 @@ class _$AccountModelImpl implements _AccountModel {
   @JsonKey(name: "account_number")
   final String accountNumber;
   @override
+  @JsonKey(name: "currency_code")
+  final String currencyCode;
+  @override
   @JsonKey()
   final int balance;
   @override
@@ -239,7 +257,7 @@ class _$AccountModelImpl implements _AccountModel {
 
   @override
   String toString() {
-    return 'AccountModel(id: $id, label: $label, accountNumber: $accountNumber, balance: $balance, status: $status, isDefault: $isDefault, accountType: $accountType)';
+    return 'AccountModel(id: $id, label: $label, accountNumber: $accountNumber, currencyCode: $currencyCode, balance: $balance, status: $status, isDefault: $isDefault, accountType: $accountType)';
   }
 
   @override
@@ -251,6 +269,8 @@ class _$AccountModelImpl implements _AccountModel {
             (identical(other.label, label) || other.label == label) &&
             (identical(other.accountNumber, accountNumber) ||
                 other.accountNumber == accountNumber) &&
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode) &&
             (identical(other.balance, balance) || other.balance == balance) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.isDefault, isDefault) ||
@@ -262,7 +282,7 @@ class _$AccountModelImpl implements _AccountModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, label, accountNumber,
-      balance, status, isDefault, accountType);
+      currencyCode, balance, status, isDefault, accountType);
 
   /// Create a copy of AccountModel
   /// with the given fields replaced by the non-null parameter values.
@@ -285,6 +305,7 @@ abstract class _AccountModel implements AccountModel {
           {final int id,
           final String label,
           @JsonKey(name: "account_number") final String accountNumber,
+          @JsonKey(name: "currency_code") final String currencyCode,
           final int balance,
           final String status,
           @JsonKey(name: "is_default") final bool isDefault,
@@ -301,6 +322,9 @@ abstract class _AccountModel implements AccountModel {
   @override
   @JsonKey(name: "account_number")
   String get accountNumber;
+  @override
+  @JsonKey(name: "currency_code")
+  String get currencyCode;
   @override
   int get balance;
   @override

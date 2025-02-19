@@ -32,9 +32,10 @@ _$ResponsePaginationModelImpl<T> _$$ResponsePaginationModelImplFromJson<T>(
       message: json['message'] as String? ?? '',
       code: json['code'] as String? ?? '',
       data: fromJsonT(json['data']),
-      meta: json['meta'] == null
+      meta: json['pagination'] == null
           ? const PaginationModel()
-          : PaginationModel.fromJson(json['meta'] as Map<String, dynamic>),
+          : PaginationModel.fromJson(
+              json['pagination'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ResponsePaginationModelImplToJson<T>(
@@ -45,5 +46,5 @@ Map<String, dynamic> _$$ResponsePaginationModelImplToJson<T>(
       'message': instance.message,
       'code': instance.code,
       'data': toJsonT(instance.data),
-      'meta': instance.meta,
+      'pagination': instance.meta,
     };

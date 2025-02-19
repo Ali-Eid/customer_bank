@@ -7,6 +7,7 @@ import 'package:fs_bank/core/constants/values_manager.dart';
 import 'package:fs_bank/core/routers/routes_manager.dart';
 import 'package:fs_bank/core/themes/color_manager.dart';
 import 'package:fs_bank/features/home/presentation/widgets/button_home_widget.dart';
+import 'package:fs_bank/features/home/presentation/widgets/custom_drawer_widget.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/app/depndency_injection.dart';
 import '../widgets/account_section_widget.dart';
@@ -22,6 +23,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawer(),
       appBar: AppBar(
         backgroundColor: ColorManager.primary,
         iconTheme: IconThemeData(color: ColorManager.white),

@@ -74,7 +74,10 @@
   "transactions":"Transactions",
   "statement_period":"Select Statement Period",
   "home":"Home",
-  "welcome":"Welcome"
+  "welcome":"Welcome",
+  "relation_note":"Relation note",
+  "validate_relation_note":"Please enter a relation note"
+
 
 
 

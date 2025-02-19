@@ -6,12 +6,12 @@ import 'package:fs_bank/features/auth/presentation/views/login_view.dart';
 import 'package:fs_bank/features/beneficiary/presentation/blocs/bloc/beneficiary_bloc.dart';
 import 'package:fs_bank/features/beneficiary/presentation/views/beneficiary_view.dart';
 import 'package:fs_bank/features/cards/presentation/views/mycards_view.dart';
+import 'package:fs_bank/features/chequebook/presentation/views/chequebook_view.dart';
 import 'package:fs_bank/features/home/presentation/views/home_view.dart';
 import 'package:fs_bank/features/transfer/presentation/views/transfer_bank_accounts_view.dart';
 import 'package:fs_bank/features/transfer/presentation/views/transfer_my_accounts_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/views/new_password_view.dart';
-import '../../features/beneficiary/presentation/views/create_beneficiary_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/transfer/presentation/views/transfer_sygs_view.dart';
 import '../../features/transfer/presentation/views/transfer_view.dart';
@@ -30,8 +30,10 @@ class RoutesNames {
   static const String transferInternalRoute = 'transfer-internal';
   static const String transferSygsRoute = 'transfer-sygs';
   static const String beneficiaryRoute = 'beneficiary';
-  static const String createBeneficiaryRoute = 'create-beneficiary';
+  // static const String createBeneficiaryRoute = 'create-beneficiary';
   static const String transferRoute = 'transfer';
+  //ChequebookView
+  static const String chequebookRoute = 'chequebook';
 }
 
 class RoutesPaths {
@@ -49,9 +51,10 @@ class RoutesPaths {
   static const String transferSygsRoute = 'transfer-sygs';
 
   static const String beneficiaryRoute = 'beneficiary';
-  static const String createBeneficiaryRoute = 'create-beneficiary';
+  // static const String createBeneficiaryRoute = 'create-beneficiary';
 
   static const String transferRoute = 'transfer';
+  static const String chequebookRoute = 'chequebook';
 }
 
 class NavigationKeys {
@@ -147,14 +150,19 @@ class AppRouter {
                           ..add(const BeneficiaryEvent.getBeneficiaries()),
                         child: const BeneficiaryView(),
                       ),
-                  routes: [
-                    GoRoute(
-                      name: RoutesNames.createBeneficiaryRoute,
-                      path: RoutesPaths.createBeneficiaryRoute,
-                      builder: (context, state) =>
-                          const CreateBeneficiaryView(),
-                    ),
+                  routes: const [
+                    // GoRoute(
+                    //   name: RoutesNames.createBeneficiaryRoute,
+                    //   path: RoutesPaths.createBeneficiaryRoute,
+                    //   builder: (context, state) =>
+                    //       const CreateBeneficiaryView(),
+                    // ),
                   ]),
+              GoRoute(
+                name: RoutesNames.chequebookRoute,
+                path: RoutesPaths.chequebookRoute,
+                builder: (context, state) => const ChequebookView(),
+              ),
             ]),
         // ShellRoute(
         //   navigatorKey: NavigationKeys.shellNavigatorKey,

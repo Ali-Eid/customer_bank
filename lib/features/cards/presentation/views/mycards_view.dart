@@ -71,6 +71,14 @@ class _MyCardsViewState extends State<MyCardsView> {
             BlocBuilder(
               bloc: cardsBloc,
               builder: (context, CardsState state) {
+                if (state.hasError) {
+                  return CustomErrorWidget(
+                    message: state.errorMessage,
+                    onPressed: () {
+                      cardsBloc.add(const CardsEvent.getMyCards());
+                    },
+                  );
+                }
                 if (state.isLoading && state.cards.isEmpty) {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: AppSizeW.s16),

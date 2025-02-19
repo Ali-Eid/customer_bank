@@ -50,16 +50,6 @@ class _TransferBankAccountsViewState extends State<TransferBankAccountsView> {
   void initState() {
     transferBloc = instance<TransferBloc>();
     inputTransferCubit = InputTransferCubit(0);
-    // if (context.read<MyAccountsBloc>().accounts.isEmpty) {
-    //   context.read<MyAccountsBloc>().add(MyAccountsEvent.getMyAccounts(
-    //       customerId: context.read<AppBloc>().user?.customerId ?? 0));
-    // } else {
-    //   context.read<MyAccountsBloc>().add(MyAccountsEvent.getMyAccounts(
-    //       customerId: context.read<AppBloc>().user?.customerId ?? 0,
-    //       isLoading: false));
-    //   inputTransferCubit.setAccounts(context.read<MyAccountsBloc>().accounts);
-    // }
-
     super.initState();
   }
 

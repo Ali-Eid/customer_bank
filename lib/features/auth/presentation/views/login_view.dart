@@ -16,6 +16,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../core/app/depndency_injection.dart';
 import '../../../../core/widgets/loading_widget.dart';
+import '../../../../core/widgets/toast_widget.dart';
 import '../../domain/models/login_model/input_login/input_login_model.dart';
 
 class LoginView extends StatefulWidget {
@@ -53,6 +54,13 @@ class _LoginViewState extends State<LoginView> {
               success: (value) {
                 context.read<AppBloc>().user = value.success.data.user;
                 context.goNamed(RoutesNames.homeRoute);
+              },
+              error: (value) {
+                HapticFeedback.heavyImpact();
+                showToast(
+                    context: context,
+                    message: value.message,
+                    color: ColorManager.persimmon);
               },
               // successSendOtp: (value) {
               //   // context.goNamed(RoutesNames.otpVerficationRoute,

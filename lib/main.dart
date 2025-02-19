@@ -19,6 +19,7 @@ Future<void> main() async {
   await initAccounts();
   await initCard();
   await initTransfer();
+  await initChequebook();
   Bloc.observer = MyBlocObserver();
   runApp(EasyLocalization(
       supportedLocales: supportedLocales,

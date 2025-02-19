@@ -17,6 +17,10 @@ import 'package:fs_bank/features/cards/data/repository/card_repository_impl.dart
 import 'package:fs_bank/features/cards/domain/repository/card_repository.dart';
 import 'package:fs_bank/features/cards/presentation/blocs/cards_bloc/cards_bloc.dart';
 import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dart';
+import 'package:fs_bank/features/terms_deposit/data/datasource/remote/terms_deposit_api.dart';
+import 'package:fs_bank/features/terms_deposit/data/repository/terms_deposit_repository_impl.dart';
+import 'package:fs_bank/features/terms_deposit/domain/repository/terms_deposit_repository.dart';
+import 'package:fs_bank/features/terms_deposit/domain/usecases/terms_deposit_usecase.dart';
 import 'package:fs_bank/features/transfer/data/repository/transfer_repository_impl.dart';
 import 'package:fs_bank/features/transfer/domain/usecases/transfer_usecases.dart';
 import 'package:fs_bank/features/transfer/presentation/blocs/transfer_bloc/transfer_bloc.dart';
@@ -33,6 +37,11 @@ import '../../features/beneficiary/presentation/blocs/bloc/beneficiary_bloc.dart
 import '../../features/cards/domain/usecases/card_usecases.dart';
 import '../../features/cards/presentation/blocs/request_card_bloc/request_card_bloc.dart';
 import '../../features/cards/presentation/blocs/withdrawal_bloc/withdrawal_bloc.dart';
+import '../../features/chequebook/data/datasource/chequebook_api.dart';
+import '../../features/chequebook/data/repository/chequebook_repository_impl.dart';
+import '../../features/chequebook/domain/repository/chequebook_repository.dart';
+import '../../features/chequebook/domain/usecase/chequebook_usecase.dart';
+import '../../features/chequebook/presentation/blocs/chequebook_bloc/chequebook_bloc.dart';
 import '../../features/transfer/data/datasource/transfer_api.dart';
 import '../../features/transfer/domain/repository/transfer_repository.dart';
 import '../../features/transfer/presentation/blocs/transfer_sygs_bloc/transfer_sygs_bloc.dart';
@@ -343,5 +352,67 @@ Future<void> initTransfer() async {
             instance<GetTransferSYGSReasonsUsecase>(),
         getBanksUsecase: instance<GetBanksUsecase>(),
         sygsTransferUsecase: instance<SYGSTransferUsecase>()));
+  }
+}
+
+Future<void> initTermsDeposit() async {
+  if (!GetIt.I.isRegistered<TermsDepositServiceClient>()) {
+    instance.registerLazySingleton(
+        () => TermsDepositServiceClient(instance<Dio>()));
+  }
+
+  if (!GetIt.I.isRegistered<TermsDepositRepository>()) {
+    instance.registerLazySingleton<TermsDepositRepository>(
+      () => TermsDepositRepositoryImpl(
+          termsDepositServiceClient: instance<TermsDepositServiceClient>(),
+          networkInfo: instance<NetworkInfo>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<GetPackagesTermsDepositUsecase>()) {
+    instance.registerLazySingleton(() => GetPackagesTermsDepositUsecase(
+        repository: instance<TermsDepositRepository>()));
+  }
+  if (!GetIt.I.isRegistered<RequestTermsDepositUsecase>()) {
+    instance.registerLazySingleton(() => RequestTermsDepositUsecase(
+        repository: instance<TermsDepositRepository>()));
+  }
+}
+
+Future<void> initChequebook() async {
+  if (!GetIt.I.isRegistered<ChequebookServiceClient>()) {
+    instance
+        .registerLazySingleton(() => ChequebookServiceClient(instance<Dio>()));
+  }
+
+  if (!GetIt.I.isRegistered<ChequebookRepository>()) {
+    instance.registerLazySingleton<ChequebookRepository>(
+      () => ChequebookRepositoryImpl(
+          chequebookServiceClient: instance<ChequebookServiceClient>(),
+          networkInfo: instance<NetworkInfo>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<GetMyChequebookUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetMyChequebookUsecase(repository: instance<ChequebookRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetPagesChequebookUsecase>()) {
+    instance.registerLazySingleton(() => GetPagesChequebookUsecase(
+        repository: instance<ChequebookRepository>()));
+  }
+  if (!GetIt.I.isRegistered<CreateChequebookUsecase>()) {
+    instance.registerLazySingleton(() =>
+        CreateChequebookUsecase(repository: instance<ChequebookRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ReportStolenChequebookUsecase>()) {
+    instance.registerLazySingleton(() => ReportStolenChequebookUsecase(
+        repository: instance<ChequebookRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ChequebookBloc>()) {
+    instance.registerFactory(() => ChequebookBloc(
+        createChequebookUsecase: instance<CreateChequebookUsecase>(),
+        getMyChequebookUsecase: instance<GetMyChequebookUsecase>(),
+        getPagesChequebookUsecase: instance<GetPagesChequebookUsecase>(),
+        reportStolenChequebookUsecase:
+            instance<ReportStolenChequebookUsecase>()));
   }
 }

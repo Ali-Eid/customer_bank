@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fs_bank/core/widgets/loading_widget.dart';
 
 import '../../../../core/constants/string_manager.dart';
 import '../../../../core/constants/values_manager.dart';
@@ -45,6 +46,7 @@ class AccountSectionWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       AppStrings().myAccounts,
@@ -53,6 +55,27 @@ class AccountSectionWidget extends StatelessWidget {
                           .bodyMedium!
                           .copyWith(color: ColorManager.secondary),
                     ),
+                    SizedBox(
+                      height: AppSizeH.s40,
+                      child: BlocBuilder(
+                        bloc: context.read<AccountBloc>(),
+                        builder: (context, AccountState state) {
+                          if (state.isLoading) {
+                            return const LoadingWidget();
+                          }
+                          return IconButton(
+                              onPressed: () {
+                                context
+                                    .read<AccountBloc>()
+                                    .add(const AccountEvent.getAccounts());
+                              },
+                              icon: Icon(
+                                Icons.sync,
+                                color: ColorManager.primary,
+                              ));
+                        },
+                      ),
+                    )
                   ],
                 ),
                 SizedBox(height: AppSizeH.s4),

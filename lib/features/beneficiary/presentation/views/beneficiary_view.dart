@@ -189,17 +189,17 @@ class _CreateBeneficiaryWidgetState extends State<CreateBeneficiaryWidget> {
                   replacement: SizedBox(height: AppSizeH.s35),
                   child: TextFormField(
                     controller: relationController,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.text,
                     style: Theme.of(context).textTheme.headlineLarge,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter other relation';
+                        return AppStrings().validateRelationNote;
                       }
                       return null;
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration:
-                        const InputDecoration(hintText: "Relation note"),
+                        InputDecoration(hintText: AppStrings().relationNote),
                   )),
               BlocBuilder(
                 bloc: widget.beneficiaryBloc,
@@ -226,7 +226,7 @@ class _CreateBeneficiaryWidgetState extends State<CreateBeneficiaryWidget> {
                           context.pop();
                         },
                         child: Text(
-                          "Back",
+                          AppStrings().back,
                           style: Theme.of(context)
                               .textTheme
                               .headlineMedium!
@@ -266,7 +266,7 @@ class _CreateBeneficiaryWidgetState extends State<CreateBeneficiaryWidget> {
                                                     relationController.text)));
                               }
                             },
-                            child: const Text("Save")),
+                            child: Text(AppStrings().confirm)),
                       )
                     ],
                   );

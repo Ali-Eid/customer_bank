@@ -195,6 +195,7 @@ mixin _$ResponsePaginationModel<T> {
   String get message => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
   T get data => throw _privateConstructorUsedError;
+  @JsonKey(name: "pagination")
   PaginationModel get meta => throw _privateConstructorUsedError;
 
   /// Serializes this ResponsePaginationModel to a JSON map.
@@ -215,7 +216,11 @@ abstract class $ResponsePaginationModelCopyWith<T, $Res> {
       _$ResponsePaginationModelCopyWithImpl<T, $Res,
           ResponsePaginationModel<T>>;
   @useResult
-  $Res call({String message, String code, T data, PaginationModel meta});
+  $Res call(
+      {String message,
+      String code,
+      T data,
+      @JsonKey(name: "pagination") PaginationModel meta});
 
   $PaginationModelCopyWith<$Res> get meta;
 }
@@ -281,7 +286,11 @@ abstract class _$$ResponsePaginationModelImplCopyWith<T, $Res>
       __$$ResponsePaginationModelImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String message, String code, T data, PaginationModel meta});
+  $Res call(
+      {String message,
+      String code,
+      T data,
+      @JsonKey(name: "pagination") PaginationModel meta});
 
   @override
   $PaginationModelCopyWith<$Res> get meta;
@@ -335,7 +344,7 @@ class _$ResponsePaginationModelImpl<T> implements _ResponsePaginationModel<T> {
       {this.message = '',
       this.code = '',
       required this.data,
-      this.meta = const PaginationModel()});
+      @JsonKey(name: "pagination") this.meta = const PaginationModel()});
 
   factory _$ResponsePaginationModelImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
@@ -350,7 +359,7 @@ class _$ResponsePaginationModelImpl<T> implements _ResponsePaginationModel<T> {
   @override
   final T data;
   @override
-  @JsonKey()
+  @JsonKey(name: "pagination")
   final PaginationModel meta;
 
   @override
@@ -392,10 +401,11 @@ class _$ResponsePaginationModelImpl<T> implements _ResponsePaginationModel<T> {
 abstract class _ResponsePaginationModel<T>
     implements ResponsePaginationModel<T> {
   const factory _ResponsePaginationModel(
-      {final String message,
-      final String code,
-      required final T data,
-      final PaginationModel meta}) = _$ResponsePaginationModelImpl<T>;
+          {final String message,
+          final String code,
+          required final T data,
+          @JsonKey(name: "pagination") final PaginationModel meta}) =
+      _$ResponsePaginationModelImpl<T>;
 
   factory _ResponsePaginationModel.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
@@ -408,6 +418,7 @@ abstract class _ResponsePaginationModel<T>
   @override
   T get data;
   @override
+  @JsonKey(name: "pagination")
   PaginationModel get meta;
 
   /// Create a copy of ResponsePaginationModel

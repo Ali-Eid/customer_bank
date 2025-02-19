@@ -14,6 +14,12 @@ ThemeData lightTheme() {
     colorSchemeSeed: ColorManager.primary,
     scaffoldBackgroundColor: ColorManager.background,
     useMaterial3: true,
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: <TargetPlatform, PageTransitionsBuilder>{
+        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      },
+    ),
     cardTheme: CardThemeData(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSizeR.s6))),

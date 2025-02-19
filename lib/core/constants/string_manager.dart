@@ -76,4 +76,6 @@ class AppStrings {
   String statementPeriod = "statement_period".tr();
   String home = "home".tr();
   String welcome = "welcome".tr();
+  String relationNote = "relation_note".tr();
+  String validateRelationNote = "validate_relation_note".tr();
 }

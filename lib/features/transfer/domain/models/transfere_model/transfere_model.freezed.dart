@@ -27,6 +27,8 @@ mixin _$StoreTransferModel {
   AccountModel get fromAccountNo => throw _privateConstructorUsedError;
   @JsonKey(name: "toAccount")
   AccountModel get toAccountNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "toAccountNo")
+  String get toAccountNo2 => throw _privateConstructorUsedError;
   @JsonKey(name: "amount")
   int get amount => throw _privateConstructorUsedError;
   @JsonKey(name: "currency_code")
@@ -67,6 +69,7 @@ abstract class $StoreTransferModelCopyWith<$Res> {
       @JsonKey(name: "customer_id") int customerId,
       @JsonKey(name: "fromAccount") AccountModel fromAccountNo,
       @JsonKey(name: "toAccount") AccountModel toAccountNo,
+      @JsonKey(name: "toAccountNo") String toAccountNo2,
       @JsonKey(name: "amount") int amount,
       @JsonKey(name: "currency_code") String currencyCode,
       @JsonKey(name: "note") String note,
@@ -100,6 +103,7 @@ class _$StoreTransferModelCopyWithImpl<$Res, $Val extends StoreTransferModel>
     Object? customerId = null,
     Object? fromAccountNo = null,
     Object? toAccountNo = null,
+    Object? toAccountNo2 = null,
     Object? amount = null,
     Object? currencyCode = null,
     Object? note = null,
@@ -127,6 +131,10 @@ class _$StoreTransferModelCopyWithImpl<$Res, $Val extends StoreTransferModel>
           ? _value.toAccountNo
           : toAccountNo // ignore: cast_nullable_to_non_nullable
               as AccountModel,
+      toAccountNo2: null == toAccountNo2
+          ? _value.toAccountNo2
+          : toAccountNo2 // ignore: cast_nullable_to_non_nullable
+              as String,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -200,6 +208,7 @@ abstract class _$$StoreTransferModelImplCopyWith<$Res>
       @JsonKey(name: "customer_id") int customerId,
       @JsonKey(name: "fromAccount") AccountModel fromAccountNo,
       @JsonKey(name: "toAccount") AccountModel toAccountNo,
+      @JsonKey(name: "toAccountNo") String toAccountNo2,
       @JsonKey(name: "amount") int amount,
       @JsonKey(name: "currency_code") String currencyCode,
       @JsonKey(name: "note") String note,
@@ -233,6 +242,7 @@ class __$$StoreTransferModelImplCopyWithImpl<$Res>
     Object? customerId = null,
     Object? fromAccountNo = null,
     Object? toAccountNo = null,
+    Object? toAccountNo2 = null,
     Object? amount = null,
     Object? currencyCode = null,
     Object? note = null,
@@ -260,6 +270,10 @@ class __$$StoreTransferModelImplCopyWithImpl<$Res>
           ? _value.toAccountNo
           : toAccountNo // ignore: cast_nullable_to_non_nullable
               as AccountModel,
+      toAccountNo2: null == toAccountNo2
+          ? _value.toAccountNo2
+          : toAccountNo2 // ignore: cast_nullable_to_non_nullable
+              as String,
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -308,6 +322,7 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
       @JsonKey(name: "customer_id") this.customerId = 0,
       @JsonKey(name: "fromAccount") this.fromAccountNo = const AccountModel(),
       @JsonKey(name: "toAccount") this.toAccountNo = const AccountModel(),
+      @JsonKey(name: "toAccountNo") this.toAccountNo2 = "",
       @JsonKey(name: "amount") this.amount = 0,
       @JsonKey(name: "currency_code") this.currencyCode = "",
       @JsonKey(name: "note") this.note = "",
@@ -333,6 +348,9 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
   @override
   @JsonKey(name: "toAccount")
   final AccountModel toAccountNo;
+  @override
+  @JsonKey(name: "toAccountNo")
+  final String toAccountNo2;
   @override
   @JsonKey(name: "amount")
   final int amount;
@@ -363,7 +381,7 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
 
   @override
   String toString() {
-    return 'StoreTransferModel(id: $id, customerId: $customerId, fromAccountNo: $fromAccountNo, toAccountNo: $toAccountNo, amount: $amount, currencyCode: $currencyCode, note: $note, status: $status, completedAt: $completedAt, declinedAt: $declinedAt, createdAt: $createdAt, refId: $refId, withOtp: $withOtp)';
+    return 'StoreTransferModel(id: $id, customerId: $customerId, fromAccountNo: $fromAccountNo, toAccountNo: $toAccountNo, toAccountNo2: $toAccountNo2, amount: $amount, currencyCode: $currencyCode, note: $note, status: $status, completedAt: $completedAt, declinedAt: $declinedAt, createdAt: $createdAt, refId: $refId, withOtp: $withOtp)';
   }
 
   @override
@@ -378,6 +396,8 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
                 other.fromAccountNo == fromAccountNo) &&
             (identical(other.toAccountNo, toAccountNo) ||
                 other.toAccountNo == toAccountNo) &&
+            (identical(other.toAccountNo2, toAccountNo2) ||
+                other.toAccountNo2 == toAccountNo2) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.currencyCode, currencyCode) ||
                 other.currencyCode == currencyCode) &&
@@ -401,6 +421,7 @@ class _$StoreTransferModelImpl implements _StoreTransferModel {
       customerId,
       fromAccountNo,
       toAccountNo,
+      toAccountNo2,
       amount,
       currencyCode,
       note,
@@ -434,6 +455,7 @@ abstract class _StoreTransferModel implements StoreTransferModel {
           @JsonKey(name: "customer_id") final int customerId,
           @JsonKey(name: "fromAccount") final AccountModel fromAccountNo,
           @JsonKey(name: "toAccount") final AccountModel toAccountNo,
+          @JsonKey(name: "toAccountNo") final String toAccountNo2,
           @JsonKey(name: "amount") final int amount,
           @JsonKey(name: "currency_code") final String currencyCode,
           @JsonKey(name: "note") final String note,
@@ -459,6 +481,9 @@ abstract class _StoreTransferModel implements StoreTransferModel {
   @override
   @JsonKey(name: "toAccount")
   AccountModel get toAccountNo;
+  @override
+  @JsonKey(name: "toAccountNo")
+  String get toAccountNo2;
   @override
   @JsonKey(name: "amount")
   int get amount;

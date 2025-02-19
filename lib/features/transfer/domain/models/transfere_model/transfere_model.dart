@@ -17,6 +17,7 @@ abstract class StoreTransferModel with _$StoreTransferModel {
     @Default(AccountModel())
     @JsonKey(name: "toAccount")
     AccountModel toAccountNo,
+    @Default("") @JsonKey(name: "toAccountNo") String toAccountNo2,
     @Default(0) @JsonKey(name: "amount") int amount,
     @Default("") @JsonKey(name: "currency_code") String currencyCode,
     @Default("") @JsonKey(name: "note") String note,

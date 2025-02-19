@@ -3,6 +3,8 @@ class Endpoints {
   static const TRANSFER_API = '/transfer/api';
   static const ACCOUNTS_API = '/accounts/api';
   static const BENEFICIARY_API = '/beneficiary_contacts/api';
+  static const CHEQUEBOOK_API = '/chequebook/api';
+  static const TERMS_DEPOSIT_API = '/terms-deposit/api';
 
   //Auth
   static const LOGIN = '/login';
@@ -43,6 +45,16 @@ class Endpoints {
   static const BENEFICIARY = '/contacts';
   static const BENEFICIARY_BY_ID = '/contacts/{id}';
   static const RELATIONSHIPS = '/relationships';
+
+  //chequebook
+  static const MY_CHEQUEBOOK = '/my-chequebooks';
+  static const PAGES_CHEQUEBOOK = '/pages';
+  static const REQUEST_CHEQUEBOOK = '/request-new-chequebook';
+  static const REPORT_STOLEN_CHEQUEBOOK = '/report-stolen-chequebook';
+
+  //terms_deposit
+  static const PACKAGES_TERMS_DEPOSIT = '/package';
+  static const REQUEST_TERMS_DEPOSIT = '/request-terms-deposit';
 }
 
 class AuthEndpoints {

@@ -75,7 +75,10 @@
   "transactions":"المناقلات",
   "statement_period":"اختر فترة الكشف",
   "home":"الرئيسية",
-  "welcome":"مرحباً"
+  "welcome":"مرحباً",
+  "relation_note":"علاقة غير ذلك",
+  "validate_relation_note":"يرجى تحديد علاقة غير ذلك"
+
 
 
 

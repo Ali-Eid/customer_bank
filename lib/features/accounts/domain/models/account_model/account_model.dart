@@ -12,6 +12,7 @@ abstract class AccountModel with _$AccountModel {
     @Default(0) int id,
     @Default("") String label,
     @Default("") @JsonKey(name: "account_number") String accountNumber,
+    @Default("") @JsonKey(name: "currency_code") String currencyCode,
     @Default(0) int balance,
     @Default("") String status,
     @Default(false) @JsonKey(name: "is_default") bool isDefault,
