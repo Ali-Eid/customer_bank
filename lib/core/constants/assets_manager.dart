@@ -28,6 +28,8 @@ class IconAssets {
   static String edit_withdraw_icon = '${ICONS_PATH}edit_withdraw.png';
   static String in_active_cards_icon = '${ICONS_PATH}inactive_card.png';
   static String fingerAuthIcon = '${ICONS_PATH}finger.png';
+  static String branchIcon = '${ICONS_PATH}bank.svg';
+  static String atmIcon = '${ICONS_PATH}atm.svg';
 }
 
 class SongAssets {

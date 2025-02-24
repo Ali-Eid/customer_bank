@@ -16,6 +16,8 @@ import 'package:fs_bank/features/cards/data/datasource/card_api.dart';
 import 'package:fs_bank/features/cards/data/repository/card_repository_impl.dart';
 import 'package:fs_bank/features/cards/domain/repository/card_repository.dart';
 import 'package:fs_bank/features/cards/presentation/blocs/cards_bloc/cards_bloc.dart';
+import 'package:fs_bank/features/locations/data/datasource/remote/location_api.dart';
+import 'package:fs_bank/features/locations/domain/repository/location_repository.dart';
 import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dart';
 import 'package:fs_bank/features/terms_deposit/data/datasource/remote/terms_deposit_api.dart';
 import 'package:fs_bank/features/terms_deposit/data/repository/terms_deposit_repository_impl.dart';
@@ -26,6 +28,7 @@ import 'package:fs_bank/features/transfer/domain/usecases/transfer_usecases.dart
 import 'package:fs_bank/features/transfer/presentation/blocs/transfer_bloc/transfer_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:location/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/accounts/data/datasource/customer_account_api.dart';
 import '../../features/accounts/presentation/blocs/account_bloc/account_bloc.dart';
@@ -42,6 +45,9 @@ import '../../features/chequebook/data/repository/chequebook_repository_impl.dar
 import '../../features/chequebook/domain/repository/chequebook_repository.dart';
 import '../../features/chequebook/domain/usecase/chequebook_usecase.dart';
 import '../../features/chequebook/presentation/blocs/chequebook_bloc/chequebook_bloc.dart';
+import '../../features/locations/data/repository/location_repository_impl.dart';
+import '../../features/locations/domain/usecase/location_usecase.dart';
+import '../../features/locations/presentation/blocs/bloc/location_bloc.dart';
 import '../../features/transfer/data/datasource/transfer_api.dart';
 import '../../features/transfer/domain/repository/transfer_repository.dart';
 import '../../features/transfer/presentation/blocs/transfer_sygs_bloc/transfer_sygs_bloc.dart';
@@ -414,5 +420,48 @@ Future<void> initChequebook() async {
         getPagesChequebookUsecase: instance<GetPagesChequebookUsecase>(),
         reportStolenChequebookUsecase:
             instance<ReportStolenChequebookUsecase>()));
+  }
+}
+
+Future<void> initLocations() async {
+  if (!GetIt.I.isRegistered<LocationServiceClient>()) {
+    instance
+        .registerLazySingleton(() => LocationServiceClient(instance<Dio>()));
+  }
+
+  if (!GetIt.I.isRegistered<LocationRepository>()) {
+    instance.registerLazySingleton<LocationRepository>(
+      () => LocationRepositoryImpl(
+          locationServiceClient: instance<LocationServiceClient>(),
+          networkInfo: instance<NetworkInfo>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<GetBranchesLocationUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetBranchesLocationUsecase(repository: instance<LocationRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetAtmLocationUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetAtmLocationUsecase(repository: instance<LocationRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetPosLocationUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetPosLocationUsecase(repository: instance<LocationRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetCitiesLocationUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetCitiesLocationUsecase(repository: instance<LocationRepository>()));
+  }
+  if (!GetIt.I.isRegistered<Location>()) {
+    instance.registerLazySingleton(() => Location());
+  }
+
+  if (!GetIt.I.isRegistered<LocationBloc>()) {
+    instance.registerFactory(() => LocationBloc(
+        location: instance<Location>(),
+        getBranchesLocationUsecase: instance<GetBranchesLocationUsecase>(),
+        getAtmLocationUsecase: instance<GetAtmLocationUsecase>(),
+        getPosLocationUsecase: instance<GetPosLocationUsecase>(),
+        getCitiesLocationUsecase: instance<GetCitiesLocationUsecase>()));
   }
 }

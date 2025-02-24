@@ -5,6 +5,7 @@ class Endpoints {
   static const BENEFICIARY_API = '/beneficiary_contacts/api';
   static const CHEQUEBOOK_API = '/chequebook/api';
   static const TERMS_DEPOSIT_API = '/terms-deposit/api';
+  static const LOCATIONS_API = '/locations/api';
 
   //Auth
   static const LOGIN = '/login';
@@ -55,6 +56,12 @@ class Endpoints {
   //terms_deposit
   static const PACKAGES_TERMS_DEPOSIT = '/package';
   static const REQUEST_TERMS_DEPOSIT = '/request-terms-deposit';
+
+  //Locations
+  static const BRANCHES = '/branches';
+  static const ATMS = '/atms';
+  static const POS = '/pos';
+  static const CITIES = '/cities';
 }
 
 class AuthEndpoints {

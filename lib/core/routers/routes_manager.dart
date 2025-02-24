@@ -8,6 +8,7 @@ import 'package:fs_bank/features/beneficiary/presentation/views/beneficiary_view
 import 'package:fs_bank/features/cards/presentation/views/mycards_view.dart';
 import 'package:fs_bank/features/chequebook/presentation/views/chequebook_view.dart';
 import 'package:fs_bank/features/home/presentation/views/home_view.dart';
+import 'package:fs_bank/features/locations/presentation/views/location_view.dart';
 import 'package:fs_bank/features/transfer/presentation/views/transfer_bank_accounts_view.dart';
 import 'package:fs_bank/features/transfer/presentation/views/transfer_my_accounts_view.dart';
 import 'package:go_router/go_router.dart';
@@ -34,6 +35,7 @@ class RoutesNames {
   static const String transferRoute = 'transfer';
   //ChequebookView
   static const String chequebookRoute = 'chequebook';
+  static const String location = 'location';
 }
 
 class RoutesPaths {
@@ -55,6 +57,8 @@ class RoutesPaths {
 
   static const String transferRoute = 'transfer';
   static const String chequebookRoute = 'chequebook';
+  //location
+  static const String location = 'location';
 }
 
 class NavigationKeys {
@@ -162,6 +166,11 @@ class AppRouter {
                 name: RoutesNames.chequebookRoute,
                 path: RoutesPaths.chequebookRoute,
                 builder: (context, state) => const ChequebookView(),
+              ),
+              GoRoute(
+                name: RoutesNames.location,
+                path: RoutesPaths.location,
+                builder: (context, state) => const LocationView(),
               ),
             ]),
         // ShellRoute(

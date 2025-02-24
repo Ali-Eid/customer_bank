@@ -112,6 +112,22 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                     SizedBox(height: AppSizeH.s24),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: AppSizeW.s4),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(AppSizeR.s15),
+                        onTap: () {
+                          context.goNamed(RoutesNames.location);
+                          // showMyBottomSheet(
+                          //     context, const TransferMyAccountsView());
+                        },
+                        child: ButtonHomeWidget(
+                            color: ColorManager.secondary,
+                            image: ImageAssets.transaction,
+                            title: "Location"),
+                      ),
+                    ),
+                    SizedBox(height: AppSizeH.s24),
                   ],
                 )),
           ),
