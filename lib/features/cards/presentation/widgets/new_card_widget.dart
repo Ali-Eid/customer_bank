@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fs_bank/features/accounts/presentation/blocs/types_bloc/types_bloc.dart';
-import 'package:fs_bank/features/cards/domain/models/card_model/card_model.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/app/depndency_injection.dart';
 import '../../../../core/bases/models/static_model/static_model.dart';
@@ -14,7 +13,6 @@ import '../../../../core/widgets/generic_drop_down_widget.dart';
 import '../../../../core/widgets/loading_widget.dart';
 import '../../../../core/widgets/toast_widget.dart';
 import '../../../accounts/domain/models/account_model/account_model.dart';
-import '../../../accounts/presentation/widgets/drop_down_static_text_model_widget.dart';
 import '../../domain/models/Inputs/request_card_model/request_card_model.dart';
 import '../blocs/cards_bloc/cards_bloc.dart';
 import '../blocs/request_card_bloc/request_card_bloc.dart';
@@ -194,9 +192,8 @@ class _NewCardWidgetState extends State<NewCardWidget> {
                                         accountId: accountId ?? 0,
                                         beneficiaryName: nameController.text,
                                         type: cardTypeId ?? 0,
-                                        beneficiaryType: beneficiaryTypeId ?? 0,
-                                        withdrawalValueId: widget.cardsBloc
-                                            .state.withDrawelValues.first.id)));
+                                        beneficiaryType:
+                                            beneficiaryTypeId ?? 0)));
                               }
                             },
                             child: Text(AppStrings().confirm))),

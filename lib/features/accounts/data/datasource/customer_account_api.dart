@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:fs_bank/features/accounts/domain/models/account_model/account_model.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../core/bases/models/response_model/response_model.dart';

@@ -19,38 +19,32 @@ mixin _$CardsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getMyCards,
-    required TResult Function() getWithDrawalValues,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getMyCards,
-    TResult? Function()? getWithDrawalValues,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getMyCards,
-    TResult Function()? getWithDrawalValues,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMyCards value) getMyCards,
-    required TResult Function(_GetWithDrawalValues value) getWithDrawalValues,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyCards value)? getMyCards,
-    TResult? Function(_GetWithDrawalValues value)? getWithDrawalValues,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyCards value)? getMyCards,
-    TResult Function(_GetWithDrawalValues value)? getWithDrawalValues,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +113,6 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getMyCards,
-    required TResult Function() getWithDrawalValues,
   }) {
     return getMyCards();
   }
@@ -128,7 +121,6 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getMyCards,
-    TResult? Function()? getWithDrawalValues,
   }) {
     return getMyCards?.call();
   }
@@ -137,7 +129,6 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getMyCards,
-    TResult Function()? getWithDrawalValues,
     required TResult orElse(),
   }) {
     if (getMyCards != null) {
@@ -150,7 +141,6 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMyCards value) getMyCards,
-    required TResult Function(_GetWithDrawalValues value) getWithDrawalValues,
   }) {
     return getMyCards(this);
   }
@@ -159,7 +149,6 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyCards value)? getMyCards,
-    TResult? Function(_GetWithDrawalValues value)? getWithDrawalValues,
   }) {
     return getMyCards?.call(this);
   }
@@ -168,7 +157,6 @@ class _$GetMyCardsImpl implements _GetMyCards {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyCards value)? getMyCards,
-    TResult Function(_GetWithDrawalValues value)? getWithDrawalValues,
     required TResult orElse(),
   }) {
     if (getMyCards != null) {
@@ -180,112 +168,6 @@ class _$GetMyCardsImpl implements _GetMyCards {
 
 abstract class _GetMyCards implements CardsEvent {
   const factory _GetMyCards() = _$GetMyCardsImpl;
-}
-
-/// @nodoc
-abstract class _$$GetWithDrawalValuesImplCopyWith<$Res> {
-  factory _$$GetWithDrawalValuesImplCopyWith(_$GetWithDrawalValuesImpl value,
-          $Res Function(_$GetWithDrawalValuesImpl) then) =
-      __$$GetWithDrawalValuesImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetWithDrawalValuesImplCopyWithImpl<$Res>
-    extends _$CardsEventCopyWithImpl<$Res, _$GetWithDrawalValuesImpl>
-    implements _$$GetWithDrawalValuesImplCopyWith<$Res> {
-  __$$GetWithDrawalValuesImplCopyWithImpl(_$GetWithDrawalValuesImpl _value,
-      $Res Function(_$GetWithDrawalValuesImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CardsEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$GetWithDrawalValuesImpl implements _GetWithDrawalValues {
-  const _$GetWithDrawalValuesImpl();
-
-  @override
-  String toString() {
-    return 'CardsEvent.getWithDrawalValues()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetWithDrawalValuesImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getMyCards,
-    required TResult Function() getWithDrawalValues,
-  }) {
-    return getWithDrawalValues();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getMyCards,
-    TResult? Function()? getWithDrawalValues,
-  }) {
-    return getWithDrawalValues?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getMyCards,
-    TResult Function()? getWithDrawalValues,
-    required TResult orElse(),
-  }) {
-    if (getWithDrawalValues != null) {
-      return getWithDrawalValues();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetMyCards value) getMyCards,
-    required TResult Function(_GetWithDrawalValues value) getWithDrawalValues,
-  }) {
-    return getWithDrawalValues(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetMyCards value)? getMyCards,
-    TResult? Function(_GetWithDrawalValues value)? getWithDrawalValues,
-  }) {
-    return getWithDrawalValues?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetMyCards value)? getMyCards,
-    TResult Function(_GetWithDrawalValues value)? getWithDrawalValues,
-    required TResult orElse(),
-  }) {
-    if (getWithDrawalValues != null) {
-      return getWithDrawalValues(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetWithDrawalValues implements CardsEvent {
-  const factory _GetWithDrawalValues() = _$GetWithDrawalValuesImpl;
 }
 
 /// @nodoc

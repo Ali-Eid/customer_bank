@@ -26,7 +26,7 @@ class Endpoints {
   //Card
   static const CARD = '/cards/api';
   static const MY_CARD = '/cards';
-  static const WITHDRAWAL_VALUES = '/withdrawal_values';
+  // static const WITHDRAWAL_VALUES = '/withdrawal_values';
   static const BENEFICIARY_TYPES = '/beneficiary_types';
   static const CARD_TYPES = '/card_types';
   static const NEW_CARD = '/request_new_card';

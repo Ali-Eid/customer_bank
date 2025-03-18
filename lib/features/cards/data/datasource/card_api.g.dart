@@ -67,50 +67,6 @@ class _CardServiceClient implements CardServiceClient {
   }
 
   @override
-  Future<HttpResponse<ResponseModel<List<WithDrawelValuesModel>>>>
-      getWithdrawalValues() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<
-        HttpResponse<ResponseModel<List<WithDrawelValuesModel>>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/withdrawal_values',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ResponseModel<List<WithDrawelValuesModel>> _value;
-    try {
-      _value = ResponseModel<List<WithDrawelValuesModel>>.fromJson(
-        _result.data!,
-        (json) => json is List<dynamic>
-            ? json
-                .map<WithDrawelValuesModel>((i) =>
-                    WithDrawelValuesModel.fromJson(i as Map<String, dynamic>))
-                .toList()
-            : List.empty(),
-      );
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
   Future<HttpResponse<ResponseModel<List<StaticTextModel>>>>
       getCardType() async {
     final _extra = <String, dynamic>{};

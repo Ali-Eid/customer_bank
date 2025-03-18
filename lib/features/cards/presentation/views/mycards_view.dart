@@ -1,32 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fs_bank/core/bases/enums/card_type.dart';
-import 'package:fs_bank/core/constants/assets_manager.dart';
 import 'package:fs_bank/core/constants/string_manager.dart';
 import 'package:fs_bank/core/constants/values_manager.dart';
 import 'package:fs_bank/core/widgets/bottom_sheet_base_widget.dart';
 import 'package:fs_bank/core/widgets/custom_error_widget.dart';
-import 'package:fs_bank/core/widgets/generic_drop_down_widget.dart';
 import 'package:fs_bank/core/widgets/shimmer_widget.dart';
 import 'package:fs_bank/core/widgets/toast_widget.dart';
-import 'package:fs_bank/features/accounts/presentation/widgets/drop_down_account_widget.dart';
-import 'package:fs_bank/features/cards/domain/models/Inputs/request_card_model/request_card_model.dart';
-import 'package:fs_bank/features/cards/domain/models/Inputs/request_inactive_card/request_inactive_card_model.dart';
-import 'package:fs_bank/features/cards/domain/models/card_model/card_model.dart';
-import 'package:fs_bank/features/cards/domain/models/withdrawel_values_model/with_drawel_values_model.dart';
 import 'package:fs_bank/features/cards/presentation/blocs/cards_bloc/cards_bloc.dart';
-import 'package:fs_bank/features/cards/presentation/blocs/withdrawal_bloc/withdrawal_bloc.dart';
-import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../core/app/depndency_injection.dart';
-import '../../../../core/cache/app_preferences.dart';
 import '../../../../core/themes/color_manager.dart';
 import '../../../../core/widgets/loading_widget.dart';
-import '../../domain/models/Inputs/request_increase_withdrawal_value/request_increase_withdrawal_value_model.dart';
-import '../blocs/request_card_bloc/request_card_bloc.dart';
 import '../widgets/base_bottom_sheet_widget.dart';
 import '../widgets/card_item_widget.dart';
 import '../widgets/card_request_widget.dart';
@@ -46,9 +31,7 @@ class _MyCardsViewState extends State<MyCardsView> {
   late CardsBloc cardsBloc;
   @override
   void initState() {
-    cardsBloc = instance<CardsBloc>()
-      ..add(const CardsEvent.getMyCards())
-      ..add(const CardsEvent.getWithDrawalValues());
+    cardsBloc = instance<CardsBloc>()..add(const CardsEvent.getMyCards());
     super.initState();
   }
 

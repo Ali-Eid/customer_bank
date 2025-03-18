@@ -13,7 +13,6 @@ _$RequestCardModelImpl _$$RequestCardModelImplFromJson(
       beneficiaryName: json['beneficiary_name'] as String,
       type: (json['type_id'] as num).toInt(),
       beneficiaryType: (json['beneficiary_type_id'] as num).toInt(),
-      withdrawalValueId: (json['withdrawal_value_id'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$RequestCardModelImplToJson(
@@ -23,5 +22,4 @@ Map<String, dynamic> _$$RequestCardModelImplToJson(
       'beneficiary_name': instance.beneficiaryName,
       'type_id': instance.type,
       'beneficiary_type_id': instance.beneficiaryType,
-      'withdrawal_value_id': instance.withdrawalValueId,
     };

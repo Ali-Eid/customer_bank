@@ -18,9 +18,6 @@ abstract class CardServiceClient {
   @GET(Endpoints.MY_CARD)
   Future<HttpResponse<ResponseModel<List<CardModel>>>> getMyCards();
 
-  @GET(Endpoints.WITHDRAWAL_VALUES)
-  Future<HttpResponse<ResponseModel<List<WithDrawelValuesModel>>>>
-      getWithdrawalValues();
   @GET(Endpoints.CARD_TYPES)
   Future<HttpResponse<ResponseModel<List<StaticTextModel>>>> getCardType();
   @GET(Endpoints.BENEFICIARY_TYPES)

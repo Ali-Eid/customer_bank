@@ -13,54 +13,59 @@ part 'cards_bloc.freezed.dart';
 
 class CardsBloc extends Bloc<CardsEvent, CardsState> {
   final GetCardUsecase getCardUsecase;
-  final GetWithDrawelValues getWithDrawelValues;
+  // final GetWithDrawelValues getWithDrawelValues;
   final AppPreferences appPreferences;
-  CardsBloc(
-      {required this.getCardUsecase,
-      required this.appPreferences,
-      required this.getWithDrawelValues})
-      : super(const CardsState.initial()) {
+  CardsBloc({
+    required this.getCardUsecase,
+    required this.appPreferences,
+    // required this.getWithDrawelValues
+  }) : super(const CardsState.initial()) {
     on<CardsEvent>((event, emit) async {
-      await event.map(getMyCards: (value) async {
-        emit(state.copyWith(
-            isLoading: true,
-            hasError: false,
-            cards: appPreferences.getList<CardModel>(
-                KeysPreferences.PREFS_KEY_CARDS, CardModel.fromJson)));
-        final failureOrCards = await getCardUsecase.execute();
-        await failureOrCards.when(
-          (success) async {
-            await appPreferences.saveList<CardModel>(
-                KeysPreferences.PREFS_KEY_CARDS,
-                success.data
-                    .map(
-                      (e) => e.toJson(),
-                    )
-                    .toList());
-            emit(state.copyWith(isLoading: false, cards: success.data));
-          },
-          (error) {
-            emit(state.copyWith(
-                isLoading: false, hasError: true, errorMessage: error.message));
-          },
-        );
-      }, getWithDrawalValues: (value) async {
-        emit(state.copyWith(
-            isLoadingWithDrawel: true, hasErrorWithDrawel: false));
-        final failureOrWithDrawel = await getWithDrawelValues.execute();
-        failureOrWithDrawel.when(
-          (success) {
-            emit(state.copyWith(
-                isLoadingWithDrawel: false, withDrawelValues: success.data));
-          },
-          (error) {
-            emit(state.copyWith(
-                isLoadingWithDrawel: false,
-                hasErrorWithDrawel: true,
-                errorMessageWithDrawel: error.message));
-          },
-        );
-      });
+      await event.map(
+        getMyCards: (value) async {
+          emit(state.copyWith(
+              isLoading: true,
+              hasError: false,
+              cards: appPreferences.getList<CardModel>(
+                  KeysPreferences.PREFS_KEY_CARDS, CardModel.fromJson)));
+          final failureOrCards = await getCardUsecase.execute();
+          await failureOrCards.when(
+            (success) async {
+              await appPreferences.saveList<CardModel>(
+                  KeysPreferences.PREFS_KEY_CARDS,
+                  success.data
+                      .map(
+                        (e) => e.toJson(),
+                      )
+                      .toList());
+              emit(state.copyWith(isLoading: false, cards: success.data));
+            },
+            (error) {
+              emit(state.copyWith(
+                  isLoading: false,
+                  hasError: true,
+                  errorMessage: error.message));
+            },
+          );
+        },
+        // getWithDrawalValues: (value) async {
+        //   emit(state.copyWith(
+        //       isLoadingWithDrawel: true, hasErrorWithDrawel: false));
+        //   final failureOrWithDrawel = await getWithDrawelValues.execute();
+        //   failureOrWithDrawel.when(
+        //     (success) {
+        //       emit(state.copyWith(
+        //           isLoadingWithDrawel: false, withDrawelValues: success.data));
+        //     },
+        //     (error) {
+        //       emit(state.copyWith(
+        //           isLoadingWithDrawel: false,
+        //           hasErrorWithDrawel: true,
+        //           errorMessageWithDrawel: error.message));
+        //     },
+        //   );
+        // }
+      );
     });
   }
 }

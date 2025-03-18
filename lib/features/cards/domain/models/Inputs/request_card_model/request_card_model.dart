@@ -11,7 +11,6 @@ abstract class RequestCardModel with _$RequestCardModel {
     @JsonKey(name: "beneficiary_name") required String beneficiaryName,
     @JsonKey(name: "type_id") required int type,
     @JsonKey(name: "beneficiary_type_id") required int beneficiaryType,
-    @JsonKey(name: "withdrawal_value_id") required int withdrawalValueId,
   }) = _RequestCardModel;
   factory RequestCardModel.fromJson(Map<String, dynamic> json) =>
       _$RequestCardModelFromJson(json);

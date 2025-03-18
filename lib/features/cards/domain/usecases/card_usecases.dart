@@ -21,18 +21,18 @@ class GetCardUsecase
   }
 }
 
-class GetWithDrawelValues
-    implements
-        BaseUseCaseEmptyInput<ResponseModel<List<WithDrawelValuesModel>>> {
-  final CardRepository repository;
+// class GetWithDrawelValues
+//     implements
+//         BaseUseCaseEmptyInput<ResponseModel<List<WithDrawelValuesModel>>> {
+//   final CardRepository repository;
 
-  GetWithDrawelValues({required this.repository});
-  @override
-  Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
-      execute() async {
-    return await repository.getWithDrawelValues();
-  }
-}
+//   GetWithDrawelValues({required this.repository});
+//   @override
+//   Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
+//       execute() async {
+//     return await repository.getWithDrawelValues();
+//   }
+// }
 
 class GetCardTypesUsecase
     implements BaseUseCaseEmptyInput<ResponseModel<List<StaticTextModel>>> {

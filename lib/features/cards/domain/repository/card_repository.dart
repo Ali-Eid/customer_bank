@@ -10,8 +10,8 @@ import '../../../../core/bases/models/response_model/response_model.dart';
 
 abstract class CardRepository {
   Future<Result<ResponseModel<List<CardModel>>, FailureModel>> getMyCards();
-  Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
-      getWithDrawelValues();
+  // Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
+  //     getWithDrawelValues();
   Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>
       getCardType();
   Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>

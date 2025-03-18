@@ -38,24 +38,24 @@ class CardRepositoryImpl implements CardRepository {
     }
   }
 
-  @override
-  Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
-      getWithDrawelValues() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final response = await cardServiceClient.getWithdrawalValues();
-        if (response.response.statusCode == 200) {
-          return Success(response.data);
-        } else {
-          return Error(FailureModel.fromJson(response.response.data));
-        }
-      } on DioException catch (e) {
-        return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
-      }
-    } else {
-      return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
-    }
-  }
+  // @override
+  // Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
+  //     getWithDrawelValues() async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       final response = await cardServiceClient.getWithdrawalValues();
+  //       if (response.response.statusCode == 200) {
+  //         return Success(response.data);
+  //       } else {
+  //         return Error(FailureModel.fromJson(response.response.data));
+  //       }
+  //     } on DioException catch (e) {
+  //       return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
+  //     }
+  //   } else {
+  //     return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
+  //   }
+  // }
 
   @override
   Future<Result<ResponseModel, FailureModel>> requestInActiveCard(
