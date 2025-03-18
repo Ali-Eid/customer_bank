@@ -62,7 +62,7 @@ class DrawerWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    context.read<AppBloc>().user?.name ??
+                                    context.read<AppBloc>().user?.username ??
                                         "Unknown",
                                     softWrap: true,
                                     style: Theme.of(context)

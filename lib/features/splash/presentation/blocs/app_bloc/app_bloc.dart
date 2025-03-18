@@ -22,11 +22,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             user = appPreferences.getUserInfo();
             emit(const AppState.home());
           } else {
-            if (appPreferences.isShowOnBoarding()) {
-              emit(const AppState.auth());
-            } else {
-              emit(const AppState.onBoarding());
-            }
+            emit(const AppState.auth());
           }
         },
         logout: (value) async {

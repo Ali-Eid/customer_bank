@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fs_bank/core/bases/models/failure_model/failure_model.dart';
 import 'package:fs_bank/core/bases/models/response_model/response_model.dart';
+import 'package:fs_bank/core/bases/models/static_model/static_model.dart';
 import 'package:fs_bank/features/cards/data/datasource/card_api.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_card_model/request_card_model.dart';
 import 'package:fs_bank/features/cards/domain/models/Inputs/request_inactive_card/request_inactive_card_model.dart';
@@ -37,24 +38,24 @@ class CardRepositoryImpl implements CardRepository {
     }
   }
 
-  @override
-  Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
-      getWithDrawelValues() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final response = await cardServiceClient.getWithdrawalValues();
-        if (response.response.statusCode == 200) {
-          return Success(response.data);
-        } else {
-          return Error(FailureModel.fromJson(response.response.data));
-        }
-      } on DioException catch (e) {
-        return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
-      }
-    } else {
-      return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
-    }
-  }
+  // @override
+  // Future<Result<ResponseModel<List<WithDrawelValuesModel>>, FailureModel>>
+  //     getWithDrawelValues() async {
+  //   if (await networkInfo.isConnected) {
+  //     try {
+  //       final response = await cardServiceClient.getWithdrawalValues();
+  //       if (response.response.statusCode == 200) {
+  //         return Success(response.data);
+  //       } else {
+  //         return Error(FailureModel.fromJson(response.response.data));
+  //       }
+  //     } on DioException catch (e) {
+  //       return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
+  //     }
+  //   } else {
+  //     return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
+  //   }
+  // }
 
   @override
   Future<Result<ResponseModel, FailureModel>> requestInActiveCard(
@@ -105,6 +106,46 @@ class CardRepositoryImpl implements CardRepository {
       try {
         final response =
             await cardServiceClient.requestNewCard(request: request);
+        if (response.response.statusCode == 200 ||
+            response.response.statusCode == 201) {
+          return Success(response.data);
+        } else {
+          return Error(FailureModel.fromJson(response.response.data));
+        }
+      } on DioException catch (e) {
+        return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
+      }
+    } else {
+      return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
+    }
+  }
+
+  @override
+  Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>
+      getBeneficiaryType() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await cardServiceClient.getBeneficiaryType();
+        if (response.response.statusCode == 200 ||
+            response.response.statusCode == 201) {
+          return Success(response.data);
+        } else {
+          return Error(FailureModel.fromJson(response.response.data));
+        }
+      } on DioException catch (e) {
+        return Error(FailureModel.fromJson(e.response?.data ?? defaultError));
+      }
+    } else {
+      return Error(FailureModel(message: "لا يوجد اتصال انترنت"));
+    }
+  }
+
+  @override
+  Future<Result<ResponseModel<List<StaticTextModel>>, FailureModel>>
+      getCardType() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final response = await cardServiceClient.getCardType();
         if (response.response.statusCode == 200 ||
             response.response.statusCode == 201) {
           return Success(response.data);

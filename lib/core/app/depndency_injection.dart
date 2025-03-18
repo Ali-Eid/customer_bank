@@ -1,34 +1,54 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:fs_bank/features/accounts/data/datasource/account_api.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fs_bank/features/accounts/data/datasource/accounts/account_api.dart';
 import 'package:fs_bank/features/accounts/data/repository/account_repository_impl.dart';
 import 'package:fs_bank/features/accounts/domain/repository/account_repository.dart';
 import 'package:fs_bank/features/accounts/domain/usecases/account_usecases.dart';
-import 'package:fs_bank/features/accounts/presentation/blocs/my_accounts_bloc/my_accounts_bloc.dart';
 import 'package:fs_bank/features/auth/data/datasource/auth_api.dart';
 import 'package:fs_bank/features/auth/data/repository/auth_repository_impl.dart';
 import 'package:fs_bank/features/auth/domain/repository/auth_repository.dart';
 import 'package:fs_bank/features/auth/domain/usecases/auth_usecases.dart';
+import 'package:fs_bank/features/beneficiary/data/datasource/remote/beneficiary_api.dart';
+import 'package:fs_bank/features/beneficiary/data/repository/beneficiary_repository_impl.dart';
+import 'package:fs_bank/features/beneficiary/domain/repository/beneficiary_repository.dart';
 import 'package:fs_bank/features/cards/data/datasource/card_api.dart';
 import 'package:fs_bank/features/cards/data/repository/card_repository_impl.dart';
 import 'package:fs_bank/features/cards/domain/repository/card_repository.dart';
 import 'package:fs_bank/features/cards/presentation/blocs/cards_bloc/cards_bloc.dart';
-import 'package:fs_bank/features/on_boarding/presentation/blocs/on_boarding_bloc/on_boarding_bloc.dart';
+import 'package:fs_bank/features/locations/data/datasource/remote/location_api.dart';
+import 'package:fs_bank/features/locations/domain/repository/location_repository.dart';
 import 'package:fs_bank/features/splash/presentation/blocs/app_bloc/app_bloc.dart';
+import 'package:fs_bank/features/terms_deposit/data/datasource/remote/terms_deposit_api.dart';
+import 'package:fs_bank/features/terms_deposit/data/repository/terms_deposit_repository_impl.dart';
+import 'package:fs_bank/features/terms_deposit/domain/repository/terms_deposit_repository.dart';
+import 'package:fs_bank/features/terms_deposit/domain/usecases/terms_deposit_usecase.dart';
 import 'package:fs_bank/features/transfer/data/repository/transfer_repository_impl.dart';
 import 'package:fs_bank/features/transfer/domain/usecases/transfer_usecases.dart';
 import 'package:fs_bank/features/transfer/presentation/blocs/transfer_bloc/transfer_bloc.dart';
-
 import 'package:get_it/get_it.dart';
-
+import 'package:local_auth/local_auth.dart';
+import 'package:location/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import '../../features/accounts/data/datasource/customer_account_api.dart';
+import '../../features/accounts/presentation/blocs/account_bloc/account_bloc.dart';
+import '../../features/accounts/presentation/blocs/types_bloc/types_bloc.dart';
 import '../../features/auth/presentation/blocs/auth_bloc/auth_bloc.dart';
+import '../../features/beneficiary/domain/usecases/beneficiary_usecase.dart';
+import '../../features/beneficiary/presentation/blocs/bloc/beneficiary_bloc.dart';
 import '../../features/cards/domain/usecases/card_usecases.dart';
 import '../../features/cards/presentation/blocs/request_card_bloc/request_card_bloc.dart';
-import '../../features/cards/presentation/blocs/withdrawal_bloc/withdrawal_bloc.dart';
+import '../../features/chequebook/data/datasource/chequebook_api.dart';
+import '../../features/chequebook/data/repository/chequebook_repository_impl.dart';
+import '../../features/chequebook/domain/repository/chequebook_repository.dart';
+import '../../features/chequebook/domain/usecase/chequebook_usecase.dart';
+import '../../features/chequebook/presentation/blocs/chequebook_bloc/chequebook_bloc.dart';
+import '../../features/locations/data/repository/location_repository_impl.dart';
+import '../../features/locations/domain/usecase/location_usecase.dart';
+import '../../features/locations/presentation/blocs/bloc/location_bloc.dart';
 import '../../features/transfer/data/datasource/transfer_api.dart';
 import '../../features/transfer/domain/repository/transfer_repository.dart';
+import '../../features/transfer/presentation/blocs/transfer_sygs_bloc/transfer_sygs_bloc.dart';
 import '../cache/app_preferences.dart';
 import '../network/dio_factory.dart';
 import '../network/general_dio_interceptor.dart';
@@ -38,22 +58,21 @@ final instance = GetIt.instance;
 
 Future<void> initAppModule() async {
   final sharedPreferences = await SharedPreferences.getInstance();
+  const storage = FlutterSecureStorage(
+      aOptions: AndroidOptions(
+    encryptedSharedPreferences: true,
+  ));
   instance.registerFactory<SharedPreferences>(() => sharedPreferences);
-  instance.registerFactory<AppPreferences>(() => AppPreferences(instance()));
+  instance.registerFactory<FlutterSecureStorage>(() => storage);
+  instance.registerFactory<AppPreferences>(() => AppPreferences(
+      instance<SharedPreferences>(), instance<FlutterSecureStorage>()));
   instance.registerLazySingleton<DioFactory>(() => DioFactory(instance()));
   instance.registerFactory<GeneralInterceptor>(() => GeneralInterceptor(
         instance(),
       ));
   final dio = await instance<DioFactory>().getDio();
-  if (!GetIt.I.isRegistered<AccountServiceClient>()) {
-    instance.registerLazySingleton(() => AccountServiceClient(dio));
-  }
-  if (!GetIt.I.isRegistered<CardServiceClient>()) {
-    instance.registerLazySingleton(() => CardServiceClient(dio));
-  }
-  if (!GetIt.I.isRegistered<TransferServiceClient>()) {
-    instance.registerLazySingleton(() => TransferServiceClient(dio));
-  }
+  instance.registerLazySingleton<Dio>(() => dio);
+
   instance.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImplementer(Connectivity()));
   instance.registerFactory(
@@ -61,10 +80,12 @@ Future<void> initAppModule() async {
         appPreferences: instance<AppPreferences>(),
         logoutUsecase: instance<LogoutUsecase>()),
   );
-  instance.registerFactory(() => OnBoardingBloc);
 }
 
 Future<void> initCard() async {
+  if (!GetIt.I.isRegistered<CardServiceClient>()) {
+    instance.registerLazySingleton(() => CardServiceClient(instance<Dio>()));
+  }
   if (!GetIt.I.isRegistered<CardRepository>()) {
     instance.registerLazySingleton<CardRepository>(
       () => CardRepositoryImpl(
@@ -92,17 +113,31 @@ Future<void> initCard() async {
     instance.registerLazySingleton(() => RequestIncreaseWithdrawalUsecase(
         repository: instance<CardRepository>()));
   }
+  if (!GetIt.I.isRegistered<GetBeneficiaryTypesUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetBeneficiaryTypesUsecase(repository: instance<CardRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetCardTypesUsecase>()) {
+    instance.registerLazySingleton(
+        () => GetCardTypesUsecase(repository: instance<CardRepository>()));
+  }
 
   //Blocs
   if (!GetIt.I.isRegistered<CardsBloc>()) {
     instance.registerFactory(
-      () => CardsBloc(getCardUsecase: instance<GetCardUsecase>()),
+      () => CardsBloc(
+          getCardUsecase: instance<GetCardUsecase>(),
+          appPreferences: instance<AppPreferences>(),
+          getWithDrawelValues: instance<GetWithDrawelValues>()),
     );
   }
-  if (!GetIt.I.isRegistered<WithdrawalBloc>()) {
+
+  if (!GetIt.I.isRegistered<TypesBloc>()) {
     instance.registerFactory(
-      () =>
-          WithdrawalBloc(getWithDrawelValues: instance<GetWithDrawelValues>()),
+      () => TypesBloc(
+          appPreferences: instance<AppPreferences>(),
+          getBeneficiaryTypes: instance<GetBeneficiaryTypesUsecase>(),
+          getCardTypesUsecase: instance<GetCardTypesUsecase>()),
     );
   }
   if (!GetIt.I.isRegistered<RequestCardBloc>()) {
@@ -117,10 +152,19 @@ Future<void> initCard() async {
 }
 
 Future<void> initAccounts() async {
+  if (!GetIt.I.isRegistered<CustomerAccountServiceClient>()) {
+    instance.registerLazySingleton(
+        () => CustomerAccountServiceClient(instance<Dio>()));
+  }
+  if (!GetIt.I.isRegistered<AccountServiceClient>()) {
+    instance.registerLazySingleton(() => AccountServiceClient(instance<Dio>()));
+  }
   if (!GetIt.I.isRegistered<AccountRepository>()) {
     instance.registerLazySingleton<AccountRepository>(
       () => AccountRepositoryImpl(
           accountServiceClient: instance<AccountServiceClient>(),
+          customerAccountServiceClient:
+              instance<CustomerAccountServiceClient>(),
           networkInfo: instance<NetworkInfo>()),
     );
   }
@@ -128,20 +172,37 @@ Future<void> initAccounts() async {
     instance.registerLazySingleton(
         () => GetMyAccountsUsecase(repository: instance<AccountRepository>()));
   }
+  if (!GetIt.I.isRegistered<GetAccountStatementsSettingsUsecase>()) {
+    instance.registerLazySingleton(() => GetAccountStatementsSettingsUsecase(
+        repository: instance<AccountRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetAccountStatementsUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetAccountStatementsUsecase(repository: instance<AccountRepository>()));
+  }
 
-  //Bloc
-  if (!GetIt.I.isRegistered<MyAccountsBloc>()) {
-    instance.registerFactory(() =>
-        MyAccountsBloc(getMyAccountsUsecase: instance<GetMyAccountsUsecase>()));
+  if (!GetIt.I.isRegistered<AccountBloc>()) {
+    instance.registerFactory(() => AccountBloc(
+        getAccountStatementsSettingsUsecase:
+            instance<GetAccountStatementsSettingsUsecase>(),
+        getAccountStatementsUsecase: instance<GetAccountStatementsUsecase>(),
+        getMyAccountsUsecase: instance<GetMyAccountsUsecase>(),
+        appPreferences: instance<AppPreferences>()));
   }
 }
 
 Future<void> initLogin() async {
   final dio = await instance<DioFactory>().getDioAuth();
+  instance.registerLazySingleton<Dio>(() => dio, instanceName: "dio_auth");
 
   if (!GetIt.I.isRegistered<AuthServiceClient>()) {
     instance.registerLazySingleton(
-      () => AuthServiceClient(dio),
+      () => AuthServiceClient(instance<Dio>(instanceName: "dio_auth")),
+    );
+  }
+  if (!GetIt.I.isRegistered<LocalAuthentication>()) {
+    instance.registerLazySingleton(
+      () => LocalAuthentication(),
     );
   }
   if (!GetIt.I.isRegistered<AuthRepository>()) {
@@ -164,17 +225,42 @@ Future<void> initLogin() async {
     instance.registerLazySingleton(
         () => LogoutUsecase(repository: instance<AuthRepository>()));
   }
+  if (!GetIt.I.isRegistered<ForgotPasswordUsecase>()) {
+    instance.registerLazySingleton(
+        () => ForgotPasswordUsecase(repository: instance<AuthRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ConfirmOtpChangePasswordUsecase>()) {
+    instance.registerLazySingleton(() => ConfirmOtpChangePasswordUsecase(
+        repository: instance<AuthRepository>()));
+  }
+  if (!GetIt.I.isRegistered<SetNewPasswordUsecase>()) {
+    instance.registerLazySingleton(
+        () => SetNewPasswordUsecase(repository: instance<AuthRepository>()));
+  }
 
   //Bloc
   if (!GetIt.I.isRegistered<AuthBloc>()) {
     instance.registerFactory(() => AuthBloc(
+        localAuthentication: instance<LocalAuthentication>(),
         appPreferences: instance<AppPreferences>(),
         loginUsecase: instance<LoginUsecase>(),
-        sendOtpUsecase: instance<SendOtpUsecase>()));
+        // sendOtpUsecase: instance<SendOtpUsecase>(),
+        confirmOtpChangePasswordUsecase:
+            instance<ConfirmOtpChangePasswordUsecase>(),
+        forgotPasswordUsecase: instance<ForgotPasswordUsecase>(),
+        setNewPasswordUsecase: instance<SetNewPasswordUsecase>()));
   }
 }
 
 Future<void> initTransfer() async {
+  if (!GetIt.I.isRegistered<TransferServiceClient>()) {
+    instance
+        .registerLazySingleton(() => TransferServiceClient(instance<Dio>()));
+  }
+  if (!GetIt.I.isRegistered<BeneficiaryServiceClient>()) {
+    instance
+        .registerLazySingleton(() => BeneficiaryServiceClient(instance<Dio>()));
+  }
   if (!GetIt.I.isRegistered<TransferRepository>()) {
     instance.registerLazySingleton<TransferRepository>(
       () => TransferRepositoryImpl(
@@ -182,17 +268,198 @@ Future<void> initTransfer() async {
           networkInfo: instance<NetworkInfo>()),
     );
   }
-
-  if (!GetIt.I.isRegistered<TransferMyAccountUsecase>()) {
-    instance.registerLazySingleton(() =>
-        TransferMyAccountUsecase(repository: instance<TransferRepository>()));
+  if (!GetIt.I.isRegistered<BeneficiaryRepository>()) {
+    instance.registerLazySingleton<BeneficiaryRepository>(
+      () => BeneficiaryRepositoryImpl(
+          beneficiaryServiceClient: instance<BeneficiaryServiceClient>(),
+          networkInfo: instance<NetworkInfo>()),
+    );
   }
-
-  //Bloc
+  //Transfer Usecase
+  if (!GetIt.I.isRegistered<StoreLocalTransferMyAccountUsecase>()) {
+    instance.registerLazySingleton(() => StoreLocalTransferMyAccountUsecase(
+        repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ConfirmLocalTransferMyAccountUsecase>()) {
+    instance.registerLazySingleton(() => ConfirmLocalTransferMyAccountUsecase(
+        repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<StoreInternalTransferMyAccountUsecase>()) {
+    instance.registerLazySingleton(() => StoreInternalTransferMyAccountUsecase(
+        repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ConfirmInternalTransferMyAccountUsecase>()) {
+    instance.registerLazySingleton(() =>
+        ConfirmInternalTransferMyAccountUsecase(
+            repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<SYGSTransferUsecase>()) {
+    instance.registerLazySingleton(
+        () => SYGSTransferUsecase(repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetBanksUsecase>()) {
+    instance.registerLazySingleton(
+        () => GetBanksUsecase(repository: instance<TransferRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetTransferSYGSReasonsUsecase>()) {
+    instance.registerLazySingleton(() => GetTransferSYGSReasonsUsecase(
+        repository: instance<TransferRepository>()));
+  }
+  //Beneficiary Usecase
+  if (!GetIt.I.isRegistered<GetBeneficiaryUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetBeneficiaryUsecase(repository: instance<BeneficiaryRepository>()));
+  }
+  if (!GetIt.I.isRegistered<CreateBeneficiaryUsecase>()) {
+    instance.registerLazySingleton(() => CreateBeneficiaryUsecase(
+        repository: instance<BeneficiaryRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetRelationshipsUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetRelationshipsUsecase(repository: instance<BeneficiaryRepository>()));
+  }
+  if (!GetIt.I.isRegistered<UpdateBeneficiaryUsecase>()) {
+    instance.registerLazySingleton(() => UpdateBeneficiaryUsecase(
+        repository: instance<BeneficiaryRepository>()));
+  }
+  if (!GetIt.I.isRegistered<DeleteBeneficiaryUsecase>()) {
+    instance.registerLazySingleton(() => DeleteBeneficiaryUsecase(
+        repository: instance<BeneficiaryRepository>()));
+  }
+  //Blocs Transfer
   if (!GetIt.I.isRegistered<TransferBloc>()) {
     instance.registerFactory(() => TransferBloc(
         appPreferences: instance<AppPreferences>(),
-        loginUsecase: instance<LoginUsecase>(),
-        transferMyAccountUsecase: instance<TransferMyAccountUsecase>()));
+        storeLocalTransferMyAccountUsecase:
+            instance<StoreLocalTransferMyAccountUsecase>(),
+        storeInternalTransferMyAccountUsecase:
+            instance<StoreInternalTransferMyAccountUsecase>(),
+        confirmInternalTransferMyAccountUsecase:
+            instance<ConfirmInternalTransferMyAccountUsecase>(),
+        confirmLocalTransferMyAccountUsecase:
+            instance<ConfirmLocalTransferMyAccountUsecase>()));
+  }
+
+  //Blocs Beneficiary
+
+  if (!GetIt.I.isRegistered<BeneficiaryBloc>()) {
+    instance.registerFactory(() => BeneficiaryBloc(
+        createBeneficiaryUsecase: instance<CreateBeneficiaryUsecase>(),
+        getBeneficiaryUsecase: instance<GetBeneficiaryUsecase>(),
+        getRelationshipsUsecase: instance<GetRelationshipsUsecase>(),
+        deleteBeneficiaryUsecase: instance<DeleteBeneficiaryUsecase>(),
+        updateBeneficiaryUsecase: instance<UpdateBeneficiaryUsecase>()));
+  }
+  if (!GetIt.I.isRegistered<TransferSygsBloc>()) {
+    instance.registerFactory(() => TransferSygsBloc(
+        getTransferSYGSReasonsUsecase:
+            instance<GetTransferSYGSReasonsUsecase>(),
+        getBanksUsecase: instance<GetBanksUsecase>(),
+        sygsTransferUsecase: instance<SYGSTransferUsecase>()));
+  }
+}
+
+Future<void> initTermsDeposit() async {
+  if (!GetIt.I.isRegistered<TermsDepositServiceClient>()) {
+    instance.registerLazySingleton(
+        () => TermsDepositServiceClient(instance<Dio>()));
+  }
+
+  if (!GetIt.I.isRegistered<TermsDepositRepository>()) {
+    instance.registerLazySingleton<TermsDepositRepository>(
+      () => TermsDepositRepositoryImpl(
+          termsDepositServiceClient: instance<TermsDepositServiceClient>(),
+          networkInfo: instance<NetworkInfo>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<GetPackagesTermsDepositUsecase>()) {
+    instance.registerLazySingleton(() => GetPackagesTermsDepositUsecase(
+        repository: instance<TermsDepositRepository>()));
+  }
+  if (!GetIt.I.isRegistered<RequestTermsDepositUsecase>()) {
+    instance.registerLazySingleton(() => RequestTermsDepositUsecase(
+        repository: instance<TermsDepositRepository>()));
+  }
+}
+
+Future<void> initChequebook() async {
+  if (!GetIt.I.isRegistered<ChequebookServiceClient>()) {
+    instance
+        .registerLazySingleton(() => ChequebookServiceClient(instance<Dio>()));
+  }
+
+  if (!GetIt.I.isRegistered<ChequebookRepository>()) {
+    instance.registerLazySingleton<ChequebookRepository>(
+      () => ChequebookRepositoryImpl(
+          chequebookServiceClient: instance<ChequebookServiceClient>(),
+          networkInfo: instance<NetworkInfo>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<GetMyChequebookUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetMyChequebookUsecase(repository: instance<ChequebookRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetPagesChequebookUsecase>()) {
+    instance.registerLazySingleton(() => GetPagesChequebookUsecase(
+        repository: instance<ChequebookRepository>()));
+  }
+  if (!GetIt.I.isRegistered<CreateChequebookUsecase>()) {
+    instance.registerLazySingleton(() =>
+        CreateChequebookUsecase(repository: instance<ChequebookRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ReportStolenChequebookUsecase>()) {
+    instance.registerLazySingleton(() => ReportStolenChequebookUsecase(
+        repository: instance<ChequebookRepository>()));
+  }
+  if (!GetIt.I.isRegistered<ChequebookBloc>()) {
+    instance.registerFactory(() => ChequebookBloc(
+        createChequebookUsecase: instance<CreateChequebookUsecase>(),
+        getMyChequebookUsecase: instance<GetMyChequebookUsecase>(),
+        getPagesChequebookUsecase: instance<GetPagesChequebookUsecase>(),
+        reportStolenChequebookUsecase:
+            instance<ReportStolenChequebookUsecase>()));
+  }
+}
+
+Future<void> initLocations() async {
+  if (!GetIt.I.isRegistered<LocationServiceClient>()) {
+    instance
+        .registerLazySingleton(() => LocationServiceClient(instance<Dio>()));
+  }
+
+  if (!GetIt.I.isRegistered<LocationRepository>()) {
+    instance.registerLazySingleton<LocationRepository>(
+      () => LocationRepositoryImpl(
+          locationServiceClient: instance<LocationServiceClient>(),
+          networkInfo: instance<NetworkInfo>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<GetBranchesLocationUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetBranchesLocationUsecase(repository: instance<LocationRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetAtmLocationUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetAtmLocationUsecase(repository: instance<LocationRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetPosLocationUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetPosLocationUsecase(repository: instance<LocationRepository>()));
+  }
+  if (!GetIt.I.isRegistered<GetCitiesLocationUsecase>()) {
+    instance.registerLazySingleton(() =>
+        GetCitiesLocationUsecase(repository: instance<LocationRepository>()));
+  }
+  if (!GetIt.I.isRegistered<Location>()) {
+    instance.registerLazySingleton(() => Location());
+  }
+
+  if (!GetIt.I.isRegistered<LocationBloc>()) {
+    instance.registerFactory(() => LocationBloc(
+        location: instance<Location>(),
+        getBranchesLocationUsecase: instance<GetBranchesLocationUsecase>(),
+        getAtmLocationUsecase: instance<GetAtmLocationUsecase>(),
+        getPosLocationUsecase: instance<GetPosLocationUsecase>(),
+        getCitiesLocationUsecase: instance<GetCitiesLocationUsecase>()));
   }
 }

@@ -26,8 +26,12 @@ mixin _$RequestInactiveCardModel {
   int get cardId => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
 
+  /// Serializes this RequestInactiveCardModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RequestInactiveCardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RequestInactiveCardModelCopyWith<RequestInactiveCardModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$RequestInactiveCardModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RequestInactiveCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$RequestInactiveCardModelImplCopyWithImpl<$Res>
       $Res Function(_$RequestInactiveCardModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RequestInactiveCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,11 +150,13 @@ class _$RequestInactiveCardModelImpl implements _RequestInactiveCardModel {
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, cardId, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RequestInactiveCardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RequestInactiveCardModelImplCopyWith<_$RequestInactiveCardModelImpl>
@@ -169,13 +179,17 @@ abstract class _RequestInactiveCardModel implements RequestInactiveCardModel {
   factory _RequestInactiveCardModel.fromJson(Map<String, dynamic> json) =
       _$RequestInactiveCardModelImpl.fromJson;
 
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: "card_id")
   int get cardId;
   @override
   String get message;
+
+  /// Create a copy of RequestInactiveCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RequestInactiveCardModelImplCopyWith<_$RequestInactiveCardModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

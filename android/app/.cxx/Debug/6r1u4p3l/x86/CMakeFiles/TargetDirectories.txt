@@ -1,0 +1,2 @@
+G:/Ali/customer_bank/android/app/.cxx/Debug/6r1u4p3l/x86/CMakeFiles/edit_cache.dir
+G:/Ali/customer_bank/android/app/.cxx/Debug/6r1u4p3l/x86/CMakeFiles/rebuild_cache.dir

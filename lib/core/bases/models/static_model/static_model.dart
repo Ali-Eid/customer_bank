@@ -12,3 +12,23 @@ abstract class StaticModel with _$StaticModel {
   factory StaticModel.fromJson(Map<String, dynamic> json) =>
       _$StaticModelFromJson(json);
 }
+
+@freezed
+abstract class StaticTextModel with _$StaticTextModel {
+  const factory StaticTextModel({
+    @Default(0) int id,
+    @Default("") String text,
+  }) = _StaticTextModel;
+  factory StaticTextModel.fromJson(Map<String, dynamic> json) =>
+      _$StaticTextModelFromJson(json);
+}
+
+@freezed
+abstract class KeyValueModel with _$KeyValueModel {
+  const factory KeyValueModel({
+    @Default("") String key,
+    @Default("") String name,
+  }) = _KeyValueModel;
+  factory KeyValueModel.fromJson(Map<String, dynamic> json) =>
+      _$KeyValueModelFromJson(json);
+}

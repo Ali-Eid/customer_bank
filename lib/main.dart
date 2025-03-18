@@ -11,12 +11,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
+  // usePathUrlStrategy();
+
   EasyLocalization.logger.enableBuildModes = [];
   await initAppModule();
   await initLogin();
   await initAccounts();
   await initCard();
   await initTransfer();
+  await initChequebook();
+  await initLocations();
   Bloc.observer = MyBlocObserver();
   runApp(EasyLocalization(
       supportedLocales: supportedLocales,

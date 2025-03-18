@@ -24,8 +24,12 @@ mixin _$WithDrawelValuesModel {
   int get id => throw _privateConstructorUsedError;
   num get value => throw _privateConstructorUsedError;
 
+  /// Serializes this WithDrawelValuesModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WithDrawelValuesModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WithDrawelValuesModelCopyWith<WithDrawelValuesModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$WithDrawelValuesModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WithDrawelValuesModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -90,6 +96,8 @@ class __$$WithDrawelValuesModelImplCopyWithImpl<$Res>
       $Res Function(_$WithDrawelValuesModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WithDrawelValuesModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,11 +146,13 @@ class _$WithDrawelValuesModelImpl implements _WithDrawelValuesModel {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WithDrawelValuesModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WithDrawelValuesModelImplCopyWith<_$WithDrawelValuesModelImpl>
@@ -168,8 +178,11 @@ abstract class _WithDrawelValuesModel implements WithDrawelValuesModel {
   int get id;
   @override
   num get value;
+
+  /// Create a copy of WithDrawelValuesModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WithDrawelValuesModelImplCopyWith<_$WithDrawelValuesModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

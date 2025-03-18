@@ -11,9 +11,9 @@ _$InputTransferModelImpl _$$InputTransferModelImplFromJson(
     _$InputTransferModelImpl(
       fromAccount: json['fromAccountNo'] as String,
       toAccount: json['toAccountNo'] as String,
-      transferDate: json['transferDate'] as String,
-      amount: json['transferAmount'] as num,
-      description: json['transferDescription'] as String,
+      amount: json['amount'] as num,
+      currencyCode: json['currency_code'] as String,
+      note: json['note'] as String?,
     );
 
 Map<String, dynamic> _$$InputTransferModelImplToJson(
@@ -21,7 +21,7 @@ Map<String, dynamic> _$$InputTransferModelImplToJson(
     <String, dynamic>{
       'fromAccountNo': instance.fromAccount,
       'toAccountNo': instance.toAccount,
-      'transferDate': instance.transferDate,
-      'transferAmount': instance.amount,
-      'transferDescription': instance.description,
+      'amount': instance.amount,
+      'currency_code': instance.currencyCode,
+      'note': instance.note,
     };

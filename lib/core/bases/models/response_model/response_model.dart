@@ -9,7 +9,6 @@ part 'response_model.g.dart';
 class ResponseModel<T> with _$ResponseModel<T> {
   const factory ResponseModel({
     @Default('') String message,
-    @Default(false) bool success,
     required T data,
   }) = _ResponseModel;
 
@@ -24,7 +23,10 @@ class ResponsePaginationModel<T> with _$ResponsePaginationModel<T> {
     @Default('') String message,
     @Default('') String code,
     required T data,
-    @Default(PaginationModel()) PaginationModel meta,
+    @Default(PaginationModel())
+    // ignore: invalid_annotation_target
+    @JsonKey(name: "pagination")
+    PaginationModel meta,
   }) = _ResponsePaginationModel;
 
   factory ResponsePaginationModel.fromJson(

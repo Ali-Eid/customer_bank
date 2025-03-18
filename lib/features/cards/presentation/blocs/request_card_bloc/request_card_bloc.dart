@@ -21,41 +21,71 @@ class RequestCardBloc extends Bloc<RequestCardEvent, RequestCardState> {
     on<RequestCardEvent>((event, emit) async {
       await event.map(
         newCard: (value) async {
-          emit(const RequestCardState.loading());
+          emit(
+              state.copyWith(isLoading: true, hasError: false, success: false));
           final failureOrSuccess =
               await requestNewCardUsecase.execute(value.request);
           failureOrSuccess.when(
             (success) {
-              emit(RequestCardState.success(message: success.message));
+              emit(state.copyWith(
+                  isLoading: false,
+                  successMessage: success.message,
+                  success: true));
             },
             (error) {
-              emit(RequestCardState.error(message: error.message));
+              emit(state.copyWith(
+                  isLoading: false,
+                  hasError: true,
+                  success: false,
+                  errorMessage: error.message));
             },
           );
         },
         inActiveCard: (value) async {
-          emit(const RequestCardState.loading());
+          emit(state.copyWith(
+            isLoading: true,
+            hasError: false,
+            success: false,
+          ));
           final failureOrSuccess =
               await requestInActiveCardUsecase.execute(value.request);
           failureOrSuccess.when(
             (success) {
-              emit(RequestCardState.success(message: success.message));
+              emit(state.copyWith(
+                  isLoading: false,
+                  successMessage: success.message,
+                  success: true));
             },
             (error) {
-              emit(RequestCardState.error(message: error.message));
+              emit(state.copyWith(
+                  isLoading: false,
+                  success: false,
+                  hasError: true,
+                  errorMessage: error.message));
             },
           );
         },
         editWithdrawalCard: (value) async {
-          emit(const RequestCardState.loading());
+          emit(state.copyWith(
+            isLoading: true,
+            hasError: false,
+            success: false,
+          ));
           final failureOrSuccess =
               await requestIncreaseWithdrawalUsecase.execute(value.request);
           failureOrSuccess.when(
             (success) {
-              emit(RequestCardState.success(message: success.message));
+              emit(state.copyWith(
+                  isLoading: false,
+                  successMessage: success.message,
+                  success: true));
             },
             (error) {
-              emit(RequestCardState.error(message: error.message));
+              emit(state.copyWith(
+                  isLoading: false,
+                  success: false,
+                  hasError: true,
+                  errorMessage: error.message));
             },
           );
         },

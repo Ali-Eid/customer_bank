@@ -2,11 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:fs_bank/core/constants/values_manager.dart';
 import 'package:fs_bank/core/themes/color_manager.dart';
 
-void showMyBottomSheet(BuildContext context, Widget child) {
+void showMyBottomSheet(BuildContext context, Widget child,
+    {bool isDismissible = true,
+    bool enableDrag = true,
+    bool? showDragHandle,
+    bool useSafeArea = true}) {
   showModalBottomSheet(
     context: context,
+    isDismissible: isDismissible,
+    enableDrag: enableDrag,
+    showDragHandle: showDragHandle,
     backgroundColor: ColorManager.white,
-    useSafeArea: true,
+    sheetAnimationStyle: AnimationStyle(
+      duration: const Duration(milliseconds: 500),
+      reverseDuration: const Duration(milliseconds: 300),
+    ),
+    useSafeArea: useSafeArea,
     isScrollControlled: true,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusDirectional.only(

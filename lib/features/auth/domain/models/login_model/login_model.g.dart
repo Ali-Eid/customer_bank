@@ -11,11 +11,13 @@ _$LoginModelImpl _$$LoginModelImplFromJson(Map<String, dynamic> json) =>
       user: json['user'] == null
           ? const UserModel()
           : UserModel.fromJson(json['user'] as Map<String, dynamic>),
-      token: json['token'] as String? ?? "",
+      accessToken: json['access_token'] as String? ?? "",
+      refreshToken: json['refresh_token'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$LoginModelImplToJson(_$LoginModelImpl instance) =>
     <String, dynamic>{
       'user': instance.user,
-      'token': instance.token,
+      'access_token': instance.accessToken,
+      'refresh_token': instance.refreshToken,
     };

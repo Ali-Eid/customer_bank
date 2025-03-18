@@ -9,13 +9,15 @@ part of 'input_login_model.dart';
 _$InputLoginModelImpl _$$InputLoginModelImplFromJson(
         Map<String, dynamic> json) =>
     _$InputLoginModelImpl(
-      phoneNumber: json['phone_number'] as String,
-      otp: json['otp'] as String,
+      username: json['username'] as String,
+      password: json['password'] as String,
+      type: json['type'] as String,
     );
 
 Map<String, dynamic> _$$InputLoginModelImplToJson(
         _$InputLoginModelImpl instance) =>
     <String, dynamic>{
-      'phone_number': instance.phoneNumber,
-      'otp': instance.otp,
+      'username': instance.username,
+      'password': instance.password,
+      'type': instance.type,
     };

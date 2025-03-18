@@ -20,13 +20,19 @@ InputLoginModel _$InputLoginModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$InputLoginModel {
-// ignore: invalid_annotation_target
-  @JsonKey(name: "phone_number")
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get otp => throw _privateConstructorUsedError;
+  @JsonKey(name: "username")
+  String get username => throw _privateConstructorUsedError;
+  @JsonKey(name: "password")
+  String get password => throw _privateConstructorUsedError;
+  @JsonKey(name: "type")
+  String get type => throw _privateConstructorUsedError;
 
+  /// Serializes this InputLoginModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InputLoginModelCopyWith<InputLoginModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -37,7 +43,10 @@ abstract class $InputLoginModelCopyWith<$Res> {
           InputLoginModel value, $Res Function(InputLoginModel) then) =
       _$InputLoginModelCopyWithImpl<$Res, InputLoginModel>;
   @useResult
-  $Res call({@JsonKey(name: "phone_number") String phoneNumber, String otp});
+  $Res call(
+      {@JsonKey(name: "username") String username,
+      @JsonKey(name: "password") String password,
+      @JsonKey(name: "type") String type});
 }
 
 /// @nodoc
@@ -50,20 +59,27 @@ class _$InputLoginModelCopyWithImpl<$Res, $Val extends InputLoginModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phoneNumber = null,
-    Object? otp = null,
+    Object? username = null,
+    Object? password = null,
+    Object? type = null,
   }) {
     return _then(_value.copyWith(
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
-      otp: null == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -77,7 +93,10 @@ abstract class _$$InputLoginModelImplCopyWith<$Res>
       __$$InputLoginModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "phone_number") String phoneNumber, String otp});
+  $Res call(
+      {@JsonKey(name: "username") String username,
+      @JsonKey(name: "password") String password,
+      @JsonKey(name: "type") String type});
 }
 
 /// @nodoc
@@ -88,20 +107,27 @@ class __$$InputLoginModelImplCopyWithImpl<$Res>
       _$InputLoginModelImpl _value, $Res Function(_$InputLoginModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phoneNumber = null,
-    Object? otp = null,
+    Object? username = null,
+    Object? password = null,
+    Object? type = null,
   }) {
     return _then(_$InputLoginModelImpl(
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
-      otp: null == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -111,22 +137,26 @@ class __$$InputLoginModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InputLoginModelImpl implements _InputLoginModel {
   const _$InputLoginModelImpl(
-      {@JsonKey(name: "phone_number") required this.phoneNumber,
-      required this.otp});
+      {@JsonKey(name: "username") required this.username,
+      @JsonKey(name: "password") required this.password,
+      @JsonKey(name: "type") required this.type});
 
   factory _$InputLoginModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$InputLoginModelImplFromJson(json);
 
-// ignore: invalid_annotation_target
   @override
-  @JsonKey(name: "phone_number")
-  final String phoneNumber;
+  @JsonKey(name: "username")
+  final String username;
   @override
-  final String otp;
+  @JsonKey(name: "password")
+  final String password;
+  @override
+  @JsonKey(name: "type")
+  final String type;
 
   @override
   String toString() {
-    return 'InputLoginModel(phoneNumber: $phoneNumber, otp: $otp)';
+    return 'InputLoginModel(username: $username, password: $password, type: $type)';
   }
 
   @override
@@ -134,16 +164,20 @@ class _$InputLoginModelImpl implements _InputLoginModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputLoginModelImpl &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.otp, otp) || other.otp == otp));
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, phoneNumber, otp);
+  int get hashCode => Object.hash(runtimeType, username, password, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InputLoginModelImplCopyWith<_$InputLoginModelImpl> get copyWith =>
@@ -160,19 +194,28 @@ class _$InputLoginModelImpl implements _InputLoginModel {
 
 abstract class _InputLoginModel implements InputLoginModel {
   const factory _InputLoginModel(
-      {@JsonKey(name: "phone_number") required final String phoneNumber,
-      required final String otp}) = _$InputLoginModelImpl;
+          {@JsonKey(name: "username") required final String username,
+          @JsonKey(name: "password") required final String password,
+          @JsonKey(name: "type") required final String type}) =
+      _$InputLoginModelImpl;
 
   factory _InputLoginModel.fromJson(Map<String, dynamic> json) =
       _$InputLoginModelImpl.fromJson;
 
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: "phone_number")
-  String get phoneNumber;
   @override
-  String get otp;
+  @JsonKey(name: "username")
+  String get username;
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(name: "password")
+  String get password;
+  @override
+  @JsonKey(name: "type")
+  String get type;
+
+  /// Create a copy of InputLoginModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InputLoginModelImplCopyWith<_$InputLoginModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

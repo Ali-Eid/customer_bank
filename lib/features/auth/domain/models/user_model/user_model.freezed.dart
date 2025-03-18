@@ -21,14 +21,33 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "international_code")
+  String get internationalCode => throw _privateConstructorUsedError;
   @JsonKey(name: "phone_number")
   String get phoneNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: "branch_id")
+  int get branchUd => throw _privateConstructorUsedError;
+  @JsonKey(name: "is_active")
+  bool get isActive => throw _privateConstructorUsedError;
   @JsonKey(name: "customer_id")
   int get customerId => throw _privateConstructorUsedError;
+  @JsonKey(name: "customer_cif")
+  int get customerCif => throw _privateConstructorUsedError;
+  @JsonKey(name: "corporate_id")
+  int? get corporateId => throw _privateConstructorUsedError;
+  @JsonKey(name: "corporate_cif")
+  int? get corporateCif => throw _privateConstructorUsedError;
+  @JsonKey(name: "role")
+  RoleModel get role => throw _privateConstructorUsedError;
 
+  /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserModelCopyWith<UserModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -40,9 +59,19 @@ abstract class $UserModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String name,
+      String username,
+      String type,
+      @JsonKey(name: "international_code") String internationalCode,
       @JsonKey(name: "phone_number") String phoneNumber,
-      @JsonKey(name: "customer_id") int customerId});
+      @JsonKey(name: "branch_id") int branchUd,
+      @JsonKey(name: "is_active") bool isActive,
+      @JsonKey(name: "customer_id") int customerId,
+      @JsonKey(name: "customer_cif") int customerCif,
+      @JsonKey(name: "corporate_id") int? corporateId,
+      @JsonKey(name: "corporate_cif") int? corporateCif,
+      @JsonKey(name: "role") RoleModel role});
+
+  $RoleModelCopyWith<$Res> get role;
 }
 
 /// @nodoc
@@ -55,32 +84,84 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? username = null,
+    Object? type = null,
+    Object? internationalCode = null,
     Object? phoneNumber = null,
+    Object? branchUd = null,
+    Object? isActive = null,
     Object? customerId = null,
+    Object? customerCif = null,
+    Object? corporateId = freezed,
+    Object? corporateCif = freezed,
+    Object? role = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      internationalCode: null == internationalCode
+          ? _value.internationalCode
+          : internationalCode // ignore: cast_nullable_to_non_nullable
               as String,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      branchUd: null == branchUd
+          ? _value.branchUd
+          : branchUd // ignore: cast_nullable_to_non_nullable
+              as int,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
       customerId: null == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
               as int,
+      customerCif: null == customerCif
+          ? _value.customerCif
+          : customerCif // ignore: cast_nullable_to_non_nullable
+              as int,
+      corporateId: freezed == corporateId
+          ? _value.corporateId
+          : corporateId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      corporateCif: freezed == corporateCif
+          ? _value.corporateCif
+          : corporateCif // ignore: cast_nullable_to_non_nullable
+              as int?,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as RoleModel,
     ) as $Val);
+  }
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RoleModelCopyWith<$Res> get role {
+    return $RoleModelCopyWith<$Res>(_value.role, (value) {
+      return _then(_value.copyWith(role: value) as $Val);
+    });
   }
 }
 
@@ -94,9 +175,20 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String name,
+      String username,
+      String type,
+      @JsonKey(name: "international_code") String internationalCode,
       @JsonKey(name: "phone_number") String phoneNumber,
-      @JsonKey(name: "customer_id") int customerId});
+      @JsonKey(name: "branch_id") int branchUd,
+      @JsonKey(name: "is_active") bool isActive,
+      @JsonKey(name: "customer_id") int customerId,
+      @JsonKey(name: "customer_cif") int customerCif,
+      @JsonKey(name: "corporate_id") int? corporateId,
+      @JsonKey(name: "corporate_cif") int? corporateCif,
+      @JsonKey(name: "role") RoleModel role});
+
+  @override
+  $RoleModelCopyWith<$Res> get role;
 }
 
 /// @nodoc
@@ -107,31 +199,73 @@ class __$$UserModelImplCopyWithImpl<$Res>
       _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? username = null,
+    Object? type = null,
+    Object? internationalCode = null,
     Object? phoneNumber = null,
+    Object? branchUd = null,
+    Object? isActive = null,
     Object? customerId = null,
+    Object? customerCif = null,
+    Object? corporateId = freezed,
+    Object? corporateCif = freezed,
+    Object? role = null,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      internationalCode: null == internationalCode
+          ? _value.internationalCode
+          : internationalCode // ignore: cast_nullable_to_non_nullable
               as String,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      branchUd: null == branchUd
+          ? _value.branchUd
+          : branchUd // ignore: cast_nullable_to_non_nullable
+              as int,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
       customerId: null == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
               as int,
+      customerCif: null == customerCif
+          ? _value.customerCif
+          : customerCif // ignore: cast_nullable_to_non_nullable
+              as int,
+      corporateId: freezed == corporateId
+          ? _value.corporateId
+          : corporateId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      corporateCif: freezed == corporateCif
+          ? _value.corporateCif
+          : corporateCif // ignore: cast_nullable_to_non_nullable
+              as int?,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as RoleModel,
     ));
   }
 }
@@ -141,9 +275,17 @@ class __$$UserModelImplCopyWithImpl<$Res>
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
       {this.id = 0,
-      this.name = "",
+      this.username = "",
+      this.type = "",
+      @JsonKey(name: "international_code") this.internationalCode = "",
       @JsonKey(name: "phone_number") this.phoneNumber = "",
-      @JsonKey(name: "customer_id") this.customerId = 0});
+      @JsonKey(name: "branch_id") this.branchUd = 0,
+      @JsonKey(name: "is_active") this.isActive = false,
+      @JsonKey(name: "customer_id") this.customerId = 0,
+      @JsonKey(name: "customer_cif") this.customerCif = 0,
+      @JsonKey(name: "corporate_id") this.corporateId,
+      @JsonKey(name: "corporate_cif") this.corporateCif,
+      @JsonKey(name: "role") this.role = const RoleModel()});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -153,17 +295,41 @@ class _$UserModelImpl implements _UserModel {
   final int id;
   @override
   @JsonKey()
-  final String name;
+  final String username;
+  @override
+  @JsonKey()
+  final String type;
+  @override
+  @JsonKey(name: "international_code")
+  final String internationalCode;
   @override
   @JsonKey(name: "phone_number")
   final String phoneNumber;
   @override
+  @JsonKey(name: "branch_id")
+  final int branchUd;
+  @override
+  @JsonKey(name: "is_active")
+  final bool isActive;
+  @override
   @JsonKey(name: "customer_id")
   final int customerId;
+  @override
+  @JsonKey(name: "customer_cif")
+  final int customerCif;
+  @override
+  @JsonKey(name: "corporate_id")
+  final int? corporateId;
+  @override
+  @JsonKey(name: "corporate_cif")
+  final int? corporateCif;
+  @override
+  @JsonKey(name: "role")
+  final RoleModel role;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, name: $name, phoneNumber: $phoneNumber, customerId: $customerId)';
+    return 'UserModel(id: $id, username: $username, type: $type, internationalCode: $internationalCode, phoneNumber: $phoneNumber, branchUd: $branchUd, isActive: $isActive, customerId: $customerId, customerCif: $customerCif, corporateId: $corporateId, corporateCif: $corporateCif, role: $role)';
   }
 
   @override
@@ -172,19 +338,48 @@ class _$UserModelImpl implements _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.internationalCode, internationalCode) ||
+                other.internationalCode == internationalCode) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
+            (identical(other.branchUd, branchUd) ||
+                other.branchUd == branchUd) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
             (identical(other.customerId, customerId) ||
-                other.customerId == customerId));
+                other.customerId == customerId) &&
+            (identical(other.customerCif, customerCif) ||
+                other.customerCif == customerCif) &&
+            (identical(other.corporateId, corporateId) ||
+                other.corporateId == corporateId) &&
+            (identical(other.corporateCif, corporateCif) ||
+                other.corporateCif == corporateCif) &&
+            (identical(other.role, role) || other.role == role));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, phoneNumber, customerId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      username,
+      type,
+      internationalCode,
+      phoneNumber,
+      branchUd,
+      isActive,
+      customerId,
+      customerCif,
+      corporateId,
+      corporateCif,
+      role);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
@@ -201,9 +396,17 @@ class _$UserModelImpl implements _UserModel {
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {final int id,
-      final String name,
+      final String username,
+      final String type,
+      @JsonKey(name: "international_code") final String internationalCode,
       @JsonKey(name: "phone_number") final String phoneNumber,
-      @JsonKey(name: "customer_id") final int customerId}) = _$UserModelImpl;
+      @JsonKey(name: "branch_id") final int branchUd,
+      @JsonKey(name: "is_active") final bool isActive,
+      @JsonKey(name: "customer_id") final int customerId,
+      @JsonKey(name: "customer_cif") final int customerCif,
+      @JsonKey(name: "corporate_id") final int? corporateId,
+      @JsonKey(name: "corporate_cif") final int? corporateCif,
+      @JsonKey(name: "role") final RoleModel role}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -211,15 +414,41 @@ abstract class _UserModel implements UserModel {
   @override
   int get id;
   @override
-  String get name;
+  String get username;
+  @override
+  String get type;
+  @override
+  @JsonKey(name: "international_code")
+  String get internationalCode;
   @override
   @JsonKey(name: "phone_number")
   String get phoneNumber;
   @override
+  @JsonKey(name: "branch_id")
+  int get branchUd;
+  @override
+  @JsonKey(name: "is_active")
+  bool get isActive;
+  @override
   @JsonKey(name: "customer_id")
   int get customerId;
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(name: "customer_cif")
+  int get customerCif;
+  @override
+  @JsonKey(name: "corporate_id")
+  int? get corporateId;
+  @override
+  @JsonKey(name: "corporate_cif")
+  int? get corporateCif;
+  @override
+  @JsonKey(name: "role")
+  RoleModel get role;
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

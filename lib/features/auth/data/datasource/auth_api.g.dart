@@ -63,12 +63,17 @@ class _AuthServiceClient implements AuthServiceClient {
   }
 
   @override
-  Future<HttpResponse<ResponseModel<dynamic>>> sendOtp(
-      {required String phoneNumber}) async {
+  Future<HttpResponse<ResponseModel<dynamic>>> sendOtp({
+    required String type,
+    required String phoneNumber,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {'phone_number': phoneNumber};
+    final _data = {
+      'type': type,
+      'phone_number': phoneNumber,
+    };
     final _options =
         _setStreamType<HttpResponse<ResponseModel<dynamic>>>(Options(
       method: 'POST',
@@ -116,6 +121,125 @@ class _AuthServiceClient implements AuthServiceClient {
             .compose(
               _dio.options,
               '/logout',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ResponseModel<dynamic> _value;
+    try {
+      _value = ResponseModel<dynamic>.fromJson(
+        _result.data!,
+        (json) => json as dynamic,
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ResponseModel<dynamic>>> changePassword(
+      {required InputChangePasswordModel input}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = input;
+    final _options =
+        _setStreamType<HttpResponse<ResponseModel<dynamic>>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/forget-password',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ResponseModel<dynamic> _value;
+    try {
+      _value = ResponseModel<dynamic>.fromJson(
+        _result.data!,
+        (json) => json as dynamic,
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ResponseModel<ConfirmOtpChangePasswordModel>>>
+      confirmOtpNewPassword(
+          {required InputSendOtpChangePasswordModel input}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = input;
+    final _options = _setStreamType<
+        HttpResponse<ResponseModel<ConfirmOtpChangePasswordModel>>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/forget-password-after-otp',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ResponseModel<ConfirmOtpChangePasswordModel> _value;
+    try {
+      _value = ResponseModel<ConfirmOtpChangePasswordModel>.fromJson(
+        _result.data!,
+        (json) => ConfirmOtpChangePasswordModel.fromJson(
+            json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ResponseModel<dynamic>>> setNewPassword(
+      {required InputSetNewPasswordModel input}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = input;
+    final _options =
+        _setStreamType<HttpResponse<ResponseModel<dynamic>>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/forget-password-set-new',
               queryParameters: queryParameters,
               data: _data,
             )

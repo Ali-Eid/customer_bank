@@ -24,13 +24,17 @@ mixin _$RequestCardModel {
   int get accountId => throw _privateConstructorUsedError;
   @JsonKey(name: "beneficiary_name")
   String get beneficiaryName => throw _privateConstructorUsedError;
-  @JsonKey(name: "type")
-  String get type => throw _privateConstructorUsedError;
-  @JsonKey(name: "withdrawal_value_id")
-  int get withdrawalValueId => throw _privateConstructorUsedError;
+  @JsonKey(name: "type_id")
+  int get type => throw _privateConstructorUsedError;
+  @JsonKey(name: "beneficiary_type_id")
+  int get beneficiaryType => throw _privateConstructorUsedError;
 
+  /// Serializes this RequestCardModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RequestCardModelCopyWith<RequestCardModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,8 +48,8 @@ abstract class $RequestCardModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "account_id") int accountId,
       @JsonKey(name: "beneficiary_name") String beneficiaryName,
-      @JsonKey(name: "type") String type,
-      @JsonKey(name: "withdrawal_value_id") int withdrawalValueId});
+      @JsonKey(name: "type_id") int type,
+      @JsonKey(name: "beneficiary_type_id") int beneficiaryType});
 }
 
 /// @nodoc
@@ -58,13 +62,15 @@ class _$RequestCardModelCopyWithImpl<$Res, $Val extends RequestCardModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? accountId = null,
     Object? beneficiaryName = null,
     Object? type = null,
-    Object? withdrawalValueId = null,
+    Object? beneficiaryType = null,
   }) {
     return _then(_value.copyWith(
       accountId: null == accountId
@@ -78,10 +84,10 @@ class _$RequestCardModelCopyWithImpl<$Res, $Val extends RequestCardModel>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      withdrawalValueId: null == withdrawalValueId
-          ? _value.withdrawalValueId
-          : withdrawalValueId // ignore: cast_nullable_to_non_nullable
+              as int,
+      beneficiaryType: null == beneficiaryType
+          ? _value.beneficiaryType
+          : beneficiaryType // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -98,8 +104,8 @@ abstract class _$$RequestCardModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "account_id") int accountId,
       @JsonKey(name: "beneficiary_name") String beneficiaryName,
-      @JsonKey(name: "type") String type,
-      @JsonKey(name: "withdrawal_value_id") int withdrawalValueId});
+      @JsonKey(name: "type_id") int type,
+      @JsonKey(name: "beneficiary_type_id") int beneficiaryType});
 }
 
 /// @nodoc
@@ -110,13 +116,15 @@ class __$$RequestCardModelImplCopyWithImpl<$Res>
       $Res Function(_$RequestCardModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? accountId = null,
     Object? beneficiaryName = null,
     Object? type = null,
-    Object? withdrawalValueId = null,
+    Object? beneficiaryType = null,
   }) {
     return _then(_$RequestCardModelImpl(
       accountId: null == accountId
@@ -130,10 +138,10 @@ class __$$RequestCardModelImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      withdrawalValueId: null == withdrawalValueId
-          ? _value.withdrawalValueId
-          : withdrawalValueId // ignore: cast_nullable_to_non_nullable
+              as int,
+      beneficiaryType: null == beneficiaryType
+          ? _value.beneficiaryType
+          : beneficiaryType // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -145,8 +153,8 @@ class _$RequestCardModelImpl implements _RequestCardModel {
   _$RequestCardModelImpl(
       {@JsonKey(name: "account_id") required this.accountId,
       @JsonKey(name: "beneficiary_name") required this.beneficiaryName,
-      @JsonKey(name: "type") required this.type,
-      @JsonKey(name: "withdrawal_value_id") required this.withdrawalValueId});
+      @JsonKey(name: "type_id") required this.type,
+      @JsonKey(name: "beneficiary_type_id") required this.beneficiaryType});
 
   factory _$RequestCardModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RequestCardModelImplFromJson(json);
@@ -158,15 +166,15 @@ class _$RequestCardModelImpl implements _RequestCardModel {
   @JsonKey(name: "beneficiary_name")
   final String beneficiaryName;
   @override
-  @JsonKey(name: "type")
-  final String type;
+  @JsonKey(name: "type_id")
+  final int type;
   @override
-  @JsonKey(name: "withdrawal_value_id")
-  final int withdrawalValueId;
+  @JsonKey(name: "beneficiary_type_id")
+  final int beneficiaryType;
 
   @override
   String toString() {
-    return 'RequestCardModel(accountId: $accountId, beneficiaryName: $beneficiaryName, type: $type, withdrawalValueId: $withdrawalValueId)';
+    return 'RequestCardModel(accountId: $accountId, beneficiaryName: $beneficiaryName, type: $type, beneficiaryType: $beneficiaryType)';
   }
 
   @override
@@ -179,16 +187,18 @@ class _$RequestCardModelImpl implements _RequestCardModel {
             (identical(other.beneficiaryName, beneficiaryName) ||
                 other.beneficiaryName == beneficiaryName) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.withdrawalValueId, withdrawalValueId) ||
-                other.withdrawalValueId == withdrawalValueId));
+            (identical(other.beneficiaryType, beneficiaryType) ||
+                other.beneficiaryType == beneficiaryType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, accountId, beneficiaryName, type, withdrawalValueId);
+      runtimeType, accountId, beneficiaryName, type, beneficiaryType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RequestCardModelImplCopyWith<_$RequestCardModelImpl> get copyWith =>
@@ -207,9 +217,9 @@ abstract class _RequestCardModel implements RequestCardModel {
   factory _RequestCardModel(
       {@JsonKey(name: "account_id") required final int accountId,
       @JsonKey(name: "beneficiary_name") required final String beneficiaryName,
-      @JsonKey(name: "type") required final String type,
-      @JsonKey(name: "withdrawal_value_id")
-      required final int withdrawalValueId}) = _$RequestCardModelImpl;
+      @JsonKey(name: "type_id") required final int type,
+      @JsonKey(name: "beneficiary_type_id")
+      required final int beneficiaryType}) = _$RequestCardModelImpl;
 
   factory _RequestCardModel.fromJson(Map<String, dynamic> json) =
       _$RequestCardModelImpl.fromJson;
@@ -221,13 +231,16 @@ abstract class _RequestCardModel implements RequestCardModel {
   @JsonKey(name: "beneficiary_name")
   String get beneficiaryName;
   @override
-  @JsonKey(name: "type")
-  String get type;
+  @JsonKey(name: "type_id")
+  int get type;
   @override
-  @JsonKey(name: "withdrawal_value_id")
-  int get withdrawalValueId;
+  @JsonKey(name: "beneficiary_type_id")
+  int get beneficiaryType;
+
+  /// Create a copy of RequestCardModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RequestCardModelImplCopyWith<_$RequestCardModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

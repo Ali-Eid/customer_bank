@@ -22,12 +22,15 @@ ResponseModel<T> _$ResponseModelFromJson<T>(
 /// @nodoc
 mixin _$ResponseModel<T> {
   String get message => throw _privateConstructorUsedError;
-  bool get success => throw _privateConstructorUsedError;
   T get data => throw _privateConstructorUsedError;
 
+  /// Serializes this ResponseModel to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ResponseModelCopyWith<T, ResponseModel<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -38,7 +41,7 @@ abstract class $ResponseModelCopyWith<T, $Res> {
           ResponseModel<T> value, $Res Function(ResponseModel<T>) then) =
       _$ResponseModelCopyWithImpl<T, $Res, ResponseModel<T>>;
   @useResult
-  $Res call({String message, bool success, T data});
+  $Res call({String message, T data});
 }
 
 /// @nodoc
@@ -51,11 +54,12 @@ class _$ResponseModelCopyWithImpl<T, $Res, $Val extends ResponseModel<T>>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = null,
-    Object? success = null,
     Object? data = freezed,
   }) {
     return _then(_value.copyWith(
@@ -63,10 +67,6 @@ class _$ResponseModelCopyWithImpl<T, $Res, $Val extends ResponseModel<T>>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -83,7 +83,7 @@ abstract class _$$ResponseModelImplCopyWith<T, $Res>
       __$$ResponseModelImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String message, bool success, T data});
+  $Res call({String message, T data});
 }
 
 /// @nodoc
@@ -94,11 +94,12 @@ class __$$ResponseModelImplCopyWithImpl<T, $Res>
       $Res Function(_$ResponseModelImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = null,
-    Object? success = null,
     Object? data = freezed,
   }) {
     return _then(_$ResponseModelImpl<T>(
@@ -106,10 +107,6 @@ class __$$ResponseModelImplCopyWithImpl<T, $Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -121,8 +118,7 @@ class __$$ResponseModelImplCopyWithImpl<T, $Res>
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
 class _$ResponseModelImpl<T> implements _ResponseModel<T> {
-  const _$ResponseModelImpl(
-      {this.message = '', this.success = false, required this.data});
+  const _$ResponseModelImpl({this.message = '', required this.data});
 
   factory _$ResponseModelImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
@@ -132,14 +128,11 @@ class _$ResponseModelImpl<T> implements _ResponseModel<T> {
   @JsonKey()
   final String message;
   @override
-  @JsonKey()
-  final bool success;
-  @override
   final T data;
 
   @override
   String toString() {
-    return 'ResponseModel<$T>(message: $message, success: $success, data: $data)';
+    return 'ResponseModel<$T>(message: $message, data: $data)';
   }
 
   @override
@@ -148,16 +141,17 @@ class _$ResponseModelImpl<T> implements _ResponseModel<T> {
         (other.runtimeType == runtimeType &&
             other is _$ResponseModelImpl<T> &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.success, success) || other.success == success) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, message, success, const DeepCollectionEquality().hash(data));
+      runtimeType, message, const DeepCollectionEquality().hash(data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResponseModelImplCopyWith<T, _$ResponseModelImpl<T>> get copyWith =>
@@ -171,10 +165,8 @@ class _$ResponseModelImpl<T> implements _ResponseModel<T> {
 }
 
 abstract class _ResponseModel<T> implements ResponseModel<T> {
-  const factory _ResponseModel(
-      {final String message,
-      final bool success,
-      required final T data}) = _$ResponseModelImpl<T>;
+  const factory _ResponseModel({final String message, required final T data}) =
+      _$ResponseModelImpl<T>;
 
   factory _ResponseModel.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
@@ -183,11 +175,12 @@ abstract class _ResponseModel<T> implements ResponseModel<T> {
   @override
   String get message;
   @override
-  bool get success;
-  @override
   T get data;
+
+  /// Create a copy of ResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResponseModelImplCopyWith<T, _$ResponseModelImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -202,11 +195,16 @@ mixin _$ResponsePaginationModel<T> {
   String get message => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
   T get data => throw _privateConstructorUsedError;
+  @JsonKey(name: "pagination")
   PaginationModel get meta => throw _privateConstructorUsedError;
 
+  /// Serializes this ResponsePaginationModel to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ResponsePaginationModelCopyWith<T, ResponsePaginationModel<T>>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -218,7 +216,11 @@ abstract class $ResponsePaginationModelCopyWith<T, $Res> {
       _$ResponsePaginationModelCopyWithImpl<T, $Res,
           ResponsePaginationModel<T>>;
   @useResult
-  $Res call({String message, String code, T data, PaginationModel meta});
+  $Res call(
+      {String message,
+      String code,
+      T data,
+      @JsonKey(name: "pagination") PaginationModel meta});
 
   $PaginationModelCopyWith<$Res> get meta;
 }
@@ -234,6 +236,8 @@ class _$ResponsePaginationModelCopyWithImpl<T, $Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -262,6 +266,8 @@ class _$ResponsePaginationModelCopyWithImpl<T, $Res,
     ) as $Val);
   }
 
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaginationModelCopyWith<$Res> get meta {
@@ -280,7 +286,11 @@ abstract class _$$ResponsePaginationModelImplCopyWith<T, $Res>
       __$$ResponsePaginationModelImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String message, String code, T data, PaginationModel meta});
+  $Res call(
+      {String message,
+      String code,
+      T data,
+      @JsonKey(name: "pagination") PaginationModel meta});
 
   @override
   $PaginationModelCopyWith<$Res> get meta;
@@ -296,6 +306,8 @@ class __$$ResponsePaginationModelImplCopyWithImpl<T, $Res>
       $Res Function(_$ResponsePaginationModelImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -332,7 +344,7 @@ class _$ResponsePaginationModelImpl<T> implements _ResponsePaginationModel<T> {
       {this.message = '',
       this.code = '',
       required this.data,
-      this.meta = const PaginationModel()});
+      @JsonKey(name: "pagination") this.meta = const PaginationModel()});
 
   factory _$ResponsePaginationModelImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
@@ -347,7 +359,7 @@ class _$ResponsePaginationModelImpl<T> implements _ResponsePaginationModel<T> {
   @override
   final T data;
   @override
-  @JsonKey()
+  @JsonKey(name: "pagination")
   final PaginationModel meta;
 
   @override
@@ -366,12 +378,14 @@ class _$ResponsePaginationModelImpl<T> implements _ResponsePaginationModel<T> {
             (identical(other.meta, meta) || other.meta == meta));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, message, code,
       const DeepCollectionEquality().hash(data), meta);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResponsePaginationModelImplCopyWith<T, _$ResponsePaginationModelImpl<T>>
@@ -387,10 +401,11 @@ class _$ResponsePaginationModelImpl<T> implements _ResponsePaginationModel<T> {
 abstract class _ResponsePaginationModel<T>
     implements ResponsePaginationModel<T> {
   const factory _ResponsePaginationModel(
-      {final String message,
-      final String code,
-      required final T data,
-      final PaginationModel meta}) = _$ResponsePaginationModelImpl<T>;
+          {final String message,
+          final String code,
+          required final T data,
+          @JsonKey(name: "pagination") final PaginationModel meta}) =
+      _$ResponsePaginationModelImpl<T>;
 
   factory _ResponsePaginationModel.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
@@ -403,9 +418,13 @@ abstract class _ResponsePaginationModel<T>
   @override
   T get data;
   @override
+  @JsonKey(name: "pagination")
   PaginationModel get meta;
+
+  /// Create a copy of ResponsePaginationModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResponsePaginationModelImplCopyWith<T, _$ResponsePaginationModelImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

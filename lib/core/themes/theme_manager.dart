@@ -12,7 +12,28 @@ ThemeData lightTheme() {
   return ThemeData(
     brightness: Brightness.light,
     colorSchemeSeed: ColorManager.primary,
+    scaffoldBackgroundColor: ColorManager.background,
     useMaterial3: true,
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: <TargetPlatform, PageTransitionsBuilder>{
+        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      },
+    ),
+    cardTheme: CardThemeData(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSizeR.s6))),
+    appBarTheme: AppBarTheme(
+        scrolledUnderElevation: 0,
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: ColorManager.primary,
+        titleTextStyle: TextStyle(
+            fontFamily: FontConstants.fontFamilyInter,
+            color: ColorManager.white,
+            fontSize: AppSizeSp.s17,
+            fontWeight: FontWeight.bold),
+        iconTheme: IconThemeData(color: ColorManager.white)),
     // fontFamily: FontConstants.fontFamilyPTSans,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -26,14 +47,14 @@ ThemeData lightTheme() {
           elevation: WidgetStateProperty.all(AppSizeH.s16),
           foregroundColor: WidgetStateProperty.all<Color>(ColorManager.white),
           backgroundColor: WidgetStateProperty.all<Color>(ColorManager.primary),
-          padding: WidgetStateProperty.all(
-              EdgeInsets.symmetric(vertical: AppSizeH.s13)),
+          // padding: WidgetStateProperty.all(
+          //     EdgeInsets.symmetric(vertical: AppSizeH.s13)),
           shadowColor:
               WidgetStateProperty.all(ColorManager.black.withOpacity(0.1)),
           textStyle: WidgetStateProperty.all<TextStyle>(TextStyle(
               fontFamily: FontConstants.fontFamilyPTSans,
               fontWeight: FontWeight.bold,
-              fontSize: AppSizeSp.s16))),
+              fontSize: AppSizeSp.s13))),
     ),
     inputDecorationTheme: InputDecorationTheme(
         // contentPadding:
@@ -89,6 +110,12 @@ ThemeData lightTheme() {
         filled: true,
         fillColor: ColorManager.white),
     textTheme: TextTheme(
+      titleLarge: TextStyle(
+          fontFamily: FontConstants.fontFamilyPTSans,
+          color: ColorManager.labelSecondary,
+          fontWeight: FontWeight.bold,
+          fontSize: AppSizeSp.s14),
+      //-----------------------------
       labelLarge: TextStyle(
           fontFamily: FontConstants.fontFamilyInter,
           fontWeight: FontWeight.bold,
@@ -137,11 +164,6 @@ ThemeData lightTheme() {
           fontFamily: FontConstants.fontFamilyPTSans,
           color: ColorManager.labelSecondary,
           fontSize: AppSizeSp.s12),
-      titleLarge: TextStyle(
-          fontFamily: FontConstants.fontFamilyPTSans,
-          color: ColorManager.black,
-          fontWeight: FontWeight.bold,
-          fontSize: AppSizeSp.s14),
       displayLarge: TextStyle(
           fontFamily: FontConstants.fontFamilyPTSans,
           color: ColorManager.labelTertiary,
@@ -210,6 +232,7 @@ ThemeData darkTheme() {
   return ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,
+    appBarTheme: const AppBarTheme(scrolledUnderElevation: 0, elevation: 0),
   );
 }
 
